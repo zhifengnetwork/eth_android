@@ -7,17 +7,23 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/tupian">
+
         <com.zf.eth.view.CircleImageView
                 android:id="@+id/me_img"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="25dp"
                 android:src="@drawable/empty_three_circle"
         />
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="8dp"
                 android:layout_toRightOf="@id/me_img"
         >
             <TextView
@@ -30,6 +36,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:textSize="11sp"
                     android:textColor="#ffffff"
                     android:text="会员ID：36552"
@@ -37,6 +44,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:textSize="11sp"
                     android:textColor="#ffffff"
                     android:text="会员等级：暂无"
@@ -44,21 +52,29 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
                     android:textSize="11sp"
                     android:textColor="#ffffff"
-                    android:text="市场等级：暂无"
+                    android:text="市场等级：等级二"
             />
 
         </LinearLayout>
+
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:textSize="15sp"
-                android:textColor="#fcce6a"
-                android:text="未激活"
-        />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginRight="25dp"
+            android:text="未激活"
+            android:textColor="#fcce6a"
+            android:textSize="15sp" />
 
     </RelativeLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/me_recyclerView"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

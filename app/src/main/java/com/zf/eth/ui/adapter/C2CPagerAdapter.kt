@@ -12,7 +12,7 @@ import com.zf.eth.MyApplication.Companion.context
 import com.zf.eth.ui.fragment.c2c.ContentFragment
 
 
-class C2CPagerAdater(fm:FragmentManager, titles:List<String>): FragmentPagerAdapter(fm) {
+class C2CPagerAdapter(fm:FragmentManager, titles:List<String>): FragmentPagerAdapter(fm) {
     private val fragmentList = arrayOfNulls<Fragment>(titles.size)
     val titles=titles
     override fun getItem(position: Int): Fragment {

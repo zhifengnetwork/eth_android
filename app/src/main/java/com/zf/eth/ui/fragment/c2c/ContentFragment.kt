@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
-import com.zf.eth.ui.adapter.ContentAdater
+import com.zf.eth.ui.adapter.C2CContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
 
 class ContentFragment:BaseFragment(){
@@ -20,7 +20,7 @@ class ContentFragment:BaseFragment(){
         }
     }
 
-    private val adapter by lazy { ContentAdater(context) }
+    private val adapter by lazy { C2CContentAdapter(context) }
     override fun getLayoutId(): Int = R.layout.layout_c2c_content
 
     override fun initView() {

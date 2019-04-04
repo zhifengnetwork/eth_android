@@ -1,20 +1,10 @@
 package com.zf.eth.ui.fragment
 
 
-import android.content.res.ColorStateList
-import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.get
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.tabs.TabLayout
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
-import com.zf.eth.base.BaseFragmentAdapter
-import com.zf.eth.ui.adapter.C2CPagerAdater
-import com.zf.eth.ui.fragment.c2c.ContentFragment
+import com.zf.eth.ui.adapter.C2CPagerAdapter
 import kotlinx.android.synthetic.main.fragment_c2c.*
 
 class C2CFragment : BaseFragment() {
@@ -34,7 +24,7 @@ class C2CFragment : BaseFragment() {
 
     private val title = arrayListOf("买入", "卖出")
 
-    val madapter by lazy{C2CPagerAdater(childFragmentManager,title) }
+    val madapter by lazy{C2CPagerAdapter(childFragmentManager,title) }
 
     var i:Int=0
     override fun initView() {
