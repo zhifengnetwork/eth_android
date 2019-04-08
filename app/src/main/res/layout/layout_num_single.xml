@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:columnCount="5"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/num0_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num0"/>
+
+    <ImageView
+            android:id="@+id/num1_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num1"/>
+
+    <ImageView
+            android:id="@+id/num2_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num2"/>
+
+    <ImageView
+            android:id="@+id/num3_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num3"/>
+
+    <ImageView
+            android:id="@+id/num4_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num4"/>
+
+    <ImageView
+            android:id="@+id/num5_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num5"/>
+
+    <ImageView
+            android:id="@+id/num6_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num6"/>
+
+    <ImageView
+            android:id="@+id/num7_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num7"/>
+
+    <ImageView
+            android:id="@+id/num8_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num8"/>
+
+    <ImageView
+            android:id="@+id/num9_s"
+            style="@style/Number"
+            android:src="@drawable/selector_num9"/>
+
+</GridLayout>

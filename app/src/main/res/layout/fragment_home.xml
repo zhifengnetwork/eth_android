@@ -2,25 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
+              android:background="@color/color_black"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.youth.banner.Banner
-            android:id="@+id/banner"
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"/>
+            android:layout_height="wrap_content">
+
+        <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                app:indicator_drawable_selected="@drawable/shape_banner_indicator_se"
+                app:indicator_drawable_unselected="@drawable/shape_banner_indicator_un_se"
+                android:layout_height="200dp"/>
+
+        <TextView
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:text="分享"
+                android:textColor="@color/whit"
+                android:background="@drawable/shape_home_share"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="30dp"
             android:gravity="center_vertical"
-            android:background="@color/home_se_text"
+            android:background="#202D67"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:orientation="horizontal">
 
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="公告"/>
+                android:drawableLeft="@drawable/notice"
+                android:textSize="15sp"
+                android:gravity="center_vertical"
+                android:textColor="#faa526"
+                android:drawablePadding="8dp"
+                android:layout_height="match_parent"
+                android:text="公告:"/>
 
         <com.superluo.textbannerlibrary.TextBannerView
                 android:id="@+id/bannerTextView"
@@ -28,6 +58,7 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 app:setAnimDuration="7000"
+                android:layout_marginLeft="5dp"
                 app:setDirection="right_to_left"
                 app:setGravity="center"
                 app:setInterval="1"
@@ -35,5 +66,7 @@
                 app:setTextColor="@color/whit"/>
 
     </LinearLayout>
+
+    <include layout="@layout/layout_home_function"/>
 
 </LinearLayout>

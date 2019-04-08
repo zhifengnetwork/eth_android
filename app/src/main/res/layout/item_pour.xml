@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:padding="10dp"
+              android:gravity="center_vertical"
+              android:layout_height="wrap_content">
+
+    <TextView
+            android:id="@+id/hundred"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""/>
+
+    <TextView
+            android:id="@+id/decade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""/>
+
+    <TextView
+            android:id="@+id/single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""/>
+
+    <TextView
+            android:id="@+id/multiPle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/shape_buy_input"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:text="1"/>
+
+    <TextView
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="删除"/>
+
+</LinearLayout>

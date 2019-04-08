@@ -86,7 +86,7 @@ object RetrofitManager {
             val originalRequest = chain.request()
             val requestBuilder = originalRequest.newBuilder()
                 // Provide your custom header here
-                .header("Token", token)
+//                .header("Token", token)
                 .method(originalRequest.method(), originalRequest.body())
             val request = requestBuilder.build()
             chain.proceed(request)

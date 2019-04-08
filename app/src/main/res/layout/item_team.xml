@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:paddingBottom="10dp"
+              android:background="#f8f8f8"
+              android:layout_marginLeft="10dp"
+              android:paddingTop="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/headportrait"/>
+
+        <ImageView android:id="@+id/star"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_toRightOf="@+id/avatar"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginLeft="15dp"
+                   android:src="@drawable/icon_stars"/>
+
+        <TextView
+                android:id="@+id/phoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/star"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="2dp"
+                android:textSize="12sp"
+                android:textColor="#232833"
+                android:text="154545454"/>
+
+        <TextView
+                android:id="@+id/timeTxt"
+                android:layout_below="@+id/phoneNum"
+                android:layout_toRightOf="@+id/avatar"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#696969"
+                android:layout_height="wrap_content"
+                android:text="成为下级时间:"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_toRightOf="@+id/timeTxt"
+                  android:layout_alignTop="@+id/timeTxt"
+                  android:textSize="10sp"
+                  android:textColor="#696969"
+                  android:layout_marginLeft="2dp"
+                  android:text="2019-5-16"/>
+
+        <View android:layout_width="1dp"
+              android:layout_height="15dp"
+              android:layout_toLeftOf="@+id/pushTxt"
+              android:layout_marginRight="8dp"
+              android:layout_centerVertical="true"
+              android:background="@color/colorSecondText"/>
+
+        <TextView
+                android:id="@+id/pushTxt"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="#232833"
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:text="直推"/>
+
+        <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#5c5f66"
+                android:layout_below="@+id/timeTxt"
+                android:layout_alignLeft="@id/timeTxt"
+                android:layout_marginTop="9dp"
+                android:visibility="gone"
+                android:text="电话:13413413413"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

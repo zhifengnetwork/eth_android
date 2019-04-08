@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_marginTop="5dp"
+              android:layout_width="match_parent"
+              android:layout_height="35dp">
+
+    <TextView android:layout_width="0dp"
+              android:layout_weight="1"
+              android:gravity="center"
+              android:layout_height="match_parent"
+              android:textColor="@color/whit"
+              android:textSize="12sp"
+              android:background="#2f4577"
+              android:text="钱包"/>
+
+    <TextView
+            android:id="@+id/mentionRecord"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:textColor="#abb9d9"
+            android:textSize="12sp"
+            android:background="#232833"
+            android:text="提币记录"/>
+
+    <TextView
+            android:id="@+id/earnRecord"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:textColor="#abb9d9"
+            android:textSize="12sp"
+            android:background="#232833"
+            android:text="赚币记录"/>
+
+    <TextView
+            android:id="@+id/c2cRecord"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:textColor="#abb9d9"
+            android:textSize="12sp"
+            android:background="#232833"
+            android:text="C2C记录"/>
+
+</LinearLayout>

@@ -24,10 +24,10 @@
             app:tl_iconHeight="23dp"
             app:tl_iconWidth="23dp"
             app:tl_indicator_color="#F75922"
-            android:background="#FF363A45"
+            android:background="#232833"
             app:tl_indicator_height="0dp"
-            app:tl_textSelectColor="@color/home_se_text"
-            app:tl_textUnselectColor="@color/whit"
+            app:tl_textSelectColor="@color/whit"
+            app:tl_textUnselectColor="#4A4F59"
             app:tl_textsize="10sp"
             app:tl_underline_color="#DDDDDD"
             app:tl_underline_height="0dp"/>

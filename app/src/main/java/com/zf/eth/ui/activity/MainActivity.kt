@@ -25,17 +25,17 @@ class MainActivity : BaseActivity() {
     private val mTitles = listOf("首页", "棋牌娱乐", "C2C", "我的")
 
     private val mIconSelectIds = listOf(
-        R.drawable.home_one_investment_ok,
-        R.drawable.game_3d_ok,
-        R.drawable.c2c_ok,
-        R.drawable.personal_info_ok
+        R.drawable.homepage,
+        R.drawable.chess1,
+        R.drawable.two1,
+        R.drawable.my1
     )
 
     private val mIconUnSelectIds = listOf(
-        R.drawable.home_one_investment,
-        R.drawable.game_3d,
-        R.drawable.c2c,
-        R.drawable.personal_info
+        R.drawable.home_page1,
+        R.drawable.chess,
+        R.drawable.two,
+        R.drawable.my
     )
 
     private val mTabEntities = ArrayList<CustomTabEntity>()

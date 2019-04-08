@@ -2,11 +2,13 @@ package com.zf.eth.ui.fragment
 
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.ui.activity.GameActivity
+import kotlinx.android.synthetic.main.fragment_chess.*
 
-class ChessFragment:BaseFragment() {
+class ChessFragment : BaseFragment() {
 
     companion object {
-        fun getInstance(): ChessFragment{
+        fun getInstance(): ChessFragment {
             return ChessFragment()
         }
     }
@@ -20,5 +22,9 @@ class ChessFragment:BaseFragment() {
     }
 
     override fun initEvent() {
+        pour.setOnClickListener {
+            GameActivity.actionStart(context)
+        }
     }
+
 }

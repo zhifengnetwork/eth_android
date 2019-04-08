@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="GridRadioGroup">
+        <attr name="numColumns" format="integer" />
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+    </declare-styleable>
+
     <declare-styleable name="CircleImageView">
         <attr name="border_width" format="dimension" />
         <attr name="border_color" format="color" />
@@ -24,7 +30,6 @@
         <attr name="ratable" format="boolean" />
         <attr name="star_padding" format="dimension" />
     </declare-styleable>
-
 
 
 

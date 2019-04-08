@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/shape_buy_input"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="当前投资额:"/>
+
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:background="@null"
+                          android:layout_marginLeft="10dp"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="1000.00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/shape_buy_input"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="激活投资:"/>
+
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:background="@null"
+                          android:layout_marginLeft="10dp"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="1000.00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/shape_buy_input"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="账户投资上限:"/>
+
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:background="@null"
+                          android:layout_marginLeft="10dp"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="1000.00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/shape_buy_input"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="当前最多可投资:"/>
+
+                <EditText android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:background="@null"
+                          android:layout_marginLeft="10dp"
+                          android:textSize="12sp"
+                          android:textColor="#232833"
+                          android:text="1000.00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/detailLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                    <TextView android:layout_width="100dp"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="20dp"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimaryText"
+                              android:text="二维码"/>
+
+                    <ImageView android:layout_width="100dp"
+                               android:layout_height="100dp"
+                               android:layout_marginLeft="20dp"
+                               android:background="@color/colorLine"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@drawable/shape_buy_address"
+                        android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimaryText"
+                              android:text="收款地址:"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimaryText"
+                              android:layout_height="wrap_content"
+                              android:text="麻烦快点哦"/>
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                    <TextView android:layout_width="100dp"
+                              android:layout_height="wrap_content"
+                              android:layout_marginLeft="20dp"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimaryText"
+                              android:text="支付凭证"/>
+
+                    <ImageView android:layout_width="100dp"
+                               android:layout_height="100dp"
+                               android:layout_marginLeft="20dp"
+                               android:background="@color/colorLine"/>
+
+                </LinearLayout>
+
+                <TextView android:layout_width="match_parent"
+                          android:background="@drawable/shape_round_green"
+                          android:gravity="center"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="10dp"
+                          android:textSize="15sp"
+                          android:textColor="@color/whit"
+                          android:layout_height="40dp"
+                          android:layout_marginTop="10dp"
+                          android:text="确定购买"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                    android:id="@+id/buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/shape_round_green"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:text="付款"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
