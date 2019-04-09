@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center_horizontal"
+              android:background="@drawable/tuceng2"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+<include layout="@layout/layout_toolbar"/>
+<TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_download_bg"
+        android:gravity="center"
+        android:layout_marginTop="234dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#ffffff"
+        android:text="安卓下载"
+/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_download_bg"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="#ffffff"
+            android:text="iOS下载"
+    />
+</LinearLayout>
