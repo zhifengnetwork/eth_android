@@ -4,7 +4,8 @@ import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.bean.BannerBean
-import com.zf.eth.mvp.bean.NoticeBean
+import com.zf.eth.mvp.bean.HomeBean
+import com.zf.eth.mvp.bean.NoticeList
 import com.zf.eth.mvp.contract.HomeContract
 import com.zf.eth.mvp.presenter.HomePresenter
 import com.zf.eth.showToast
@@ -21,6 +22,21 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
 
     override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+
+    //首页信息
+    override fun setHome(bean: HomeBean) {
+        //投资总额
+        grossAsset.text = bean.touzimoney
+        //总收益
+        totalRevenue.text = bean.shouyimoneysum
+        //今日收益
+        todayIncome.text = bean.shouyimoney
+        //钱包余额
+        balance.text = bean.money
+        //团队
+        team.text = bean.xiaji
 
     }
 
@@ -36,7 +52,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     //公告
-    override fun setNotice(bean: List<NoticeBean>) {
+    override fun setNotice(bean: List<NoticeList>) {
         val noticeData = ArrayList<String>()
         for (notice in bean) {
             noticeData.add(HtmlLabel.stringHtml(notice.detail))
@@ -83,6 +99,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun lazyLoad() {
         bannerPresenter.requestBanner()
         bannerPresenter.requestNotice()
+        bannerPresenter.requestHome()
     }
 
     override fun initEvent() {
@@ -99,7 +116,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //投资记录
         investLayout.setOnClickListener {
-            InvestActivity.actionStart(context)
+            InvestActivity.actionStart(context,InvestActivity.TOUZI)
         }
 
         //钱包余额

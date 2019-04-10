@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_withdraw_eth"
+            android:orientation="vertical">
+
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="15sp"
+                      android:textColor="@color/colorPrimaryText"
+                      android:text="当前可交易金额:"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textSize="15sp"
+                      android:textColor="@color/colorPrimaryText"
+                      android:layout_marginLeft="5dp"
+                      android:text="￥36"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="250dp"
+                      android:layout_height="35dp"
+                      android:layout_marginTop="10dp"
+                      android:gravity="center_vertical"
+                      android:paddingLeft="10dp"
+                      android:paddingRight="10dp"
+                      android:background="@drawable/shape_withdraw_edit"
+                      android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="#f2041a"
+                      android:text="￥"/>
+
+            <EditText
+                    android:id="@+id/input"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:paddingLeft="5dp"
+                    android:background="@null"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="250dp"
+                      android:layout_height="35dp"
+                      android:layout_marginTop="10dp"
+                      android:gravity="center_vertical"
+                      android:paddingLeft="10dp"
+                      android:paddingRight="10dp"
+                      android:background="@drawable/shape_withdraw_edit"
+                      android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/colorPrimaryText"
+                      android:text="ID"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:paddingLeft="5dp"
+                    android:background="@null"
+                    android:hint="请输入对方ID"
+                    android:textSize="14sp"
+                    android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textColor="#f2041a"
+                  android:layout_marginTop="5dp"
+                  android:textSize="12sp"
+                  android:text="* 提现的金额只能是1的倍数"/>
+
+        <View android:id="@+id/dashLine1"
+              android:layout_width="match_parent"
+              android:layout_height="1.5dp"
+              android:layout_marginTop="5dp"
+              android:background="@drawable/shape_dash_line"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="13dp"
+                  android:textColor="@color/colorPrimaryText"
+                  android:textSize="15sp"
+                  android:text="提现手续费为5%"/>
+
+        <LinearLayout
+                android:id="@+id/chargeLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/colorPrimaryText"
+                      android:textSize="15sp"
+                      android:text="本次提现将扣除手续费:"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="#f2041a"
+                      android:textSize="15sp"
+                      android:layout_marginLeft="5dp"
+                      android:text="￥5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/arrivalLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/colorPrimaryText"
+                      android:textSize="15sp"
+                      android:text="本次提现实际到账金额:"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="#f2041a"
+                      android:textSize="15sp"
+                      android:layout_marginLeft="5dp"
+                      android:text="￥5"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textSize="15sp"
+            android:textColor="@color/whit"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:background="@drawable/shape_round_green"
+            android:text="确定转账"/>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="12sp"
+              android:layout_marginLeft="12sp"
+              android:textColor="#f80000"
+              android:layout_marginTop="5dp"
+              android:layout_marginRight="12sp"
+              android:text="提示:转账前请提前与对方沟通，一旦转出将无法追回，请谨慎操作!!!"/>
+
+
+</LinearLayout>

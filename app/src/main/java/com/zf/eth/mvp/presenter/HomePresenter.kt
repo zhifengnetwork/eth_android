@@ -19,8 +19,8 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                 mRootView?.apply {
                     dismissLoading()
                     when (it.status) {
-                        1 -> setBanner(it.list)
-                        else -> showError("error", it.status)
+                        1 -> setBanner(it.data)
+                        else -> showError(it.msg, it.status)
                     }
                 }
             }, {
@@ -53,4 +53,26 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
             })
         addSubscription(disposable)
     }
+
+    override fun requestHome() {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = model.getHome()
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setHome(it.data)
+                        else -> showError(it.msg, it.status)
+                    }
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
+        addSubscription(disposable)
+    }
+
 }

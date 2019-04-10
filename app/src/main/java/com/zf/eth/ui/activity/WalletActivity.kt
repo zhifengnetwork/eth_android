@@ -37,6 +37,16 @@ class WalletActivity : BaseActivity() {
 
     override fun initEvent() {
 
+        //互转
+        transfer.setOnClickListener {
+            TransferActivity.actionStart(this)
+        }
+
+        //提现
+        withdraw.setOnClickListener {
+            WithdrawActivity.actionStart(this)
+        }
+
         //复投账户一键复投
         reVoting.setOnClickListener {
             VotingActivity.actionStart(this, VotingActivity.RE_DELIVER)
@@ -49,12 +59,12 @@ class WalletActivity : BaseActivity() {
 
         //提币记录
         mentionRecord.setOnClickListener {
-            InvestActivity.actionStart(this)
+            InvestActivity.actionStart(this, InvestActivity.TIBI)
         }
 
-        //赚币记录
-        earnRecord.setOnClickListener {
-            InvestActivity.actionStart(this)
+        //转币记录
+        turnRecord.setOnClickListener {
+            InvestActivity.actionStart(this, InvestActivity.ZHUANBI)
         }
 
         //C2C记录

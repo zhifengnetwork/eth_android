@@ -6,19 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
+import com.zf.eth.mvp.bean.TeamBean
 import kotlinx.android.synthetic.main.item_team.view.*
 
-class TeamAdapter(val context: Context) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
+class TeamAdapter(val context: Context, val data: List<TeamBean>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_team, parent, false)
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
+
+            nickName.text = data[position].nickname
+            phone.text = "电话: " + data[position].mobile
+
             setOnClickListener {
                 holder.itemView.isSelected = !holder.itemView.isSelected
                 if (holder.itemView.isSelected) {

@@ -24,11 +24,10 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
-    android:layout_rowWeight="1"
-    android:layout_columnWeight="1"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-
+    <style name="AppTheme.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <style name="Number">
         <item name="android:layout_rowWeight">1</item>

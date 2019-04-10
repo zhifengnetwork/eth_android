@@ -12,4 +12,7 @@ object UriConstant {
 
     const val PER_PAGE = 15
 
+    const val USER_ID = "userId"
+
+    const val OPEN_ID = "openId"
 }

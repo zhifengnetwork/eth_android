@@ -37,10 +37,18 @@
                   android:text="为已成为该账户的下级"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+    <com.classic.common.MultipleStatusView
+            android:id="@+id/multipleStatusView"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="match_parent"/>
+
+    </com.classic.common.MultipleStatusView>
+
 
 </LinearLayout>

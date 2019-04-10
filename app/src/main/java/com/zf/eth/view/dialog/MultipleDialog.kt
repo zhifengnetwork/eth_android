@@ -12,6 +12,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.zf.eth.R
 import com.zf.eth.utils.DensityUtil
+import com.zf.eth.utils.KeyBordUitls
 import kotlinx.android.synthetic.main.dialog_multiple.view.*
 
 
@@ -59,10 +60,12 @@ class MultipleDialog : DialogFragment() {
 
             cancel.setOnClickListener {
                 dismiss()
+                KeyBordUitls.closeKeybord(input, context)
             }
 
             confirm.setOnClickListener {
-                if (input.text.isNotEmpty() && input.text.toString().toInt() > 0) {
+                if (input.text.isNotEmpty() && input.text.toString().toInt() >= 0  ) {
+                    KeyBordUitls.closeKeybord(input, context)
                     dismiss()
                     onNumListener?.invoke(input.text.toString().toInt())
                 }

@@ -4,5 +4,6 @@ import java.io.Serializable
 
 class BaseBean<T>(
     val status: Int,
-    val list: T
+    val msg: String,
+    val data: T
 ) : Serializable
