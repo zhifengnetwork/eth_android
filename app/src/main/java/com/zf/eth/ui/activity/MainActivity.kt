@@ -1,5 +1,7 @@
 package com.zf.eth.ui.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.fragment.app.FragmentTransaction
@@ -8,6 +10,9 @@ import com.flyco.tablayout.listener.OnTabSelectListener
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.mvp.bean.TabEntity
+import com.zf.eth.mvp.bean.UserInfoBean
+import com.zf.eth.mvp.contract.UserInfoContract
+import com.zf.eth.mvp.presenter.UserInfoPresenter
 import com.zf.eth.showToast
 import com.zf.eth.ui.fragment.C2CFragment
 import com.zf.eth.ui.fragment.ChessFragment
@@ -15,9 +20,29 @@ import com.zf.eth.ui.fragment.HomeFragment
 import com.zf.eth.ui.fragment.MeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), UserInfoContract.View {
+
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+
+    override fun setUserInfo(bean: UserInfoBean) {
+        showToast(bean.result.message)
+    }
+
+    override fun showLoading() {
+    }
+
+    override fun dismissLoading() {
+    }
 
     override fun initToolBar() {
+    }
+
+    companion object {
+        fun actionStart(context: Context?) {
+            context?.startActivity(Intent(context, MainActivity::class.java))
+        }
     }
 
     override fun layoutId(): Int = R.layout.activity_main
@@ -144,13 +169,21 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
+        infoPresenter.attachView(this)
     }
 
     override fun initEvent() {
     }
 
+    private val infoPresenter by lazy { UserInfoPresenter() }
+
     override fun start() {
+//        infoPresenter.requestUserInfo()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        infoPresenter.detachView()
+    }
 
 }

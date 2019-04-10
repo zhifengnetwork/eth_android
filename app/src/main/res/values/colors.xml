@@ -4,6 +4,8 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="color_cancel">#D81B60</color>
     <color name="home_se_text">#FF00B49D</color>
     <color name="whit">#FFFFFF</color>
     <color name="color_black">#000000</color>

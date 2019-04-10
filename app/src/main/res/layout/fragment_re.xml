@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:paddingTop="14dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="14dp"
+            android:background="@drawable/shape_withdraw_eth"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/balanceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="当前可用复投账户余额:"/>
+
+        <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/balanceTxt"
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_marginLeft="5dp"
+                android:text="￥0.02"/>
+
+        <TextView
+                android:id="@+id/notice"
+                android:layout_below="@+id/balanceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textSize="12sp"
+                android:textColor="#f40412"
+                android:text="注：复投账户不可转账，不可以提现，不可以提到余额"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

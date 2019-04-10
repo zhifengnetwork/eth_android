@@ -25,11 +25,13 @@
                   android:layout_marginRight="3dp"
                   android:text="充币时间:"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="@color/whit"
-                  android:textSize="12sp"
-                  android:text="2019-25-66"/>
+        <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
+                android:text="2019-25-66"/>
 
     </LinearLayout>
 
@@ -49,11 +51,13 @@
                   android:layout_marginRight="3dp"
                   android:text="充币类型:"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="@color/whit"
-                  android:textSize="12sp"
-                  android:text="资产投资"/>
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
+                android:text="资产投资"/>
 
     </LinearLayout>
 
@@ -98,11 +102,13 @@
                   android:layout_marginRight="3dp"
                   android:text="充币金额:"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="@color/whit"
-                  android:textSize="12sp"
-                  android:text="55555.00"/>
+        <TextView
+                android:id="@+id/money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
+                android:text="55555.00"/>
 
     </LinearLayout>
 

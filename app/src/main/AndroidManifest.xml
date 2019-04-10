@@ -61,6 +61,26 @@
         <activity android:name=".ui.activity.LoginActivity"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.FullScreen"/>
+
+        <activity android:name=".ui.activity.RegisterActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.FullScreen"/>
+
+        <activity android:name=".ui.activity.FindPwdActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.FullScreen"/>
+
+        <activity android:name=".ui.activity.WithdrawActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.TransferActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".ui.activity.PaymentActivity"
