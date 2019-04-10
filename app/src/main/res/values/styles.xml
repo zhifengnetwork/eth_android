@@ -37,4 +37,9 @@
         <item name="android:layout_margin">5dp</item>
     </style>
 
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">17sp</item>
+    </style>
+
 </resources>

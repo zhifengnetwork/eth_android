@@ -83,6 +83,31 @@
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
+        <activity android:name=".ui.activity.PaymentActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.WalletAddressActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.ChangePasswordActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.DownloadActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.SystemBulletinActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
     </application>
 
 </manifest>

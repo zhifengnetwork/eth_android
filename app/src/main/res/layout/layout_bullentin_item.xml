@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_marginTop="10dp"
+              android:background="@color/whit"
+              android:layout_width="match_parent"
+              android:layout_height="65dp">
+    <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/erweima"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/item_img"
+            android:layout_marginLeft="16dp"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:text="新手训练营"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/tiaozhuan"/>
+</RelativeLayout>
