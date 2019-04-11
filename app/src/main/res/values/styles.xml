@@ -42,4 +42,12 @@
         <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="game_num">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:textColor">@color/selector_game_num</item>
+        <item name="android:background">@drawable/selector_num</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

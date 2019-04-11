@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.MultipleBean
@@ -12,13 +12,13 @@ import com.zf.eth.mvp.bean.PourBean
 import com.zf.eth.utils.KeyBordUitls
 import com.zf.eth.utils.ToastUtils
 import kotlinx.android.synthetic.main.item_pour.view.*
-import kotlinx.android.synthetic.main.layout_num_decade.view.*
-import kotlinx.android.synthetic.main.layout_num_hundred.view.*
-import kotlinx.android.synthetic.main.layout_num_single.view.*
+import kotlinx.android.synthetic.main.layout_num_text_decade.view.*
+import kotlinx.android.synthetic.main.layout_num_text_hundred.view.*
+import kotlinx.android.synthetic.main.layout_num_text_single.view.*
 import kotlinx.android.synthetic.main.layout_pour_head.view.*
 
 class PourAdapter(val context: Context?) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == typeHead) {
@@ -56,48 +56,48 @@ class PourAdapter(val context: Context?) :
 
                 val map = HashMap<Int, Int>()
 
-                val hundredLayout: List<ImageView> =
-                    listOf(
-                        num0,
-                        num1,
-                        num2,
-                        num3,
-                        num4,
-                        num5,
-                        num6,
-                        num7,
-                        num8,
-                        num9
-                    )
+                val hundredLayout: List<TextView> =
+                        listOf(
+                                num0,
+                                num1,
+                                num2,
+                                num3,
+                                num4,
+                                num5,
+                                num6,
+                                num7,
+                                num8,
+                                num9
+                        )
 
 
-                val decadeLayout: List<ImageView> =
-                    listOf(
-                        num0_d,
-                        num1_d,
-                        num2_d,
-                        num3_d,
-                        num4_d,
-                        num5_d,
-                        num6_d,
-                        num7_d,
-                        num8_d,
-                        num9_d
-                    )
+                val decadeLayout: List<TextView> =
+                        listOf(
+                                num0_d,
+                                num1_d,
+                                num2_d,
+                                num3_d,
+                                num4_d,
+                                num5_d,
+                                num6_d,
+                                num7_d,
+                                num8_d,
+                                num9_d
+                        )
 
-                val singleLayout: List<ImageView> =
-                    listOf(
-                        num0_s,
-                        num1_s,
-                        num2_s,
-                        num3_s,
-                        num4_s,
-                        num5_s,
-                        num6_s,
-                        num7_s,
-                        num8_s,
-                        num9_s
-                    )
+                val singleLayout: List<TextView> =
+                        listOf(
+                                num0_s,
+                                num1_s,
+                                num2_s,
+                                num3_s,
+                                num4_s,
+                                num5_s,
+                                num6_s,
+                                num7_s,
+                                num8_s,
+                                num9_s
+                        )
 
 
 
