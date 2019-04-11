@@ -67,6 +67,13 @@
 
     </LinearLayout>
 
-    <include layout="@layout/layout_home_function"/>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
+                                           android:overScrollMode="never"
+                                           android:layout_height="wrap_content">
+
+        <include layout="@layout/layout_home_function"/>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>

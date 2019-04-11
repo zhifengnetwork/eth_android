@@ -30,7 +30,6 @@ class PourAdapter(val context: Context?) :
         }
     }
 
-    //    var deleteListener: ((Int) -> Unit)? = null
     var multipleListener: ((MultipleBean) -> Unit)? = null
 
     override fun getItemCount(): Int = pourData.size + 1

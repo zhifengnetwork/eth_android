@@ -5,6 +5,9 @@ import com.zf.eth.base.BaseFragment
 import com.zf.eth.ui.activity.GameActivity
 import kotlinx.android.synthetic.main.fragment_chess.*
 
+/**
+ * 棋牌娱乐
+ */
 class ChessFragment : BaseFragment() {
 
     companion object {
