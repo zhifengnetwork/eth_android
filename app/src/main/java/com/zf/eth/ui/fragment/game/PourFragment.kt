@@ -41,7 +41,6 @@ class PourFragment : BaseFragment() {
         adapter.multipleListener = { bean ->
             MultipleDialog.showDialog(childFragmentManager, bean.num).onNumListener = {
                 adapter.updateMultiple(bean.position, it)
-
             }
         }
 
