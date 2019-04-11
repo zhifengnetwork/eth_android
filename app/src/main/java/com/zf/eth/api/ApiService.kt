@@ -19,26 +19,14 @@ interface ApiService {
      */
     @FormUrlEncoded
     @POST("app/index.php")
-    fun getBanner(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
-        @Field("r") r: String
-    ): Observable<BaseBean<List<BannerBean>>>
+    fun getBanner(@Field("r") r: String): Observable<BaseBean<List<BannerBean>>>
 
     /**
      * 首页公告
      */
     @FormUrlEncoded
     @POST("app/index.php")
-    fun getNotice(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
-        @Field("r") r: String
-    ): Observable<NoticeBean>
+    fun getNotice(@Field("r") r: String): Observable<NoticeBean>
 
     /**
      * 登录
@@ -47,10 +35,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun login(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
         @Field("r") r: String,
         @Field("mobile") mobile: String,
         @Field("pwd") pwd: String
@@ -63,13 +47,7 @@ interface ApiService {
      */
     @FormUrlEncoded
     @POST("app/index.php")
-    fun getUserInfo(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
-        @Field("r") r: String
-    ): Observable<UserInfoBean>
+    fun getUserInfo(@Field("r") r: String): Observable<UserInfoBean>
 
     /**
      * 首页接口
@@ -77,10 +55,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getHome(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
         @Field("r") r: String,
         @Field("openid") openid: String,
         @Field("id") id: String
@@ -92,10 +66,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getInvest(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
         @Field("r") r: String,
         @Field("openid") openid: String,
         @Field("id") id: String,
@@ -109,10 +79,6 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getTeam(
-        @Field("i") i: String,
-        @Field("c") c: String,
-        @Field("m") m: String,
-        @Field("do") dso: String,
         @Field("r") r: String,
         @Field("openid") openid: String,
         @Field("id") id: String

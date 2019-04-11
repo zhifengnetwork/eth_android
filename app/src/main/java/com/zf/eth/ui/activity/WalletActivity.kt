@@ -37,6 +37,12 @@ class WalletActivity : BaseActivity() {
 
     override fun initEvent() {
 
+        //首页C2C
+        c2c.setOnClickListener {
+            MainActivity.actionStart(this, 2)
+            finish()
+        }
+
         //互转
         transfer.setOnClickListener {
             TransferActivity.actionStart(this)
@@ -72,25 +78,25 @@ class WalletActivity : BaseActivity() {
             C2CRecordActivity.actionStart(this)
         }
 
-        //复投账户
-        reAccountLayout.setOnClickListener {
-            reAccountLayout.isSelected = !reAccountLayout.isSelected
-            if (reAccountLayout.isSelected) {
-                reDetailLayout.visibility = View.VISIBLE
-            } else {
-                reDetailLayout.visibility = View.GONE
-            }
-        }
+        /**复投账户点击展开 后面如果需要就解除注释*/
+//        reAccountLayout.setOnClickListener {
+//            reAccountLayout.isSelected = !reAccountLayout.isSelected
+//            if (reAccountLayout.isSelected) {
+//                reDetailLayout.visibility = View.VISIBLE
+//            } else {
+//                reDetailLayout.visibility = View.GONE
+//            }
+//        }
 
-        //自由钱包
-        freeAccountLayout.setOnClickListener {
-            freeAccountLayout.isSelected = !freeAccountLayout.isSelected
-            if (freeAccountLayout.isSelected) {
-                freeDetailLayout.visibility = View.VISIBLE
-            } else {
-                freeDetailLayout.visibility = View.GONE
-            }
-        }
+        /**自由钱包点击展开 后面如果需要就解除注释 */
+//        freeAccountLayout.setOnClickListener {
+//            freeAccountLayout.isSelected = !freeAccountLayout.isSelected
+//            if (freeAccountLayout.isSelected) {
+//                freeDetailLayout.visibility = View.VISIBLE
+//            } else {
+//                freeDetailLayout.visibility = View.GONE
+//            }
+//        }
 
     }
 

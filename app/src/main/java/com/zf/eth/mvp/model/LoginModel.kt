@@ -7,13 +7,11 @@ import io.reactivex.Observable
 
 class LoginModel {
     fun login(mobile: String, pwd: String): Observable<LoginBean> {
-        return RetrofitManager.service.login("12",
-            "entry",
-            "ewei_shopv2",
-            "mobile",
+        return RetrofitManager.service.login(
             "account.login",
             mobile,
-            pwd)
+            pwd
+        )
             .compose(SchedulerUtils.ioToMain())
     }
 

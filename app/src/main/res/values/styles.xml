@@ -29,17 +29,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Number">
-        <item name="android:layout_rowWeight">1</item>
-        <item name="android:layout_columnWeight">1</item>
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_margin">5dp</item>
-    </style>
-
-
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="game_num">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:textColor">@color/selector_game_num</item>
+        <item name="android:background">@drawable/selector_num</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

@@ -8,10 +8,6 @@ import io.reactivex.Observable
 class UserInfoModel {
     fun getUserInfo(): Observable<UserInfoBean> {
         return RetrofitManager.service.getUserInfo(
-            "12",
-            "entry",
-            "ewei_shopv2",
-            "mobile",
             "account.login"
         )
             .compose(SchedulerUtils.ioToMain())

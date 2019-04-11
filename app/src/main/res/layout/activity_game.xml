@@ -1,28 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <com.flyco.tablayout.CommonTabLayout
-            android:id="@+id/tabLayout"
+    <include layout="@layout/layout_toolbar"/>
+
+    <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/colorLine"
-            app:tl_indicator_color="@color/colorPrimaryDark"
-            app:tl_indicator_height="3dp"
-            app:tl_indicator_width="50dp"
-            app:tl_textSelectColor="@color/colorPrimaryDark"
-            app:tl_textUnselectColor="@color/whit"
-            app:tl_textsize="15sp"
-            app:tl_underline_color="@color/colorPrimaryDark"
-            app:tl_underline_height="0dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+        <RadioButton
+                android:id="@+id/game"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:checked="true"
+                android:button="@null"
+                android:textColor="@color/selector_withdraw_tab"
+                android:layout_weight="1"
+                android:background="@drawable/selector_withdraw"
+                android:gravity="center"
+                android:text="3D下注"/>
+
+        <View android:layout_width="2px"
+              android:layout_height="match_parent"
+              android:background="@color/whit"/>
+
+        <RadioButton
+                android:id="@+id/bet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:textColor="@color/selector_withdraw_tab"
+                android:layout_weight="1"
+                android:background="@drawable/selector_withdraw"
+                android:gravity="center"
+                android:text="押注记录"/>
+
+        <View android:layout_width="2px"
+              android:layout_height="match_parent"
+              android:background="@color/whit"/>
+
+        <RadioButton
+                android:id="@+id/prize"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:textColor="@color/selector_withdraw_tab"
+                android:layout_weight="1"
+                android:background="@drawable/selector_withdraw"
+                android:gravity="center"
+                android:text="中奖记录"/>
+    </RadioGroup>
 
     <FrameLayout
             android:id="@+id/fl_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tabLayout"/>
+            android:layout_height="match_parent"/>
 
 
-</RelativeLayout>
+</LinearLayout>

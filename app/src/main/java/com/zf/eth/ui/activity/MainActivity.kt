@@ -40,9 +40,19 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     companion object {
-        fun actionStart(context: Context?) {
+
+        private var mIndex = 0
+
+        fun actionStart(context: Context?, index: Int? = 0) {
+            mIndex = index ?: 0
             context?.startActivity(Intent(context, MainActivity::class.java))
         }
+    }
+
+    //从我的钱包进来C2C
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        switchFragment(mIndex)
     }
 
     override fun layoutId(): Int = R.layout.activity_main
@@ -70,7 +80,6 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     private var mHotFragment: C2CFragment? = null
     private var mMineFragment: MeFragment? = null
 
-    private var mIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState != null) {

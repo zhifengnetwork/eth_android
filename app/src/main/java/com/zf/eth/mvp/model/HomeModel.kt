@@ -14,12 +14,12 @@ class HomeModel {
 
 
     fun getBanner(): Observable<BaseBean<List<BannerBean>>> {
-        return RetrofitManager.service.getBanner("12", "entry", "ewei_shopv2", "mobile", "index.lunbo")
+        return RetrofitManager.service.getBanner("index.lunbo")
             .compose(SchedulerUtils.ioToMain())
     }
 
     fun getNotice(): Observable<NoticeBean> {
-        return RetrofitManager.service.getNotice("12", "entry", "ewei_shopv2", "mobile", "index.notice")
+        return RetrofitManager.service.getNotice("index.notice")
             .compose(SchedulerUtils.ioToMain())
     }
 
@@ -29,8 +29,7 @@ class HomeModel {
 
     fun getHome(): Observable<BaseBean<HomeBean>> {
         return RetrofitManager.service.getHome(
-            "12", "entry", "ewei_shopv2",
-            "mobile", "index.homeinfo", openId, userId
+            "index.homeinfo", openId, userId
         )
             .compose(SchedulerUtils.ioToMain())
     }
