@@ -84,4 +84,9 @@ interface ApiService {
         @Field("id") id: String
     ): Observable<BaseBean<List<TeamBean>>>
 
+    /**
+     * c2c挂卖中心
+     * app/index.php?i=12&c=entry&m=ewei_shopv2&do=mobile&r=member.androidapi.guamairecordjilu
+     */
+   
 }
