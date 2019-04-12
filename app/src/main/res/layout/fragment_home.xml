@@ -1,77 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:background="@color/color_black"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black"
+    android:orientation="vertical">
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                app:indicator_drawable_selected="@drawable/shape_banner_indicator_se"
-                app:indicator_drawable_unselected="@drawable/shape_banner_indicator_un_se"
-                android:layout_height="200dp"/>
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:indicator_drawable_selected="@drawable/shape_banner_indicator_se"
+            app:indicator_drawable_unselected="@drawable/shape_banner_indicator_un_se" />
 
         <TextView
-                android:id="@+id/share"
-                android:layout_width="wrap_content"
-                android:text="分享"
-                android:textColor="@color/whit"
-                android:background="@drawable/shape_home_share"
-                android:paddingLeft="15dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_home_share"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="分享"
+            android:textColor="@color/whit" />
 
     </RelativeLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center_vertical"
-            android:background="#202D67"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#202D67"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
-                android:layout_width="wrap_content"
-                android:drawableLeft="@drawable/notice"
-                android:textSize="15sp"
-                android:gravity="center_vertical"
-                android:textColor="#faa526"
-                android:drawablePadding="8dp"
-                android:layout_height="match_parent"
-                android:text="公告:"/>
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/notice"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="公告:"
+            android:textColor="#faa526"
+            android:textSize="15sp" />
 
         <com.superluo.textbannerlibrary.TextBannerView
-                android:id="@+id/bannerTextView"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="50dp"
-                app:setAnimDuration="7000"
-                android:layout_marginLeft="5dp"
-                app:setDirection="right_to_left"
-                app:setGravity="center"
-                app:setInterval="1"
-                app:setSingleLine="true"
-                app:setTextColor="@color/whit"/>
+            android:id="@+id/bannerTextView"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            app:setAnimDuration="7000"
+            app:setDirection="right_to_left"
+            app:setGravity="center"
+            app:setInterval="1"
+            app:setSingleLine="true"
+            app:setTextColor="@color/whit" />
 
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-                                           android:overScrollMode="never"
-                                           android:layout_height="wrap_content">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
 
-        <include layout="@layout/layout_home_function"/>
+        <include layout="@layout/layout_home_function" />
 
     </androidx.core.widget.NestedScrollView>
 

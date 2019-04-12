@@ -23,7 +23,7 @@ class TeamAdapter(val context: Context, val data: List<TeamBean>) : RecyclerView
 
             nickName.text = data[position].nickname
             phone.text = "电话: " + data[position].mobile
-
+            time.text = data[position].createtime
             setOnClickListener {
                 holder.itemView.isSelected = !holder.itemView.isSelected
                 if (holder.itemView.isSelected) {

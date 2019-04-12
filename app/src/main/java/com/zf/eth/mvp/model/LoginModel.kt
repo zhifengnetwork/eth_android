@@ -10,10 +10,10 @@ class LoginModel {
         return RetrofitManager.service.login(
             "account.login",
             mobile,
-            pwd
+            pwd,
+            "1"
         )
             .compose(SchedulerUtils.ioToMain())
     }
-
 
 }
