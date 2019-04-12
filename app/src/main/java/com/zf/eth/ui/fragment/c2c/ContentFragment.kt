@@ -83,10 +83,10 @@ class ContentFragment:BaseFragment(),C2cContract.View{
 
     private fun load(){
         if(mType== BUY){
-            c2cPresenter.requesC2c("1","0","1")
+            c2cPresenter.requesC2c("1","1","1")
             Log.e("检测","已请求数据type:1")
         }else{
-            c2cPresenter.requesC2c("1","0","0")
+            c2cPresenter.requesC2c("1","2","0")
             Log.e("检测","已请求数据type:0")
         }
 

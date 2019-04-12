@@ -8,10 +8,12 @@ import com.zf.eth.base.BaseFragmentAdapter
 import com.zf.eth.mvp.bean.C2cBean
 import com.zf.eth.mvp.contract.C2cContract
 import com.zf.eth.mvp.presenter.C2cPresenter
+import com.zf.eth.ui.activity.C2cOrderActivity
 import com.zf.eth.ui.adapter.C2CPagerAdapter
 import com.zf.eth.ui.fragment.c2c.ContentFragment
 import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.fragment_c2c.*
+import kotlinx.android.synthetic.main.layout_c2c_title.*
 
 class C2CFragment : BaseFragment(){
 
@@ -88,6 +90,10 @@ class C2CFragment : BaseFragment(){
 
             }
         })
+        //界面转跳
+        navigation_btn.setOnClickListener {
+              C2cOrderActivity.actionStart(context)
+        }
     }
 
 }

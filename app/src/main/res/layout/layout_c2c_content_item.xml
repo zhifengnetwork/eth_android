@@ -91,6 +91,7 @@
 
     </LinearLayout>
     <TextView
+            android:id="@+id/item_tv"
             android:layout_below="@id/price"
             android:layout_width="60dp"
             android:layout_height="23dp"
