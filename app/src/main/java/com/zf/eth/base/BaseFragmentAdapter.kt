@@ -2,10 +2,15 @@ package com.zf.eth.base
 
 
 import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.zf.eth.MyApplication
+import com.zf.eth.R
 
 /**
  * 该类内的每一个生成的 Fragment 都将保存在内存之中，
@@ -41,6 +46,14 @@ class BaseFragmentAdapter : FragmentStatePagerAdapter {
         }
         this.fragmentList = fragments
         notifyDataSetChanged()
+    }
+
+    //注意！！！这里就是我们自定义的布局tab_item
+    fun getCustomView(titles:List<String>,position:Int): View? {
+        val view= LayoutInflater.from(MyApplication.context).inflate(R.layout.layout_c2c_tab_item, null)
+        val tv =view.findViewById<TextView>(R.id.tabname)
+        tv.text=titles[position]
+        return view
     }
 
     /**

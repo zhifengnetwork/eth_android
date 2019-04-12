@@ -4,10 +4,17 @@ package com.zf.eth.ui.fragment
 import com.google.android.material.tabs.TabLayout
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.base.BaseFragmentAdapter
+import com.zf.eth.mvp.bean.C2cBean
+import com.zf.eth.mvp.contract.C2cContract
+import com.zf.eth.mvp.presenter.C2cPresenter
 import com.zf.eth.ui.adapter.C2CPagerAdapter
+import com.zf.eth.ui.fragment.c2c.ContentFragment
+import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.fragment_c2c.*
 
-class C2CFragment : BaseFragment() {
+class C2CFragment : BaseFragment(){
+
     //在真正的开发中，每个界面的ID可能是不同的，所以这里会接收一个ID
     companion object {
         fun getInstance(): C2CFragment {
@@ -24,18 +31,31 @@ class C2CFragment : BaseFragment() {
 
     private val title = arrayListOf("买入", "卖出")
 
-    val madapter by lazy{C2CPagerAdapter(childFragmentManager,title) }
-
+    //背景切换参数
     var i:Int=0
+
+    val adapter  by lazy {
+        BaseFragmentAdapter(
+            childFragmentManager, listOf(
+                ContentFragment.buildFragment(ContentFragment.BUY),
+                ContentFragment.buildFragment(ContentFragment.SELL)
+            ), arrayListOf("买入", "卖出")
+        )
+    }
+
     override fun initView() {
+
+
+
+
         //上面导航列表
-        viewPager.adapter=madapter
+        viewPager.adapter=adapter
         tabLayout.setupWithViewPager(viewPager)
 
         //添加自定义布局
         for(i in title.indices){
              val tab=tabLayout.getTabAt(i)
-            tab?.setCustomView(madapter.getCustomView(i))
+            tab?.customView = adapter.getCustomView(title,i)
         }
 
 
@@ -45,7 +65,7 @@ class C2CFragment : BaseFragment() {
     }
 
     override fun initEvent() {
-        //选中的item更换背景
+        /**选中的item更换背景*/
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 //                添加选中Tab的逻辑
@@ -69,5 +89,6 @@ class C2CFragment : BaseFragment() {
             }
         })
     }
+
 }
 

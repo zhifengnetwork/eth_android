@@ -147,7 +147,7 @@
                     android:textColor="#f2041a"
                     android:textSize="15sp"
                     android:layout_marginLeft="5dp"
-                    android:text="￥5"/>
+                    android:text="￥"/>
 
         </LinearLayout>
 
@@ -172,7 +172,7 @@
                     android:textColor="#f2041a"
                     android:textSize="15sp"
                     android:layout_marginLeft="5dp"
-                    android:text="￥5"/>
+                    android:text="￥"/>
 
         </LinearLayout>
 
