@@ -25,6 +25,7 @@
             android:orientation="horizontal"
     >
         <TextView
+                android:id="@+id/openid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#f1f2f8"
@@ -32,12 +33,14 @@
                 android:text="挂单人：134xxxx7692"
         />
         <ImageView
+                android:id="@+id/alipay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/alipay"
         />
         <ImageView
+                android:id="@+id/wechat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="7dp"
@@ -45,9 +48,10 @@
                 android:src="@drawable/wechat"
         />
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bankcard"
+                android:id="@+id/bankcard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bankcard"
         />
     </LinearLayout>
     <TextView
@@ -76,6 +80,7 @@
         />
 
         <TextView
+                android:id="@+id/sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
