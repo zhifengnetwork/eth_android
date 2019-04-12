@@ -18,8 +18,8 @@ class UserInfoPresenter : BasePresenter<UserInfoContract.View>(), UserInfoContra
                 mRootView?.apply {
                     dismissLoading()
                     when (it.status) {
-                        1 -> setUserInfo(it)
-                        else -> showError(it.result.message, it.status)
+                        1 -> setUserInfo(it.data)
+                        else -> showError(it.msg, it.status)
                     }
                 }
             }, {

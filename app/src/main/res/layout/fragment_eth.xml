@@ -23,21 +23,25 @@
                       android:layout_height="wrap_content"
                       android:textSize="15sp"
                       android:textColor="@color/colorPrimaryText"
-                      android:text="当前可提现金额:"/>
+                      android:text="当前可提现金额: ¥"/>
 
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="15sp"
-                      android:textColor="@color/colorPrimaryText"
-                      android:layout_marginLeft="5dp"
-                      android:text="￥36"/>
+            <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:layout_marginLeft="5dp"
+                    android:text=""/>
 
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="15sp"
-                      android:layout_marginLeft="20dp"
-                      android:textColor="#44b435"
-                      android:text="全部提现"/>
+            <TextView
+                    android:id="@+id/allDraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#44b435"
+                    android:text="全部提现"/>
 
         </LinearLayout>
 
@@ -53,7 +57,7 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:textColor="#f2041a"
-                      android:text="￥"/>
+                      android:text="¥"/>
 
             <EditText
                     android:id="@+id/input"
@@ -62,6 +66,7 @@
                     android:paddingLeft="5dp"
                     android:background="@null"
                     android:textSize="14sp"
+                    android:digits="0123456789."
                     android:layout_height="match_parent"/>
 
         </LinearLayout>
@@ -79,12 +84,36 @@
               android:layout_marginTop="5dp"
               android:background="@drawable/shape_dash_line"/>
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="13dp"
-                  android:textColor="@color/colorPrimaryText"
-                  android:textSize="15sp"
-                  android:text="提现手续费为5%"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="13dp"
+                      android:textColor="@color/colorPrimaryText"
+                      android:textSize="15sp"
+                      android:text="提现手续费为"/>
+
+            <TextView
+                    android:id="@+id/charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="15sp"
+                    android:text=""/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="15sp"
+                    android:text="%"/>
+
+        </LinearLayout>
 
         <LinearLayout
                 android:id="@+id/chargeLayout"
@@ -100,12 +129,14 @@
                       android:textSize="15sp"
                       android:text="本次提现将扣除手续费:"/>
 
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textColor="#f2041a"
-                      android:textSize="15sp"
-                      android:layout_marginLeft="5dp"
-                      android:text="￥5"/>
+            <TextView
+                    android:id="@+id/deductCharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f2041a"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="￥5"/>
 
         </LinearLayout>
 
@@ -123,28 +154,32 @@
                       android:textSize="15sp"
                       android:text="本次提现实际到账金额:"/>
 
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textColor="#f2041a"
-                      android:textSize="15sp"
-                      android:layout_marginLeft="5dp"
-                      android:text="￥5"/>
+            <TextView
+                    android:id="@+id/trueReceive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#f2041a"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="5dp"
+                    android:text="￥5"/>
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="44dp"
-              android:textSize="15sp"
-              android:textColor="@color/whit"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
-              android:layout_marginTop="30dp"
-              android:gravity="center"
-              android:background="@drawable/shape_round_green"
-              android:text="提现"/>
+    <TextView
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textSize="15sp"
+            android:textColor="@color/whit"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:background="@drawable/shape_round_green"
+            android:text="提现"/>
 
 
 </LinearLayout>

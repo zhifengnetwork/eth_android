@@ -45,6 +45,7 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     override fun layoutId(): Int = R.layout.activity_login
+
     private val presenter by lazy { LoginPresenter() }
 
     override fun initData() {

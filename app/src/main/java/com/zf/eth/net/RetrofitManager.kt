@@ -76,6 +76,7 @@ object RetrofitManager {
                 .addQueryParameter("c", "entry")
                 .addQueryParameter("m", "ewei_shopv2")
                 .addQueryParameter("do", "mobile")
+                .addQueryParameter("q","1")
 
                 .build()
             request = originalRequest.newBuilder().url(modifiedUrl).build()

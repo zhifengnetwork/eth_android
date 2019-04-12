@@ -18,6 +18,7 @@ import com.zf.eth.ui.fragment.C2CFragment
 import com.zf.eth.ui.fragment.ChessFragment
 import com.zf.eth.ui.fragment.HomeFragment
 import com.zf.eth.ui.fragment.MeFragment
+import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), UserInfoContract.View {
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     override fun setUserInfo(bean: UserInfoBean) {
-        showToast(bean.result.message)
+        LogUtils.e(">>>>>user:$bean")
     }
 
     override fun showLoading() {
@@ -52,6 +53,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     //从我的钱包进来C2C
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        infoPresenter.requestUserInfo()
         switchFragment(mIndex)
     }
 
@@ -187,7 +189,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     private val infoPresenter by lazy { UserInfoPresenter() }
 
     override fun start() {
-//        infoPresenter.requestUserInfo()
+        infoPresenter.requestUserInfo()
     }
 
     override fun onDestroy() {

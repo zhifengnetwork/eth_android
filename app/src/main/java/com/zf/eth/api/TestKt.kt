@@ -1,17 +1,24 @@
 package com.zf.eth.api
 
+import com.zf.eth.utils.LogUtils
+
 
 fun main(args: Array<String>) {
 
-    println("")
+//    println("")
+//
+//    var a = 2
+//
+//    var b = 10
+//
+//    b = a ?: b
 
-    var a = 2
+//    print(">>>:$b")
 
-    var b = 10
+    var arr2: Array<Array<String>> = Array(1) { arrayOf("") }
 
-    b = a ?: b
-
-    print(">>>:$b")
+    val arr: Array<Array<String>> = arrayOf(arrayOf("a", "b"), arrayOf("c", "d"), arrayOf("e", "f"))
+    print(">>>>:" + arr[0][1])
 
 
 }

@@ -3,16 +3,11 @@ package com.zf.eth.ui.fragment
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
-import com.zf.eth.mvp.bean.BannerBean
-import com.zf.eth.mvp.bean.HomeBean
-import com.zf.eth.mvp.bean.NoticeList
+import com.zf.eth.mvp.bean.HomeSetBean
 import com.zf.eth.mvp.contract.HomeContract
 import com.zf.eth.mvp.presenter.HomePresenter
 import com.zf.eth.showToast
-import com.zf.eth.ui.activity.BuyActivity
-import com.zf.eth.ui.activity.InvestActivity
-import com.zf.eth.ui.activity.TeamActivity
-import com.zf.eth.ui.activity.WalletActivity
+import com.zf.eth.ui.activity.*
 import com.zf.eth.utils.GlideImageLoader
 import com.zf.eth.utils.HtmlLabel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -26,40 +21,37 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     //首页信息
-    override fun setHome(bean: HomeBean) {
+    override fun setHome(bean: HomeSetBean) {
         //投资总额
-        grossAsset.text = bean.touzimoney
+        grossAsset.text = bean.data.touzimoney
         //总收益
-        totalRevenue.text = bean.shouyimoneysum
+        totalRevenue.text = bean.data.shouyimoneysum
         //今日收益
-        todayIncome.text = bean.shouyimoney
+        todayIncome.text = bean.data.shouyimoney
         //钱包余额
-        balance.text = bean.money
+        balance.text = bean.data.money
         //团队
-        team.text = bean.xiaji
+        team.text = bean.data.xiaji
 
-    }
-
-    //轮播图
-    override fun setBanner(bean: List<BannerBean>) {
+        /** 轮播图*/
         val images = ArrayList<String>()
-        for (banner in bean) {
+        for (banner in bean.slide) {
             images.add(UriConstant.BASE_IMG_URL + banner.thumb)
         }
         banner.setImageLoader(GlideImageLoader())
         banner.setImages(images)
         banner.start()
-    }
 
-    //公告
-    override fun setNotice(bean: List<NoticeList>) {
+        /** 公告*/
         val noticeData = ArrayList<String>()
-        for (notice in bean) {
+        for (notice in bean.notice) {
             noticeData.add(HtmlLabel.stringHtml(notice.detail))
         }
         bannerTextView.setDatas(noticeData)
         bannerTextView.startViewAnimator()
+
     }
+
 
     override fun showLoading() {
     }
@@ -97,12 +89,20 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun lazyLoad() {
-        bannerPresenter.requestBanner()
-        bannerPresenter.requestNotice()
         bannerPresenter.requestHome()
     }
 
     override fun initEvent() {
+
+        //总收益
+        totalEarnLayout.setOnClickListener {
+            EarnActivity.actionStart(context)
+        }
+
+        //今日收益
+        todayEarnLayout.setOnClickListener {
+            EarnActivity.actionStart(context)
+        }
 
         //团队
         teamLayout.setOnClickListener {
@@ -116,7 +116,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //投资记录
         investLayout.setOnClickListener {
-            InvestActivity.actionStart(context,InvestActivity.TOUZI)
+            InvestActivity.actionStart(context, InvestActivity.TOUZI)
         }
 
         //钱包余额

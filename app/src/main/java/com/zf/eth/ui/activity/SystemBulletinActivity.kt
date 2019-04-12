@@ -8,21 +8,22 @@ import com.zf.eth.ui.adapter.SystemBulletinPagerAdapter
 import kotlinx.android.synthetic.main.activity_system_bulletin.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class SystemBulletinActivity:BaseActivity(){
+class SystemBulletinActivity : BaseActivity() {
     companion object {
-        fun actionStart(context: Context?){
-            context?.startActivity(Intent(context,SystemBulletinActivity::class.java))
+        fun actionStart(context: Context?) {
+            context?.startActivity(Intent(context, SystemBulletinActivity::class.java))
         }
     }
+
     override fun initToolBar() {
-        titleName.text="平台公告"
+        titleName.text = "平台公告"
     }
 
     override fun layoutId(): Int = R.layout.activity_system_bulletin
 
     private val title = arrayListOf("全部分类", "新手训练营")
 
-    private val adapter by lazy { SystemBulletinPagerAdapter(supportFragmentManager,title) }
+    private val adapter by lazy { SystemBulletinPagerAdapter(supportFragmentManager, title) }
 
     override fun initData() {
 
@@ -30,7 +31,7 @@ class SystemBulletinActivity:BaseActivity(){
 
     override fun initView() {
 
-        bulletin_vp.adapter=adapter
+        bulletin_vp.adapter = adapter
         bulletin_tab.setupWithViewPager(bulletin_vp)
 
     }

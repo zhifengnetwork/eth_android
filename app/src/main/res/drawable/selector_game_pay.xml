@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+
+        <!--<shape> -->
+        <!--<solid android:color="#263454" />-->
+        <!--<stroke android:width="1px" android:color="@color/color_black" />-->
+        <!--</shape>-->
+
+        <shape>
+            <solid android:color="#263454" />
+        </shape>
+
+        <!--<layer-list>-->
+            <!--<item android:height="1px" android:gravity="bottom">-->
+                <!--<shape>-->
+                    <!--<solid android:color="@color/color_black" />-->
+                <!--</shape>-->
+            <!--</item>-->
+        <!--</layer-list>-->
+
+        <!--<layer-list>-->
+            <!--<item android:width="1px" android:gravity="left">-->
+                <!--<shape>-->
+                    <!--<solid android:color="@color/color_black" />-->
+                <!--</shape>-->
+            <!--</item>-->
+
+            <!--<item android:width="1px" android:gravity="right">-->
+                <!--<shape>-->
+                    <!--<solid android:color="@color/color_black" />-->
+                <!--</shape>-->
+            <!--</item>-->
+        <!--</layer-list>-->
+
+    </item>
+
+
+    <item android:state_selected="false">
+
+        <!--<shape>-->
+            <!--<solid android:color="@color/whit" />-->
+        <!--</shape>-->
+
+        <layer-list>
+            <item android:height="1px" android:gravity="bottom">
+                <shape>
+                    <solid android:color="@color/color_black" />
+                </shape>
+            </item>
+        </layer-list>
+
+        <layer-list>
+            <item android:width="1px" android:gravity="left">
+                <shape>
+                    <solid android:color="@color/color_black" />
+                </shape>
+            </item>
+
+            <item android:width="1px" android:gravity="right">
+                <shape>
+                    <solid android:color="@color/color_black" />
+                </shape>
+            </item>
+        </layer-list>
+
+        <!--<shape>-->
+        <!--<solid android:color="@color/whit" />-->
+        <!--<stroke android:width="1px" android:color="@color/color_black"/>-->
+        <!--</shape>-->
+    </item>
+</selector>

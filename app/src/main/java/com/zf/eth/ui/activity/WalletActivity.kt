@@ -5,6 +5,11 @@ import android.content.Intent
 import android.view.View
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
+import com.zf.eth.mvp.bean.ChargeBean
+import com.zf.eth.mvp.bean.WalletBean
+import com.zf.eth.mvp.contract.WalletContract
+import com.zf.eth.mvp.presenter.WalletPresenter
+import com.zf.eth.showToast
 import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.android.synthetic.main.layout_wallet_tab.*
@@ -12,7 +17,26 @@ import kotlinx.android.synthetic.main.layout_wallet_tab.*
 /**
  * 钱包余额
  */
-class WalletActivity : BaseActivity() {
+class WalletActivity : BaseActivity(), WalletContract.View {
+
+    override fun setChart(bean: ChargeBean) {
+
+    }
+
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+
+    override fun setWallet(bean: WalletBean) {
+        reAccount.text = bean.member.credit4
+        freeAccount.text = bean.member.credit2
+    }
+
+    override fun showLoading() {
+    }
+
+    override fun dismissLoading() {
+    }
 
     companion object {
         fun actionStart(context: Context?) {
@@ -30,12 +54,33 @@ class WalletActivity : BaseActivity() {
     override fun initData() {
     }
 
+    private val walletPresenter by lazy { WalletPresenter() }
+
     override fun initView() {
+        walletPresenter.attachView(this)
         dashLine1.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         dashLine2.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        walletPresenter.detachView()
+    }
+
     override fun initEvent() {
+
+        //复投账户->棋牌娱乐
+        reGame.setOnClickListener {
+            MainActivity.actionStart(this, 1)
+            finish()
+        }
+
+        //自由钱包->棋牌娱乐
+        freeGame.setOnClickListener {
+            MainActivity.actionStart(this, 1)
+            finish()
+        }
+
 
         //首页C2C
         c2c.setOnClickListener {
@@ -101,5 +146,6 @@ class WalletActivity : BaseActivity() {
     }
 
     override fun start() {
+        walletPresenter.requestWallet()
     }
 }

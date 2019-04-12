@@ -18,15 +18,15 @@ import kotlinx.android.synthetic.main.layout_num_text_single.view.*
 import kotlinx.android.synthetic.main.layout_pour_head.view.*
 
 class PourAdapter(val context: Context?) :
-        RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == typeHead) {
+        return if (viewType == typeHead) {
             val view = LayoutInflater.from(context).inflate(R.layout.layout_pour_head, parent, false)
-            return HeadHolder(view)
+            HeadHolder(view)
         } else {
             val view = LayoutInflater.from(context).inflate(R.layout.item_pour, parent, false)
-            return ContentHolder(view)
+            ContentHolder(view)
         }
     }
 
@@ -34,7 +34,7 @@ class PourAdapter(val context: Context?) :
 
     override fun getItemCount(): Int = pourData.size + 1
 
-    private val pourData = ArrayList<PourBean>()
+    val pourData = ArrayList<PourBean>()
 
     private val typeHead = 0
     private val typeContent = 1
@@ -57,47 +57,47 @@ class PourAdapter(val context: Context?) :
                 val map = HashMap<Int, Int>()
 
                 val hundredLayout: List<TextView> =
-                        listOf(
-                                num0,
-                                num1,
-                                num2,
-                                num3,
-                                num4,
-                                num5,
-                                num6,
-                                num7,
-                                num8,
-                                num9
-                        )
+                    listOf(
+                        num0,
+                        num1,
+                        num2,
+                        num3,
+                        num4,
+                        num5,
+                        num6,
+                        num7,
+                        num8,
+                        num9
+                    )
 
 
                 val decadeLayout: List<TextView> =
-                        listOf(
-                                num0_d,
-                                num1_d,
-                                num2_d,
-                                num3_d,
-                                num4_d,
-                                num5_d,
-                                num6_d,
-                                num7_d,
-                                num8_d,
-                                num9_d
-                        )
+                    listOf(
+                        num0_d,
+                        num1_d,
+                        num2_d,
+                        num3_d,
+                        num4_d,
+                        num5_d,
+                        num6_d,
+                        num7_d,
+                        num8_d,
+                        num9_d
+                    )
 
                 val singleLayout: List<TextView> =
-                        listOf(
-                                num0_s,
-                                num1_s,
-                                num2_s,
-                                num3_s,
-                                num4_s,
-                                num5_s,
-                                num6_s,
-                                num7_s,
-                                num8_s,
-                                num9_s
-                        )
+                    listOf(
+                        num0_s,
+                        num1_s,
+                        num2_s,
+                        num3_s,
+                        num4_s,
+                        num5_s,
+                        num6_s,
+                        num7_s,
+                        num8_s,
+                        num9_s
+                    )
 
 
 

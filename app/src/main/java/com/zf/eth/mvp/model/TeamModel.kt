@@ -15,10 +15,9 @@ class TeamModel {
 
     fun getTeam(): Observable<BaseBean<List<TeamBean>>> {
         return RetrofitManager.service.getTeam(
-            "index.xiaji", openId, userId
+            "member.androidapi.xiaji_get_list", openId, userId
         )
             .compose(SchedulerUtils.ioToMain())
     }
-
 
 }

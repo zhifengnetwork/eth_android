@@ -43,7 +43,7 @@ class MultipleDialog : DialogFragment() {
         val window = dialog?.window
         val sp = window?.attributes
         sp?.width = DensityUtil.dp2px(250f)
-        sp?.height = DensityUtil.dp2px(200f)
+        sp?.height = DensityUtil.dp2px(180f)
         sp?.dimAmount = 0.3f
         window?.attributes = sp
     }
@@ -58,13 +58,15 @@ class MultipleDialog : DialogFragment() {
 
             input.setText(mNum.toString())
 
+            input.setSelection(input.text.length)
+
             cancel.setOnClickListener {
                 dismiss()
                 KeyBordUitls.closeKeybord(input, context)
             }
 
             confirm.setOnClickListener {
-                if (input.text.isNotEmpty() && input.text.toString().toInt() >= 0  ) {
+                if (input.text.isNotEmpty() && input.text.toString().toInt() >= 0) {
                     KeyBordUitls.closeKeybord(input, context)
                     dismiss()
                     onNumListener?.invoke(input.text.toString().toInt())
