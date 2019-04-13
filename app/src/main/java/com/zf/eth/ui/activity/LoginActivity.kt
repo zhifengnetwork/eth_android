@@ -24,8 +24,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     override fun setLogin(bean: LoginResult) {
         userId = bean.user_id
         openId = bean.openid
-        MainActivity.actionStart(this)
-        finish()
+        val intent = Intent(this, MainActivity::class.java)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
     }
 
     override fun showLoading() {

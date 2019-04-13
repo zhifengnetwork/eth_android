@@ -1,15 +1,20 @@
 package com.zf.eth.ui.fragment
 
+import android.content.Intent
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.ui.activity.*
 import com.zf.eth.ui.adapter.MeMenuAdapter
+import com.zf.eth.utils.GlideUtils
 import com.zf.eth.utils.Preference
 import kotlinx.android.synthetic.main.fragment_me.*
+
 
 class MeFragment : BaseFragment() {
 
@@ -61,11 +66,33 @@ class MeFragment : BaseFragment() {
     }
 
     override fun lazyLoad() {
+        UserInfoLiveData.observe(this, Observer { userInfo ->
+            userInfo?.apply {
+                GlideUtils.loadUrlImage(context, member.avatar, me_img)
+                nickName.text = member.nickname
+
+                vipLevel.text = "会员等级: ${huiyuanlevel.levelname1 ?: "暂无"}"
+                martLevel.text = "市场等级: ${huiyuanlevel.levelname3 ?: "暂无"}"
+            }
+        })
     }
 
     private val userId by Preference(UriConstant.USER_ID, "")
 
     override fun initEvent() {
+
+        logOut.setOnClickListener {
+            //清空用户信息
+            //清空userId openId
+            Preference.clearPreference(UriConstant.USER_ID)
+            Preference.clearPreference(UriConstant.OPEN_ID)
+            UserInfoLiveData.value = null
+
+            //清楚所有任务
+            val intent = Intent(context, LoginActivity::class.java)
+                    .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
 
         me_img.setOnClickListener {
             if (userId.isNotEmpty()) {
