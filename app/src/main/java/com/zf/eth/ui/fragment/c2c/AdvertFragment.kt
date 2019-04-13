@@ -3,17 +3,15 @@ package com.zf.eth.ui.fragment.c2c
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 
-class OrderFragment:BaseFragment(){
+class AdvertFragment:BaseFragment(){
 
     companion object {
-        fun getInstance():OrderFragment {
+        fun getInstance():AdvertFragment {
 
-            return OrderFragment()
+            return AdvertFragment()
         }
     }
-    override fun getLayoutId(): Int = R.layout.fragment_c2c_order
-
-    
+    override fun getLayoutId(): Int = R.layout.fragment_c2c_advert
 
     override fun initView() {
 

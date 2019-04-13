@@ -5,6 +5,8 @@ import android.content.Intent
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.base.BaseFragmentAdapter
+import com.zf.eth.ui.fragment.c2c.AdvertFragment
+import com.zf.eth.ui.fragment.c2c.AppealFragment
 import com.zf.eth.ui.fragment.c2c.OrderFragment
 import kotlinx.android.synthetic.main.activity_c2c_order.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -20,7 +22,7 @@ class C2cOrderActivity:BaseActivity(){
     }
     override fun layoutId(): Int= R.layout.activity_c2c_order
 
-    private val adapter by lazy { BaseFragmentAdapter(supportFragmentManager, listOf(OrderFragment.getInstance(),OrderFragment.getInstance(),OrderFragment.getInstance()), arrayListOf("我的订单", "发布广告","我的申诉")) }
+    private val adapter by lazy { BaseFragmentAdapter(supportFragmentManager, listOf(OrderFragment.getInstance(),AdvertFragment.getInstance(),AppealFragment.getInstance()), arrayListOf("我的订单", "发布广告","我的申诉")) }
     override fun initData() {
 
     }
