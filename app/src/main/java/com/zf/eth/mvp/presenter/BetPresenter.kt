@@ -9,6 +9,7 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
 
     private val model: BetModel by lazy { BetModel() }
 
+    //1.确认信息
     override fun requestBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?) {
         checkViewAttached()
         mRootView?.showLoading()
@@ -17,7 +18,7 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
                 mRootView?.apply {
                     dismissLoading()
                     when (it.status) {
-                        1 -> setBet(it.data)
+                        1 -> if (type == 1) setBet(it.data)
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -29,4 +30,50 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
             })
         addSubscription(disposable)
     }
+
+    //2.确认下注
+    override fun requestConfirmBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?) {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = model.requestConfirmBet(type, payment, money, list)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setConfirmBeat(it.msg)
+                        else -> showError(it.msg, it.status)
+                    }
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
+        addSubscription(disposable)
+    }
+
+    //开奖号码 每注金额
+    override fun requestGameHome() {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = model.requestGameHome()
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setGameHome(it.data)
+                        else -> showError(it.msg, it.status)
+                    }
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
+        addSubscription(disposable)
+    }
+
+
 }

@@ -19,11 +19,9 @@ class LoginActivity : BaseActivity(), LoginContract.View {
     }
 
     private var userId by Preference(UriConstant.USER_ID, "")
-    private var openId by Preference(UriConstant.OPEN_ID, "")
 
     override fun setLogin(bean: LoginResult) {
         userId = bean.user_id
-        openId = bean.openid
         val intent = Intent(this, MainActivity::class.java)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)

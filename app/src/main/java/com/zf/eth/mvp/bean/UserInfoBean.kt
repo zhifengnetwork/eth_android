@@ -9,7 +9,8 @@ data class Member(
         val walletaddress: String,
         val avatar: String,
         val nickname: String,
-        val id: String
+        val id: String,
+        val type: String
 )
 
 data class Level(

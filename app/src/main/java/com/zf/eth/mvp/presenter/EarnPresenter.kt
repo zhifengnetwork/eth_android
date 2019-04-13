@@ -7,27 +7,26 @@ import com.zf.eth.net.exception.ExceptionHandle
 
 class EarnPresenter : BasePresenter<EarnContract.View>(), EarnContract.Presenter {
 
-
     private val model: EarnModel by lazy { EarnModel() }
 
-    override fun requestEarn(type: String) {
+    override fun requestEarn(type: String, dateType: String) {
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = model.requestEarn(type)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setEarn(it.data.list)
-                            else -> showError(it.msg, it.status)
-                        }
+        val disposable = model.requestEarn(type, dateType)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setEarn(it.data)
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 }

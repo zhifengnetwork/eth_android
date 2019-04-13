@@ -10,28 +10,43 @@ class InvestPresenter : BasePresenter<InvestContract.View>(), InvestContract.Pre
 
     private val model: InvestModel by lazy { InvestModel() }
 
-    override fun requestInvest(type: String) {
+    private var mPage = 1
+
+    override fun requestInvest(type: String, page: Int?) {
+
+        mPage = page ?: mPage
+
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = model.getInvest(type)
+        val disposable = model.getInvest(type, mPage)
             .subscribe({
                 mRootView?.apply {
-                    dismissLoading()
+
                     when (it.status) {
                         1 -> {
-                            if (it.data.isNotEmpty()) {
-                                setInvest(it.data)
+                            if (mPage == 1) {
+                                if (it.data.result.list.isNotEmpty()) {
+                                    setInvest(it.data.result.list)
+                                } else {
+                                    setEmpty()
+                                }
                             } else {
-                                setEmpty()
+                                setLoadMore(it.data.result.list)
                             }
+                            if (it.data.result.list.size < it.data.result.pagesize) {
+                                setLoadComplete()
+                            }
+                            mPage += 1
                         }
-                        else -> showError(it.msg, it.status)
+                        else -> if (mPage == 1) showError(it.msg, it.status) else loadError(it.msg, it.status)
                     }
+                    dismissLoading()
                 }
             }, {
                 mRootView?.apply {
                     dismissLoading()
-                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                    if (mPage == 1) showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                    else loadError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
                 }
             })
         addSubscription(disposable)

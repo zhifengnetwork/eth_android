@@ -3,6 +3,7 @@ package com.zf.eth.ui.fragment.earn
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.mvp.bean.EarnBean
 import com.zf.eth.mvp.bean.EarnList
 import com.zf.eth.mvp.contract.EarnContract
 import com.zf.eth.mvp.presenter.EarnPresenter
@@ -19,9 +20,10 @@ class EarnFragment : BaseFragment(), EarnContract.View {
         showToast(msg)
     }
 
-    override fun setEarn(bean: List<EarnList>) {
+    override fun setEarn(bean: EarnBean) {
+        price.text = bean.money
         investData.clear()
-        investData.addAll(bean)
+        investData.addAll(bean.list)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -32,11 +34,13 @@ class EarnFragment : BaseFragment(), EarnContract.View {
     }
 
     private var mType = 0
+    private var mDateType = ""
 
     companion object {
-        fun getInstance(type: Int): EarnFragment {
+        fun getInstance(type: Int, dateType: String): EarnFragment {
             val fragment = EarnFragment()
             fragment.mType = type
+            fragment.mDateType = dateType
             return fragment
         }
     }
@@ -68,10 +72,10 @@ class EarnFragment : BaseFragment(), EarnContract.View {
 
     override fun lazyLoad() {
         when (mType) {
-            0 -> earnPresenter.requestEarn("4")
-            1 -> earnPresenter.requestEarn("1")
-            2 -> earnPresenter.requestEarn("2")
-            3 -> earnPresenter.requestEarn("3")
+            0 -> earnPresenter.requestEarn("4", mDateType)
+            1 -> earnPresenter.requestEarn("1", mDateType)
+            2 -> earnPresenter.requestEarn("2", mDateType)
+            3 -> earnPresenter.requestEarn("3", mDateType)
         }
     }
 

@@ -11,14 +11,13 @@ import io.reactivex.Observable
 class InvestModel {
 
     private val userId by Preference(UriConstant.USER_ID, "")
-    private val openId by Preference(UriConstant.OPEN_ID, "")
 
-    fun getInvest(type: String): Observable<BaseBean<List<InvestBean>>> {
+    fun getInvest(type: String, page: Int): Observable<BaseBean<InvestBean>> {
         return RetrofitManager.service.getInvest(
-            "index.total_investment",
-            openId,
+            "member.androidapi.investment_record",
             userId,
-            type
+            type,
+            page
         )
             .compose(SchedulerUtils.ioToMain())
     }

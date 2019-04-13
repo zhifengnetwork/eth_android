@@ -120,7 +120,8 @@ class WalletActivity : BaseActivity(), WalletContract.View {
 
         //C2C记录
         c2cRecord.setOnClickListener {
-            C2CRecordActivity.actionStart(this)
+            InvestActivity.actionStart(this, InvestActivity.C2C)
+//            C2CRecordActivity.actionStart(this)
         }
 
         /**复投账户点击展开 后面如果需要就解除注释*/

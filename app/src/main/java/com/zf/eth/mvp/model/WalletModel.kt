@@ -11,7 +11,6 @@ import io.reactivex.Observable
 
 class WalletModel {
 
-    private val openId by Preference(UriConstant.OPEN_ID, "")
     private val userId by Preference(UriConstant.USER_ID, "")
 
     fun requestWallet(): Observable<BaseBean<WalletBean>> {

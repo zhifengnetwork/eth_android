@@ -70,9 +70,14 @@ class MeFragment : BaseFragment() {
             userInfo?.apply {
                 GlideUtils.loadUrlImage(context, member.avatar, me_img)
                 nickName.text = member.nickname
-
+                vipId.text = "会员ID: ${member.id}"
                 vipLevel.text = "会员等级: ${huiyuanlevel.levelname1 ?: "暂无"}"
                 martLevel.text = "市场等级: ${huiyuanlevel.levelname3 ?: "暂无"}"
+                ifActive.text = when (member.type) {
+                    "0" -> "未激活"
+                    "1" -> "已激活"
+                    else -> "已锁户"
+                }
             }
         })
     }
@@ -85,7 +90,6 @@ class MeFragment : BaseFragment() {
             //清空用户信息
             //清空userId openId
             Preference.clearPreference(UriConstant.USER_ID)
-            Preference.clearPreference(UriConstant.OPEN_ID)
             UserInfoLiveData.value = null
 
             //清楚所有任务

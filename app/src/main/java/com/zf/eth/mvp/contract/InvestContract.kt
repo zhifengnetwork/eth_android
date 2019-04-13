@@ -2,8 +2,7 @@ package com.zf.eth.mvp.contract
 
 import com.zf.eth.base.IBaseView
 import com.zf.eth.base.IPresenter
-import com.zf.eth.mvp.bean.InvestBean
-import com.zf.eth.mvp.bean.LoginResult
+import com.zf.eth.mvp.bean.InvestList
 
 interface InvestContract {
 
@@ -11,7 +10,13 @@ interface InvestContract {
 
         fun showError(msg: String, errorCode: Int)
 
-        fun setInvest(bean: List<InvestBean>)
+        fun loadError(msg: String, errorCode: Int)
+
+        fun setInvest(bean: List<InvestList>)
+
+        fun setLoadMore(bean: List<InvestList>)
+
+        fun setLoadComplete()
 
         fun setEmpty()
 
@@ -19,7 +24,7 @@ interface InvestContract {
 
     interface Presenter : IPresenter<View> {
 
-        fun requestInvest(type: String)
+        fun requestInvest(type: String, page: Int?)
 
     }
 
