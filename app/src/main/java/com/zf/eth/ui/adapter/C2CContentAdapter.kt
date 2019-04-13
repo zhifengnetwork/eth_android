@@ -25,7 +25,7 @@ class C2CContentAdapter(val context: Context?,val list:ArrayList<C2cList>):Recyc
 
         holder.itemView.apply {
             number.text="挂单编号："+c2cList[position].id
-            openid.text="挂单人："+c2cList[position].openid
+            openid.text="挂单人："+c2cList[position].nickname
             price.text="￥："+c2cList[position].price
             //挂单数量
 //            sum.text=c2cList[position].total
@@ -39,6 +39,11 @@ class C2CContentAdapter(val context: Context?,val list:ArrayList<C2cList>):Recyc
             }
             if (c2cList[position].bank!="1"){
                 bankcard.visibility=View.INVISIBLE
+            }
+            if (c2cList[position].type=="1"){
+                item_tv.text="卖出"
+            }else{
+                item_tv.text="买入"
             }
 
         }
