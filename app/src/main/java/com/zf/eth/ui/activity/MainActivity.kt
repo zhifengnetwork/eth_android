@@ -9,6 +9,7 @@ import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
+import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.mvp.bean.TabEntity
 import com.zf.eth.mvp.bean.UserInfoBean
 import com.zf.eth.mvp.contract.UserInfoContract
@@ -18,7 +19,6 @@ import com.zf.eth.ui.fragment.C2CFragment
 import com.zf.eth.ui.fragment.ChessFragment
 import com.zf.eth.ui.fragment.HomeFragment
 import com.zf.eth.ui.fragment.MeFragment
-import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), UserInfoContract.View {
@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     override fun setUserInfo(bean: UserInfoBean) {
-        LogUtils.e(">>>>>user:$bean")
+        UserInfoLiveData.value = bean
     }
 
     override fun showLoading() {
@@ -53,7 +53,6 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     //从我的钱包进来C2C
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        infoPresenter.requestUserInfo()
         switchFragment(mIndex)
     }
 
