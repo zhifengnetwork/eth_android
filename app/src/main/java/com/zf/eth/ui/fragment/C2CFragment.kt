@@ -1,17 +1,13 @@
 package com.zf.eth.ui.fragment
 
 
+import android.util.Log
 import com.google.android.material.tabs.TabLayout
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.base.BaseFragmentAdapter
-import com.zf.eth.mvp.bean.C2cBean
-import com.zf.eth.mvp.contract.C2cContract
-import com.zf.eth.mvp.presenter.C2cPresenter
-import com.zf.eth.ui.activity.C2cOrderActivity
-import com.zf.eth.ui.adapter.C2CPagerAdapter
+import com.zf.eth.ui.activity.C2cDetailActivity
 import com.zf.eth.ui.fragment.c2c.ContentFragment
-import kotlinx.android.synthetic.main.activity_wallet.*
 import kotlinx.android.synthetic.main.fragment_c2c.*
 import kotlinx.android.synthetic.main.layout_c2c_title.*
 
@@ -33,15 +29,14 @@ class C2CFragment : BaseFragment(){
 
     private val title = arrayListOf("买入", "卖出")
 
-    //背景切换参数
-    var i:Int=0
+
 
     val adapter  by lazy {
         BaseFragmentAdapter(
             childFragmentManager, listOf(
                 ContentFragment.buildFragment(ContentFragment.BUY),
                 ContentFragment.buildFragment(ContentFragment.SELL)
-            ), arrayListOf("买入", "卖出")
+            ), title
         )
     }
 
@@ -57,7 +52,7 @@ class C2CFragment : BaseFragment(){
         //添加自定义布局
         for(i in title.indices){
              val tab=tabLayout.getTabAt(i)
-            tab?.customView = adapter.getCustomView(title,i)
+            tab?.customView = adapter.getCustomView(title,R.layout.layout_c2c_tab_item,i)
         }
 
 
@@ -71,12 +66,9 @@ class C2CFragment : BaseFragment(){
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 //                添加选中Tab的逻辑
-                if(i==0){
-                    tablayoutbg.setBackgroundResource(R.drawable.bg3)
-                    i++
-                }else if(i==1){
-                    tablayoutbg.setBackgroundResource(R.drawable.bg2)
-                    i--
+                when(tab.position){
+                    0 -> tablayoutbg.setBackgroundResource(R.drawable.bg2)
+                    1 -> tablayoutbg.setBackgroundResource(R.drawable.bg3)
                 }
 
             }
@@ -92,7 +84,7 @@ class C2CFragment : BaseFragment(){
         })
         //界面转跳
         navigation_btn.setOnClickListener {
-              C2cOrderActivity.actionStart(context)
+              C2cDetailActivity.actionStart(context)
         }
     }
 

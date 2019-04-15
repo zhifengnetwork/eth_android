@@ -1,6 +1,5 @@
 package com.zf.eth.ui.fragment.c2c
 
-import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
@@ -9,8 +8,7 @@ import com.zf.eth.mvp.bean.C2cBean
 import com.zf.eth.mvp.bean.C2cList
 import com.zf.eth.mvp.contract.C2cContract
 import com.zf.eth.mvp.presenter.C2cPresenter
-import com.zf.eth.ui.adapter.C2CContentAdapter
-import kotlinx.android.synthetic.main.activity_wallet.*
+import com.zf.eth.ui.adapter.C2cContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
 
 class ContentFragment:BaseFragment(),C2cContract.View{
@@ -49,7 +47,7 @@ class ContentFragment:BaseFragment(),C2cContract.View{
 
     private val c2cList = ArrayList<C2cList>()
 
-    private val adapter by lazy { C2CContentAdapter(context,c2cList) }
+    private val adapter by lazy { C2cContentAdapter(context,c2cList) }
     override fun getLayoutId(): Int = R.layout.layout_c2c_content
 
     override fun initView() {

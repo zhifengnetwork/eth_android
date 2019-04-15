@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.item_c2c_record.view.*
 class C2CRecordAdapter(val context: Context, val data: List<InvestList>) :
     RecyclerView.Adapter<C2CRecordAdapter.ViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_c2c_record, parent, false)
         return ViewHolder(view)

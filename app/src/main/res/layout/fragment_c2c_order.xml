@@ -1,7 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:paddingLeft="15dp"
+              android:paddingRight="15dp"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:text="asdsad as"/>
+ <com.flyco.tablayout.SegmentTabLayout
+         android:id="@+id/order_tab"
+         android:layout_width="match_parent"
+         android:layout_height="30dp"
+         android:layout_marginTop="5dp"
+         app:tl_textsize="14sp"
+         app:tl_divider_width="1dp"
+         app:tl_textSelectColor="@color/whit"
+         app:tl_textUnselectColor="#a0a2a8"
+         app:tl_indicator_color="#6a82f4"
+         app:tl_indicator_corner_radius="5dp"/>
+ <!--app:tl_bar_color="#ffffff"-->
+ <!--<com.google.android.material.tabs.TabLayout-->
+         <!--android:id="@+id/order_tab"-->
+         <!--android:layout_width="match_parent"-->
+         <!--android:layout_height="30dp"-->
+         <!--android:background="@drawable/shape_c2c_order_tab"-->
+         <!--app:tabTextColor="#a0a2a8"-->
+         <!--app:tabBackground="@drawable/selector_c2c_order_item"-->
+         <!--app:tabTextAppearance="@style/TabLayoutTextStyle_c2c"-->
+         <!--app:tabSelectedTextColor="@color/whit"-->
+         <!--app:tabIndicatorHeight="0dp"/>-->
+
+ <androidx.viewpager.widget.ViewPager
+         android:id="@+id/order_vp"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
 </LinearLayout>

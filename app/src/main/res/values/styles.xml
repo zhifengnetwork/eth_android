@@ -29,10 +29,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--系统公告tab字体大小-->
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">17sp</item>
     </style>
-
+    <!--c2c我的订单下的tab字体大小-->
+    <style name="TabLayoutTextStyle_c2c">
+        <item name="android:textSize">14sp</item>
+    </style>
     <style name="game_num">
         <item name="android:layout_width">35dp</item>
         <item name="android:layout_height">35dp</item>

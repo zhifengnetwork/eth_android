@@ -49,8 +49,8 @@ class BaseFragmentAdapter : FragmentStatePagerAdapter {
     }
 
     //注意！！！这里就是我们自定义的布局tab_item
-    fun getCustomView(titles:List<String>,position:Int): View? {
-        val view= LayoutInflater.from(MyApplication.context).inflate(R.layout.layout_c2c_tab_item, null)
+    fun getCustomView(titles:List<String>,layout:Int,position:Int): View? {
+        val view= LayoutInflater.from(MyApplication.context).inflate(layout, null)
         val tv =view.findViewById<TextView>(R.id.tabname)
         tv.text=titles[position]
         return view
