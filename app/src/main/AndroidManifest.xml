@@ -124,7 +124,12 @@
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".ui.activity.C2cOrderActivity"
+        <activity android:name=".ui.activity.C2cDetailActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.C2cEthActivity"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>

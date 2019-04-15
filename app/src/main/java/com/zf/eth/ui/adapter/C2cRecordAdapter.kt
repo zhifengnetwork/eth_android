@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 
-class C2CRecordAdapter(val context: Context) : RecyclerView.Adapter<C2CRecordAdapter.ViewHolder>() {
+class C2cRecordAdapter(val context: Context) : RecyclerView.Adapter<C2cRecordAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_c2c_record, parent, false)

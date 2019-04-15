@@ -26,4 +26,6 @@
 
     <color name="color_game_item">#a7a7a7</color>
 
+        <!--TabLayout tab选项背景色-->
+    <color name="calor_order">#6a82f4</color>
 </resources>

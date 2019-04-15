@@ -9,14 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.zf.eth.MyApplication.Companion.context
-import com.zf.eth.ui.fragment.c2c.ContentFragment
+import com.zf.eth.ui.fragment.c2c.OrderContentFragment
 
 
-class C2CPagerAdapter(fm:FragmentManager, titles:List<String>): FragmentPagerAdapter(fm) {
+class C2cPagerAdapter(fm:FragmentManager, titles:Array<String>): FragmentPagerAdapter(fm) {
     private val fragmentList = arrayOfNulls<Fragment>(titles.size)
     val titles=titles
     override fun getItem(position: Int): Fragment {
-         return ContentFragment.buildFragment(titles[position])
+
+         return OrderContentFragment.getInstance()
     }
 
     override fun getCount(): Int {
@@ -28,6 +29,13 @@ class C2CPagerAdapter(fm:FragmentManager, titles:List<String>): FragmentPagerAda
         return fragment
     }
 
+
+    //重写这个方法，将设置每个Tab的标题
+        override fun getPageTitle(position: Int): CharSequence? {
+            return titles[position]
+
+        }
+
     //注意！！！这里就是我们自定义的布局tab_item
     fun getCustomView(position:Int): View? {
         val view=LayoutInflater.from(context).inflate(R.layout.layout_c2c_tab_item, null)
@@ -35,9 +43,8 @@ class C2CPagerAdapter(fm:FragmentManager, titles:List<String>): FragmentPagerAda
         tv.text=titles[position]
         return view
     }
-    //重写这个方法，将设置每个Tab的标题
-//    override fun getPageTitle(position: Int): CharSequence? {
-//        return titles[position];
-//
-//    }
+
+    fun getFragments(): Array<Fragment?> {
+        return fragmentList
+    }
 }

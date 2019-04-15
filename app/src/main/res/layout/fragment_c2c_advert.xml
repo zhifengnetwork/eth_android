@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
-            android:text="222222"
+    <com.flyco.tablayout.SegmentTabLayout
+    android:id="@+id/advert_tab"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_marginTop="5dp"
+    app:tl_textsize="15sp"
+    app:tl_textBold="BOTH"
+    app:tl_divider_width="1dp"
+    app:tl_textSelectColor="@color/whit"
+    app:tl_textUnselectColor="#a0a2a8"
+    app:tl_indicator_color="#6a82f4"
+    app:tl_indicator_corner_radius="5dp"/>
+
+    <!--<com.google.android.material.tabs.TabLayout-->
+            <!--android:id="@+id/advert_tab"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/advert_vp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView2"/>
+            android:layout_height="match_parent"/>
 </LinearLayout>

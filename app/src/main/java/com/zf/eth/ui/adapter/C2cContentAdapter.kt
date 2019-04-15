@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.C2cList
-import kotlinx.android.synthetic.main.layout_c2c_content_item.view.*
+import kotlinx.android.synthetic.main.item_c2c_content.view.*
 
-class C2CContentAdapter(val context: Context?,val list:ArrayList<C2cList>):RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class C2cContentAdapter(val context: Context?, val list:ArrayList<C2cList>):RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     val c2cList=list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_c2c_content_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_c2c_content, parent, false)
         return ViewHolder(view)
 
     }

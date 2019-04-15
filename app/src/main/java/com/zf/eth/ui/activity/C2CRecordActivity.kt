@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
-import com.zf.eth.ui.adapter.C2CRecordAdapter
+import com.zf.eth.ui.adapter.C2cRecordAdapter
 import kotlinx.android.synthetic.main.activity_c2c_record.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -30,7 +30,7 @@ class C2CRecordActivity : BaseActivity() {
     override fun initData() {
     }
 
-    private val adapter by lazy { C2CRecordAdapter(this) }
+    private val adapter by lazy { C2cRecordAdapter(this) }
 
     override fun initView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
