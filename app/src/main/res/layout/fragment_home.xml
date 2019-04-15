@@ -17,19 +17,19 @@
             app:indicator_drawable_selected="@drawable/shape_banner_indicator_se"
             app:indicator_drawable_unselected="@drawable/shape_banner_indicator_un_se" />
 
-        <TextView
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/shape_home_share"
-            android:paddingLeft="15dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="分享"
-            android:textColor="@color/whit" />
+        <!--<TextView-->
+            <!--android:id="@+id/share"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:background="@drawable/shape_home_share"-->
+            <!--android:paddingLeft="15dp"-->
+            <!--android:paddingTop="5dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingBottom="5dp"-->
+            <!--android:text="分享"-->
+            <!--android:textColor="@color/whit" />-->
 
     </RelativeLayout>
 
