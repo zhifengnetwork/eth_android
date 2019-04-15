@@ -1,17 +1,17 @@
 package com.zf.eth.mvp.model
 
+import com.zf.eth.base.BaseBean
 import com.zf.eth.mvp.bean.LoginBean
 import com.zf.eth.net.RetrofitManager
 import com.zf.eth.scheduler.SchedulerUtils
 import io.reactivex.Observable
 
 class LoginModel {
-    fun login(mobile: String, pwd: String): Observable<LoginBean> {
+    fun login(mobile: String, pwd: String): Observable<BaseBean<LoginBean>> {
         return RetrofitManager.service.login(
-            "account.login",
+            "member.androidapi.login",
             mobile,
-            pwd,
-            "1"
+            pwd
         )
             .compose(SchedulerUtils.ioToMain())
     }

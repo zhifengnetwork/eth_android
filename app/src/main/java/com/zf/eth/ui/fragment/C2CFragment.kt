@@ -1,7 +1,6 @@
 package com.zf.eth.ui.fragment
 
 
-import android.util.Log
 import com.google.android.material.tabs.TabLayout
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
@@ -11,7 +10,7 @@ import com.zf.eth.ui.fragment.c2c.ContentFragment
 import kotlinx.android.synthetic.main.fragment_c2c.*
 import kotlinx.android.synthetic.main.layout_c2c_title.*
 
-class C2CFragment : BaseFragment(){
+class C2CFragment : BaseFragment() {
 
     //在真正的开发中，每个界面的ID可能是不同的，所以这里会接收一个ID
     companion object {
@@ -22,16 +21,13 @@ class C2CFragment : BaseFragment(){
     }
 
 
-
     override fun getLayoutId(): Int = R.layout.fragment_c2c
-
 
 
     private val title = arrayListOf("买入", "卖出")
 
 
-
-    val adapter  by lazy {
+    val adapter by lazy {
         BaseFragmentAdapter(
             childFragmentManager, listOf(
                 ContentFragment.buildFragment(ContentFragment.BUY),
@@ -43,16 +39,14 @@ class C2CFragment : BaseFragment(){
     override fun initView() {
 
 
-
-
         //上面导航列表
-        viewPager.adapter=adapter
+        viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
 
         //添加自定义布局
-        for(i in title.indices){
-             val tab=tabLayout.getTabAt(i)
-            tab?.customView = adapter.getCustomView(title,R.layout.layout_c2c_tab_item,i)
+        for (i in title.indices) {
+            val tab = tabLayout.getTabAt(i)
+            tab?.customView = adapter.getCustomView(title, R.layout.layout_c2c_tab_item, i)
         }
 
 
@@ -66,7 +60,7 @@ class C2CFragment : BaseFragment(){
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 //                添加选中Tab的逻辑
-                when(tab.position){
+                when (tab.position) {
                     0 -> tablayoutbg.setBackgroundResource(R.drawable.bg2)
                     1 -> tablayoutbg.setBackgroundResource(R.drawable.bg3)
                 }
@@ -84,7 +78,7 @@ class C2CFragment : BaseFragment(){
         })
         //界面转跳
         navigation_btn.setOnClickListener {
-              C2cDetailActivity.actionStart(context)
+            C2cDetailActivity.actionStart(context)
         }
     }
 
