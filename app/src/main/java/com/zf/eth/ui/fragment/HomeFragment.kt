@@ -22,15 +22,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     //首页信息
     override fun setHome(bean: HomeSetBean) {
-        //投资总额
         grossAsset.text = bean.data.touzimoney
-        //总收益
         totalRevenue.text = bean.data.shouyimoneysum
-        //今日收益
         todayIncome.text = bean.data.shouyimoney
-        //钱包余额
         balance.text = bean.data.money
-        //团队
         team.text = bean.data.xiaji
 
         /** 轮播图*/
@@ -51,7 +46,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         bannerTextView.startViewAnimator()
 
     }
-
 
     override fun showLoading() {
     }
@@ -96,12 +90,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //总收益
         totalEarnLayout.setOnClickListener {
-            EarnActivity.actionStart(context,EarnActivity.TOTAL)
+            EarnActivity.actionStart(context, EarnActivity.TOTAL)
         }
 
         //今日收益
         todayEarnLayout.setOnClickListener {
-            EarnActivity.actionStart(context,EarnActivity.TODAY)
+            EarnActivity.actionStart(context, EarnActivity.TODAY)
         }
 
         //团队
@@ -124,8 +118,5 @@ class HomeFragment : BaseFragment(), HomeContract.View {
             WalletActivity.actionStart(context)
         }
 
-        share.setOnClickListener {
-            showToast("分享")
-        }
     }
 }

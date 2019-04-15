@@ -30,6 +30,14 @@
 -dontwarn com.yanzhenjie.album.**
 -dontwarn com.yanzhenjie.mediascanner.**
 
+#---------- durban ---------
+-dontwarn com.yanzhenjie.curban.**
+-keep class com.yanzhenjie.curban.**{*;}
+
+-dontwarn com.yanzhenjie.loading.**
+-keep class com.yanzhenjie.loading.**{*;}
+
+
 # banner 的混淆代码
 -keep class com.youth.banner.** {
     *;
