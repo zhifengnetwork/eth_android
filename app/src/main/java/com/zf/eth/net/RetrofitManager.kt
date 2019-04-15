@@ -71,13 +71,11 @@ object RetrofitManager {
             val modifiedUrl = originalRequest.url().newBuilder()
                 // Provide your custom parameter here
                 //添加自定义参数
-
                 .addQueryParameter("i", "12")
                 .addQueryParameter("c", "entry")
                 .addQueryParameter("m", "ewei_shopv2")
                 .addQueryParameter("do", "mobile")
-                .addQueryParameter("q","1")
-
+                .addQueryParameter("q", "1")
                 .build()
             request = originalRequest.newBuilder().url(modifiedUrl).build()
             chain.proceed(request)

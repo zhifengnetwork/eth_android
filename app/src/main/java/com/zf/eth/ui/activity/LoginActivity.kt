@@ -5,7 +5,7 @@ import android.content.Intent
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseActivity
-import com.zf.eth.mvp.bean.LoginResult
+import com.zf.eth.mvp.bean.LoginBean
 import com.zf.eth.mvp.contract.LoginContract
 import com.zf.eth.mvp.presenter.LoginPresenter
 import com.zf.eth.showToast
@@ -20,10 +20,10 @@ class LoginActivity : BaseActivity(), LoginContract.View {
 
     private var userId by Preference(UriConstant.USER_ID, "")
 
-    override fun setLogin(bean: LoginResult) {
-        userId = bean.user_id
+    override fun setLogin(bean: LoginBean) {
+        userId = bean.userid
         val intent = Intent(this, MainActivity::class.java)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
 
