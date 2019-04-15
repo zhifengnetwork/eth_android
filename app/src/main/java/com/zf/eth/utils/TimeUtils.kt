@@ -16,4 +16,9 @@ object TimeUtils {
         return format.format(time * 1000)
     }
 
+    fun lotteryTime(time: Long): String {
+        val format = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+        return format.format(time * 1000)
+    }
+
 }

@@ -11,23 +11,26 @@ import com.zf.eth.mvp.presenter.PayManagePresenter
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class PaymentActivity : BaseActivity(),PayManageContract.View{
+class PaymentActivity : BaseActivity(), PayManageContract.View {
 
 
     override fun showError(msg: String, errorCode: Int) {
 
     }
+
     override fun getPay(bean: PayManageBean) {
-        Log.e("检测","setPay执行,bean:"+bean)
+        Log.e("检测", "setPay执行,bean:" + bean)
 
         card_number.setText(bean.bankid)
         user_name.setText(bean.bankid)
         bank_name.setText(bean.bankname)
 
     }
+
     override fun editPaySuccess() {
-        Log.e("检测","editPaySuccess执行")
+        Log.e("检测", "editPaySuccess执行")
     }
+
     override fun showLoading() {
 
     }
@@ -64,11 +67,11 @@ class PaymentActivity : BaseActivity(),PayManageContract.View{
 
     override fun initEvent() {
         edit_btn.setOnClickListener {
-            val zfbFile=""
-            val wxFile=""
-            Log.e("检测","确定按钮点击了")
+            val zfbFile = ""
+            val wxFile = ""
+            Log.e("检测", "确定按钮点击了")
 //            presenter.requestEditPayManege("","",zfbFile,wxFile,card_number.text.toString(),user_name.text.toString(),bank_name.text.toString())
-            presenter.requestEditPayManege("","",zfbFile,wxFile,"123456","建设","建设银行")
+            presenter.requestEditPayManege("", "", zfbFile, wxFile, "123456", "建设", "建设银行")
         }
     }
 
@@ -76,8 +79,9 @@ class PaymentActivity : BaseActivity(),PayManageContract.View{
         super.onDestroy()
         presenter.detachView()
     }
+
     override fun start() {
-        Log.e("检测","requestPay请求")
+        Log.e("检测", "requestPay请求")
         presenter.requestPay()
     }
 

@@ -14,5 +14,4 @@ object UriConstant {
 
     const val USER_ID = "userId"
 
-    const val OPEN_ID = "openId"
 }

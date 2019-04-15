@@ -75,10 +75,11 @@
                     android:textSize="12sp"/>
 
             <TextView
+                    android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
-                    android:text="2.362"
+                    android:text=""
                     android:textColor="#1e2128"
                     android:textSize="12sp"/>
 
@@ -99,10 +100,11 @@
                     android:textSize="12sp"/>
 
             <TextView
+                    android:id="@+id/num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
-                    android:text="1注"
+                    android:text=""
                     android:textColor="#1e2128"
                     android:textSize="12sp"/>
 

@@ -27,8 +27,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
 //        changeLanguage()
         setContentView(layoutId())
-        initToolBar()
         initData()
+        initToolBar()
         initView()
         start()
         initListener()

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.PopupWindow
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zf.eth.mvp.bean.LotteryNumber
 import com.zf.eth.ui.adapter.PopDrawAdapter
 import com.zf.eth.view.LayoutGravity
 import kotlinx.android.synthetic.main.pop_draw_win.view.*
@@ -15,12 +16,15 @@ import kotlinx.android.synthetic.main.pop_draw_win.view.*
 /**
  * 开奖号
  */
-abstract class DrawWinPopupWindow(var context: Activity, layoutRes: Int, w: Int, h: Int) {
+abstract class DrawWinPopupWindow(var context: Activity, layoutRes: Int, w: Int, h: Int,data:List<LotteryNumber>) {
     private val contentView: View
     private val popupWindow: PopupWindow
     private var isShowing = false
 
+    private val mData = data
+
     init {
+
         contentView = LayoutInflater.from(context).inflate(layoutRes, null, false)
         initView()
         popupWindow = PopupWindow(contentView, w, h, true)
@@ -40,7 +44,7 @@ abstract class DrawWinPopupWindow(var context: Activity, layoutRes: Int, w: Int,
     private fun initView() {
         contentView.apply {
             recyclerView.layoutManager = LinearLayoutManager(context)
-            recyclerView.adapter = PopDrawAdapter(context)
+            recyclerView.adapter = PopDrawAdapter(context ,mData)
 
         }
     }

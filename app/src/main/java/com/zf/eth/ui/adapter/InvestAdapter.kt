@@ -4,12 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
-import com.zf.eth.mvp.bean.InvestBean
+import com.zf.eth.mvp.bean.InvestList
 import kotlinx.android.synthetic.main.item_invest.view.*
 
-class InvestAdapter(val context: Context, val data: List<InvestBean>) :
+class InvestAdapter(val context: Context, val data: List<InvestList>) :
     RecyclerView.Adapter<InvestAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,10 +21,16 @@ class InvestAdapter(val context: Context, val data: List<InvestBean>) :
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemView.apply {
             money.text = data[position].money
             time.text = data[position].createtime
             title.text = data[position].title
+            status.text = when (data[position].status) {
+                "0" -> "审核中"
+                "1" -> "成功"
+                else -> ""
+            }
         }
     }
 

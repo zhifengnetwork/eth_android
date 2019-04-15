@@ -7,43 +7,78 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.bean.BetBean
+import com.zf.eth.mvp.bean.GameHomeBean
+import com.zf.eth.mvp.bean.LotteryNumber
 import com.zf.eth.mvp.contract.BetContract
 import com.zf.eth.mvp.presenter.BetPresenter
+import com.zf.eth.showToast
 import com.zf.eth.ui.activity.GameRulesActivity
 import com.zf.eth.ui.adapter.PourAdapter
 import com.zf.eth.utils.DensityUtil
+import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.RecyclerViewDivider
+import com.zf.eth.utils.TimeUtils
 import com.zf.eth.view.LayoutGravity
 import com.zf.eth.view.dialog.GameBuyDialog
 import com.zf.eth.view.dialog.MultipleDialog
 import com.zf.eth.view.popwindow.DrawWinPopupWindow
 import kotlinx.android.synthetic.main.fragment_pour.*
+import java.math.BigDecimal
 
 /**
  * 3D下注
  */
 class PourFragment : BaseFragment(), BetContract.View {
 
-    override fun showError(msg: String, errorCode: Int) {
+
+    private var lotteryData = listOf<LotteryNumber>()
+
+    //开奖号码，每注金额
+    override fun setGameHome(bean: GameHomeBean) {
+        bean.sale1?.let {
+            lotteryData = it
+        }
+        unitPrice.text = bean.price
+        if (bean.sale1?.get(0) != null) {
+            lotteryTime.text = bean.sale1[0].time
+            lotteryNum.text = bean.sale1[0].number
+        }
     }
 
-    override fun setBet(bean: BetBean) {
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
 
+    /** 第二部，确认下注  */
+    override fun setConfirmBeat(msg: String) {
+        showToast(msg)
+    }
+
+    /** 第一步，确认信息 */
+    override fun setBet(bean: BetBean) {
         //适配器的列表
         val list = adapter.pourData
         //传递给后台的参数
         val data: Array<Array<String>> = Array(list.size) { arrayOf("", "") }
+        var num = 0
+
         repeat(list.size) {
+            //求总共多少注
+            num += list[it].multiple
+
             data[it] = arrayOf(
                 list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
                 list[it].multiple.toString()
             )
         }
+        //求下注金额（下注总数*单价）
+        val price = (BigDecimal(num.toString()).multiply(BigDecimal(unitPrice.text.toString()))).toString()
 
-        GameBuyDialog.showDialog(childFragmentManager, bean).onConfirmListener = { payType ->
-            betPresenter.requestBet(2, payType, "1", data)
+        GameBuyDialog.showDialog(childFragmentManager, bean, num.toString(), price).onConfirmListener = { payType ->
+            betPresenter.requestConfirmBet(2, payType, "1", data)
         }
     }
+
 
     override fun showLoading() {
         showLoadingDialog()
@@ -78,6 +113,7 @@ class PourFragment : BaseFragment(), BetContract.View {
     }
 
     override fun lazyLoad() {
+        betPresenter.requestGameHome()
     }
 
     override fun initEvent() {
@@ -87,8 +123,12 @@ class PourFragment : BaseFragment(), BetContract.View {
 
         //确定
         confirm.setOnClickListener {
-            //确认信息获取账户余额
-            betPresenter.requestBet(1, null, "", null)
+            if (adapter.pourData.isEmpty()) {
+                showToast("请先下注")
+            } else {
+                //确认信息获取账户余额
+                betPresenter.requestBet(1, null, "", null)
+            }
         }
 
         //开奖号
@@ -96,7 +136,8 @@ class PourFragment : BaseFragment(), BetContract.View {
             val popupWindow = object : DrawWinPopupWindow(
                 activity as Activity,
                 R.layout.pop_draw_win, DensityUtil.dp2px(120f),
-                DensityUtil.dp2px(150f)
+                DensityUtil.dp2px(150f),
+                lotteryData
             ) {}
             val layoutGravity = LayoutGravity(LayoutGravity.ALIGN_RIGHT)
             popupWindow.showBashOfAnchor(drawLayout, layoutGravity, 0, 0)

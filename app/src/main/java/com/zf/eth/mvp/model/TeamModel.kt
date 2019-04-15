@@ -10,14 +10,13 @@ import io.reactivex.Observable
 
 class TeamModel {
 
-    private val openId by Preference(UriConstant.OPEN_ID, "")
     private val userId by Preference(UriConstant.USER_ID, "")
 
-    fun getTeam(): Observable<BaseBean<List<TeamBean>>> {
+    fun getTeam(page: Int): Observable<BaseBean<TeamBean>> {
         return RetrofitManager.service.getTeam(
-            "member.androidapi.xiaji_get_list", openId, userId
+                "member.androidapi.xiaji_get_list", userId, page
         )
-            .compose(SchedulerUtils.ioToMain())
+                .compose(SchedulerUtils.ioToMain())
     }
 
 }

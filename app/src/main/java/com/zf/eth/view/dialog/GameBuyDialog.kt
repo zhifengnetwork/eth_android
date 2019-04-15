@@ -24,10 +24,14 @@ class GameBuyDialog : DialogFragment() {
     companion object {
 
         private var mBean: BetBean? = null
-        fun showDialog(fragmentManager: FragmentManager, bean: BetBean): GameBuyDialog {
+        private var mNum: String? = null
+        private var mPrice: String? = null
+        fun showDialog(fragmentManager: FragmentManager, bean: BetBean, num: String, price: String): GameBuyDialog {
             val receiveDialog = GameBuyDialog()
 
             mBean = bean
+            mNum = num
+            mPrice = price
 
             receiveDialog.show(fragmentManager, "")
             //点击空白处是否关闭dialog
@@ -58,6 +62,8 @@ class GameBuyDialog : DialogFragment() {
         val view = LayoutInflater.from(activity).inflate(R.layout.dialog_game_buy, container, false)
         view.apply {
 
+            price.text = mPrice
+            num.text = "${mNum}注"
 
             freeMoney.text = mBean?.list?.credit2
             reMoney.text = mBean?.list?.credit4
@@ -84,13 +90,16 @@ class GameBuyDialog : DialogFragment() {
             }
 
             confirm.setOnClickListener {
-                dismiss()
                 /** 判断支付方式 */
                 when {
                     reAccount.isSelected -> onConfirmListener?.invoke(2)
                     freeAcctount.isSelected -> onConfirmListener?.invoke(1)
-                    else -> ToastUtils.showShort(context, "请选择支付方式")
+                    else -> {
+                        ToastUtils.showShort(context, "请选择支付方式")
+                        return@setOnClickListener
+                    }
                 }
+                dismiss()
             }
 
             cancel.setOnClickListener {

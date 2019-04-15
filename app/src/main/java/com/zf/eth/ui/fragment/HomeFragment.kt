@@ -96,12 +96,12 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //总收益
         totalEarnLayout.setOnClickListener {
-            EarnActivity.actionStart(context)
+            EarnActivity.actionStart(context,EarnActivity.TOTAL)
         }
 
         //今日收益
         todayEarnLayout.setOnClickListener {
-            EarnActivity.actionStart(context)
+            EarnActivity.actionStart(context,EarnActivity.TODAY)
         }
 
         //团队

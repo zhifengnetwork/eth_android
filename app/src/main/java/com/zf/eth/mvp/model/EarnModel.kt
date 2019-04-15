@@ -10,18 +10,16 @@ import io.reactivex.Observable
 
 class EarnModel {
 
-    private val openId by Preference(UriConstant.OPEN_ID, "")
     private val userId by Preference(UriConstant.USER_ID, "")
 
-    fun requestEarn(type: String): Observable<BaseBean<EarnBean>> {
+    fun requestEarn(type: String, dateType: String): Observable<BaseBean<EarnBean>> {
         return RetrofitManager.service.getEarn(
-                "member.androidapi.income_record",
-                openId,
-                userId,
-                type
+            dateType,
+            userId,
+            type
 
         )
-                .compose(SchedulerUtils.ioToMain())
+            .compose(SchedulerUtils.ioToMain())
     }
 
 

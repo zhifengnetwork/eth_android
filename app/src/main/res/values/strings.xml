@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ETH</string>
+
+    <string name="refresh_finish">刷新完成</string>
+    <string name="refresh_pulling">下拉刷新</string>
+    <string name="refresh_release">释放立即刷新</string>
+    <string name="refresh_refreshing">正在刷新</string>
+    <string name="refresh_failed">刷新失败</string>
+
+    <string name="load_finish">加载完成</string>
+    <string name="load_failed">加载失败</string>
+    <string name="load_pulling">上拉加载更多</string>
+    <string name="load_release">释放立即加载</string>
+    <string name="load_loading">加载中</string>
+    <string name="load_noting">没有更多数据了</string>
+
 </resources>

@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
-import com.zf.eth.mvp.bean.TeamBean
+import com.zf.eth.mvp.bean.TeamList
 import kotlinx.android.synthetic.main.item_team.view.*
 
-class TeamAdapter(val context: Context, val data: List<TeamBean>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
+class TeamAdapter(val context: Context, val data: List<TeamList>) : RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_team, parent, false)

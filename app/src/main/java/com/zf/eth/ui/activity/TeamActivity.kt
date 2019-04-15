@@ -5,10 +5,11 @@ import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
-import com.zf.eth.mvp.bean.TeamBean
+import com.zf.eth.mvp.bean.TeamList
 import com.zf.eth.mvp.contract.TeamContract
 import com.zf.eth.mvp.presenter.TeamPresenter
 import com.zf.eth.net.exception.ErrorStatus
+import com.zf.eth.showToast
 import com.zf.eth.ui.adapter.TeamAdapter
 import kotlinx.android.synthetic.main.activity_team.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -18,11 +19,26 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  */
 class TeamActivity : BaseActivity(), TeamContract.View {
 
+    override fun setLoadMore(bean: List<TeamList>) {
+        data.addAll(bean)
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun setLoadComplete() {
+        refreshLayout.finishLoadMoreWithNoMoreData()
+    }
+
+    override fun loadMoreError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+
     override fun freshEmpty() {
+        refreshLayout.setEnableLoadMore(false)
         mLayoutStatusView?.showEmpty()
     }
 
     override fun showError(msg: String, errorCode: Int) {
+        refreshLayout.setEnableLoadMore(false)
         if (errorCode == ErrorStatus.NETWORK_ERROR) {
             mLayoutStatusView?.showNoNetwork()
         } else {
@@ -30,7 +46,8 @@ class TeamActivity : BaseActivity(), TeamContract.View {
         }
     }
 
-    override fun setTeam(bean: List<TeamBean>) {
+    override fun setTeam(bean: List<TeamList>) {
+        refreshLayout.setEnableLoadMore(true)
         mLayoutStatusView?.showContent()
         data.clear()
         data.addAll(bean)
@@ -41,6 +58,8 @@ class TeamActivity : BaseActivity(), TeamContract.View {
     }
 
     override fun dismissLoading() {
+        refreshLayout.finishRefresh()
+        refreshLayout.finishLoadMore()
     }
 
     companion object {
@@ -59,7 +78,7 @@ class TeamActivity : BaseActivity(), TeamContract.View {
     override fun initData() {
     }
 
-    private val data = ArrayList<TeamBean>()
+    private val data = ArrayList<TeamList>()
 
     private val adapter by lazy { TeamAdapter(this, data) }
 
@@ -81,7 +100,10 @@ class TeamActivity : BaseActivity(), TeamContract.View {
     }
 
     override fun start() {
-        mLayoutStatusView?.showLoading()
-        presenter.requestTeam()
+        refreshLayout.setEnableLoadMore(false)
+        if (data.isEmpty()) {
+            mLayoutStatusView?.showLoading()
+        }
+        presenter.requestTeam(1)
     }
 }
