@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
-                android:id="@+id/type"
+                android:id="@+id/type_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
@@ -20,96 +20,125 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/type"
+                android:layout_toRightOf="@+id/type_name"
                 android:layout_marginLeft="10dp"
                 android:textSize="15sp"
                 android:textColor="#f0e68c"
                 android:textStyle="bold"
                 android:text="ETH"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/back_y"
-                android:layout_toStartOf="@+id/back_y"
-                android:layout_marginRight="12dp"
-                android:textSize="13sp"
-                android:textColor="#f0e68c"
-                android:text="未交易"/>
-        <ImageView
-                android:id="@+id/back_y"
-                android:src="@drawable/back_y"
+        <LinearLayout
+                android:id="@+id/skip_ly"
+                android:orientation="horizontal"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/status_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:textSize="13sp"
+                    android:textColor="#f0e68c"
+                    android:text="未交易"/>
+            <ImageView
+                    android:id="@+id/back_y"
+                    android:src="@drawable/back_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
     </RelativeLayout>
 
     <LinearLayout
             android:id="@+id/two"
             android:layout_below="@+id/one"
             android:layout_marginTop="15dp"
+            android:gravity="left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/trx_sum"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_weight="1"
                 android:textSize="13sp"
                 android:textColor="@color/whit"
                 android:text="2.00"/>
         <TextView
+                android:id="@+id/sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:textSize="13sp"
                 android:textColor="#a4aff1"
                 android:text="/个"/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_toRightOf="@+id/sum"
                 android:textSize="13sp"
                 android:textColor="#a4aff1"
                 android:text="＄"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/price"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textSize="13sp"
                 android:textColor="@color/whit"
                 android:text="4.00"/>
         <TextView
-                android:layout_marginLeft="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
                 android:textColor="#a4aff1"
                 android:text="总金额(CNY):"/>
         <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/money"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textSize="13sp"
                 android:textColor="@color/whit"
                 android:text="32.00"/>
     </LinearLayout>
+
+        <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/two"
+                android:layout_marginTop="15dp"
+                android:textColor="#9496a3"
+                android:textSize="11sp"
+                android:text="2019-04-03  10:32:51"
+        />
     <LinearLayout
+            android:id="@+id/countdown"
             android:layout_below="@+id/two"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#9496a3"
-                android:textSize="11sp"
-                android:text="2019-04-03"
-        />
+                android:textSize="13sp"
+                android:textColor="@color/whit"
+                android:text="倒计时："/>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:textColor="#9496a3"
-                android:textSize="11sp"
-                android:text="10:32:51"
+                android:textSize="13sp"
+                android:textColor="@color/whit"
+                android:text="20:20"
         />
+
 
     </LinearLayout>
 </RelativeLayout>

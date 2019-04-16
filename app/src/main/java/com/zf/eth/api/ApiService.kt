@@ -169,12 +169,48 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getC2c(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("page") page: String,
-            @Field("status") status: String,
-            @Field("type") type: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("page") page: String,
+        @Field("type") type: String
     ): Observable<BaseBean<C2cBean>>
+
+    /**
+     *c2c点击卖出或者买入按钮
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun setSellout(
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String,
+        @Field("type") type: String
+    ):Observable<BaseBean<List<Unit>>>
+
+    /**
+     *c2c中心-我的订单
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun getMyOrder( @Field("r") r: String,
+                    @Field("userid") userid: String,
+                    @Field("status") status: String
+    ):Observable<BaseBean<List<MyOrderBean>>>
+
+    /**
+     *c2c中心点击卖出或者买入按钮
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun setHangonsale( @Field("r") r: String,
+                       @Field("userid") userid: String,
+                       @Field("type") type: String,
+                       @Field("price") price: String,
+                       @Field("money") money: String,
+                       @Field("sxf0") sxf0: String,
+                       @Field("trx") trx: String,
+                       @Field("trx2") trx2: String
+    ):Observable<BaseBean<Unit>>
 
     /**
      * 我的-支付管理信息

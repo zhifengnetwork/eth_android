@@ -18,17 +18,18 @@ class OrderFragment : BaseFragment() {
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_c2c_order
-
+    private val mTitles = arrayOf("未交易", "交易中", "交易完成", "交易失败")
 
     override fun initView() {
-        val mTitles = arrayOf("未交易", "交易中", "交易完成", "交易失败")
+
         val mFragment = arrayListOf<Fragment>(
-            OrderContentFragment.getInstance(),
-            OrderContentFragment.getInstance(),
-            OrderContentFragment.getInstance(),
-            OrderContentFragment.getInstance()
+            OrderContentFragment.getInstance(OrderContentFragment.One),
+            OrderContentFragment.getInstance(OrderContentFragment.Two),
+            OrderContentFragment.getInstance(OrderContentFragment.Three),
+            OrderContentFragment.getInstance(OrderContentFragment.Four)
         )
         val mAdapter = BaseFragmentAdapter(childFragmentManager, mFragment)
+
         order_vp.adapter = mAdapter
         order_tab.setTabData(mTitles)
     }
