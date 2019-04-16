@@ -1,13 +1,11 @@
 package com.zf.eth.ui.fragment.c2c
 
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.flyco.tablayout.listener.OnTabSelectListener
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.base.BaseFragmentAdapter
-import com.zf.eth.ui.adapter.C2cPagerAdapter
 import kotlinx.android.synthetic.main.fragment_c2c_order.*
 
 class OrderFragment:BaseFragment(){
@@ -20,13 +18,12 @@ class OrderFragment:BaseFragment(){
     }
     override fun getLayoutId(): Int = R.layout.fragment_c2c_order
 
-
+    private val mTitles= arrayOf("未交易","交易中","交易完成","交易失败")
 
     override fun initView() {
-         val mTitles= arrayOf("未交易","交易中","交易完成","交易失败")
-         val mFragment= arrayListOf<Fragment>(OrderContentFragment.getInstance(),OrderContentFragment.getInstance(),OrderContentFragment.getInstance(),OrderContentFragment.getInstance())
-//    private val mAdapter by lazy {  C2cPagerAdapter(childFragmentManager,mTitles) }
-         val mAdapter=  BaseFragmentAdapter(childFragmentManager,mFragment)
+
+        val mFragment= arrayListOf<Fragment>(OrderContentFragment.getInstance(OrderContentFragment.One),OrderContentFragment.getInstance(OrderContentFragment.Two),OrderContentFragment.getInstance(OrderContentFragment.Three),OrderContentFragment.getInstance(OrderContentFragment.Four))
+        val mAdapter=  BaseFragmentAdapter(childFragmentManager,mFragment)
 
         order_vp.adapter=mAdapter
         order_tab.setTabData(mTitles)
@@ -55,11 +52,11 @@ class OrderFragment:BaseFragment(){
             }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                order_tab.currentTab=position
+
             }
 
             override fun onPageSelected(position: Int) {
-
+                order_tab.currentTab=position
             }
 
         })

@@ -28,6 +28,7 @@
                 android:id="@+id/openid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
                 android:textColor="#f1f2f8"
                 android:textSize="13sp"
                 android:text="挂单人：134xxxx7692"
@@ -36,14 +37,13 @@
                 android:id="@+id/alipay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="7dp"
                 android:src="@drawable/alipay"
         />
         <ImageView
                 android:id="@+id/wechat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="7dp"
                 android:layout_marginLeft="7dp"
                 android:src="@drawable/wechat"
         />
@@ -51,6 +51,7 @@
                 android:id="@+id/bankcard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
                 android:src="@drawable/bankcard"
         />
     </LinearLayout>

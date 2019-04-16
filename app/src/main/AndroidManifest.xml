@@ -143,9 +143,20 @@
         <activity android:name=".ui.activity.C2cDetailActivity"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
+                  android:windowSoftInputMode="adjustPan"
                   android:theme="@style/AppTheme.NoActionBar"/>
 
-        <activity android:name=".ui.activity.C2cEthActivity"
+        <activity android:name=".ui.activity.C2cEthOneActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.C2cEthTwoActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.activity.C2cEthThreeActivity"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:theme="@style/AppTheme.NoActionBar"/>

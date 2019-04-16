@@ -1,6 +1,7 @@
 package com.zf.eth.ui.fragment.c2c
 
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
@@ -8,18 +9,25 @@ import com.zf.eth.mvp.bean.C2cBean
 import com.zf.eth.mvp.bean.C2cList
 import com.zf.eth.mvp.contract.C2cContract
 import com.zf.eth.mvp.presenter.C2cPresenter
+import com.zf.eth.showToast
 import com.zf.eth.ui.adapter.C2cContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
 
 class ContentFragment:BaseFragment(),C2cContract.View{
+
     override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
 
     }
 
     override fun setC2c(bean: C2cBean) {
-        Log.e("检测","C2c数据获取方法已执行")
+        c2cList.clear()
         c2cList.addAll(bean.list)
         adapter.notifyDataSetChanged()
+    }
+    override fun setSelloutSuccess(msg:String) {
+        showToast(msg)
+        load()
     }
 
     override fun showLoading() {
@@ -48,6 +56,9 @@ class ContentFragment:BaseFragment(),C2cContract.View{
     private val c2cList = ArrayList<C2cList>()
 
     private val adapter by lazy { C2cContentAdapter(context,c2cList) }
+
+
+
     override fun getLayoutId(): Int = R.layout.layout_c2c_content
 
     override fun initView() {
@@ -61,11 +72,20 @@ class ContentFragment:BaseFragment(),C2cContract.View{
     }
 
     override fun lazyLoad() {
-//        Load()
-
+//          load()
     }
 
     override fun initEvent() {
+        /**
+         * 点击卖出买入按钮 网络请求 (买入和卖出相反)
+         * */
+        adapter.mClickListener={
+            if (it.type=="1") {
+                c2cPresenter.requesC2cSellout(it.id,"0")
+            }else{
+                c2cPresenter.requesC2cSellout(it.id,"1")
+            }
+        }
 
     }
 
@@ -74,19 +94,21 @@ class ContentFragment:BaseFragment(),C2cContract.View{
         c2cPresenter.detachView()
     }
 
-    override fun onStart() {
-        super.onStart()
-        load()
-    }
-
+    /**判断请求的type数据*/
     private fun load(){
         if(mType== BUY){
-            c2cPresenter.requesC2c("1","1","1")
+            c2cPresenter.requesC2c("1","1")
             Log.e("检测","已请求数据type:1")
         }else{
-            c2cPresenter.requesC2c("1","2","0")
+            c2cPresenter.requesC2c("1","0")
             Log.e("检测","已请求数据type:0")
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        load()
+        Log.e("检测","刷新数据")
     }
 }
