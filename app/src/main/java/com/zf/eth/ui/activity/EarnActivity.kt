@@ -29,12 +29,10 @@ class EarnActivity : BaseActivity() {
 
     override fun initData() {
         mType = intent.getStringExtra("type")
-        LogUtils.e(">>>>initD:"+mType)
     }
 
     override fun initToolBar() {
         backLayout.setOnClickListener { finish() }
-        LogUtils.e(">>>>>:"+mType)
         titleName.text = if (mType == TODAY) "今日收益明细" else "收益明细"
     }
 

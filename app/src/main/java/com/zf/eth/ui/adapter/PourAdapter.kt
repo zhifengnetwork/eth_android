@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.MultipleBean
 import com.zf.eth.mvp.bean.PourBean
 import com.zf.eth.utils.KeyBordUitls
+import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.ToastUtils
 import kotlinx.android.synthetic.main.item_pour.view.*
 import kotlinx.android.synthetic.main.layout_num_text_decade.view.*
@@ -106,7 +108,6 @@ class PourAdapter(val context: Context?) :
                         repeat(hundredLayout.size) { pos -> hundredLayout[pos].isSelected = false }
                         hundredLayout[index].isSelected = true
                         map[0] = index
-//                        initChoose()
                         if (map.size == 3) {
                             pourData.add(PourBean(map[0], map[1], map[2], 1))
                             notifyDataSetChanged()
@@ -123,7 +124,6 @@ class PourAdapter(val context: Context?) :
                         repeat(decadeLayout.size) { pos -> decadeLayout[pos].isSelected = false }
                         decadeLayout[index].isSelected = true
                         map[1] = index
-//                        initChoose()
                         if (map.size == 3) {
                             pourData.add(PourBean(map[0], map[1], map[2], 1))
                             notifyDataSetChanged()
@@ -140,7 +140,6 @@ class PourAdapter(val context: Context?) :
                         repeat(singleLayout.size) { pos -> singleLayout[pos].isSelected = false }
                         singleLayout[index].isSelected = true
                         map[2] = index
-//                        initChoose()
                         if (map.size == 3) {
                             pourData.add(PourBean(map[0], map[1], map[2], 1))
                             notifyDataSetChanged()
@@ -208,6 +207,11 @@ class PourAdapter(val context: Context?) :
                 multiPle.setOnClickListener {
                     multipleListener?.invoke(MultipleBean(position - 1, pourData[position - 1].multiple))
                 }
+
+                /** 监听输入框 */
+//                multiPle.addTextChangedListener {
+//                    LogUtils.e(">>>>>>>:" + multiPle.text.toString())
+//                }
 
                 delete.setOnClickListener {
                     pourData.removeAt(position - 1)

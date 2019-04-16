@@ -28,4 +28,8 @@
 
         <!--TabLayout tab选项背景色-->
     <color name="calor_order">#6a82f4</color>
+
+    <color name="color_red">#f70426</color>
+    <color name="color_green">#0bb543</color>
+
 </resources>

@@ -12,6 +12,7 @@ import com.zf.eth.net.exception.ErrorStatus
 import com.zf.eth.showToast
 import com.zf.eth.ui.adapter.C2CRecordAdapter
 import com.zf.eth.ui.adapter.InvestAdapter
+import com.zf.eth.ui.adapter.TransferAdapter
 import kotlinx.android.synthetic.main.activity_invest.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -99,6 +100,7 @@ class InvestActivity : BaseActivity(), InvestContract.View {
 
     private val investAdapter by lazy { InvestAdapter(this, data) }
     private val c2cAdapter by lazy { C2CRecordAdapter(this, data) }
+    private val transferAdapter by lazy { TransferAdapter(this, data) }
 
     private val presenter by lazy { InvestPresenter() }
 
@@ -106,7 +108,8 @@ class InvestActivity : BaseActivity(), InvestContract.View {
         mLayoutStatusView = multipleStatusView
         presenter.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = if (mType == C2C) c2cAdapter else investAdapter
+        recyclerView.adapter =
+            if (mType == C2C) c2cAdapter else if (mType == ZHUANBI) transferAdapter else investAdapter
 
     }
 

@@ -13,6 +13,7 @@ import com.zf.eth.mvp.contract.BetContract
 import com.zf.eth.mvp.presenter.BetPresenter
 import com.zf.eth.showToast
 import com.zf.eth.ui.activity.GameRulesActivity
+import com.zf.eth.ui.activity.RankActivity
 import com.zf.eth.ui.adapter.PourAdapter
 import com.zf.eth.utils.DensityUtil
 import com.zf.eth.utils.LogUtils
@@ -67,8 +68,8 @@ class PourFragment : BaseFragment(), BetContract.View {
             num += list[it].multiple
 
             data[it] = arrayOf(
-                list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
-                list[it].multiple.toString()
+                    list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
+                    list[it].multiple.toString()
             )
         }
         //求下注金额（下注总数*单价）
@@ -105,10 +106,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(
-            RecyclerViewDivider(
-                context, LinearLayout.VERTICAL,
-                1, ContextCompat.getColor(context!!, R.color.color_game_item)
-            )
+                RecyclerViewDivider(
+                        context, LinearLayout.VERTICAL,
+                        1, ContextCompat.getColor(context!!, R.color.color_game_item)
+                )
         )
     }
 
@@ -117,6 +118,8 @@ class PourFragment : BaseFragment(), BetContract.View {
     }
 
     override fun initEvent() {
+
+        rankLayout.setOnClickListener { RankActivity.actionStart(context) }
 
         //游戏规则
         gameRules.setOnClickListener { GameRulesActivity.actionStart(context) }
@@ -134,10 +137,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         //开奖号
         drawLayout.setOnClickListener {
             val popupWindow = object : DrawWinPopupWindow(
-                activity as Activity,
-                R.layout.pop_draw_win, DensityUtil.dp2px(120f),
-                DensityUtil.dp2px(150f),
-                lotteryData
+                    activity as Activity,
+                    R.layout.pop_draw_win, DensityUtil.dp2px(120f),
+                    DensityUtil.dp2px(150f),
+                    lotteryData
             ) {}
             val layoutGravity = LayoutGravity(LayoutGravity.ALIGN_RIGHT)
             popupWindow.showBashOfAnchor(drawLayout, layoutGravity, 0, 0)

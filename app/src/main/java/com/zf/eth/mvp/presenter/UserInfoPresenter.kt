@@ -14,20 +14,21 @@ class UserInfoPresenter : BasePresenter<UserInfoContract.View>(), UserInfoContra
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.getUserInfo()
-            .subscribe({
-                mRootView?.apply {
-                    dismissLoading()
-                    when (it.status) {
-                        1 -> setUserInfo(it.data)
-                        else -> showError(it.msg, it.status)
+                .subscribe({
+                    mRootView?.apply {
+                        dismissLoading()
+                        when (it.status) {
+                            1 -> setUserInfo(it.data)
+                            -1 -> setNotLogin()
+                            else -> showError(it.msg, it.status)
+                        }
                     }
-                }
-            }, {
-                mRootView?.apply {
-                    dismissLoading()
-                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                }
-            })
+                }, {
+                    mRootView?.apply {
+                        dismissLoading()
+                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                    }
+                })
         addSubscription(disposable)
     }
 }

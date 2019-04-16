@@ -42,8 +42,8 @@ class MultipleDialog : DialogFragment() {
         super.onStart()
         val window = dialog?.window
         val sp = window?.attributes
-        sp?.width = DensityUtil.dp2px(250f)
-        sp?.height = DensityUtil.dp2px(180f)
+        sp?.width = DensityUtil.dp2px(220f)
+        sp?.height = DensityUtil.dp2px(130f)
         sp?.dimAmount = 0.3f
         window?.attributes = sp
     }

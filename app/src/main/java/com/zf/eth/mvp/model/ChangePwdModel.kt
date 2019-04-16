@@ -15,7 +15,6 @@ class ChangePwdModel {
     fun requestVerifyCode(mobile: String, temp: String): Observable<BaseBean<Unit>> {
         return RetrofitManager.service.requestVerifyCode(
                 "member.androidapi.verifycode",
-                userId,
                 "0",
                 mobile,
                 temp

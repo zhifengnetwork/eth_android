@@ -25,15 +25,15 @@ class InvestPresenter : BasePresenter<InvestContract.View>(), InvestContract.Pre
                     when (it.status) {
                         1 -> {
                             if (mPage == 1) {
-                                if (it.data.result.list.isNotEmpty()) {
-                                    setInvest(it.data.result.list)
+                                if (it.data.list.isNotEmpty()) {
+                                    setInvest(it.data.list)
                                 } else {
                                     setEmpty()
                                 }
                             } else {
-                                setLoadMore(it.data.result.list)
+                                setLoadMore(it.data.list)
                             }
-                            if (it.data.result.list.size < it.data.result.pagesize) {
+                            if (it.data.list.size < it.data.pagesize) {
                                 setLoadComplete()
                             }
                             mPage += 1

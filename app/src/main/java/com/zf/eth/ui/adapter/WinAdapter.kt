@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.WinList
@@ -25,6 +26,12 @@ class WinAdapter(val context: Context?, val data: List<WinList>) : RecyclerView.
             price.text = data[position].money
             ranking.text = data[position].ranking
             type.text = if (data[position].type == "1") "投注中奖" else "投资排名奖"
+            type.setTextColor(
+                ContextCompat.getColor(
+                    context, if (data[position].type == "1") R.color.color_red
+                    else R.color.color_green
+                )
+            )
         }
     }
 

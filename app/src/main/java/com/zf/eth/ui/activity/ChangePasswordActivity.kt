@@ -79,10 +79,8 @@ class ChangePasswordActivity : BaseActivity(), ChangePwdContract.View {
         getCode.setOnClickListener {
             if (TextUtils.isEmpty(phoneNum.text)) {
                 ToastUtils.showShort(this, "请输入手机号")
-            } else {
-                if (!isRun) {
-                    presenter.requestVerifyCode(phoneNum.text.toString(), "sms_changepwd")
-                }
+            } else if (!isRun) {
+                presenter.requestVerifyCode(phoneNum.text.toString(), "sms_changepwd")
             }
         }
 

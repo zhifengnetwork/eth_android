@@ -97,6 +97,9 @@ class TeamActivity : BaseActivity(), TeamContract.View {
     }
 
     override fun initEvent() {
+        refreshLayout.setOnLoadMoreListener {
+            presenter.requestTeam(null)
+        }
     }
 
     override fun start() {

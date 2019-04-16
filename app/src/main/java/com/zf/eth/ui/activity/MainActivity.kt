@@ -23,6 +23,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), UserInfoContract.View {
 
+    override fun setNotLogin() {
+        //未登录
+    }
+
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
     }
@@ -41,9 +45,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     companion object {
-
         private var mIndex = 0
-
         fun actionStart(context: Context?, index: Int? = 0) {
             mIndex = index ?: 0
             context?.startActivity(Intent(context, MainActivity::class.java))
@@ -61,17 +63,17 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     private val mTitles = listOf("首页", "棋牌娱乐", "C2C", "我的")
 
     private val mIconSelectIds = listOf(
-        R.drawable.homepage,
-        R.drawable.chess1,
-        R.drawable.two1,
-        R.drawable.my1
+            R.drawable.homepage,
+            R.drawable.chess1,
+            R.drawable.two1,
+            R.drawable.my1
     )
 
     private val mIconUnSelectIds = listOf(
-        R.drawable.home_page1,
-        R.drawable.chess,
-        R.drawable.two,
-        R.drawable.my
+            R.drawable.home_page1,
+            R.drawable.chess,
+            R.drawable.two,
+            R.drawable.my
     )
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
@@ -97,25 +99,25 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         hideFragments(transaction)
         when (index) {
             0 -> mHomeFragment?.let { transaction.show(it) }
-                ?: HomeFragment.getInstance().let {
-                    mHomeFragment = it
-                    transaction.add(R.id.fl_container, it, "home")
-                }
+                    ?: HomeFragment.getInstance().let {
+                        mHomeFragment = it
+                        transaction.add(R.id.fl_container, it, "home")
+                    }
             1 -> mDiscoveryFragment?.let { transaction.show(it) }
-                ?: ChessFragment.getInstance().let {
-                    mDiscoveryFragment = it
-                    transaction.add(R.id.fl_container, it, "discovery")
-                }
+                    ?: ChessFragment.getInstance().let {
+                        mDiscoveryFragment = it
+                        transaction.add(R.id.fl_container, it, "discovery")
+                    }
             2 -> mHotFragment?.let { transaction.show(it) }
-                ?: C2CFragment.getInstance().let {
-                    mHotFragment = it
-                    transaction.add(R.id.fl_container, it, "hot")
-                }
+                    ?: C2CFragment.getInstance().let {
+                        mHotFragment = it
+                        transaction.add(R.id.fl_container, it, "hot")
+                    }
             3 -> mMineFragment?.let { transaction.show(it) }
-                ?: MeFragment.getInstance().let {
-                    mMineFragment = it
-                    transaction.add(R.id.fl_container, it, "mine")
-                }
+                    ?: MeFragment.getInstance().let {
+                        mMineFragment = it
+                        transaction.add(R.id.fl_container, it, "mine")
+                    }
             else -> {
             }
         }

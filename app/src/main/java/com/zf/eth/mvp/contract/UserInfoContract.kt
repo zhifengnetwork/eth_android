@@ -12,6 +12,7 @@ interface UserInfoContract {
 
         fun setUserInfo(bean: UserInfoBean)
 
+        fun setNotLogin()
     }
 
     interface Presenter : IPresenter<View> {

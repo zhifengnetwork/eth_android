@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#cdcfd3"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:padding="10dp">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#cdcfd3"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:padding="10dp">
 
     <TextView
-        android:id="@+id/hundred"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/shape_pour_num"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#fc0124" />
-
-    <TextView
-        android:id="@+id/decade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/shape_pour_num"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#fc0124" />
-
-    <TextView
-        android:id="@+id/single"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_pour_num"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#fc0124" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
+            android:id="@+id/hundred"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="倍数"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="12sp" />
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#fc0124"/>
 
-        <Space
-            android:layout_width="1dp"
-            android:layout_height="3dp" />
+    <TextView
+            android:id="@+id/decade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#fc0124"/>
+
+    <TextView
+            android:id="@+id/single"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_pour_num"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#fc0124"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
         <TextView
-            android:id="@+id/multiPle"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:background="@drawable/shape_buy_input"
-            android:gravity="center"
-            android:text="1"
-            android:textColor="#fc0124" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="倍数"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="12sp"/>
+
+        <Space
+                android:layout_width="1dp"
+                android:layout_height="3dp"/>
+
+        <TextView
+                android:id="@+id/multiPle"
+                android:layout_width="60dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_buy_input"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#fc0124"/>
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/delete"
-        android:layout_width="17dp"
-        android:layout_height="17dp"
-        android:layout_marginLeft="25dp"
-        android:src="@drawable/delete" />
+            android:id="@+id/delete"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/delete"/>
 
 </LinearLayout>

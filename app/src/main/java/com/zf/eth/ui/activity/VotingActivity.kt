@@ -2,8 +2,13 @@ package com.zf.eth.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.text.TextUtils
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
+import com.zf.eth.mvp.contract.RePayContract
+import com.zf.eth.mvp.presenter.RePayPresenter
+import com.zf.eth.showToast
+import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.activity_voting.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -11,7 +16,23 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  * 复投：复投账户复投
  *       自由钱包复投
  */
-class VotingActivity : BaseActivity() {
+class VotingActivity : BaseActivity(), RePayContract.View {
+
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+    }
+
+    override fun setRePay() {
+        showToast("购买成功")
+    }
+
+    override fun showLoading() {
+        showLoadingDialog()
+    }
+
+    override fun dismissLoading() {
+        dismissLoadingDialog()
+    }
 
     companion object {
         const val FREE_WALLET = "FREE_WALLET" //自由钱包
@@ -33,17 +54,35 @@ class VotingActivity : BaseActivity() {
 
     override fun layoutId(): Int = R.layout.activity_voting
 
+    private val presenter by lazy { RePayPresenter() }
+
     override fun initData() {
         mType = intent.getStringExtra("type")
     }
 
     override fun initView() {
+        presenter.attachView(this)
         accountType.text = if (mType == FREE_WALLET) "自由钱包" else "复投账户"
+
+        price.filters = arrayOf(PriceInputFilter())
     }
 
     override fun initEvent() {
+        confirm.setOnClickListener {
+            if (TextUtils.isEmpty(price.text)) {
+                showToast("请输入金额")
+            } else {
+                presenter.requestRePay(price.text.toString(), if (mType == FREE_WALLET) "2" else "4")
+            }
+        }
     }
 
     override fun start() {
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
+    }
+
 }

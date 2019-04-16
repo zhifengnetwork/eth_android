@@ -3,6 +3,10 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
+              android:background="@drawable/shape_record_item"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginTop="10dp"
               android:padding="10dp">
 
     <LinearLayout
@@ -13,17 +17,23 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_marginRight="3dp"
                 android:text="时&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;间:"/>
 
         <TextView
                 android:id="@+id/createTime"
                 android:layout_width="180dp"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:text=""/>
 
         <TextView
                 android:layout_width="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
                 android:text="编号:"/>
@@ -32,6 +42,8 @@
                 android:id="@+id/num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:text=""/>
 
     </LinearLayout>
@@ -47,11 +59,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:text="中奖金额:"/>
 
         <TextView
                 android:id="@+id/price"
                 android:layout_width="180dp"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:text=""/>
 
@@ -59,11 +75,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:text="排行数:"/>
 
         <TextView
                 android:id="@+id/ranking"
                 android:layout_width="wrap_content"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:text=""/>
 
@@ -76,6 +96,8 @@
 
         <TextView
                 android:id="@+id/type"
+                android:textColor="@color/whit"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="3dp"
