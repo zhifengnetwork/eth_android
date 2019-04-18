@@ -21,9 +21,9 @@ interface BetContract {
 
     interface Presenter : IPresenter<View> {
 
-        fun requestBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?)
+        fun requestBet(type: Int, payment: Int?, money: String?, list: String?)
 
-        fun requestConfirmBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?)
+        fun requestConfirmBet(type: Int, payment: Int?, money: String?, List: String?)
 
         fun requestGameHome()
     }

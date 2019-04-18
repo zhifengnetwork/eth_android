@@ -16,6 +16,8 @@ class InvitePresenter:BasePresenter<InviteContract.View>(),InviteContract.Presen
                     dismissLoading()
                     when(it.status){
                         1-> getInvite(it.data)
+                        -1 -> {
+                        }
                         else -> showError("error", it.status)
                     }
                 }

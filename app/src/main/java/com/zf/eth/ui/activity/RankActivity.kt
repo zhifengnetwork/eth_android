@@ -9,6 +9,7 @@ import com.zf.eth.mvp.bean.RankBean
 import com.zf.eth.mvp.contract.RankContract
 import com.zf.eth.mvp.presenter.RankPresenter
 import com.zf.eth.ui.fragment.RankFragment
+import com.zf.eth.ui.fragment.RankWinFragment
 import kotlinx.android.synthetic.main.activity_rank.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -23,9 +24,11 @@ class RankActivity : BaseActivity(), RankContract.View {
         total.text = bean.total
 
         val titles = arrayListOf("今日投资排名", "昨日投资数据", "中奖名单")
-        val fgms = arrayListOf(RankFragment.getInstance(RankFragment.TODAY, bean),
-                RankFragment.getInstance(RankFragment.YESTERDAY, bean),
-                RankFragment.getInstance(RankFragment.LIST, bean))
+        val fgms = arrayListOf(
+            RankFragment.getInstance(RankFragment.TODAY, bean),
+            RankFragment.getInstance(RankFragment.YESTERDAY, bean),
+            RankWinFragment.getInstance(bean)
+        )
         val adapter = BaseFragmentAdapter(supportFragmentManager, fgms, titles)
         viewPager.adapter = adapter
         viewPager.offscreenPageLimit = 3

@@ -23,16 +23,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), UserInfoContract.View {
 
-    override fun setNotLogin() {
-        //未登录
-    }
-
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
     }
 
-    override fun setUserInfo(bean: UserInfoBean) {
-        UserInfoLiveData.value = bean
+    override fun setNotLogin() {
     }
 
     override fun showLoading() {
@@ -41,11 +36,22 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun dismissLoading() {
     }
 
+    override fun setUserInfo(bean: UserInfoBean) {
+        UserInfoLiveData.value = bean
+
+    }
+
+
     override fun initToolBar() {
     }
 
+    private val infoPresenter by lazy { UserInfoPresenter() }
+
+
     companion object {
-        private var mIndex = 0
+
+        var mIndex = 0
+
         fun actionStart(context: Context?, index: Int? = 0) {
             mIndex = index ?: 0
             context?.startActivity(Intent(context, MainActivity::class.java))
@@ -60,16 +66,37 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun layoutId(): Int = R.layout.activity_main
 
-    private val mTitles = listOf("首页", "棋牌娱乐", "C2C", "我的")
+    private val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
+        listOf("首页",
+//                "棋牌娱乐",
+//                "C2C",
+                "我的"
+        ) else listOf(
+            "首页",
+            "棋牌娱乐",
+            "C2C",
+            "我的")
 
-    private val mIconSelectIds = listOf(
+    private val mIconSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
+        listOf(
+                R.drawable.homepage,
+//                R.drawable.chess1,
+//                R.drawable.two1,
+                R.drawable.my1
+        ) else listOf(
             R.drawable.homepage,
             R.drawable.chess1,
             R.drawable.two1,
             R.drawable.my1
     )
 
-    private val mIconUnSelectIds = listOf(
+    private val mIconUnSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
+        listOf(
+                R.drawable.home_page1,
+//            R.drawable.chess,
+//            R.drawable.two,
+                R.drawable.my
+        ) else listOf(
             R.drawable.home_page1,
             R.drawable.chess,
             R.drawable.two,
@@ -85,9 +112,10 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (savedInstanceState != null) {
-            mIndex = savedInstanceState.getInt("currTabIndex")
-        }
+        mIndex = 0
+//        if (savedInstanceState != null) {
+//            mIndex = savedInstanceState.getInt("currTabIndex")
+//        }
         super.onCreate(savedInstanceState)
         initTab()
         tabLayout.currentTab = mIndex
@@ -103,11 +131,23 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                         mHomeFragment = it
                         transaction.add(R.id.fl_container, it, "home")
                     }
-            1 -> mDiscoveryFragment?.let { transaction.show(it) }
-                    ?: ChessFragment.getInstance().let {
-                        mDiscoveryFragment = it
-                        transaction.add(R.id.fl_container, it, "discovery")
-                    }
+            1 -> {
+                if (UserInfoLiveData.value?.member?.type == "2") {
+                    //锁户
+                    mMineFragment?.let { transaction.show(it) }
+                            ?: MeFragment.getInstance().let {
+                                mMineFragment = it
+                                transaction.add(R.id.fl_container, it, "me")
+                            }
+                } else {
+                    //未锁户
+                    mDiscoveryFragment?.let { transaction.show(it) }
+                            ?: ChessFragment.getInstance().let {
+                                mDiscoveryFragment = it
+                                transaction.add(R.id.fl_container, it, "discovery")
+                            }
+                }
+            }
             2 -> mHotFragment?.let { transaction.show(it) }
                     ?: C2CFragment.getInstance().let {
                         mHotFragment = it
@@ -154,13 +194,13 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         })
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        //记录fragment的位置,防止崩溃 activity被系统回收时，fragment错乱
-        if (tabLayout != null) {
-            outState.putInt("currTabIndex", mIndex)
-        }
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        //记录fragment的位置,防止崩溃 activity被系统回收时，fragment错乱
+//        if (tabLayout != null) {
+//            outState.putInt("currTabIndex", mIndex)
+//        }
+//    }
 
 
     private var mExitTime: Long = 0
@@ -182,12 +222,12 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun initView() {
         infoPresenter.attachView(this)
+
     }
 
     override fun initEvent() {
     }
 
-    private val infoPresenter by lazy { UserInfoPresenter() }
 
     override fun start() {
         infoPresenter.requestUserInfo()

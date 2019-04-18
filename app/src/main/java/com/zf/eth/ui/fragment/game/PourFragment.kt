@@ -4,11 +4,13 @@ import android.app.Activity
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.bean.BetBean
 import com.zf.eth.mvp.bean.GameHomeBean
 import com.zf.eth.mvp.bean.LotteryNumber
+import com.zf.eth.mvp.bean.PourNumBean
 import com.zf.eth.mvp.contract.BetContract
 import com.zf.eth.mvp.presenter.BetPresenter
 import com.zf.eth.showToast
@@ -18,7 +20,6 @@ import com.zf.eth.ui.adapter.PourAdapter
 import com.zf.eth.utils.DensityUtil
 import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.RecyclerViewDivider
-import com.zf.eth.utils.TimeUtils
 import com.zf.eth.view.LayoutGravity
 import com.zf.eth.view.dialog.GameBuyDialog
 import com.zf.eth.view.dialog.MultipleDialog
@@ -61,22 +62,32 @@ class PourFragment : BaseFragment(), BetContract.View {
         val list = adapter.pourData
         //传递给后台的参数
         val data: Array<Array<String>> = Array(list.size) { arrayOf("", "") }
-        var num = 0
 
+        var num = 0
+        val jsonList = ArrayList<PourNumBean>()
         repeat(list.size) {
             //求总共多少注
             num += list[it].multiple
-
-            data[it] = arrayOf(
+            jsonList.add(
+                PourNumBean(
                     list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
                     list[it].multiple.toString()
+                )
             )
+//            data[it] = arrayOf(
+//                list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
+//                list[it].multiple.toString()
+//            )
         }
+
+        LogUtils.e(">>>>>>:" + data + "   >" + data.toString() + "    >" + data + "   >" + Gson().toJson(data))
+
+        val finalJson = Gson().toJson(jsonList)
+
         //求下注金额（下注总数*单价）
         val price = (BigDecimal(num.toString()).multiply(BigDecimal(unitPrice.text.toString()))).toString()
-
         GameBuyDialog.showDialog(childFragmentManager, bean, num.toString(), price).onConfirmListener = { payType ->
-            betPresenter.requestConfirmBet(2, payType, "1", data)
+            betPresenter.requestConfirmBet(2, payType, "1", finalJson)
         }
     }
 
@@ -106,10 +117,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(
-                RecyclerViewDivider(
-                        context, LinearLayout.VERTICAL,
-                        1, ContextCompat.getColor(context!!, R.color.color_game_item)
-                )
+            RecyclerViewDivider(
+                context, LinearLayout.VERTICAL,
+                1, ContextCompat.getColor(context!!, R.color.color_game_item)
+            )
         )
     }
 
@@ -137,10 +148,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         //开奖号
         drawLayout.setOnClickListener {
             val popupWindow = object : DrawWinPopupWindow(
-                    activity as Activity,
-                    R.layout.pop_draw_win, DensityUtil.dp2px(120f),
-                    DensityUtil.dp2px(150f),
-                    lotteryData
+                activity as Activity,
+                R.layout.pop_draw_win, DensityUtil.dp2px(120f),
+                DensityUtil.dp2px(150f),
+                lotteryData
             ) {}
             val layoutGravity = LayoutGravity(LayoutGravity.ALIGN_RIGHT)
             popupWindow.showBashOfAnchor(drawLayout, layoutGravity, 0, 0)

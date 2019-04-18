@@ -10,7 +10,7 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
     private val model: BetModel by lazy { BetModel() }
 
     //1.确认信息
-    override fun requestBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?) {
+    override fun requestBet(type: Int, payment: Int?, money: String?, list: String?) {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestBet(type, payment, money, list)
@@ -19,6 +19,8 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
                     dismissLoading()
                     when (it.status) {
                         1 -> if (type == 1) setBet(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -32,7 +34,7 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
     }
 
     //2.确认下注
-    override fun requestConfirmBet(type: Int, payment: Int?, money: String?, list: Array<Array<String>>?) {
+    override fun requestConfirmBet(type: Int, payment: Int?, money: String?, list: String?) {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestConfirmBet(type, payment, money, list)
@@ -41,6 +43,8 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
                     dismissLoading()
                     when (it.status) {
                         1 -> setConfirmBeat(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -63,6 +67,8 @@ class BetPresenter : BasePresenter<BetContract.View>(), BetContract.Presenter {
                     dismissLoading()
                     when (it.status) {
                         1 -> setGameHome(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

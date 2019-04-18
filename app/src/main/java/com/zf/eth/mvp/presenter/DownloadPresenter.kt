@@ -16,6 +16,8 @@ class DownloadPresenter:BasePresenter<DownloadContract.View>(),DownloadContract.
                     dismissLoading()
                     when (it.status) {
                         1 -> getDownload(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

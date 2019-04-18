@@ -126,6 +126,7 @@
                     android:layout_marginLeft="40dp"
                     android:background="@null"
                     android:hint="请输入您的登录密码"
+                    android:digits="@string/filterPwd"
                     android:textColor="@color/whit"
                     android:textColorHint="#92a0b3"
                     android:inputType="textPassword"
@@ -159,6 +160,7 @@
                     android:textColor="@color/whit"
                     android:textColorHint="#92a0b3"
                     android:inputType="textPassword"
+                    android:digits="@string/filterPwd"
                     android:singleLine="true"
                     android:textSize="15sp"/>
 

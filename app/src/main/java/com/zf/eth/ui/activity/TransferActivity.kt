@@ -42,6 +42,7 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
     //转账成功
     override fun setTransfer(msg: String) {
         showToast(msg)
+        finish()
     }
 
     override fun showLoading() {
@@ -107,10 +108,9 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
                 //扣除手续费
                 deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
                 //实际到账
-                //subtract减号
-                //divide 除法
+                //subtract减号 divide 除法
                 trueReceive.text =
-                    "¥" + userPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                    "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
             }
 
             if (input.text.isNotEmpty()) {

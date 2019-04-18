@@ -112,7 +112,7 @@ interface ApiService {
             @Field("type") type: Int,
             @Field("payment") payment: Int?,
             @Field("money") money: String?,
-            @Field("list") list: Array<Array<String>>?
+            @Field("list") list: String?
     ): Observable<BaseBean<BetBean>>
 
     /**
@@ -127,8 +127,8 @@ interface ApiService {
             @Field("type") type: Int,
             @Field("payment") payment: Int?,
             @Field("money") money: String?,
-            @Field("list") list: Array<Array<String>>?
-    ): Observable<BaseBean<List<Unit>>>
+            @Field("list") list: String?
+    ): Observable<BaseBean<Unit>>
 
     /**
      * 钱包提现
@@ -139,7 +139,7 @@ interface ApiService {
             @Field("r") r: String,
             @Field("userid") userid: String,
             @Field("money") money: String?
-    ): Observable<BaseBean<String>>
+    ): Observable<BaseBean<Unit>>
 
     /**
      * 转账
@@ -151,7 +151,7 @@ interface ApiService {
             @Field("userid") userid: String,
             @Field("money") money: String,
             @Field("id") id: String
-    ): Observable<BaseBean<List<Unit>>>
+    ): Observable<BaseBean<Unit>>
 
     /**
      * 手续费
@@ -185,7 +185,9 @@ interface ApiService {
             @Field("userid") userid: String,
             @Field("id") id: String,
             @Field("type") type: String
+
     ): Observable<BaseBean<Unit>>
+
 
     /**
      *c2c中心-全部订单
@@ -196,7 +198,9 @@ interface ApiService {
             @Field("r") r: String,
             @Field("userid") userid: String,
             @Field("status") status: String
+
     ): Observable<BaseBean<MyOrderBean>>
+
 
     /**
      *c2c中心点击卖出或者买入按钮
@@ -213,6 +217,7 @@ interface ApiService {
             @Field("trx") trx: String,
             @Field("trx2") trx2: String
     ): Observable<BaseBean<Unit>>
+
 
     /**
      *c2c中心--撤销订单
@@ -250,7 +255,7 @@ interface ApiService {
     ): Observable<BaseBean<AppealListBean>>
 
     /**
-     *c2c中心--确认申诉
+     *c2c中心--确认申诉2c中心--确认申诉
      */
     @POST("app/index.php")
     @FormUrlEncoded
@@ -423,7 +428,7 @@ interface ApiService {
             @Field("r") r: String,
             @Field("file") file: String,
             @Field("userid") userid: String
-    ): Observable<BaseBean<Unit>>
+    ): Observable<BaseBean<ImageViewBean>>
 
     /**
      * 激活账户-投资购买
@@ -448,7 +453,17 @@ interface ApiService {
             @Field("userid") userid: String,
             @Field("money") money: String,
             @Field("type") type: String
-    ): Observable<BaseBean<List<Unit>>>
+    ): Observable<BaseBean<Unit>>
+
+    /**
+     * 一键复投 获取信息
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun requestRePayInfo(
+            @Field("r") r: String,
+            @Field("userid") userid: String
+    ): Observable<BaseBean<RePayInfoBean>>
 
     /**
      * 投资排行
@@ -459,6 +474,40 @@ interface ApiService {
             @Field("r") r: String,
             @Field("userid") userid: String
     ): Observable<BaseBean<RankBean>>
+
+    /**
+     * 上传头像
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun requestChangeHead(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("file") file: String
+    ): Observable<BaseBean<ImageViewBean>>
+
+    /**
+     * 修改用户信息
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun requestChangeInfo(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("nickname") nickname: String,
+            @Field("avatar") avatar: String
+    ): Observable<BaseBean<Unit>>
+
+    /**
+     * 退出机制
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun requestLogOut(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("money") money: String
+    ): Observable<BaseBean<Unit>>
 
 }
 

@@ -2,7 +2,6 @@ package com.zf.eth.ui.activity
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.base.BaseFragmentAdapter
@@ -14,12 +13,12 @@ import kotlinx.android.synthetic.main.activity_system_bulletin.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class SystemBulletinActivity : BaseActivity(), BulletinContract.View {
+
     override fun showError(msg: String, errorCode: Int) {
 
     }
 
     override fun getBulletin(bean: BulletinBean) {
-        Log.e("检测", "getBulletin执行了" + bean.categorys[0].category_name)
         titleName.text = bean.article_sys.article_title
 
         val mFragment = ArrayList<ClassifyFragment>()
@@ -50,6 +49,7 @@ class SystemBulletinActivity : BaseActivity(), BulletinContract.View {
 
     override fun initToolBar() {
         titleName.text = "平台公告"
+        backLayout.setOnClickListener { finish() }
     }
 
     override fun layoutId(): Int = R.layout.activity_system_bulletin

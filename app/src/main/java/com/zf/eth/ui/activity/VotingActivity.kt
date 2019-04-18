@@ -5,6 +5,7 @@ import android.content.Intent
 import android.text.TextUtils
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
+import com.zf.eth.mvp.bean.RePayInfoBean
 import com.zf.eth.mvp.contract.RePayContract
 import com.zf.eth.mvp.presenter.RePayPresenter
 import com.zf.eth.showToast
@@ -17,6 +18,12 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  *       自由钱包复投
  */
 class VotingActivity : BaseActivity(), RePayContract.View {
+
+    //获取复投信息
+    override fun setRePayInfo(bean: RePayInfoBean) {
+        currentPrice.text = bean.credit1
+        money.text = if (mType == FREE_WALLET) bean.credit2 else bean.credit4
+    }
 
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
@@ -78,6 +85,7 @@ class VotingActivity : BaseActivity(), RePayContract.View {
     }
 
     override fun start() {
+        presenter.requestRePayInfo()
     }
 
     override fun onDestroy() {

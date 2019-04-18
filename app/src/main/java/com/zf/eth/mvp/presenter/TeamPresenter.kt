@@ -38,6 +38,8 @@ class TeamPresenter : BasePresenter<TeamContract.View>(), TeamContract.Presenter
                                 }
                                 mPage += 1
                             }
+                            -1 -> {
+                            }
                             else -> if (mPage == 1) showError(it.msg, it.status) else loadMoreError(it.msg, it.status)
                         }
                         dismissLoading()

@@ -3,6 +3,7 @@ package com.zf.eth.ui.fragment
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.mvp.bean.HomeSetBean
 import com.zf.eth.mvp.contract.HomeContract
 import com.zf.eth.mvp.presenter.HomePresenter
@@ -90,31 +91,55 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //总收益
         totalEarnLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             EarnActivity.actionStart(context, EarnActivity.TOTAL)
         }
 
         //今日收益
         todayEarnLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             EarnActivity.actionStart(context, EarnActivity.TODAY)
         }
 
         //团队
         teamLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             TeamActivity.actionStart(context)
         }
 
         //激活账号（投资购买）
         buyLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             BuyActivity.actionStart(context)
         }
 
         //投资记录
         investLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             InvestActivity.actionStart(context, InvestActivity.TOUZI)
         }
 
         //钱包余额
         walletLayout.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             WalletActivity.actionStart(context)
         }
 

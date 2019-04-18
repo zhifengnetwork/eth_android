@@ -1,123 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="200dp"
+            android:background="@drawable/tupian">
 
-            <RelativeLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@drawable/tupian">
+                android:layout_height="match_parent"
+                android:alpha="0.5"
+                android:background="#000000" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:alpha="0.5"
-                    android:background="#000000" />
+            <com.zf.eth.view.CircleImageView
+                android:id="@+id/me_img"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="25dp"
+                android:background="@color/colorLine" />
 
-                <com.zf.eth.view.CircleImageView
-                    android:id="@+id/me_img"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginBottom="25dp"
-                    android:background="@color/colorLine" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginBottom="25dp"
-                    android:layout_toRightOf="@id/me_img"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/nickName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:textColor="#ffffff"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/vipId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="会员ID："
-                        android:textColor="#ffffff"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/vipLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="会员等级："
-                        android:textColor="#ffffff"
-                        android:textSize="11sp" />
-
-                    <TextView
-                        android:id="@+id/martLevel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="市场等级："
-                        android:textColor="#ffffff"
-                        android:textSize="11sp" />
-
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="25dp"
+                android:layout_toRightOf="@id/me_img"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ifActive"
+                    android:id="@+id/nickName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginRight="25dp"
-                    android:layout_marginBottom="25dp"
                     android:text=""
-                    android:textColor="#fcce6a"
-                    android:textSize="15sp" />
+                    android:textColor="#ffffff"
+                    android:textSize="11sp" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/vipId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="会员ID："
+                    android:textColor="#ffffff"
+                    android:textSize="11sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/me_oneRelView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:id="@+id/vipLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="会员等级："
+                    android:textColor="#ffffff"
+                    android:textSize="11sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/me_twoRelView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                <TextView
+                    android:id="@+id/martLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="市场等级："
+                    android:textColor="#ffffff"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/logOut"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="31dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/shape_me_logout"
-                android:gravity="center"
-                android:text="退出登录"
-                android:textColor="#ffffff"
+                android:id="@+id/ifActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="25dp"
+                android:text=""
+                android:textColor="#fcce6a"
                 android:textSize="15sp" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+        </RelativeLayout>
+
+        <include layout="@layout/layout_me" />
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+        <!--android:id="@+id/me_oneRelView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp" />-->
+
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+        <!--android:id="@+id/me_twoRelView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp" />-->
+
+        <TextView
+            android:id="@+id/logOut"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_me_logout"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -19,6 +19,8 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                     dismissLoading()
                     when (it.status) {
                         1 -> setHome(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

@@ -11,7 +11,7 @@ class WithDrawModel {
 
     private val userId by Preference(UriConstant.USER_ID, "")
 
-    fun requestWithDraw(money: String): Observable<BaseBean<String>> {
+    fun requestWithDraw(money: String): Observable<BaseBean<Unit>> {
         return RetrofitManager.service.requestWithDraw(
             "member.androidapi.submit",
             userId,

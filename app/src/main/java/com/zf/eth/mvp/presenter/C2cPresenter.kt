@@ -15,6 +15,8 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
                     dismissLoading()
                     when (it.status) {
                         1 -> setSelloutSuccess(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -40,6 +42,7 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
             .subscribe({
                 mRootView?.apply {
                     dismissLoading()
+
                     when (it.status) {
                         1 -> {
                             if (mPage == 1){
@@ -57,6 +60,7 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
                             mPage += 1
                         }
                         else -> if (mPage == 1) showError(it.msg, it.status) else loadMoreError(it.msg, it.status)
+
                     }
                     dismissLoading()
                 }

@@ -14,20 +14,22 @@ class BuyPresenter : BasePresenter<BuyContract.View>(), BuyContract.Presenter {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestConfirmPay(money, url)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setConfirmPay()
-                            else -> showError(it.msg, it.status)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setConfirmPay()
+                        -1 -> {
                         }
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 
@@ -36,20 +38,22 @@ class BuyPresenter : BasePresenter<BuyContract.View>(), BuyContract.Presenter {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestPayImg(file)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setPayImg(it.msg)
-                            else -> showError(it.msg, it.status)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setPayImg(it.data.img)
+                        -1 -> {
                         }
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 
@@ -58,20 +62,22 @@ class BuyPresenter : BasePresenter<BuyContract.View>(), BuyContract.Presenter {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestBuyInfo()
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setBuyInfo(it.data)
-                            else -> showError(it.msg, it.status)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setBuyInfo(it.data)
+                        -1 -> {
                         }
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 }

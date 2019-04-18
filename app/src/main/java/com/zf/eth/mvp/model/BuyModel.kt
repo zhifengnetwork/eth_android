@@ -3,6 +3,7 @@ package com.zf.eth.mvp.model
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseBean
 import com.zf.eth.mvp.bean.BuyBean
+import com.zf.eth.mvp.bean.ImageViewBean
 import com.zf.eth.net.RetrofitManager
 import com.zf.eth.scheduler.SchedulerUtils
 import com.zf.eth.utils.Preference
@@ -19,7 +20,7 @@ class BuyModel {
         ).compose(SchedulerUtils.ioToMain())
     }
 
-    fun requestPayImg(file: String): Observable<BaseBean<Unit>> {
+    fun requestPayImg(file: String): Observable<BaseBean<ImageViewBean>> {
         return RetrofitManager.service.requestPayImg(
                 "member.androidapi.new_file_upload",
                 file,

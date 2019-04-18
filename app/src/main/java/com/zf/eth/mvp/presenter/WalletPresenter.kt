@@ -20,6 +20,8 @@ class WalletPresenter : BasePresenter<WalletContract.View>(), WalletContract.Pre
                     dismissLoading()
                     when (it.status) {
                         1 -> setChart(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -42,6 +44,8 @@ class WalletPresenter : BasePresenter<WalletContract.View>(), WalletContract.Pre
                     dismissLoading()
                     when (it.status) {
                         1 -> setWallet(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

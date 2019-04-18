@@ -14,22 +14,22 @@ class ChangePwdModel {
     //获取验证码
     fun requestVerifyCode(mobile: String, temp: String): Observable<BaseBean<Unit>> {
         return RetrofitManager.service.requestVerifyCode(
-                "member.androidapi.verifycode",
-                "0",
-                mobile,
-                temp
+            "member.androidapi.verifycode",
+            "0",
+            mobile,
+            temp
         )
-                .compose(SchedulerUtils.ioToMain())
+            .compose(SchedulerUtils.ioToMain())
     }
 
     //修改密码
     fun requestChangePwd(mobile: String, code: String, pwd: String): Observable<BaseBean<Unit>> {
         return RetrofitManager.service.requestChangePwd(
-                "member.androidapi.cahngepwd",
-                userId,
-                mobile,
-                code,
-                pwd
+            "member.androidapi.changepwd",
+            userId,
+            mobile,
+            code,
+            pwd
         ).compose(SchedulerUtils.ioToMain())
     }
 

@@ -37,6 +37,8 @@ class RecordPresenter : BasePresenter<RecordContract.View>(), RecordContract.Pre
                             }
                             mPage += 1
                         }
+                        -1 -> {
+                        }
                         else -> if (mPage == 1) showError(it.msg, it.status) else loadError(it.msg, it.status)
                     }
                     dismissLoading()

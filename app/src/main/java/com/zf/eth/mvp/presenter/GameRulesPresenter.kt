@@ -19,6 +19,8 @@ class GameRulesPresenter : BasePresenter<GameRulesContract.View>(), GameRulesCon
                     dismissLoading()
                     when (it.status) {
                         1 -> setGameRules(it.data)
+                        -1 -> {
+                        }
                         else -> showError("err", it.status)
                     }
                 }

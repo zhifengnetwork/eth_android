@@ -43,7 +43,7 @@ class RegisterPresenter : BasePresenter<RegisterContract.View>(), RegisterContra
                         1 -> {
                             if (type == "sms_reg") {
                                 setRegister(it.data)
-                            } else if (type == "sms_changepwd ") {
+                            } else if (type == "sms_changepwd") {
                                 setForgetPwd()
                             }
                         }

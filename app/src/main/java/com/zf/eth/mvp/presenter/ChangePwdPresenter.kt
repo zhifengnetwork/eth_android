@@ -14,20 +14,20 @@ class ChangePwdPresenter : BasePresenter<ChangePwdContract.View>(), ChangePwdCon
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestChangePwd(mobile, code, pwd)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setChangePwd()
-                            else -> showError(it.msg, it.status)
-                        }
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setChangePwd()
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 
@@ -36,20 +36,20 @@ class ChangePwdPresenter : BasePresenter<ChangePwdContract.View>(), ChangePwdCon
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestVerifyCode(mobile, temp)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setVerifyCode()
-                            else -> showError(it.msg, it.status)
-                        }
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setVerifyCode()
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 }

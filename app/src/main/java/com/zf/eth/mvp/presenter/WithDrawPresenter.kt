@@ -19,6 +19,10 @@ class WithDrawPresenter : BasePresenter<WithDrawContract.View>(), WithDrawContra
                     dismissLoading()
                     when (it.status) {
                         1 -> setWithDraw(it.msg)
+                        //跳转都钱包地址完善信息
+                        0 -> setPerfectInfo(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

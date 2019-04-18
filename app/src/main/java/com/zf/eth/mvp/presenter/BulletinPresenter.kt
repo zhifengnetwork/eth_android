@@ -16,6 +16,8 @@ class BulletinPresenter:BasePresenter<BulletinContract.View>(),BulletinContract.
                     dismissLoading()
                     when(it.status){
                         1-> getBulletin(it.data)
+                        -1 -> {
+                        }
                         else -> showError("error", it.status)
                     }
                 }

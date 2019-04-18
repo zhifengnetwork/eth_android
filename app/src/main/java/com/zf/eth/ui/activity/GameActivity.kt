@@ -2,9 +2,10 @@ package com.zf.eth.ui.activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
+import com.zf.eth.base.BaseFragmentAdapter
 import com.zf.eth.ui.fragment.game.PourFragment
 import com.zf.eth.ui.fragment.game.RecordFragment
 import com.zf.eth.ui.fragment.game.WinFragment
@@ -26,53 +27,18 @@ class GameActivity : BaseActivity() {
 
     override fun layoutId(): Int = R.layout.activity_game
 
-    private var mPourFragment: PourFragment? = null
-    private var mRecordFragment: RecordFragment? = null
-    private var mWinFragment: WinFragment? = null
-
-    private var mIndex = 0
+    private val fragments = ArrayList<Fragment>()
+    private val titles = arrayListOf("3D下注", "押注记录", "中奖记录")
+    private val adapter by lazy { BaseFragmentAdapter(supportFragmentManager, fragments, titles) }
 
     override fun initView() {
-
-        switchFragment(mIndex)
-    }
-
-    private fun switchFragment(index: Int) {
-        val transaction = supportFragmentManager.beginTransaction()
-        hideFragments(transaction)
-        when (index) {
-            0 -> mPourFragment?.let { transaction.show(it) }
-                ?: PourFragment.getInstance().let {
-                    mPourFragment = it
-                    transaction.add(R.id.fl_container, it, "home")
-                }
-            1 -> mRecordFragment?.let { transaction.show(it) }
-                ?: RecordFragment.getInstance().let {
-                    mRecordFragment = it
-                    transaction.add(R.id.fl_container, it, "discovery")
-                }
-            2 -> mWinFragment?.let { transaction.show(it) }
-                ?: WinFragment.getInstance().let {
-                    mWinFragment = it
-                    transaction.add(R.id.fl_container, it, "hot")
-                }
-            else -> {
-            }
-        }
-        mIndex = index
-        transaction.commitAllowingStateLoss()
-    }
-
-    private fun hideFragments(transaction: FragmentTransaction) {
-        mPourFragment?.let {
-            transaction.hide(it)
-        }
-        mRecordFragment?.let {
-            transaction.hide(it)
-        }
-        mWinFragment?.let {
-            transaction.hide(it)
-        }
+        fragments.clear()
+        fragments.add(PourFragment.getInstance())
+        fragments.add(RecordFragment.getInstance())
+        fragments.add(WinFragment.getInstance())
+        viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = 3
+        tabLayout.setViewPager(viewPager)
     }
 
     override fun initData() {
@@ -80,13 +46,6 @@ class GameActivity : BaseActivity() {
 
 
     override fun initEvent() {
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                game.id -> switchFragment(0)
-                bet.id -> switchFragment(1)
-                prize.id -> switchFragment(2)
-            }
-        }
     }
 
     override fun start() {

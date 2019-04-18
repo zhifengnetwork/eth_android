@@ -27,8 +27,8 @@ class TransferAdapter(val context: Context, val data: List<InvestList>) :
         holder.itemView.apply {
             time.text = data[position].createtime
             name.text = data[position].nickname
-            price.text = "${data[position].money2}个"
-            serviceMoney.text = "${data[position].money}个"
+            price.text = "${data[position].money}个"
+            serviceMoney.text = "${data[position].money2}个"
         }
     }
 

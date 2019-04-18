@@ -10,7 +10,8 @@ import com.zf.eth.mvp.bean.RankBean
 import com.zf.eth.ui.fragment.RankFragment
 import kotlinx.android.synthetic.main.item_rank_content.view.*
 
-class RankAdapter(val context: Context?, val type: String, val data: RankBean?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RankAdapter(val context: Context?, val type: String, val data: RankBean?) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val HEADTYPE = 0
     private val CONTENTTYPE = 1
@@ -62,9 +63,6 @@ class RankAdapter(val context: Context?, val type: String, val data: RankBean?) 
                             mayWin.text = "${it[position - 1].yuji}(${it[position - 1].bfb}%)"
                             price.text = it[position - 1].moneys
                         }
-                    }
-                    RankFragment.LIST -> {
-
                     }
                 }
 

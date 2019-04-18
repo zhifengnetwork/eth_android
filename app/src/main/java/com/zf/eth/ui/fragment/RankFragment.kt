@@ -34,11 +34,19 @@ class RankFragment : BaseFragment() {
 
     private val adapter by lazy { RankAdapter(context, mType, mBean) }
 
+    private val divider by lazy {
+        RecyclerViewDivider(
+            context, LinearLayout.VERTICAL,
+            1, ContextCompat.getColor(context!!, R.color.colorBackground)
+        )
+    }
+
+
     override fun initView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(RecyclerViewDivider(context, LinearLayout.VERTICAL,
-                1, ContextCompat.getColor(context!!, R.color.colorBackground)))
+        recyclerView.addItemDecoration(divider)
+
     }
 
     override fun lazyLoad() {
@@ -47,4 +55,5 @@ class RankFragment : BaseFragment() {
 
     override fun initEvent() {
     }
+
 }

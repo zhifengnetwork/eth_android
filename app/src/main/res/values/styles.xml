@@ -37,6 +37,7 @@
     <style name="TabLayoutTextStyle_c2c">
         <item name="android:textSize">14sp</item>
     </style>
+
     <style name="game_num">
         <item name="android:layout_width">35dp</item>
         <item name="android:layout_height">35dp</item>
@@ -56,6 +57,19 @@
     <style name="pop_translate_around">
         <item name="android:windowEnterAnimation">@anim/pop_translate_round_in</item>
         <item name="android:windowExitAnimation">@anim/pop_translate_round_out</item>
+    </style>
+
+    <style name="me_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:background">#142241</item>
+        <item name="android:drawableRight">@drawable/tiaozhuan</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/whit</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
