@@ -16,6 +16,8 @@ class HangonsalePresenter:BasePresenter<HangonsaleContract.View>(),HangonsaleCon
                     dismissLoading()
                     when (it.status) {
                         1 -> setHangonsaleSuccess(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

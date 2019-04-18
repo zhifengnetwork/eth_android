@@ -14,20 +14,22 @@ class RankPresenter : BasePresenter<RankContract.View>(), RankContract.Presenter
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestRank()
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setRank(it.data)
-                            else -> showError(it.msg, it.status)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setRank(it.data)
+                        -1 -> {
                         }
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 }

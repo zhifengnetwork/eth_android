@@ -15,6 +15,8 @@ class C2cPresenter:BasePresenter<C2cContract.View>(),C2cContract.Presenter{
                     dismissLoading()
                     when(it.status){
                         1 -> setSelloutSuccess(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }
@@ -37,6 +39,8 @@ class C2cPresenter:BasePresenter<C2cContract.View>(),C2cContract.Presenter{
                     dismissLoading()
                     when(it.status){
                          1-> setC2c(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

@@ -9,7 +9,9 @@ interface WithDrawContract {
 
         fun showError(msg: String, errorCode: Int)
 
-        fun setWithDraw(msg:String)
+        fun setWithDraw(msg: String)
+
+        fun setPerfectInfo(msg:String)
 
     }
 

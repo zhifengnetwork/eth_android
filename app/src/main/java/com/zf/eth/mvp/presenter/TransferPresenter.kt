@@ -19,6 +19,8 @@ class TransferPresenter : BasePresenter<TransferContract.View>(), TransferContra
                     dismissLoading()
                     when (it.status) {
                         1 -> setTransfer(it.msg)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

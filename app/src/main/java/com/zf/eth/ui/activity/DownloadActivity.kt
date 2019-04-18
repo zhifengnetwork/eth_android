@@ -16,7 +16,6 @@ class DownloadActivity:BaseActivity(),DownloadContract.View{
     }
 
     override fun getDownload(bean: DownloadBean) {
-        Log.e("检测","下载接口接收数据成功")
     }
 
     override fun showLoading() {

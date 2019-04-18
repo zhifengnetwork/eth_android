@@ -36,6 +36,8 @@ class ChangePasswordActivity : BaseActivity(), ChangePwdContract.View {
     }
 
     override fun setChangePwd() {
+        showToast("密码修改成功")
+        finish()
     }
 
     override fun showLoading() {
@@ -76,6 +78,18 @@ class ChangePasswordActivity : BaseActivity(), ChangePwdContract.View {
     private var isRun = false
 
     override fun initEvent() {
+
+        confirm.setOnClickListener {
+            when {
+                phoneNum.text.isEmpty() -> showToast("请输入手机号码")
+                code.text.isEmpty() -> showToast("请输入验证码")
+                pwd.text.isEmpty() -> showToast("请输入密码")
+                rePwd.text.toString() != pwd.text.toString() -> showToast("两次密码输入不一致")
+                else -> presenter.requestChangePwd(phoneNum.text.toString(), code.text.toString(), pwd.text.toString())
+            }
+
+        }
+
         getCode.setOnClickListener {
             if (TextUtils.isEmpty(phoneNum.text)) {
                 ToastUtils.showShort(this, "请输入手机号")

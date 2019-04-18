@@ -19,7 +19,7 @@ class BetModel {
         type: Int,
         payment: Int?,
         money: String?,
-        list: Array<Array<String>>?
+        list: String?
     ): Observable<BaseBean<BetBean>> {
         return RetrofitManager.service.requestBet(
             "member.androidapi.bets",
@@ -29,13 +29,13 @@ class BetModel {
         ).compose(SchedulerUtils.ioToMain())
     }
 
-    //第一步，确认下注
+    //第二步，确认下注
     fun requestConfirmBet(
         type: Int,
         payment: Int?,
         money: String?,
-        list: Array<Array<String>>?
-    ): Observable<BaseBean<List<Unit>>> {
+        list: String?
+    ): Observable<BaseBean<Unit>> {
         return RetrofitManager.service.requestConfirmBet(
             "member.androidapi.bets",
             userId,

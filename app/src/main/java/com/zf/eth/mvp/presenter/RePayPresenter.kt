@@ -10,24 +10,50 @@ class RePayPresenter : BasePresenter<RePayContract.View>(), RePayContract.Presen
 
     private val model: RePayModel by lazy { RePayModel() }
 
+    override fun requestRePayInfo() {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = model.requestRePayInfo()
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setRePayInfo(it.data)
+                        -1 -> {
+                        }
+                        else -> showError(it.msg, it.status)
+                    }
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
+        addSubscription(disposable)
+    }
+
+    //确认复投
     override fun requestRePay(money: String, type: String) {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.requestRePay(money, type)
-                .subscribe({
-                    mRootView?.apply {
-                        dismissLoading()
-                        when (it.status) {
-                            1 -> setRePay()
-                            else -> showError(it.msg, it.status)
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> setRePay()
+                        -1 -> {
                         }
+                        else -> showError(it.msg, it.status)
                     }
-                }, {
-                    mRootView?.apply {
-                        dismissLoading()
-                        showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
-                    }
-                })
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
         addSubscription(disposable)
     }
 }

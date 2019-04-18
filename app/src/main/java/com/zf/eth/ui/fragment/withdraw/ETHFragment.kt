@@ -12,6 +12,7 @@ import com.zf.eth.mvp.contract.WithDrawContract
 import com.zf.eth.mvp.presenter.WalletPresenter
 import com.zf.eth.mvp.presenter.WithDrawPresenter
 import com.zf.eth.showToast
+import com.zf.eth.ui.activity.WalletAddressActivity
 import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.fragment_eth.*
 import java.math.BigDecimal
@@ -20,6 +21,12 @@ import java.math.BigDecimal
  * ETH账户提现
  */
 class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
+
+    //跳转都钱包地址完善信息
+    override fun setPerfectInfo(msg:String) {
+        showToast(msg)
+        WalletAddressActivity.actionStart(context)
+    }
 
     //手续费
     override fun setChart(bean: ChargeBean) {
@@ -103,9 +110,9 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
                 val hundred = BigDecimal("100")
                 //扣除手续费
                 deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
-                //实际到账
+                //实际到账  subtract：减号   multiply：乘号 divide：除号
                 trueReceive.text =
-                    "¥" + userPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                    "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
             }
 
             if (input.text.isEmpty()) {

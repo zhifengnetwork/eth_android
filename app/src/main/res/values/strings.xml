@@ -14,4 +14,6 @@
     <string name="load_loading">加载中</string>
     <string name="load_noting">没有更多数据了</string>
 
+    <string name="filterPwd">0123456789zxcvbnmasdfghjklqwertyuiopZXCVBNMASDFGHJKLQWERTYUIOP</string>
+
 </resources>

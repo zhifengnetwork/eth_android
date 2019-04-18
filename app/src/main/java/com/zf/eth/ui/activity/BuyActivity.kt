@@ -13,8 +13,11 @@ import com.zf.eth.mvp.presenter.BuyPresenter
 import com.zf.eth.showToast
 import com.zf.eth.utils.Base64Utils
 import com.zf.eth.utils.GlideUtils
+import com.zf.eth.utils.LogUtils
+import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.activity_buy.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import java.math.BigDecimal
 
 /**
  * 账户激活 投资购买
@@ -32,6 +35,7 @@ class BuyActivity : BaseActivity(), BuyContract.View {
     //支付凭证
     override fun setPayImg(url: String) {
         mUrl = url
+        GlideUtils.loadUrlImage(this, mUrl, payImg)
         showToast("上传凭证成功")
     }
 
@@ -44,6 +48,7 @@ class BuyActivity : BaseActivity(), BuyContract.View {
         typeTxt.text = if (bean.list.type == "0") "激活投资" else "追加投资"
         upLimit.text = bean.list.bibi
         address.text = bean.list.add
+        mostPrice.text = (BigDecimal(bean.list.bibi).subtract(BigDecimal(bean.list.credit1))).toString()
 
 
         GlideUtils.loadUrlImage(this, UriConstant.BASE_IMG_URL + bean.list.weixinfile, qrCode)
@@ -77,13 +82,18 @@ class BuyActivity : BaseActivity(), BuyContract.View {
 
     override fun initView() {
         presenter.attachView(this)
+        price.filters = arrayOf(PriceInputFilter())
     }
 
     override fun initEvent() {
 
         //确定购买
         confirmPay.setOnClickListener {
-            presenter.requestConfirmPay(price.text.toString(), mUrl)
+            if (mUrl.isEmpty()) {
+                showToast("请上传支付凭证")
+            } else {
+                presenter.requestConfirmPay(price.text.toString(), mUrl)
+            }
         }
 
         //上传支付凭证
@@ -96,7 +106,6 @@ class BuyActivity : BaseActivity(), BuyContract.View {
                     .onResult {
                         val base64 = Base64Utils.bitmapToString(it[0].path)
                         presenter.requestPayImg(base64)
-                        //是否需要转换urlEncode？
                     }
                     .start()
         }

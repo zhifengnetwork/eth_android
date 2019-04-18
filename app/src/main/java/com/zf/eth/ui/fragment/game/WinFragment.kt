@@ -2,7 +2,7 @@ package com.zf.eth.ui.fragment.game
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
-import com.zf.eth.base.BaseFragment
+import com.zf.eth.base.NotLazyBaseFragment
 import com.zf.eth.mvp.bean.WinList
 import com.zf.eth.mvp.contract.WinContract
 import com.zf.eth.mvp.presenter.WinPresenter
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_win.*
 /**
  * 中奖记录
  */
-class WinFragment : BaseFragment(), WinContract.View {
+class WinFragment : NotLazyBaseFragment(), WinContract.View {
 
     override fun showError(msg: String, errorCode: Int) {
         refreshLayout.setEnableLoadMore(false)
@@ -68,7 +68,7 @@ class WinFragment : BaseFragment(), WinContract.View {
 
     override fun getLayoutId(): Int = R.layout.fragment_win
 
-    private val adapter by lazy { WinAdapter(context,data) }
+    private val adapter by lazy { WinAdapter(context, data) }
 
     private val data = ArrayList<WinList>()
 
@@ -87,6 +87,7 @@ class WinFragment : BaseFragment(), WinContract.View {
     }
 
     override fun lazyLoad() {
+        refreshLayout.setNoMoreData(false)
         refreshLayout.setEnableLoadMore(false)
         if (data.isEmpty()) {
             mLayoutStatusView?.showLoading()

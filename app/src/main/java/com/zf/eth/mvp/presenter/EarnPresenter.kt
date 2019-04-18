@@ -18,6 +18,8 @@ class EarnPresenter : BasePresenter<EarnContract.View>(), EarnContract.Presenter
                     dismissLoading()
                     when (it.status) {
                         1 -> setEarn(it.data)
+                        -1 -> {
+                        }
                         else -> showError(it.msg, it.status)
                     }
                 }

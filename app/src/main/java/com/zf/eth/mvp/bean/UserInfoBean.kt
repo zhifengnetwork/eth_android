@@ -2,7 +2,13 @@ package com.zf.eth.mvp.bean
 
 data class UserInfoBean(
         val member: Member,
-        val huiyuanlevel: Level
+        val huiyuanlevel: Level,
+        val money4: String, //可退金额
+        val arr2: AllInvest
+)
+
+data class AllInvest(
+        val money: String
 )
 
 data class Member(

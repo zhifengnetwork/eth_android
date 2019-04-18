@@ -2,7 +2,7 @@ package com.zf.eth.ui.fragment.game
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
-import com.zf.eth.base.BaseFragment
+import com.zf.eth.base.NotLazyBaseFragment
 import com.zf.eth.mvp.bean.RecordList
 import com.zf.eth.mvp.contract.RecordContract
 import com.zf.eth.mvp.presenter.RecordPresenter
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_record.*
 /**
  * 押注记录
  */
-class RecordFragment : BaseFragment(), RecordContract.View {
+class RecordFragment : NotLazyBaseFragment(), RecordContract.View {
 
     override fun setLoadMore(bean: List<RecordList>) {
         data.addAll(bean)
@@ -55,7 +55,6 @@ class RecordFragment : BaseFragment(), RecordContract.View {
     }
 
     override fun dismissLoading() {
-        refreshLayout.finishRefresh()
         refreshLayout.finishLoadMore()
     }
 
@@ -79,6 +78,7 @@ class RecordFragment : BaseFragment(), RecordContract.View {
     }
 
     override fun lazyLoad() {
+        refreshLayout.setNoMoreData(false)
         refreshLayout.setEnableLoadMore(false)
         if (data.isEmpty()) {
             mLayoutStatusView?.showLoading()
