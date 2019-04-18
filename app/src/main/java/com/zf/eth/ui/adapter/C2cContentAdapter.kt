@@ -53,9 +53,6 @@ class C2cContentAdapter(val context: Context?, val list: List<C2cList>) :
 
     }
 
-    fun init() {
-
-    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

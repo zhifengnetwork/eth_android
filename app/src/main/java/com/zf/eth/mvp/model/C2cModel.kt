@@ -11,7 +11,7 @@ import io.reactivex.Observable
 class C2cModel{
     private val userId by Preference(UriConstant.USER_ID, "")
 
-    fun getC2c(page: String,type:String):Observable<BaseBean<C2cBean>>{
+    fun getC2c(page: Int,type:String):Observable<BaseBean<C2cBean>>{
         return RetrofitManager.service.getC2c(
             "member.androidapi.guamairecordjilu",
             userId,
@@ -20,7 +20,7 @@ class C2cModel{
         ).compose(SchedulerUtils.ioToMain())
     }
 
-    fun setC2cSellout(id:String,type:String):Observable<BaseBean<List<Unit>>> {
+    fun setC2cSellout(id:String,type:String):Observable<BaseBean<Unit>> {
         return RetrofitManager.service.setSellout(
             "member.androidapi.sellout",
             userId,

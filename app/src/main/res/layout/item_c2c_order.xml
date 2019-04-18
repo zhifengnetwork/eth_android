@@ -132,6 +132,7 @@
                 android:textColor="@color/whit"
                 android:text="倒计时："/>
         <TextView
+                android:id="@+id/apple_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"

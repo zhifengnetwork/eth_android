@@ -1,361 +1,416 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:background="#3C415F"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3C415F"
+    android:orientation="vertical">
 
-    <include layout="@layout/layout_toolbar"/>
+    <include layout="@layout/layout_toolbar" />
+
     <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
-                android:layout_marginBottom="25dp"
-                android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_margin="15dp"
-                    android:padding="15dp"
-                    android:background="@drawable/shape_c2c_edittext_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#949bc3"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            android:text="订 单 号:"/>
-                    <TextView
-                            android:id="@+id/order_id"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="18dp"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="183"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/shape_c2c_edittext_bg"
+                android:orientation="vertical"
+                android:padding="15dp">
 
-                </LinearLayout>
                 <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#949bc3"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            android:text="挂 卖 人:"/>
-                    <TextView
-                            android:id="@+id/order_openid"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:textStyle="bold"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="1235488465"/>
-
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:padding="15dp"
-                    android:background="@drawable/shape_c2c_edittext_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#949bc3"
-                            android:textSize="15sp"
-                            android:text="挂卖单价:"/>
-                    <TextView
-                            android:id="@+id/order_price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="4.00"/>
-
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#949bc3"
-                            android:textSize="15sp"
-                            android:text="挂卖数量:"/>
-                    <TextView
-                            android:id="@+id/order_sum"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="2"/>
-
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="28dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/whit"
-                        android:textStyle="bold"
+                        android:text="订 单 号:"
+                        android:textColor="#949bc3"
                         android:textSize="15sp"
-                        android:text="待 付 款："/>
-                <TextView
-                        android:id="@+id/order_money"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/order_id"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="18dp"
+                        android:text="183"
                         android:textColor="@color/whit"
-                        android:textStyle="bold"
-                        android:text="8.00"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="28dp"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/whit"
-                        android:textStyle="bold"
+                        android:text="挂 卖 人:"
+                        android:textColor="#949bc3"
                         android:textSize="15sp"
-                        android:text="付 款 人："/>
-                <TextView
-                        android:id="@+id/payee"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/order_openid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:layout_marginLeft="18dp"
+                        android:text="1235488465"
                         android:textColor="@color/whit"
-                        android:textStyle="bold"
-                        android:text="XXXXX"/>
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="28dp"
-                    android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/shape_c2c_edittext_bg"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="挂卖单价:"
+                        android:textColor="#949bc3"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/order_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:text="4.00"
                         android:textColor="@color/whit"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:text="支付方式"/>
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="挂卖数量:"
+                        android:textColor="#949bc3"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/order_sum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:text="2"
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待 付 款："
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/order_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8.00"
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="付 款 人："
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/payee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXXXX"
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付方式"
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
                 <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                 </Spinner>
             </LinearLayout>
+
             <LinearLayout
-                    android:id="@+id/pay_ly"
-                    android:visibility="gone"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginRight="28dp"
-                    android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:id="@+id/pay_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:textColor="@color/whit"
-                        android:text="请扫描二维码完成支付"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="请扫描二维码完成支付"
+                    android:textColor="@color/whit"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
                 <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/bullfighting2"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:id="@+id/bank_ly"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="28dp"
-                    android:layout_marginRight="28dp"
-                    android:padding="10dp"
-                    android:background="@drawable/shape_c2c_eth2_frame"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*请前往当地银行打款"
-                        android:textStyle="bold"
-                        android:textSize="15sp"
-                        android:textColor="#ff0000"/>
-                <RelativeLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:id="@+id/yh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="银行："/>
-                    <TextView
-                            android:layout_toRightOf="@+id/yh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="建设银行"
-                    />
-                    <TextView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:text="复制"/>
-                </RelativeLayout>
-                <RelativeLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:id="@+id/hz"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="户主："/>
-                    <TextView
-                            android:layout_toRightOf="@+id/hz"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="撒阿"
-                    />
-                    <TextView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:text="复制"/>
-                </RelativeLayout>
-                <RelativeLayout
-                        android:layout_marginTop="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:id="@+id/kh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="卡号："/>
-                    <TextView
-                            android:layout_toRightOf="@+id/kh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="15sp"
-                            android:textColor="@color/whit"
-                            android:text="46546131468461654481"
-                    />
-                    <TextView
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:text="复制"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="28dp"
+                    android:src="@drawable/bullfighting2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bank_ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/shape_c2c_eth2_frame"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*请前往当地银行打款"
+                    android:textColor="#ff0000"
                     android:textSize="15sp"
-                    android:textColor="@color/whit"
-                    android:textStyle="bold"
-                    android:text="上传凭证:"/>
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/yh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="银行："
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/yh_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/yh"
+                        android:text="建设银行"
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/copy_yh"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/shape_c2c_eth_btn"
+                        android:gravity="center"
+                        android:text="复制"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/hz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="户主："
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/hz_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/hz"
+                        android:text="撒阿"
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/copy_hz"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/shape_c2c_eth_btn"
+                        android:gravity="center"
+                        android:text="复制"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/kh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="卡号："
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/kh_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/kh"
+                        android:text="46546131468461654481"
+                        android:textColor="@color/whit"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/copy_kh"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/shape_c2c_eth_btn"
+                        android:gravity="center"
+                        android:text="复制"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </LinearLayout>
 
             <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="28dp"
-                    android:layout_marginLeft="28dp"
-                    android:background="@drawable/shape_c2c_eth2_frame"
-                    android:gravity="center"
-                    android:textColor="#737893"
-                    android:textSize="15sp"
-                    android:text="未上传支付凭证"
-            />
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginTop="25dp"
-                    android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="10dp"
+                android:text="上传凭证:"
+                android:textColor="@color/whit"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="130dp"-->
+                <!--android:layout_marginLeft="28dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_marginRight="28dp"-->
+                <!--android:background="@drawable/shape_c2c_eth2_frame"-->
+                <!--android:gravity="center"-->
+                <!--android:text="未上传支付凭证"-->
+                <!--android:textColor="#737893"-->
+                <!--android:textSize="15sp" />-->
+            <ImageView
+                android:id="@+id/payImg"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="28dp"
+                android:background="@drawable/shape_c2c_eth2_frame"
+                android:gravity="center"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+
                 <TextView
-                        android:layout_width="180dp"
-                        android:layout_height="37dp"
-                        android:background="@drawable/shape_c2c_eth_btn"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:textColor="@color/whit"
-                        android:text="确定"
-                />
+                    android:id="@+id/confirm_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="37dp"
+                    android:background="@drawable/shape_c2c_eth_btn"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="@color/whit"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
                 <TextView
-                        android:layout_width="180dp"
-                        android:layout_height="37dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/shape_c2c_eth_btn"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:textColor="@color/whit"
-                        android:text="申诉"
-                />
+                    android:id="@+id/appeal_btn"
+                    android:layout_width="180dp"
+                    android:layout_height="37dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_c2c_eth_btn"
+                    android:gravity="center"
+                    android:text="申诉"
+                    android:textColor="@color/whit"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -2,19 +2,21 @@ package com.zf.eth.mvp.model
 
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseBean
-import com.zf.eth.mvp.bean.MyOrderBean
 import com.zf.eth.net.RetrofitManager
 import com.zf.eth.scheduler.SchedulerUtils
 import com.zf.eth.utils.Preference
 import io.reactivex.Observable
 
-class MyOrderModel{
+class ComplainModel{
     private val userId by Preference(UriConstant.USER_ID, "")
-    fun getMyOrder(status:String): Observable<BaseBean<MyOrderBean>> {
-        return RetrofitManager.service.getMyOrder(
-            "member.androidapi.number_order",
+    fun setComplain(id:String,files:String,text:String,textarea:String): Observable<BaseBean<Unit>>{
+        return RetrofitManager.service.setComplain(
+            "member.androidapi.guamai_appeal_add",
             userId,
-            status
+            id,
+            files,
+            text,
+            textarea
         ).compose(SchedulerUtils.ioToMain())
     }
 }
