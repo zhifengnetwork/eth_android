@@ -39,8 +39,10 @@ class WalletAddressActivity : BaseActivity(), PayManageContract.View {
 
     override fun getPay(bean: PayManageBean) {
         walletAddress.setText(bean.walletaddress)
-        if (bean.walletcode.isNotEmpty()) {
-            GlideUtils.loadUrlImage(this, bean.walletcode, image)
+        bean.walletcode?.let {
+            if (it.isNotEmpty()) {
+                GlideUtils.loadUrlImage(this, bean.walletcode, image)
+            }
         }
     }
 
@@ -83,21 +85,23 @@ class WalletAddressActivity : BaseActivity(), PayManageContract.View {
 
         confirm.setOnClickListener {
             //只需要填两个参数
-            presenter.requestEditPayManege(walletAddress.text.toString(),
-                    mUrl, "", "", "", "", "")
+            presenter.requestEditPayManege(
+                walletAddress.text.toString(),
+                mUrl, "", "", "", "", ""
+            )
         }
 
         image.setOnClickListener {
             Album.image(this)
-                    .multipleChoice()
-                    .camera(true)
-                    .columnCount(3)
-                    .selectCount(1)
-                    .onResult {
-                        val base64 = Base64Utils.bitmapToString(it[0].path)
-                        presenter.requestUpImg(base64, null)
-                    }
-                    .start()
+                .multipleChoice()
+                .camera(true)
+                .columnCount(3)
+                .selectCount(1)
+                .onResult {
+                    val base64 = Base64Utils.bitmapToString(it[0].path)
+                    presenter.requestUpImg(base64, null)
+                }
+                .start()
         }
     }
 

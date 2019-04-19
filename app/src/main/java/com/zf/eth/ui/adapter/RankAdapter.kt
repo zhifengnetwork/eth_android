@@ -50,6 +50,7 @@ class RankAdapter(val context: Context?, val type: String, val data: RankBean?) 
                 when (type) {
                     RankFragment.YESTERDAY -> {
                         data?.yestoday?.let {
+                            rank.text = "第${it[position - 1].type}名"
                             userId.text = it[position - 1].id
                             nickName.text = it[position - 1].nickname
                             mayWin.text = "${it[position - 1].yujis}(${it[position - 1].bfb}%)"
@@ -58,6 +59,7 @@ class RankAdapter(val context: Context?, val type: String, val data: RankBean?) 
                     }
                     RankFragment.TODAY -> {
                         data?.today?.let {
+                            rank.text = "第${it[position - 1].type}名"
                             userId.text = it[position - 1].id
                             nickName.text = it[position - 1].nickname
                             mayWin.text = "${it[position - 1].yuji}(${it[position - 1].bfb}%)"

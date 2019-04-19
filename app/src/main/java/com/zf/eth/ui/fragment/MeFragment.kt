@@ -17,6 +17,7 @@ import com.zf.eth.showToast
 import com.zf.eth.ui.activity.*
 import com.zf.eth.utils.GlideUtils
 import com.zf.eth.utils.Preference
+import com.zf.eth.view.dialog.ContactDialog
 import com.zf.eth.view.dialog.LogOutDialog
 import kotlinx.android.synthetic.main.fragment_me.*
 import kotlinx.android.synthetic.main.layout_me.*
@@ -125,12 +126,16 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
             WalletAddressActivity.actionStart(context)
         }
 
+        invite.setOnClickListener {
+            InviteActivity.actionStart(context)
+        }
+
         changePwd.setOnClickListener {
             ChangePasswordActivity.actionStart(context)
         }
 
-        invite.setOnClickListener {
-
+        contact.setOnClickListener {
+            ContactDialog.showDialog(childFragmentManager, UserInfoLiveData.value?.kefu?.kefufile, UserInfoLiveData.value?.kefu?.wxkffile)
         }
 
         bulletin.setOnClickListener {
@@ -146,9 +151,9 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
             }
         }
 
-        downLoad.setOnClickListener {
-            DownloadActivity.actionStart(context)
-        }
+//        downLoad.setOnClickListener {
+//            DownloadActivity.actionStart(context)
+//        }
 
     }
 

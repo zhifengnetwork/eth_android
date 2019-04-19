@@ -78,15 +78,15 @@
         android:drawableLeft="@drawable/touzi"
         android:text="退出机制" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1px"-->
+        <!--android:background="#353c4d" />-->
 
-    <TextView
-        android:id="@+id/downLoad"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/appicon3_16"
-        android:text="下载APP" />
+    <!--<TextView-->
+        <!--android:id="@+id/downLoad"-->
+        <!--style="@style/me_item"-->
+        <!--android:drawableLeft="@drawable/appicon3_16"-->
+        <!--android:text="下载APP" />-->
 
 </LinearLayout>
