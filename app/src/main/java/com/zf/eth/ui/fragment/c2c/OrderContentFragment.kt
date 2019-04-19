@@ -57,7 +57,6 @@ class OrderContentFragment:NotLazyBaseFragment(),MyOrderContract.View{
     }
 
     override fun lazyLoad() {
-        Log.e("检测","加载请求"+mType)
         presenter.requestMyOrder(mType)
     }
 

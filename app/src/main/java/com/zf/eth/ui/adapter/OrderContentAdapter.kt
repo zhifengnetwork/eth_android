@@ -44,7 +44,7 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
             when (mData[position].status) {
                 "0" -> {
                     status_name.text = "未交易"
-                    if (mData[position].type == "0") {
+                    if (mData[position].type == "1") {
                         type_name.text = "买入"
                         type_name.setTextColor(Color.parseColor("#70c376"))
                     } else {
@@ -52,18 +52,18 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         type_name.setTextColor(Color.parseColor("#ce2f50"))
                     }
                     skip_ly.setOnClickListener {
-                        C2cEthOneActivity.actionStart(context, mData[position])
+                        C2cEthOneActivity.actionStart(context, mData[position].id)
                     }
                 }
                 "1" -> {
                     status_name.text = "交易中"
                     if (mData[position].type == "1") {
                         skip_ly.setOnClickListener {
-                            C2cEthThreeActivity.actionStart(context, mData[position])
+                            C2cEthThreeActivity.actionStart(context, mData[position].id)
                         }
                     } else {
                         skip_ly.setOnClickListener {
-                            C2cEthTwoActivity.actionStart(context, mData[position])
+                            C2cEthTwoActivity.actionStart(context, mData[position].id)
                         }
                     }
                     countdown.visibility = View.VISIBLE
@@ -93,11 +93,11 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                 "2" -> {
                     status_name.text = "交易完成"
                     skip_ly.setOnClickListener {
-                        C2cEthTwoActivity.actionStart(context, mData[position])
+                        C2cEthTwoActivity.actionStart(context, mData[position].id)
                     }
                 }
                 "3" -> {
-                    if (mData[position].type == "0") {
+                    if (mData[position].type == "1") {
                         type_name.text = "买入"
                         type_name.setTextColor(Color.parseColor("#70c376"))
                     } else {
@@ -106,7 +106,7 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                     }
                     status_name.text = "交易失败"
                     skip_ly.setOnClickListener {
-                        C2cEthTwoActivity.actionStart(context, mData[position])
+                        C2cEthTwoActivity.actionStart(context, mData[position].id)
                     }
                 }
 

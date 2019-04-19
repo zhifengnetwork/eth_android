@@ -21,6 +21,8 @@ interface C2cContract{
         fun setLoadComplete()
 
         fun loadMoreError(msg: String, errorCode: Int)
+
+        fun setBuyError(msg: String)
     }
     interface Presenter:IPresenter<View>{
 
