@@ -2,14 +2,11 @@ package com.zf.eth.ui.fragment.c2c
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.contract.HangonsaleContract
 import com.zf.eth.mvp.presenter.HangonsalePresenter
 import com.zf.eth.showToast
-import com.zf.eth.ui.activity.C2cDetailActivity
 import kotlinx.android.synthetic.main.fragment_c2c_advert_content.*
 
 class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
@@ -73,6 +70,7 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
 
     override fun initEvent() {
         //输入文字监听
+
         edit_money.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
 
@@ -117,7 +115,7 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
                     mSum.toString(),
                     (mMoney * mSum).toString()
                 )
-            }else{
+            } else {
                 showToast("请按参考价格来输入价格")
             }
         }
