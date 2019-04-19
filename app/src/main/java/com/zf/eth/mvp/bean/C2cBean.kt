@@ -3,7 +3,7 @@ package com.zf.eth.mvp.bean
 data class C2cBean(
     val list:List<C2cList>,
     val total:String,
-    val pagesize:String
+    val pagesize:Int
 )
 data class C2cList(
     val id:String,

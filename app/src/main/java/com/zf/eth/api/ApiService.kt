@@ -169,7 +169,7 @@ interface ApiService {
     fun getC2c(
             @Field("r") r: String,
             @Field("userid") userid: String,
-            @Field("page") page: String,
+            @Field("page") page: Int,
             @Field("type") type: String
     ): Observable<BaseBean<C2cBean>>
 
@@ -183,10 +183,12 @@ interface ApiService {
             @Field("userid") userid: String,
             @Field("id") id: String,
             @Field("type") type: String
-    ): Observable<BaseBean<List<Unit>>>
+
+    ): Observable<BaseBean<Unit>>
+
 
     /**
-     *c2c中心-我的订单
+     *c2c中心-全部订单
      */
     @POST("app/index.php")
     @FormUrlEncoded
@@ -194,7 +196,9 @@ interface ApiService {
             @Field("r") r: String,
             @Field("userid") userid: String,
             @Field("status") status: String
-    ): Observable<BaseBean<List<MyOrderBean>>>
+
+    ): Observable<BaseBean<MyOrderBean>>
+
 
     /**
      *c2c中心点击卖出或者买入按钮
@@ -210,6 +214,68 @@ interface ApiService {
             @Field("sxf0") sxf0: String,
             @Field("trx") trx: String,
             @Field("trx2") trx2: String
+    ): Observable<BaseBean<Unit>>
+
+
+    /**
+     *c2c中心--撤销订单
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun requestCancelOrder(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("id") id: String
+
+    ): Observable<BaseBean<Unit>>
+
+    /**
+     *c2c中心--获取申诉
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun getAppeal(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("page") page: String
+
+    ): Observable<BaseBean<AppealBean>>
+
+    /**
+     *c2c中心--获取申诉详情
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun getAppealList(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("id") id: String
+    ): Observable<BaseBean<AppealListBean>>
+
+    /**
+     *c2c中心--确认申诉2c中心--确认申诉
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun setComplain(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("id") id: String,
+            @Field("files") files: String,
+            @Field("text") text: String,
+            @Field("textarea") textarea: String
+    ): Observable<BaseBean<Unit>>
+
+    /**
+     *c2c中心--确认收款/打款
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun setConfirmOrder(
+            @Field("r") r: String,
+            @Field("userid") userid: String,
+            @Field("id") id: String,
+            @Field("file") file: String
     ): Observable<BaseBean<Unit>>
 
     /**

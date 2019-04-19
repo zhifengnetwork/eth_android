@@ -4,9 +4,7 @@
               android:background="#3C415F"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
     <include layout="@layout/layout_toolbar"/>
-
     <LinearLayout
             android:orientation="vertical"
             android:layout_margin="15dp"
@@ -16,7 +14,7 @@
             android:layout_height="wrap_content">
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
                     android:layout_width="wrap_content"
@@ -24,142 +22,173 @@
                     android:textColor="#949bc3"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:text="订 单 号:"/>
+                    android:text="申述问题："/>
             <TextView
-                    android:id="@+id/order_id"
+                    android:id="@+id/problem"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="18dp"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/whit"
-                    android:text="183"/>
-
+                    android:textColor="@color/whit"/>
         </LinearLayout>
+
         <LinearLayout
-                android:layout_marginTop="6dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
-                    android:id="@+id/openid_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#949bc3"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:text="挂 卖 人:"/>
+                    android:text="申述原因："/>
             <TextView
-                    android:id="@+id/order_openid"
+                    android:id="@+id/reason"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
                     android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/whit"
-                    android:text="1235488465"/>
-
+                    android:textColor="@color/whit"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_margin="15dp"
             android:padding="15dp"
             android:background="@drawable/shape_c2c_edittext_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#949bc3"
+                    android:textStyle="bold"
                     android:textSize="15sp"
-
-                    android:text="挂卖单价:"/>
+                    android:text="申述订单："/>
             <TextView
-                    android:id="@+id/order_price"
+                    android:id="@+id/order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/whit"
-                    android:text="4.00"/>
-
+                    android:textColor="@color/whit"/>
         </LinearLayout>
         <LinearLayout
                 android:layout_marginTop="6dp"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#949bc3"
+                    android:textStyle="bold"
                     android:textSize="15sp"
-                    android:text="挂卖数量:"/>
+                    android:text="申 述 人："/>
             <TextView
-                    android:id="@+id/order_sum"
+                    android:id="@+id/complainant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp"
+                    android:textStyle="bold"
                     android:textSize="15sp"
-                    android:textColor="@color/whit"
-                    android:text="2"/>
-
+                    android:textColor="@color/whit"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#949bc3"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:text="被申诉人："/>
+            <TextView
+                    android:id="@+id/respondent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/whit"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_marginLeft="28dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
-                android:id="@+id/money_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/whit"
-                android:textStyle="bold"
-                android:text="待 付 款："/>
-        <TextView
-                android:id="@+id/order_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
                 android:textSize="15sp"
                 android:textColor="@color/whit"
                 android:textStyle="bold"
-                android:text="8.00"/>
+                android:text="ETH数量:"/>
+        <TextView
+                android:id="@+id/eth_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/whit"
+                android:textSize="13sp"/>
     </LinearLayout>
     <LinearLayout
+            android:layout_marginTop="15dp"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="28dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
-                android:id="@+id/payee_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/whit"
-                android:textStyle="bold"
-                android:text="付 款 人："/>
-        <TextView
-                android:id="@+id/payee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
                 android:textSize="15sp"
                 android:textColor="@color/whit"
                 android:textStyle="bold"
-                android:text="XXXXX"/>
+                android:text="CNY数量:"/>
+        <TextView
+                android:id="@+id/cny_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/whit"
+                android:textSize="13sp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:textSize="15sp"
+                android:textColor="@color/whit"
+                android:textStyle="bold"
+                android:text="是否审核:"/>
+        <TextView
+                android:id="@+id/appeal_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/whit"
+                android:textSize="13sp"/>
     </LinearLayout>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="28dp"
             android:textSize="15sp"
             android:textColor="@color/whit"
@@ -176,40 +205,5 @@
             android:gravity="center"
             android:textColor="#737893"
             android:textSize="15sp"
-            android:text="未上传支付凭证"
-    />
-    <LinearLayout
-            android:id="@+id/btn_ly"
-            android:orientation="vertical"
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/confirm_btn"
-                android:layout_width="180dp"
-                android:layout_height="37dp"
-                android:background="@drawable/shape_c2c_eth_btn"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textColor="@color/whit"
-                android:text="确定收款"
-        />
-        <TextView
-                android:id="@+id/appeal_btn"
-                android:layout_width="180dp"
-                android:layout_height="37dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"
-                android:background="@drawable/shape_c2c_eth_btn"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textColor="@color/whit"
-                android:text="申诉"
-        />
-    </LinearLayout>
-
-
+            android:text="未上传支付凭证"/>
 </LinearLayout>

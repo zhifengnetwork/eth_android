@@ -1,22 +1,25 @@
 package com.zf.eth.ui.fragment.c2c
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.base.NotLazyBaseFragment
 import com.zf.eth.mvp.bean.MyOrderBean
+import com.zf.eth.mvp.bean.MyOrderList
 import com.zf.eth.mvp.contract.MyOrderContract
 import com.zf.eth.mvp.presenter.MyOrderPresenter
 import com.zf.eth.ui.adapter.OrderContentAdapter
 import kotlinx.android.synthetic.main.fragment_c2c_order_content.*
 
-class OrderContentFragment:BaseFragment(),MyOrderContract.View{
+class OrderContentFragment:NotLazyBaseFragment(),MyOrderContract.View{
     override fun showError(msg: String, errorCode: Int) {
 
     }
 
-    override fun getMyOrder(bean: List<MyOrderBean>) {
+    override fun getMyOrder(bean: MyOrderBean) {
         mData.clear()
-        mData.addAll(bean)
+        mData.addAll(bean.list)
         mAdapter.notifyDataSetChanged()
     }
 
@@ -42,7 +45,7 @@ class OrderContentFragment:BaseFragment(),MyOrderContract.View{
     }
     override fun getLayoutId(): Int = R.layout.fragment_c2c_order_content
 
-    private var mData=ArrayList<MyOrderBean>()
+    private var mData=ArrayList<MyOrderList>()
 
     private val mAdapter by lazy { OrderContentAdapter(context,mData) }
 
@@ -54,7 +57,8 @@ class OrderContentFragment:BaseFragment(),MyOrderContract.View{
     }
 
     override fun lazyLoad() {
-
+        Log.e("检测","加载请求"+mType)
+        presenter.requestMyOrder(mType)
     }
 
     override fun initEvent() {
@@ -63,13 +67,11 @@ class OrderContentFragment:BaseFragment(),MyOrderContract.View{
 
     override fun onDestroy() {
         super.onDestroy()
+
+        mAdapter.cancelAllTimers()
+
         presenter.detachView()
     }
-    override fun onStart() {
-        super.onStart()
-        presenter.requestMyOrder(mType)
 
-
-    }
 
 }

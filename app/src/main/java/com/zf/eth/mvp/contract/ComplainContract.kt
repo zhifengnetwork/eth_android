@@ -1,16 +1,14 @@
 package com.zf.eth.mvp.contract
 
-
 import com.zf.eth.base.IBaseView
 import com.zf.eth.base.IPresenter
-import com.zf.eth.mvp.bean.MyOrderBean
 
-interface MyOrderContract{
+interface ComplainContract{
     interface View:IBaseView{
         fun showError(msg: String, errorCode: Int)
-        fun getMyOrder(bean: MyOrderBean)
+        fun setComplainSuccess(msg: String)
     }
-    interface Presenter:IPresenter<View>{
-        fun requestMyOrder(status:String)
+    interface Presrnter:IPresenter<View>{
+        fun requesComplain(id:String,files:String,text:String,textarea:String)
     }
 }

@@ -4,18 +4,27 @@ import com.zf.eth.base.BaseBean
 import com.zf.eth.base.IBaseView
 import com.zf.eth.base.IPresenter
 import com.zf.eth.mvp.bean.C2cBean
+import com.zf.eth.mvp.bean.TeamList
 
 interface C2cContract{
     interface View:IBaseView{
         fun showError(msg: String, errorCode: Int)
         //c2c界面
         fun setC2c(bean: C2cBean)
-        //C2c买入卖出按钮
+        //C2c主页买入卖出按钮
         fun setSelloutSuccess(msg:String)
+
+        fun freshEmpty()
+
+        fun setLoadMore(bean: C2cBean)
+
+        fun setLoadComplete()
+
+        fun loadMoreError(msg: String, errorCode: Int)
     }
     interface Presenter:IPresenter<View>{
 
-        fun requesC2c(page:String,type:String)
+        fun requesC2c(page:Int?,type:String)
         fun requesC2cSellout(id:String,type:String)
     }
 }

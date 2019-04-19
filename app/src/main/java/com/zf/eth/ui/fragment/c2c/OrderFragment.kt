@@ -31,6 +31,7 @@ class OrderFragment : BaseFragment() {
         val mAdapter = BaseFragmentAdapter(childFragmentManager, mFragment)
 
         order_vp.adapter = mAdapter
+        order_vp.offscreenPageLimit=3
         order_tab.setTabData(mTitles)
     }
 

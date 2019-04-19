@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/shape_c2c_content_ly"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+    <TextView
+            android:id="@+id/appeal_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/whit"
+            android:text="申诉原因"/>
+    <TextView
+            android:id="@+id/appeal_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_toLeftOf="@+id/item_img"
+            android:layout_marginRight="12dp"
+            android:textColor="#cccccc"
+            android:textSize="13sp"
+            android:text="4-15"/>
+    <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/bank_b"/>
+</RelativeLayout>
