@@ -3,6 +3,8 @@ package com.zf.eth.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.View
+import com.zf.eth.MyApplication.Companion.context
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.mvp.bean.AppealListBean
@@ -10,6 +12,7 @@ import com.zf.eth.mvp.bean.DetailList
 import com.zf.eth.mvp.contract.AppealListContract
 import com.zf.eth.mvp.presenter.AppealListPresenter
 import com.zf.eth.showToast
+import com.zf.eth.utils.GlideUtils
 import kotlinx.android.synthetic.main.activity_c2c_appeal.*
 
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -101,7 +104,13 @@ class C2cAppealActivity : BaseActivity(), AppealListContract.View {
             "2" -> appeal_type.text = "申诉失败"
             "3" -> appeal_type.text = "申诉结束"
         }
-
         //支付凭证
+        if (mData?.files != "") {
+            img_btn.visibility = View.GONE
+            apyImg.visibility = View.VISIBLE
+            GlideUtils.loadUrlImage(context, mData?.files, apyImg)
+        }
+
+
     }
 }

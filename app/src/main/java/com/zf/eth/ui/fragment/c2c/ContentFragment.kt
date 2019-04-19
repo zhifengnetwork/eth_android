@@ -17,13 +17,15 @@ import com.zf.eth.ui.adapter.C2cContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
 
 class ContentFragment : BaseFragment(), C2cContract.View {
+    //买入卖出错误时
+    override fun setBuyError(msg: String) {
+        showToast(msg)
+    }
 
     //当第一页数据为空时
     override fun freshEmpty() {
         mLayoutStatusView?.showEmpty()
         refreshLayout.setEnableLoadMore(false)
-//        null_ly.visibility = View.VISIBLE
-//        refreshLayout.visibility = View.GONE
     }
 
     //不是第一页获得数据

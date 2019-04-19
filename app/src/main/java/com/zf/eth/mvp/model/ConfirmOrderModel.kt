@@ -2,6 +2,8 @@ package com.zf.eth.mvp.model
 
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseBean
+import com.zf.eth.mvp.bean.ImageViewBean
+import com.zf.eth.mvp.bean.OrderDetailBean
 import com.zf.eth.net.RetrofitManager
 import com.zf.eth.scheduler.SchedulerUtils
 import com.zf.eth.utils.Preference
@@ -15,6 +17,22 @@ class ConfirmOrderModel {
                 userId,
                 id,
                 file
+        ).compose(SchedulerUtils.ioToMain())
+    }
+
+    fun requestPayImg(file: String): Observable<BaseBean<ImageViewBean>> {
+        return RetrofitManager.service.requestPayImg(
+                "member.androidapi.new_file_upload",
+                file,
+                userId
+        ).compose(SchedulerUtils.ioToMain())
+    }
+
+    fun requestOrderDetail(id: String): Observable<BaseBean<OrderDetailBean>>{
+        return RetrofitManager.service.getOrderDetail(
+            "member.androidapi.guamaiedit",
+            userId,
+            id
         ).compose(SchedulerUtils.ioToMain())
     }
 }

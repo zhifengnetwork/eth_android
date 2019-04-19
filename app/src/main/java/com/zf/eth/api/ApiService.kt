@@ -201,6 +201,15 @@ interface ApiService {
 
     ): Observable<BaseBean<MyOrderBean>>
 
+    /**
+     *c2c中心-全部订单
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun getOrderDetail(@Field("r") r: String,
+                       @Field("userid") userid: String,
+                       @Field("id")id:String
+    ):Observable<BaseBean<OrderDetailBean>>
 
     /**
      *c2c中心点击卖出或者买入按钮

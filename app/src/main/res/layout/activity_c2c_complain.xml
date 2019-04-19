@@ -55,6 +55,7 @@
         </ScrollView>
     </LinearLayout>
     <TextView
+            android:id="@+id/img_btn"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_marginTop="10dp"
@@ -64,8 +65,18 @@
             android:gravity="center"
             android:textColor="#737893"
             android:textSize="15sp"
-            android:text="请点击“选择图片”上传二维码"/>
+            android:text="请点击“选择图片”上传凭证"/>
+    <ImageView
+            android:id="@+id/pay_img"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/shape_c2c_eth2_frame"
+            android:gravity="center"/>
     <TextView
+            android:id="@+id/select_btn"
             android:layout_width="180dp"
             android:layout_height="37dp"
             android:layout_marginTop="37dp"

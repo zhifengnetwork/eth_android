@@ -2,17 +2,31 @@ package com.zf.eth.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import com.zf.eth.MyApplication.Companion.context
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.mvp.bean.MyOrderList
+import com.zf.eth.mvp.bean.OrderDetailBean
 import com.zf.eth.mvp.contract.ConfirmOrderContrect
 import com.zf.eth.mvp.presenter.ConfirmOrderPresenter
 import com.zf.eth.showToast
+import com.zf.eth.utils.GlideUtils
 import kotlinx.android.synthetic.main.activity_c2c_eth2.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
+    override fun getOrderDetail(bean: OrderDetailBean) {
+        data = bean
+        dataView()
+        Log.e("检测", "数据获取")
+    }
+
+    override fun setPayImg(url: String) {
+
+    }
+
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
     }
@@ -30,20 +44,22 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     }
 
+    private var id = ""
+
     companion object {
-        fun actionStart(context: Context?, mData: MyOrderList) {
+        fun actionStart(context: Context?, id: String) {
             val intent = Intent(context, C2cEthTwoActivity::class.java)
-            intent.putExtra("mData", mData)
+            intent.putExtra("id", id)
             context?.startActivity(intent)
 
         }
     }
 
     override fun initToolBar() {
-        if (mData?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
+        if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
 
-        if (mData?.status == "3") {
-            if (mData?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
+        if (data?.list?.status == "3") {
+            if (data?.list?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
         }
 
         titleName.textSize = 22f
@@ -56,76 +72,28 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     override fun layoutId(): Int = R.layout.activity_c2c_eth2
 
-    private var mData: MyOrderList? = null
+    private var data: OrderDetailBean? = null
 
     private val presenter by lazy { ConfirmOrderPresenter() }
 
     override fun initData() {
-        mData = intent.getSerializableExtra("mData") as MyOrderList
+        id = intent.getStringExtra("id")
+
     }
 
     override fun initView() {
         presenter.attachView(this)
 
-        if (mData?.type == "1") openid_name.text = "挂 卖 人" else openid_name.text = "挂 买 人"
-        //订单号
-        order_id.text = mData?.id
-        //挂卖人
-        order_openid.text = mData?.nickname
-        //挂卖单价
-        order_price.text = mData?.price
-        //挂卖数量
-        order_sum.text = mData?.trx
-        //代收款
-        order_money.text = mData?.money
-        //收款人
-        payee.text = mData?.nickname2
-        //支付凭证
-
-        /**交易完成此页面隐藏确认收款按钮，修改布局文字*/
-        if (mData?.status == "2") {
-            if (mData?.type == "1") {
-                order_openid.text = mData?.nickname
-                payee.text = mData?.nickname2
-                payee_name.text = "付 款 人："
-            } else {
-                order_openid.text = mData?.nickname2
-                payee.text = mData?.nickname
-                payee_name.text = "收 款 人："
-            }
-            confirm_btn.visibility = View.GONE
-        }
-        /**交易失败此页面隐藏两个按钮,修改布局的文字*/
-        if (mData?.status == "3") {
-            if (mData?.type == "0") {
-                openid_name.text = "挂 买 人："
-                money_name.text = "待 收 款："
-                payee_name.text = "收 款 人："
-                //挂卖人
-                order_openid.text = mData?.nickname2
-                //收款人
-                payee.text = mData?.nickname
-            } else {
-                openid_name.text = "挂 卖 人："
-                money_name.text = "待 收 款："
-                payee_name.text = "付 款 人："
-                //挂卖人
-                order_openid.text = mData?.nickname
-                //收款人
-                payee.text = mData?.nickname2
-            }
-            btn_ly.visibility = View.GONE
-        }
     }
 
     override fun initEvent() {
         //申诉
         appeal_btn.setOnClickListener {
-            C2cComplainActivity.actionStart(this, mData?.id)
+            C2cComplainActivity.actionStart(this, data?.list?.id)
         }
         //确认收款
         confirm_btn.setOnClickListener {
-            presenter.requestConfirmOrder(mData?.id ?: "", "1")
+            presenter.requestConfirmOrder(data?.list?.id ?: "", "1")
         }
     }
 
@@ -135,5 +103,79 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
     }
 
     override fun start() {
+        presenter.requestOrderDetail(id)
+    }
+
+    fun dataView() {
+        if (data?.list?.type == "1") openid_name.text = "挂 卖 人" else openid_name.text = "挂 买 人"
+        //订单号
+        order_id.text = data?.list?.id
+        //挂卖人
+//        order_openid.text = data?.list?.nickname
+        order_openid.text = data?.list?.mobile
+        //挂卖单价
+        order_price.text = data?.list?.price
+        //挂卖数量
+        order_sum.text = data?.list?.trx
+        //代收款
+        order_money.text = data?.list?.money
+        //收款人
+//        payee.text = data?.list?.nickname2
+        payee.text = data?.list?.mobile2
+        //支付凭证
+        if (data?.list?.file != "") {
+            GlideUtils.loadUrlImage(context, data?.list?.file, payImg)
+            img_btn.visibility = View.GONE
+            payImg.visibility = View.VISIBLE
+        }
+
+        /**交易完成此页面隐藏确认收款按钮，修改布局文字*/
+        if (data?.list?.status == "2") {
+            if (data?.list?.type == "1") {
+                order_openid.text = data?.list?.mobile
+                payee.text = data?.list?.mobile2
+//                order_openid.text = data?.list?.nickname
+//                payee.text = data?.list?.nickname2
+                payee_name.text = "付 款 人："
+            } else {
+                order_openid.text = data?.list?.mobile2
+                payee.text = data?.list?.mobile
+//                order_openid.text = data?.list?.nickname2
+//                payee.text = data?.list?.nickname
+                payee_name.text = "收 款 人："
+            }
+            confirm_btn.visibility = View.GONE
+            //显示申诉按钮
+            appeal_btn.visibility = View.VISIBLE
+        }
+        /**交易失败此页面隐藏两个按钮,修改布局的文字*/
+        if (data?.list?.status == "3") {
+            if (data?.list?.type == "0") {
+                openid_name.text = "挂 买 人："
+                money_name.text = "待 收 款："
+                payee_name.text = "收 款 人："
+                //挂卖人
+                order_openid.text = data?.list?.mobile2
+                //收款人
+                payee.text = data?.list?.mobile
+//                //挂卖人
+//                order_openid.text = data?.list?.nickname2
+//                //收款人
+//                payee.text = data?.list?.nickname
+            } else {
+                openid_name.text = "挂 卖 人："
+                money_name.text = "待 收 款："
+                payee_name.text = "付 款 人："
+                //挂卖人
+                order_openid.text = data?.list?.mobile
+                //收款人
+                payee.text = data?.list?.mobile2
+//                //挂卖人
+//                order_openid.text = data?.list?.nickname
+//                //收款人
+//                payee.text = data?.list?.nickname2
+            }
+            btn_ly.visibility = View.GONE
+        }
     }
 }

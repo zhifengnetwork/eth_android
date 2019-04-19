@@ -17,13 +17,13 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
                         1 -> setSelloutSuccess(it.msg)
                         -1 -> {
                         }
-                        else -> showError(it.msg, it.status)
+                        else -> setBuyError(it.msg)
                     }
                 }
             }, {
                 mRootView?.apply {
                     dismissLoading()
-                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                    setBuyError(ExceptionHandle.handleException(it))
                 }
             })
         addSubscription(disposable)

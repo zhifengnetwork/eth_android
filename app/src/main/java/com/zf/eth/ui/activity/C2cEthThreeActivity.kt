@@ -11,33 +11,32 @@ import com.zf.eth.MyApplication.Companion.context
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.mvp.bean.MyOrderList
+import com.zf.eth.mvp.bean.OrderDetailBean
 import com.zf.eth.mvp.contract.ConfirmOrderContrect
 import com.zf.eth.mvp.presenter.ConfirmOrderPresenter
 import com.zf.eth.showToast
 import com.zf.eth.utils.Base64Utils
+import com.zf.eth.utils.GlideUtils
 import kotlinx.android.synthetic.main.activity_c2c_eth3.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 
 class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
-
-//    override fun setBuyInfo(bean: BuyBean) {
-//
-//    }
-//
-//    override fun setConfirmPay() {
-//
-//    }
-//
-//    override fun setPayImg(url: String) {
-//        mUrl = url
-//        GlideUtils.loadUrlImage(context,mUrl,payImg)
-//
-//        showToast("上传凭证成功")
-//    }
+    override fun getOrderDetail(bean: OrderDetailBean) {
+        data = bean
+        dataView()
+    }
 
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
+    }
+
+    override fun setPayImg(url: String) {
+        mUrl = url
+        GlideUtils.loadUrlImage(context, mUrl, payImg)
+        img_btn.visibility = View.GONE
+        payImg.visibility = View.VISIBLE
+        showToast("上传凭证成功")
     }
 
     override fun setConfirmOrderSuccess(msg: String) {
@@ -53,10 +52,12 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     }
 
+    private var id = ""
+
     companion object {
-        fun actionStart(context: Context?, mData: MyOrderList) {
+        fun actionStart(context: Context?, id: String) {
             val intent = Intent(context, C2cEthThreeActivity::class.java)
-            intent.putExtra("mData", mData)
+            intent.putExtra("id", id)
             context?.startActivity(intent)
 
         }
@@ -77,38 +78,37 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     private val mTitle = arrayOf("微信", "支付宝", "银行")
 
-    private val mAdapter by lazy { ArrayAdapter(context, android.R.layout.simple_spinner_item, mTitle) }
+    private val mAdapter by lazy { ArrayAdapter(context, R.layout.item_spinner, mTitle) }
 
     private val presenter by lazy { ConfirmOrderPresenter() }
 
-
     private var mUrl = ""
 
-    private var mData: MyOrderList? = null
-
+    private var data: OrderDetailBean? = null
     override fun initData() {
-        mData = intent.getSerializableExtra("mData") as MyOrderList
+        id = intent.getStringExtra("id")
+//        mData = intent.getSerializableExtra("mData") as MyOrderList
     }
 
     override fun initView() {
         presenter.attachView(this)
 
-        //订单号
-        order_id.text = mData?.id
-        //挂卖人
-        order_openid.text = mData?.nickname
-        //挂卖单价
-        order_price.text = mData?.price
-        //挂卖数量
-        order_sum.text = mData?.trx
-        //待付款
-        order_money.text = mData?.money
-        //付款人
-        payee.text = mData?.nickname2
-        //支付凭证
-
-        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = mAdapter
+//        //订单号
+//        order_id.text = mData?.id
+//        //挂卖人
+//        order_openid.text = mData?.nickname
+//        //挂卖单价
+//        order_price.text = mData?.price
+//        //挂卖数量
+//        order_sum.text = mData?.trx
+//        //待付款
+//        order_money.text = mData?.money
+//        //付款人
+//        payee.text = mData?.nickname2
+//        //支付凭证
+//
+//        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        spinner.adapter = mAdapter
     }
 
     override fun initEvent() {
@@ -119,12 +119,28 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (mAdapter.getItem(position) == "银行") {
-                    pay_ly.visibility = View.GONE
-                    bank_ly.visibility = View.VISIBLE
-                } else {
-                    pay_ly.visibility = View.VISIBLE
-                    bank_ly.visibility = View.GONE
+
+                when (mAdapter.getItem(position)) {
+                    "银行" -> {
+                        //银行名字
+                        yh_name.text = data?.list?.bank
+                        //银行户主
+                        hz_name.text = data?.list?.bankname
+                        //银行卡号
+                        kh_name.text = data?.list?.bankid
+                        pay_ly.visibility = View.GONE
+                        bank_ly.visibility = View.VISIBLE
+                    }
+                    "微信"->{
+                        GlideUtils.loadUrlImage(context, data?.list?.wxfile2, pay_img)
+                        pay_ly.visibility = View.VISIBLE
+                        bank_ly.visibility = View.GONE
+                    }
+                    "支付宝"->{
+                        GlideUtils.loadUrlImage(context, data?.list?.zfbfile2, pay_img)
+                        pay_ly.visibility = View.VISIBLE
+                        bank_ly.visibility = View.GONE
+                    }
                 }
 
             }
@@ -132,7 +148,7 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
         }
 
         appeal_btn.setOnClickListener {
-            C2cComplainActivity.actionStart(this, mData?.id)
+            C2cComplainActivity.actionStart(this, data?.list?.id)
         }
 
         //点击复制按钮
@@ -152,24 +168,39 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
             cm.text = kh_name.text
             showToast("已复制银行卡号")
         }
-        //上传支付凭证
+
+        //第一次上传支付凭证
+        img_btn.setOnClickListener {
+            Album.image(this)
+                .multipleChoice()
+                .camera(true)
+                .columnCount(3)
+                .selectCount(1)
+                .onResult {
+                    val base64 = Base64Utils.bitmapToString(it[0].path)
+                    presenter.requestPayImg(base64)
+                    //是否需要转换urlEncode？
+                }
+                .start()
+        }
+        //重复上传
         payImg.setOnClickListener {
             Album.image(this)
-                    .multipleChoice()
-                    .camera(true)
-                    .columnCount(3)
-                    .selectCount(1)
-                    .onResult {
-                        val base64 = Base64Utils.bitmapToString(it[0].path)
-//                        presenter.requestPayImg(base64)
-                        //是否需要转换urlEncode？
-                    }
-                    .start()
+                .multipleChoice()
+                .camera(true)
+                .columnCount(3)
+                .selectCount(1)
+                .onResult {
+                    val base64 = Base64Utils.bitmapToString(it[0].path)
+                    presenter.requestPayImg(base64)
+                    //是否需要转换urlEncode？
+                }
+                .start()
         }
         //点击确实付款
         confirm_btn.setOnClickListener {
             if (mUrl != "") {
-                presenter.requestConfirmOrder(mData?.id ?: "", mUrl)
+                presenter.requestConfirmOrder(data?.list?.id ?: "", mUrl)
             } else {
                 showToast("请上传凭证")
             }
@@ -181,13 +212,30 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
     override fun onDestroy() {
         super.onDestroy()
         presenter.detachView()
-//        mPresenter.detachView()
+
     }
 
     override fun start() {
-
+        presenter.requestOrderDetail(id)
     }
 
+    fun dataView() {
+        //订单号
+        order_id.text = data?.list?.id
+        //挂卖人
+        order_openid.text = data?.list?.mobile
+        //挂卖单价
+        order_price.text = data?.list?.price
+        //挂卖数量
+        order_sum.text = data?.list?.trx
+        //待付款
+        order_money.text = data?.list?.money
+        //付款人
+        payee.text = data?.list?.mobile2
+
+        mAdapter.setDropDownViewResource(R.layout.item_spinner)
+        spinner.adapter = mAdapter
+    }
 }
 
 
