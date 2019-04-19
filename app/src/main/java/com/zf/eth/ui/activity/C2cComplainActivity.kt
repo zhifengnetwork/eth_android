@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_c2c_complain.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class C2cComplainActivity : BaseActivity(), ComplainContract.View {
+
     override fun setPayImg(url: String) {
         files = url
         GlideUtils.loadUrlImage(context, files, pay_img)
@@ -89,7 +90,6 @@ class C2cComplainActivity : BaseActivity(), ComplainContract.View {
             if (textArea == "") showToast("请输入申诉内容")
 
             if (text != "" && textArea != "") presenter.requestComplain(id, files, text, textArea)
-
 
         }
         //第一次上传凭证

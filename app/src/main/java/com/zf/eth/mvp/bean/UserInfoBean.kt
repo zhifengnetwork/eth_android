@@ -4,7 +4,13 @@ data class UserInfoBean(
         val member: Member,
         val huiyuanlevel: Level,
         val money4: String, //可退金额
-        val arr2: AllInvest
+        val arr2: AllInvest,
+        val kefu:Contact
+)
+
+data class Contact(
+        val kefufile:String,
+        val wxkffile:String
 )
 
 data class AllInvest(

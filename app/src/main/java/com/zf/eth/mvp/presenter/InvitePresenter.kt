@@ -7,6 +7,7 @@ import com.zf.eth.net.exception.ExceptionHandle
 
 class InvitePresenter:BasePresenter<InviteContract.View>(),InviteContract.Presenter{
     private val model by lazy { InviteModel() }
+
     override fun requestInvite() {
         checkViewAttached()
         mRootView?.showLoading()

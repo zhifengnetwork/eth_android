@@ -3,9 +3,7 @@ package com.zf.eth.api
 import com.zf.eth.base.BaseBean
 import com.zf.eth.mvp.bean.*
 import io.reactivex.Observable
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 /**
@@ -339,11 +337,10 @@ interface ApiService {
     /**
      * 我的-邀请
      */
-    @POST("app/index.php")
-    @FormUrlEncoded
+    @GET("app/index.php")
     fun getInvite(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+            @Query("r") r: String,
+            @Query("userid") userid: String
     ): Observable<BaseBean<InviteBean>>
 
     /**

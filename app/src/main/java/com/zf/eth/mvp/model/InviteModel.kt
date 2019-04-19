@@ -9,10 +9,12 @@ import com.zf.eth.scheduler.SchedulerUtils
 import com.zf.eth.utils.Preference
 import io.reactivex.Observable
 
-class InviteModel{
-     private val userId by Preference(UriConstant.USER_ID, "")
+class InviteModel {
+
+    private val userId by Preference(UriConstant.USER_ID, "")
+
     fun getInvite(): Observable<BaseBean<InviteBean>> {
-        return RetrofitManager.service.getInvite("commission.qrcode",userId)
-            .compose(SchedulerUtils.ioToMain())
+        return RetrofitManager.service.getInvite("commission.qrcode", userId)
+                .compose(SchedulerUtils.ioToMain())
     }
 }
