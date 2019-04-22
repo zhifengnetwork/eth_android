@@ -13,7 +13,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#949bc3"
+                android:textColor="@color/whit"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="申诉标题："/>
@@ -21,6 +21,8 @@
                 android:id="@+id/complainant_name"
                 android:padding="5dp"
                 android:background="@drawable/shape_c2c_edittext_bg"
+                android:hint="请输入标题"
+                android:textColorHint="#cccccc"
                 android:textSize="12sp"
                 android:textColor="@color/whit"
                 android:layout_height="35dp"
@@ -36,7 +38,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#949bc3"
+                android:textColor="@color/whit"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="申诉内容："/>
@@ -49,6 +51,8 @@
                     android:padding="5dp"
                     android:background="@drawable/shape_c2c_edittext_bg"
                     android:textSize="12sp"
+                    android:hint="请输入内容"
+                    android:textColorHint="#cccccc"
                     android:textColor="@color/whit"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"/>
@@ -57,7 +61,7 @@
     <TextView
             android:id="@+id/img_btn"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="95dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="28dp"
             android:layout_marginLeft="28dp"
@@ -69,7 +73,7 @@
     <ImageView
             android:id="@+id/pay_img"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="95dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="28dp"
             android:layout_marginLeft="28dp"
@@ -77,26 +81,26 @@
             android:gravity="center"/>
     <TextView
             android:id="@+id/select_btn"
-            android:layout_width="180dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="37dp"
+            android:layout_width="110dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:background="@drawable/shape_c2c_eth_btn"
+            android:background="@drawable/shape_c2c_edittext_bg"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:textColor="@color/whit"
             android:text="选择图片"/>
     <TextView
             android:id="@+id/add_btn"
-            android:layout_width="180dp"
+            android:layout_width="140dp"
             android:layout_height="37dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center"
-            android:background="@drawable/shape_c2c_eth_btn"
+            android:background="@drawable/shape_c2c_eth_copy"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@color/whit"
             android:text="确认"/>
 

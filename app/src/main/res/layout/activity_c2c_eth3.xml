@@ -187,20 +187,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="28dp"
                     android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="支付方式"
+                        android:text="支付方式："
                         android:textColor="@color/whit"
                         android:textSize="15sp"
                         android:textStyle="bold"/>
 
                 <Spinner
                         android:id="@+id/spinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_width="180dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/shape_c2c_edittext_bg">
 
                 </Spinner>
             </LinearLayout>
@@ -245,14 +247,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="*请前往当地银行打款"
-                        android:textColor="#ff0000"
-                        android:textSize="15sp"
+                        android:textColor="#f25858"
+                        android:textSize="10sp"
                         android:textStyle="bold"/>
 
                 <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="8dp">
 
                     <TextView
                             android:id="@+id/yh"
@@ -273,20 +275,20 @@
 
                     <TextView
                             android:id="@+id/copy_yh"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="14dp"
                             android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
+                            android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/whit"
+                            android:textSize="9sp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="8dp">
 
                     <TextView
                             android:id="@+id/hz"
@@ -307,20 +309,20 @@
 
                     <TextView
                             android:id="@+id/copy_hz"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="14dp"
                             android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
+                            android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
+                            android:textSize="9sp"
+                            android:textColor="@color/whit"/>
                 </RelativeLayout>
 
                 <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginTop="8dp">
 
                     <TextView
                             android:id="@+id/kh"
@@ -341,14 +343,14 @@
 
                     <TextView
                             android:id="@+id/copy_kh"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="37dp"
+                            android:layout_height="14dp"
                             android:layout_alignParentRight="true"
-                            android:background="@drawable/shape_c2c_eth_btn"
+                            android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
-                            android:textSize="14sp"
-                            android:textStyle="bold"/>
+                            android:textSize="9sp"
+                            android:textColor="@color/whit"/>
                 </RelativeLayout>
             </LinearLayout>
 
@@ -365,7 +367,7 @@
             <TextView
                     android:id="@+id/img_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="95dp"
                     android:layout_marginLeft="28dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="28dp"
@@ -377,7 +379,7 @@
             <ImageView
                     android:id="@+id/payImg"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="95dp"
                     android:layout_marginLeft="28dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="28dp"
@@ -393,27 +395,25 @@
 
                 <TextView
                         android:id="@+id/confirm_btn"
-                        android:layout_width="180dp"
-                        android:layout_height="37dp"
-                        android:background="@drawable/shape_c2c_eth_btn"
+                        android:layout_width="110dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/shape_c2c_eth_copy"
                         android:gravity="center"
                         android:text="确定"
                         android:textColor="@color/whit"
-                        android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:textSize="13sp"/>
 
                 <TextView
                         android:id="@+id/appeal_btn"
-                        android:layout_width="180dp"
-                        android:layout_height="37dp"
+                        android:layout_width="110dp"
+                        android:layout_height="25dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="13dp"
                         android:background="@drawable/shape_c2c_eth_btn"
                         android:gravity="center"
-                        android:text="申诉"
+                        android:text="投诉"
                         android:textColor="@color/whit"
-                        android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:textSize="13sp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
