@@ -42,19 +42,42 @@ class PaymentActivity : BaseActivity(), PayManageContract.View {
     }
 
     override fun getPay(bean: PayManageBean) {
-        card_number.setText(bean.bankid)
-        user_name.setText(bean.bankname)
-        bank_name.setText(bean.bank)
-        if (bean.zfbfile.isNotEmpty()) {
+
+        if (bean.bankid.isNotEmpty() &&
+                bean.bankname.isNotEmpty() &&
+                bean.bank.isNotEmpty() &&
+                bean.zfbfile.isNotEmpty() &&
+                bean.wxfile.isNotEmpty()
+        ) {
+            edit_btn.isSelected = true
+            edit_btn.text = "修改"
+            card_number.isEnabled = false
+            user_name.isEnabled = false
+            bank_name.isEnabled = false
+            zfb_img.isEnabled = false
+            wx_img.isEnabled = false
+            card_number.setText(bean.bankid)
+            user_name.setText(bean.bankname)
+            bank_name.setText(bean.bank)
+            weChatImg = bean.wxfile
+            aliPayImg = bean.zfbfile
             GlideUtils.loadUrlImage(this, bean.zfbfile, zfb_img)
-        }
-        if (bean.wxfile.isNotEmpty()) {
             GlideUtils.loadUrlImage(this, bean.wxfile, wx_img)
+        } else {
+            edit_btn.isSelected = false
+            edit_btn.text = "确定"
+            card_number.isEnabled = true
+            user_name.isEnabled = true
+            bank_name.isEnabled = true
+            zfb_img.isEnabled = true
+            wx_img.isEnabled = true
         }
+
     }
 
     override fun editPaySuccess() {
         showToast("保存成功")
+        finish()
     }
 
     override fun showLoading() {
@@ -97,6 +120,32 @@ class PaymentActivity : BaseActivity(), PayManageContract.View {
 
     override fun initEvent() {
 
+        edit_btn.setOnClickListener {
+            if (edit_btn.isSelected) {
+                edit_btn.text = "确定"
+                edit_btn.isSelected = false
+                card_number.isEnabled = true
+                user_name.isEnabled = true
+                bank_name.isEnabled = true
+                zfb_img.isEnabled = true
+                wx_img.isEnabled = true
+            } else {
+                if (card_number.text.isEmpty() || user_name.text.isEmpty() || bank_name.text.isEmpty()
+                        || aliPayImg.isEmpty() || weChatImg.isEmpty()
+                ) {
+                    showToast("请先完善信息")
+                } else {
+                    presenter.requestEditPayManege("",
+                            "",
+                            aliPayImg,
+                            weChatImg,
+                            card_number.text.toString(),
+                            user_name.text.toString(),
+                            bank_name.text.toString())
+                }
+            }
+        }
+
         zfb_img.setOnClickListener {
             Album.image(this)
                     .multipleChoice()
@@ -123,15 +172,7 @@ class PaymentActivity : BaseActivity(), PayManageContract.View {
                     .start()
         }
 
-        edit_btn.setOnClickListener {
-            presenter.requestEditPayManege("",
-                    "",
-                    aliPayImg,
-                    weChatImg,
-                    card_number.text.toString(),
-                    user_name.text.toString(),
-                    bank_name.text.toString())
-        }
+
     }
 
     override fun onDestroy() {

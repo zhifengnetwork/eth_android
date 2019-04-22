@@ -42,8 +42,6 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         UserInfoLiveData.value = bean
 
         initTab()
-        tabLayout.currentTab = mIndex
-        switchFragment(mIndex)
     }
 
 
@@ -80,10 +78,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mIndex = 0
+
         initTab()
-        tabLayout.currentTab = mIndex
-        switchFragment(mIndex)
+
     }
 
     private fun switchFragment(index: Int) {
@@ -146,8 +143,8 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     private fun initTab() {
+        mIndex = 0
         val mTabEntities = ArrayList<CustomTabEntity>()
-
         val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
             listOf(
                     "首页",
@@ -190,6 +187,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                 switchFragment(position)
             }
         })
+
+        tabLayout.currentTab = mIndex
+        switchFragment(mIndex)
     }
 
     private var mExitTime: Long = 0

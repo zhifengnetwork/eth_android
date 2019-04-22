@@ -38,16 +38,33 @@ class WalletAddressActivity : BaseActivity(), PayManageContract.View {
     }
 
     override fun getPay(bean: PayManageBean) {
-        walletAddress.setText(bean.walletaddress)
-        bean.walletcode?.let {
-            if (it.isNotEmpty()) {
-                GlideUtils.loadUrlImage(this, bean.walletcode, image)
+
+        if (bean.walletaddress.isNotEmpty()) {
+            walletAddress.setText(bean.walletaddress)
+            bean.walletcode?.let {
+                if (it.isNotEmpty()) {
+                    GlideUtils.loadUrlImage(this, bean.walletcode, image)
+                    mUrl = bean.walletcode
+                }
             }
+
+            confirm.isSelected = true
+            confirm.text = "修改"
+            walletAddress.isEnabled = false
+            image.isEnabled = false
+        } else {
+            confirm.isSelected = false
+            confirm.text = "确定"
+            walletAddress.isEnabled = true
+            image.isEnabled = true
         }
+
+
     }
 
     override fun editPaySuccess() {
         showToast("保存成功")
+        finish()
     }
 
     override fun showLoading() {
@@ -84,24 +101,35 @@ class WalletAddressActivity : BaseActivity(), PayManageContract.View {
     override fun initEvent() {
 
         confirm.setOnClickListener {
-            //只需要填两个参数
-            presenter.requestEditPayManege(
-                walletAddress.text.toString(),
-                mUrl, "", "", "", "", ""
-            )
+
+            if (confirm.isSelected) {
+                confirm.isSelected = false
+                confirm.text = "确定"
+                walletAddress.isEnabled = true
+                image.isEnabled = true
+            } else {
+                if (walletAddress.text.isEmpty() || mUrl.isEmpty()) {
+                    showToast("请先完善信息")
+                } else {
+                    presenter.requestEditPayManege(
+                            walletAddress.text.toString(),
+                            mUrl, "", "", "", "", ""
+                    )
+                }
+            }
         }
 
         image.setOnClickListener {
             Album.image(this)
-                .multipleChoice()
-                .camera(true)
-                .columnCount(3)
-                .selectCount(1)
-                .onResult {
-                    val base64 = Base64Utils.bitmapToString(it[0].path)
-                    presenter.requestUpImg(base64, null)
-                }
-                .start()
+                    .multipleChoice()
+                    .camera(true)
+                    .columnCount(3)
+                    .selectCount(1)
+                    .onResult {
+                        val base64 = Base64Utils.bitmapToString(it[0].path)
+                        presenter.requestUpImg(base64, null)
+                    }
+                    .start()
         }
     }
 
