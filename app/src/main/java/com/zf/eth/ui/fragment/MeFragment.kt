@@ -135,7 +135,11 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
 
         contact.setOnClickListener {
-            ContactDialog.showDialog(childFragmentManager, UserInfoLiveData.value?.kefu?.kefufile, UserInfoLiveData.value?.kefu?.wxkffile)
+            ContactDialog.showDialog(
+                    childFragmentManager,
+                    UserInfoLiveData.value?.kefu?.kefufile,
+                    UserInfoLiveData.value?.kefu?.wxkffile
+            )
         }
 
         bulletin.setOnClickListener {
@@ -144,7 +148,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
 
         singOut.setOnClickListener {
             UserInfoLiveData.value?.apply {
-                LogOutDialog.showDialog(childFragmentManager, arr2.money)
+                LogOutDialog.showDialog(childFragmentManager, arr2.money ?: "0.00")
                         .onConfirmListener = {
                     presenter.requestLogOut(it)
                 }

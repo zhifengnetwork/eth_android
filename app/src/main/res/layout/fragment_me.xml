@@ -27,7 +27,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="25dp"
                 android:layout_marginBottom="25dp"
-                android:background="@color/colorLine" />
+                android:src="@drawable/headportrait" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

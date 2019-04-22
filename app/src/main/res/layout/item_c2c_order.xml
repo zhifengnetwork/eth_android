@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:padding="15dp"
+                android:padding="15dp"
                 android:background="@drawable/shape_c2c_edittext_bg"
                 android:layout_marginBottom="15dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
     <RelativeLayout
             android:id="@+id/one"
             android:layout_width="match_parent"
@@ -106,16 +106,16 @@
                 android:text="32.00"/>
     </LinearLayout>
 
-        <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/two"
-                android:layout_marginTop="15dp"
-                android:textColor="#9496a3"
-                android:textSize="11sp"
-                android:text="2019-04-03  10:32:51"
-        />
+    <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/two"
+            android:layout_marginTop="15dp"
+            android:textColor="#9496a3"
+            android:textSize="11sp"
+            android:text="2019-04-03  10:32:51"
+    />
     <LinearLayout
             android:id="@+id/countdown"
             android:layout_below="@+id/two"

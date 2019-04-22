@@ -4,12 +4,15 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+
     <include layout="@layout/layout_toolbar"/>
+
     <LinearLayout
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -17,6 +20,7 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="申诉标题："/>
+
         <EditText
                 android:id="@+id/complainant_name"
                 android:padding="5dp"
@@ -27,12 +31,14 @@
                 android:layout_width="match_parent"/>
 
     </LinearLayout>
+
     <LinearLayout
             android:orientation="horizontal"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,20 +46,19 @@
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:text="申诉内容："/>
-        <ScrollView
-                android:layout_width="match_parent"
+
+        <EditText
+                android:id="@+id/complainant_text"
+                android:padding="5dp"
                 android:background="@drawable/shape_c2c_edittext_bg"
-                android:layout_height="125dp">
-            <EditText
-                    android:id="@+id/complainant_text"
-                    android:padding="5dp"
-                    android:background="@drawable/shape_c2c_edittext_bg"
-                    android:textSize="12sp"
-                    android:textColor="@color/whit"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
-        </ScrollView>
+                android:textSize="12sp"
+                android:textColor="@color/whit"
+                android:gravity="start"
+                android:layout_height="125dp"
+                android:layout_width="match_parent"/>
+
     </LinearLayout>
+
     <TextView
             android:id="@+id/img_btn"
             android:layout_width="match_parent"
@@ -75,6 +80,7 @@
             android:layout_marginLeft="28dp"
             android:background="@drawable/shape_c2c_eth2_frame"
             android:gravity="center"/>
+
     <TextView
             android:id="@+id/select_btn"
             android:layout_width="180dp"

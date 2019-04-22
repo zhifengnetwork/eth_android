@@ -31,9 +31,11 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     override fun showLoading() {
+        showLoadingDialog()
     }
 
     override fun dismissLoading() {
+        dismissLoadingDialog()
     }
 
     override fun setUserInfo(bean: UserInfoBean) {
@@ -67,40 +69,42 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun layoutId(): Int = R.layout.activity_main
 
     private val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
-        listOf("首页",
+        listOf(
+            "首页",
 //                "棋牌娱乐",
 //                "C2C",
-                "我的"
+            "我的"
         ) else listOf(
-            "首页",
-            "棋牌娱乐",
-            "C2C",
-            "我的")
+        "首页",
+        "棋牌娱乐",
+        "C2C",
+        "我的"
+    )
 
     private val mIconSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
         listOf(
-                R.drawable.homepage,
+            R.drawable.homepage,
 //                R.drawable.chess1,
 //                R.drawable.two1,
-                R.drawable.my1
-        ) else listOf(
-            R.drawable.homepage,
-            R.drawable.chess1,
-            R.drawable.two1,
             R.drawable.my1
+        ) else listOf(
+        R.drawable.homepage,
+        R.drawable.chess1,
+        R.drawable.two1,
+        R.drawable.my1
     )
 
     private val mIconUnSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
         listOf(
-                R.drawable.home_page1,
+            R.drawable.home_page1,
 //            R.drawable.chess,
 //            R.drawable.two,
-                R.drawable.my
-        ) else listOf(
-            R.drawable.home_page1,
-            R.drawable.chess,
-            R.drawable.two,
             R.drawable.my
+        ) else listOf(
+        R.drawable.home_page1,
+        R.drawable.chess,
+        R.drawable.two,
+        R.drawable.my
     )
 
     private val mTabEntities = ArrayList<CustomTabEntity>()
@@ -127,37 +131,37 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         hideFragments(transaction)
         when (index) {
             0 -> mHomeFragment?.let { transaction.show(it) }
-                    ?: HomeFragment.getInstance().let {
-                        mHomeFragment = it
-                        transaction.add(R.id.fl_container, it, "home")
-                    }
+                ?: HomeFragment.getInstance().let {
+                    mHomeFragment = it
+                    transaction.add(R.id.fl_container, it, "home")
+                }
             1 -> {
                 if (UserInfoLiveData.value?.member?.type == "2") {
                     //锁户
                     mMineFragment?.let { transaction.show(it) }
-                            ?: MeFragment.getInstance().let {
-                                mMineFragment = it
-                                transaction.add(R.id.fl_container, it, "me")
-                            }
+                        ?: MeFragment.getInstance().let {
+                            mMineFragment = it
+                            transaction.add(R.id.fl_container, it, "me")
+                        }
                 } else {
                     //未锁户
                     mDiscoveryFragment?.let { transaction.show(it) }
-                            ?: ChessFragment.getInstance().let {
-                                mDiscoveryFragment = it
-                                transaction.add(R.id.fl_container, it, "discovery")
-                            }
+                        ?: ChessFragment.getInstance().let {
+                            mDiscoveryFragment = it
+                            transaction.add(R.id.fl_container, it, "discovery")
+                        }
                 }
             }
             2 -> mHotFragment?.let { transaction.show(it) }
-                    ?: C2CFragment.getInstance().let {
-                        mHotFragment = it
-                        transaction.add(R.id.fl_container, it, "hot")
-                    }
+                ?: C2CFragment.getInstance().let {
+                    mHotFragment = it
+                    transaction.add(R.id.fl_container, it, "hot")
+                }
             3 -> mMineFragment?.let { transaction.show(it) }
-                    ?: MeFragment.getInstance().let {
-                        mMineFragment = it
-                        transaction.add(R.id.fl_container, it, "mine")
-                    }
+                ?: MeFragment.getInstance().let {
+                    mMineFragment = it
+                    transaction.add(R.id.fl_container, it, "mine")
+                }
             else -> {
             }
         }

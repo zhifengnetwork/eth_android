@@ -45,19 +45,21 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
 
                     when (it.status) {
                         1 -> {
-                            if (mPage == 1){
+                            if (mPage == 1) {
                                 if (it.data.list.isNotEmpty()) {
                                     setC2c(it.data)
                                 } else {
                                     freshEmpty()
                                 }
-                            }else{
+                            } else {
                                 setLoadMore(it.data)
                             }
-                            if (it.data.list.size < it.data.pagesize){
+                            if (it.data.list.size < it.data.pagesize) {
                                 setLoadComplete()
                             }
                             mPage += 1
+                        }
+                        -1 -> {
                         }
                         else -> if (mPage == 1) showError(it.msg, it.status) else loadMoreError(it.msg, it.status)
 

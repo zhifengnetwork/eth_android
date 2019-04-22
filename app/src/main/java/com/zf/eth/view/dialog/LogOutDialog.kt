@@ -22,7 +22,7 @@ class LogOutDialog : DialogFragment() {
 
     companion object {
 
-        var mAll: String = ""
+        var mAll: String = "0.00"
         fun showDialog(fragmentManager: FragmentManager, all: String): LogOutDialog {
             val receiveDialog = LogOutDialog()
 

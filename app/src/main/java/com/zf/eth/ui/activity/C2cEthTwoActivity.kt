@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.activity_c2c_eth2.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
+
     override fun getOrderDetail(bean: OrderDetailBean) {
         data = bean
         dataView()
-        Log.e("检测", "数据获取")
     }
 
     override fun setPayImg(url: String) {
@@ -56,6 +56,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
     }
 
     override fun initToolBar() {
+
         if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
 
         if (data?.list?.status == "3") {
@@ -107,6 +108,15 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
     }
 
     fun dataView() {
+
+
+        if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
+
+        if (data?.list?.status == "3") {
+            if (data?.list?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
+        }
+
+
         if (data?.list?.type == "1") openid_name.text = "挂 卖 人" else openid_name.text = "挂 买 人"
         //订单号
         order_id.text = data?.list?.id

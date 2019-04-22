@@ -22,7 +22,7 @@ class LoginActivity : BaseActivity(), LoginContract.View, UserInfoContract.View 
         UserInfoLiveData.value = bean
 
         val intent = Intent(this, MainActivity::class.java)
-                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }
 
@@ -46,9 +46,11 @@ class LoginActivity : BaseActivity(), LoginContract.View, UserInfoContract.View 
     }
 
     override fun showLoading() {
+        showLoadingDialog()
     }
 
     override fun dismissLoading() {
+        dismissLoadingDialog()
     }
 
     companion object {
