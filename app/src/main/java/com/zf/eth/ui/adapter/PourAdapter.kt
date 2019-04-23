@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.MultipleBean
 import com.zf.eth.mvp.bean.PourBean
 import com.zf.eth.utils.KeyBordUitls
-import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.ToastUtils
 import kotlinx.android.synthetic.main.item_pour.view.*
 import kotlinx.android.synthetic.main.layout_num_text_decade.view.*
@@ -210,7 +208,6 @@ class PourAdapter(val context: Context?) :
 
                 /** 监听输入框 */
 //                multiPle.addTextChangedListener {
-//                    LogUtils.e(">>>>>>>:" + multiPle.text.toString())
 //                }
 
                 delete.setOnClickListener {

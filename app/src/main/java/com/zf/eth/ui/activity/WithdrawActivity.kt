@@ -7,7 +7,6 @@ import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.ui.fragment.withdraw.ETHFragment
 import com.zf.eth.ui.fragment.withdraw.ReFragment
-import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_withdraw.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -40,7 +39,6 @@ class WithdrawActivity : BaseActivity() {
     private var reFragment: ReFragment? = null
 
     private fun switchFragment(index: Int) {
-        LogUtils.e(">>>>:$index")
         val transaction = supportFragmentManager.beginTransaction()
         hideFragments(transaction)
         when (index) {

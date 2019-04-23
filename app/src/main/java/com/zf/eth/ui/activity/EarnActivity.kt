@@ -6,7 +6,6 @@ import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.base.BaseFragmentAdapter
 import com.zf.eth.ui.fragment.earn.EarnFragment
-import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.activity_earn.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 

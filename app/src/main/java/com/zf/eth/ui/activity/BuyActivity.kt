@@ -13,7 +13,6 @@ import com.zf.eth.mvp.presenter.BuyPresenter
 import com.zf.eth.showToast
 import com.zf.eth.utils.Base64Utils
 import com.zf.eth.utils.GlideUtils
-import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.activity_buy.*
 import kotlinx.android.synthetic.main.layout_toolbar.*

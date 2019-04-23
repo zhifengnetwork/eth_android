@@ -30,8 +30,6 @@ object FileUtils {
 
         if (cursor != null) {
 
-            LogUtils.e(">>>>????图片不为空")
-
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
                 val data = cursor.getString(
@@ -48,19 +46,13 @@ object FileUtils {
                     /** 关闭cursor，后面添加的 */
                     cursor.close()
 
-
-                    LogUtils.e(">>>>imageUri" + mImageUri)
-
                     return mImageUri
                 }
                 cursor.moveToNext()
             }
 
         } else {
-            LogUtils.e(">>>>>图片为空")
         }
-
-        LogUtils.e(">>>>???????cccc" + mImageUri)
         return mImageUri
     }
 }

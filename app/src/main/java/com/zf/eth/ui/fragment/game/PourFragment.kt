@@ -18,7 +18,6 @@ import com.zf.eth.ui.activity.GameRulesActivity
 import com.zf.eth.ui.activity.RankActivity
 import com.zf.eth.ui.adapter.PourAdapter
 import com.zf.eth.utils.DensityUtil
-import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.RecyclerViewDivider
 import com.zf.eth.view.LayoutGravity
 import com.zf.eth.view.dialog.GameBuyDialog
@@ -79,8 +78,6 @@ class PourFragment : BaseFragment(), BetContract.View {
 //                list[it].multiple.toString()
 //            )
         }
-
-        LogUtils.e(">>>>>>:" + data + "   >" + data.toString() + "    >" + data + "   >" + Gson().toJson(data))
 
         val finalJson = Gson().toJson(jsonList)
 
