@@ -202,7 +202,8 @@
                         android:id="@+id/spinner"
                         android:layout_width="180dp"
                         android:layout_height="22dp"
-                        android:background="@drawable/shape_c2c_edittext_bg">
+                        android:background="@drawable/shape_c2c_edittext_bg"
+                         >
 
                 </Spinner>
             </LinearLayout>
@@ -211,6 +212,7 @@
                     android:id="@+id/pay_ly"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="28dp"
                     android:layout_marginRight="28dp"
                     android:gravity="center"
@@ -239,6 +241,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="28dp"
                     android:layout_marginRight="28dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/shape_c2c_eth2_frame"
                     android:orientation="vertical"
                     android:padding="10dp">
