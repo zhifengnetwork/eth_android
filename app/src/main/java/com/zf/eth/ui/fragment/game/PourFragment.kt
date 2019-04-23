@@ -31,7 +31,6 @@ import java.math.BigDecimal
  */
 class PourFragment : BaseFragment(), BetContract.View {
 
-
     private var lotteryData = listOf<LotteryNumber>()
 
     //开奖号码，每注金额
