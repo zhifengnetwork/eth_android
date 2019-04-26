@@ -1,5 +1,6 @@
 package com.zf.eth.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.CountDownTimer
@@ -30,8 +31,10 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
 
     override fun getItemCount(): Int = data.size
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.apply {
+            number.text = "订单编号：" + mData[position].id
             if (mData[position].type == "1") {
                 type_name.text = "买入"
                 type_name.setTextColor(Color.parseColor("#70c376"))
@@ -51,20 +54,29 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         type_name.text = "卖出"
                         type_name.setTextColor(Color.parseColor("#ce2f50"))
                     }
-                    skip_ly.setOnClickListener {
+                    c2c_item_ly.setOnClickListener {
                         C2cEthOneActivity.actionStart(context, mData[position].id)
                     }
+//                    skip_ly.setOnClickListener {
+//                        C2cEthOneActivity.actionStart(context, mData[position].id)
+//                    }
                 }
                 "1" -> {
                     status_name.text = "交易中"
                     if (mData[position].type == "1") {
-                        skip_ly.setOnClickListener {
+                        c2c_item_ly.setOnClickListener {
                             C2cEthThreeActivity.actionStart(context, mData[position].id)
                         }
+//                        skip_ly.setOnClickListener {
+//                            C2cEthThreeActivity.actionStart(context, mData[position].id)
+//                        }
                     } else {
-                        skip_ly.setOnClickListener {
+                        c2c_item_ly.setOnClickListener {
                             C2cEthTwoActivity.actionStart(context, mData[position].id)
                         }
+//                        skip_ly.setOnClickListener {
+//                            C2cEthTwoActivity.actionStart(context, mData[position].id)
+//                        }
                     }
                     countdown.visibility = View.VISIBLE
                     /**开启定时器*/
@@ -74,8 +86,9 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         val tickTime = (mData[position].apple_time * 1000) - currentTime
                         val countDownTimer = object : CountDownTimer(tickTime, 1000) {
                             override fun onFinish() {
-                                apple_time.text="订单已超时"
+                                apple_time.text = "订单已超时"
                                 apple_time.setTextColor(Color.parseColor("#ce2f50"))
+                                c2c_item_ly.isClickable = false
                             }
 
                             override fun onTick(millisUntilFinished: Long) {
@@ -87,14 +100,17 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         countDownCounters?.put(apple_time.hashCode(), countDownTimer)
                     } else {
                         //过时，订单作废
-
+                        c2c_item_ly.isClickable = false
                     }
                 }
                 "2" -> {
                     status_name.text = "交易完成"
-                    skip_ly.setOnClickListener {
+                    c2c_item_ly.setOnClickListener {
                         C2cEthTwoActivity.actionStart(context, mData[position].id)
                     }
+//                    skip_ly.setOnClickListener {
+//                        C2cEthTwoActivity.actionStart(context, mData[position].id)
+//                    }
                 }
                 "3" -> {
                     if (mData[position].type == "1") {
@@ -105,9 +121,12 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         type_name.setTextColor(Color.parseColor("#ce2f50"))
                     }
                     status_name.text = "交易失败"
-                    skip_ly.setOnClickListener {
+                    c2c_item_ly.setOnClickListener {
                         C2cEthTwoActivity.actionStart(context, mData[position].id)
                     }
+//                    skip_ly.setOnClickListener {
+//                        C2cEthTwoActivity.actionStart(context, mData[position].id)
+//                    }
                 }
 
             }

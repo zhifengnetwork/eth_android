@@ -1,5 +1,6 @@
 package com.zf.eth.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,7 @@ class C2cContentAdapter(val context: Context?, val list: List<C2cList>) :
 
     var mClickListener: ((C2cList) -> Unit)? = null
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.apply {
             number.text = "挂单编号：" + c2cList[position].id

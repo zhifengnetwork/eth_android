@@ -1,18 +1,16 @@
 package com.zf.eth.ui.fragment.c2c
 
-import android.util.Log
-import android.view.View
-import android.widget.Toast
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.bean.C2cBean
 import com.zf.eth.mvp.bean.C2cList
-import com.zf.eth.mvp.bean.TeamList
 import com.zf.eth.mvp.contract.C2cContract
 import com.zf.eth.mvp.presenter.C2cPresenter
 import com.zf.eth.net.exception.ErrorStatus
 import com.zf.eth.showToast
+import com.zf.eth.ui.activity.C2cDetailActivity
 import com.zf.eth.ui.adapter.C2cContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
 
@@ -20,6 +18,7 @@ class ContentFragment : BaseFragment(), C2cContract.View {
     //买入卖出错误时
     override fun setBuyError(msg: String) {
         showToast(msg)
+
     }
 
     //当第一页数据为空时
@@ -65,6 +64,8 @@ class ContentFragment : BaseFragment(), C2cContract.View {
 
     override fun setSelloutSuccess(msg: String) {
         showToast(msg)
+        //成功时跳转页面
+        C2cDetailActivity.actionStart(context,"BUY")
        lazyLoad()
     }
 
@@ -101,8 +102,6 @@ class ContentFragment : BaseFragment(), C2cContract.View {
     override fun getLayoutId(): Int = R.layout.layout_c2c_content
 
     override fun initView() {
-        Log.e("检测", "C2c界面打开")
-        Log.e("检测", "Type值为" + mType)
 
         mLayoutStatusView = multipleStatusView
         c2cPresenter.attachView(this)

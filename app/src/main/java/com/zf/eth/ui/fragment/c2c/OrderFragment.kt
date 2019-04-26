@@ -1,5 +1,6 @@
 package com.zf.eth.ui.fragment.c2c
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.flyco.tablayout.listener.OnTabSelectListener
@@ -9,11 +10,13 @@ import com.zf.eth.base.BaseFragmentAdapter
 import kotlinx.android.synthetic.main.fragment_c2c_order.*
 
 class OrderFragment : BaseFragment() {
+    private var mType = ""
 
     companion object {
-        fun getInstance(): OrderFragment {
-
-            return OrderFragment()
+        fun getInstance(type: String): OrderFragment {
+            val fragment = OrderFragment()
+            fragment.mType = type
+            return fragment
         }
     }
 
@@ -31,7 +34,11 @@ class OrderFragment : BaseFragment() {
         val mAdapter = BaseFragmentAdapter(childFragmentManager, mFragment)
 
         order_vp.adapter = mAdapter
-        order_vp.offscreenPageLimit=3
+        order_vp.offscreenPageLimit = 3
+        if (mType == "BUY") {
+            order_tab.currentTab = 1
+            order_vp.currentItem = 1
+        }
         order_tab.setTabData(mTitles)
     }
 

@@ -78,7 +78,7 @@ class C2CFragment : BaseFragment() {
         })
         //界面转跳
         navigation_btn.setOnClickListener {
-            C2cDetailActivity.actionStart(context)
+            C2cDetailActivity.actionStart(context,"")
         }
     }
 

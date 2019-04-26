@@ -64,11 +64,13 @@ class OrderContentFragment:NotLazyBaseFragment(),MyOrderContract.View{
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.requestMyOrder(mType)
+    }
     override fun onDestroy() {
         super.onDestroy()
-
         mAdapter.cancelAllTimers()
-
         presenter.detachView()
     }
 
