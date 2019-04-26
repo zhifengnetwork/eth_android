@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ETH娱乐生态</string>
+    <string name="app_name">ETH</string>
 
     <string name="refresh_finish">刷新完成</string>
     <string name="refresh_pulling">下拉刷新</string>

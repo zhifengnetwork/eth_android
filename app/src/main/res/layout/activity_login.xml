@@ -47,7 +47,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:text="15181112455"
+                    android:text=""
                     android:textColor="@color/whit"
                     android:textColorHint="#92a0b3"
                     android:textSize="15sp"/>
@@ -80,7 +80,7 @@
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:text="123456"
+                    android:text=""
                     android:textColor="@color/whit"
                     android:textColorHint="#92a0b3"
                     android:textSize="15sp"/>

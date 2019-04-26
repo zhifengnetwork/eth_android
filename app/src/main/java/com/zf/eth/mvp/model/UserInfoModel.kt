@@ -21,5 +21,4 @@ class UserInfoModel {
         ).compose(SchedulerUtils.ioToMain())
     }
 
-
 }
