@@ -93,22 +93,7 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
     override fun initView() {
         presenter.attachView(this)
 
-//        //订单号
-//        order_id.text = mData?.id
-//        //挂卖人
-//        order_openid.text = mData?.nickname
-//        //挂卖单价
-//        order_price.text = mData?.price
-//        //挂卖数量
-//        order_sum.text = mData?.trx
-//        //待付款
-//        order_money.text = mData?.money
-//        //付款人
-//        payee.text = mData?.nickname2
-//        //支付凭证
-//
-//        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//        spinner.adapter = mAdapter
+
     }
 
     override fun initEvent() {

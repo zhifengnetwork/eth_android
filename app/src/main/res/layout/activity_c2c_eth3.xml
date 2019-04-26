@@ -201,7 +201,7 @@
                 <Spinner
                         android:id="@+id/spinner"
                         android:layout_width="180dp"
-                        android:layout_height="22dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/shape_c2c_edittext_bg"
                          >
 
@@ -278,14 +278,14 @@
 
                     <TextView
                             android:id="@+id/copy_yh"
-                            android:layout_width="37dp"
-                            android:layout_height="14dp"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
                             android:layout_alignParentRight="true"
                             android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
                             android:textColor="@color/whit"
-                            android:textSize="9sp"/>
+                            android:textSize="12sp"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -312,13 +312,13 @@
 
                     <TextView
                             android:id="@+id/copy_hz"
-                            android:layout_width="37dp"
-                            android:layout_height="14dp"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
                             android:layout_alignParentRight="true"
                             android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
-                            android:textSize="9sp"
+                            android:textSize="12sp"
                             android:textColor="@color/whit"/>
                 </RelativeLayout>
 
@@ -346,13 +346,13 @@
 
                     <TextView
                             android:id="@+id/copy_kh"
-                            android:layout_width="37dp"
-                            android:layout_height="14dp"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
                             android:layout_alignParentRight="true"
                             android:background="@drawable/shape_c2c_eth_copy"
                             android:gravity="center"
                             android:text="复制"
-                            android:textSize="9sp"
+                            android:textSize="12sp"
                             android:textColor="@color/whit"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -394,6 +394,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="25dp"
+                    android:layout_marginBottom="30dp"
                     android:orientation="vertical">
 
                 <TextView

@@ -2,6 +2,7 @@ package com.zf.eth.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import com.google.android.material.tabs.TabLayout
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
@@ -14,8 +15,10 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class C2cDetailActivity : BaseActivity() {
     companion object {
-        fun actionStart(context: Context?) {
-            context?.startActivity(Intent(context, C2cDetailActivity::class.java))
+        fun actionStart(context: Context?, type: String) {
+            val intent = Intent(context, C2cDetailActivity::class.java)
+            intent.putExtra("mType", type)
+            context?.startActivity(intent)
         }
     }
 
@@ -38,12 +41,12 @@ class C2cDetailActivity : BaseActivity() {
     }
 
     override fun initView() {
+        val type = intent.getStringExtra( "mType")
 
         val mTitles = arrayListOf("我的订单", "发布广告", "我的申诉")
         val mFragment =
-            arrayListOf(OrderFragment.getInstance(), AdvertFragment.getInstance(), AppealFragment.getInstance())
+            arrayListOf(OrderFragment.getInstance(type), AdvertFragment.getInstance(), AppealFragment.getInstance())
         val adapter = BaseFragmentAdapter(supportFragmentManager, mFragment, mTitles)
-
         detail_vp.adapter = adapter
         detail_tab.setupWithViewPager(detail_vp)
         //添加自定义布局

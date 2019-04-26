@@ -138,7 +138,11 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
             img_btn.visibility = View.GONE
             payImg.visibility = View.VISIBLE
         }
-
+        /**交易中此页面显示确认收款按钮，修改布局文字*/
+        if (data?.list?.status == "1"){
+            confirm_btn.visibility = View.VISIBLE
+            appeal_btn.visibility = View.VISIBLE
+        }
         /**交易完成此页面隐藏确认收款按钮，修改布局文字*/
         if (data?.list?.status == "2") {
             if (data?.list?.type == "1") {
@@ -168,10 +172,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
                 order_openid.text = data?.list?.mobile2
                 //收款人
                 payee.text = data?.list?.mobile
-//                //挂卖人
-//                order_openid.text = data?.list?.nickname2
-//                //收款人
-//                payee.text = data?.list?.nickname
+
             } else {
                 openid_name.text = "挂 卖 人："
                 money_name.text = "待 收 款："
@@ -180,10 +181,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
                 order_openid.text = data?.list?.mobile
                 //收款人
                 payee.text = data?.list?.mobile2
-//                //挂卖人
-//                order_openid.text = data?.list?.nickname
-//                //收款人
-//                payee.text = data?.list?.nickname2
+
             }
             btn_ly.visibility = View.GONE
         }
