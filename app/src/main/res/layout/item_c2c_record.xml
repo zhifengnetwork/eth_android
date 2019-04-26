@@ -27,7 +27,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/time3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -54,7 +54,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/title3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -83,7 +83,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/price3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""

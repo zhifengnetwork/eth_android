@@ -8,9 +8,7 @@ import com.zf.eth.mvp.contract.InvestContract
 import com.zf.eth.mvp.presenter.InvestPresenter
 import com.zf.eth.net.exception.ErrorStatus
 import com.zf.eth.showToast
-import com.zf.eth.ui.adapter.C2CRecordAdapter
-import com.zf.eth.ui.adapter.InvestAdapter
-import com.zf.eth.ui.adapter.TransferAdapter
+import com.zf.eth.ui.adapter.*
 import kotlinx.android.synthetic.main.fragment_invest.*
 import kotlinx.android.synthetic.main.layout_state_empty_invest.*
 
@@ -81,6 +79,7 @@ class InvestFragment : NotLazyBaseFragment(), InvestContract.View {
         const val ZHUANBI = "3"
         const val TIBI = "4"
         const val C2C = "5"
+        const val TOTAL = "6"
         fun newInstance(type: String): InvestFragment {
             val fragment = InvestFragment()
             fragment.mType = type
@@ -92,8 +91,15 @@ class InvestFragment : NotLazyBaseFragment(), InvestContract.View {
 
     private val presenter by lazy { InvestPresenter() }
 
+    //投资记录
     private val investAdapter by lazy { InvestAdapter(context, data) }
+    //总记录
+    private val totalAdapter by lazy { TotalAdapter(context, data) }
+    //提现
+    private val withDrawAdapter by lazy { WithDrawAdapter(context, data) }
+    //C2C
     private val c2cAdapter by lazy { C2CRecordAdapter(context, data) }
+    //转币
     private val transferAdapter by lazy { TransferAdapter(context, data) }
 
     override fun getLayoutId(): Int = R.layout.fragment_invest
@@ -103,7 +109,11 @@ class InvestFragment : NotLazyBaseFragment(), InvestContract.View {
         presenter.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter =
-                if (mType == C2C) c2cAdapter else if (mType == ZHUANBI) transferAdapter else investAdapter
+            if (mType == C2C) c2cAdapter
+            else if (mType == ZHUANBI) transferAdapter
+            else if (mType == TIBI) withDrawAdapter
+            else if (mType == TOTAL) totalAdapter
+            else investAdapter
     }
 
     override fun lazyLoad() {

@@ -74,5 +74,6 @@ dependencies {
     //富文本 无需混淆
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'
 
+    implementation files('libs/OpenInstall_v2.2.2.jar')
 
 }

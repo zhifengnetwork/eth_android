@@ -22,10 +22,10 @@ class InvestAdapter(val context: Context?, val data: List<InvestList>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.itemView.apply {
-            money.text = data[position].money
-            time.text = data[position].createtime
-            title.text = data[position].title
-            status.text = when (data[position].status) {
+            money1.text = data[position].money
+            time1.text = data[position].createtime
+            title1.text = data[position].title
+            status1.text = when (data[position].status) {
                 "0" -> "审核中"
                 "1" -> "成功"
                 else -> ""

@@ -12,6 +12,7 @@ import com.zf.eth.mvp.contract.WithDrawContract
 import com.zf.eth.mvp.presenter.WalletPresenter
 import com.zf.eth.mvp.presenter.WithDrawPresenter
 import com.zf.eth.showToast
+import com.zf.eth.ui.activity.WalletActivity
 import com.zf.eth.ui.activity.WalletAddressActivity
 import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.fragment_eth.*
@@ -23,7 +24,7 @@ import java.math.BigDecimal
 class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
 
     //跳转都钱包地址完善信息
-    override fun setPerfectInfo(msg:String) {
+    override fun setPerfectInfo(msg: String) {
         showToast(msg)
         WalletAddressActivity.actionStart(context)
     }
@@ -45,6 +46,8 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
     //提现成功
     override fun setWithDraw(msg: String) {
         showToast(msg)
+        activity?.finish()
+        WalletActivity.actionStart(context, 1)
     }
 
     override fun showLoading() {

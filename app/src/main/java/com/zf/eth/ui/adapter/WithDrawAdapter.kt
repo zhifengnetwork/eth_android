@@ -7,24 +7,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.InvestList
-import kotlinx.android.synthetic.main.item_c2c_record.view.*
+import kotlinx.android.synthetic.main.item_withdraw.view.*
 
-class C2CRecordAdapter(val context: Context?, val data: List<InvestList>) :
-        RecyclerView.Adapter<C2CRecordAdapter.ViewHolder>() {
-
+class WithDrawAdapter(val context: Context?, val data: List<InvestList>) :
+    RecyclerView.Adapter<WithDrawAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_c2c_record, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_withdraw, parent, false)
         return ViewHolder(view)
     }
 
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemView.apply {
-            title3.text = data[position].title
-            time3.text = data[position].createtime
-            price3.text = data[position].RMB
+            money2.text = data[position].money
+            time2.text = data[position].createtime
+            title2.text = data[position].title
+            truePrice2.text = data[position].realmoney
+            charge2.text = data[position].charge
         }
     }
 

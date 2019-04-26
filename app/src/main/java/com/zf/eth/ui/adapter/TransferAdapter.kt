@@ -25,10 +25,10 @@ class TransferAdapter(val context: Context?, val data: List<InvestList>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.itemView.apply {
-            time.text = data[position].createtime
-            name.text = data[position].nickname
-            price.text = "${data[position].money}个"
-            serviceMoney.text = "${data[position].money2}个"
+            time4.text = data[position].createtime
+            name4.text = data[position].nickname
+            price4.text = "${data[position].money}个"
+            serviceMoney4.text = "${data[position].money2}个"
         }
     }
 
