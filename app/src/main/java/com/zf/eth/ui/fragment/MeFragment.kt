@@ -29,7 +29,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         showToast("退出成功")
         UserInfoLiveData.value = bean
         val intent = Intent(context, MainActivity::class.java)
-                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
     }
 
@@ -73,6 +73,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     private val presenter by lazy { LogOutPresenter() }
 
     override fun lazyLoad() {
+
         UserInfoLiveData.observe(this, Observer { userInfo ->
             userInfo?.apply {
                 GlideUtils.loadUrlImage(context, member.avatar, me_img)
@@ -89,6 +90,13 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
                 singOut.visibility = if (member.type == "2") View.GONE else View.VISIBLE
             }
         })
+
+        if (userId.isEmpty()) {
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
+        }
     }
 
     private val userId by Preference(UriConstant.USER_ID, "")
@@ -98,16 +106,16 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         logOut.setOnClickListener {
             val builder = AlertDialog.Builder(context!!)
             builder.setTitle("提示")
-                    .setMessage("当前已登录，确定要退出？")
-                    .setNegativeButton("取消") { _, _ -> }
-                    .setPositiveButton("确定") { _, _ ->
-                        Preference.clearPreference(UriConstant.USER_ID)
-                        UserInfoLiveData.value = null
-                        val intent = Intent(context, LoginActivity::class.java)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                    }
-                    .show()
+                .setMessage("当前已登录，确定要退出？")
+                .setNegativeButton("取消") { _, _ -> }
+                .setPositiveButton("确定") { _, _ ->
+                    Preference.clearPreference(UriConstant.USER_ID)
+                    UserInfoLiveData.value = null
+                    val intent = Intent(context, LoginActivity::class.java)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
+                .show()
         }
 
         me_img.setOnClickListener {
@@ -136,9 +144,9 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
 
         contact.setOnClickListener {
             ContactDialog.showDialog(
-                    childFragmentManager,
-                    UserInfoLiveData.value?.kefu?.kefufile,
-                    UserInfoLiveData.value?.kefu?.wxkffile
+                childFragmentManager,
+                UserInfoLiveData.value?.kefu?.kefufile,
+                UserInfoLiveData.value?.kefu?.wxkffile
             )
         }
 
@@ -149,7 +157,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         singOut.setOnClickListener {
             UserInfoLiveData.value?.apply {
                 LogOutDialog.showDialog(childFragmentManager, arr2.money ?: "0.00")
-                        .onConfirmListener = {
+                    .onConfirmListener = {
                     presenter.requestLogOut(it)
                 }
             }
