@@ -131,7 +131,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
-            InvestActivity.actionStart(context, InvestActivity.TOUZI)
+            InvestActivity.actionStart(context)
         }
 
         //钱包余额

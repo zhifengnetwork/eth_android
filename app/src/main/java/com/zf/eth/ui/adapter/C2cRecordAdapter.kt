@@ -9,8 +9,8 @@ import com.zf.eth.R
 import com.zf.eth.mvp.bean.InvestList
 import kotlinx.android.synthetic.main.item_c2c_record.view.*
 
-class C2CRecordAdapter(val context: Context, val data: List<InvestList>) :
-    RecyclerView.Adapter<C2CRecordAdapter.ViewHolder>() {
+class C2CRecordAdapter(val context: Context?, val data: List<InvestList>) :
+        RecyclerView.Adapter<C2CRecordAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

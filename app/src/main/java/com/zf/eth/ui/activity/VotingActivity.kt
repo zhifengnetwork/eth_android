@@ -44,10 +44,10 @@ class VotingActivity : BaseActivity(), RePayContract.View {
     companion object {
         const val FREE_WALLET = "FREE_WALLET" //自由钱包
         const val RE_DELIVER = "RE_DELIVER" //复投账户
-        fun actionStart(context: Context, type: String) {
+        fun actionStart(context: Context?, type: String) {
             val intent = Intent(context, VotingActivity::class.java)
             intent.putExtra("type", type)
-            context.startActivity(intent)
+            context?.startActivity(intent)
         }
     }
 

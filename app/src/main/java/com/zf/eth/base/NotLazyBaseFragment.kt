@@ -10,6 +10,8 @@ import com.classic.common.MultipleStatusView
 
 /**
  * 不设置懒加载。只要切换到当前fragment,就执行lazyLoad()。
+ *
+ *   在lazyLoad()函数设置refreshLayout.setNoMoreData(false)
  */
 abstract class NotLazyBaseFragment : Fragment() {
 

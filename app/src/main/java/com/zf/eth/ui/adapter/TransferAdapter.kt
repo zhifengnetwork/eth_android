@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.item_transfer.view.*
 /**
  * 转币记录
  */
-class TransferAdapter(val context: Context, val data: List<InvestList>) :
+class TransferAdapter(val context: Context?, val data: List<InvestList>) :
     RecyclerView.Adapter<TransferAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

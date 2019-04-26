@@ -1,258 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:background="@color/color_black"
-              android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/layout_toolbar"/>
+    <include layout="@layout/layout_toolbar" />
 
-    <include layout="@layout/layout_wallet_tab"/>
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/color_black"
+        app:tl_divider_color="@color/whit"
+        app:tl_divider_padding="0dp"
+        app:tl_divider_width="1px"
+        app:tl_indicator_color="#2f4577"
+        app:tl_indicator_height="40dp"
+        app:tl_tab_space_equal="true"
+        app:tl_textSelectColor="@color/whit"
+        app:tl_textUnselectColor="#abb9d9" />
 
-    <!--     复投账户     -->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_wallet_round"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="vertical">
-
-        <LinearLayout
-                android:id="@+id/reAccountLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:orientation="horizontal">
-
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="14sp"
-                      android:textColor="@color/whit"
-                      android:text="复投账户"/>
-
-            <Space android:layout_width="0dp"
-                   android:layout_height="1dp"
-                   android:layout_weight="1"/>
-
-            <TextView
-                    android:id="@+id/reAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/whit"
-                    android:text="0.00"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/reDetailLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:paddingBottom="15dp"
-                android:orientation="vertical">
-
-            <View android:id="@+id/dashLine1"
-                  android:layout_width="match_parent"
-                  android:layout_height="1.5dp"
-                  android:background="@drawable/shape_dash_line"/>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <TextView
-                        android:id="@+id/reVoting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="一键复投"/>
-
-                <Space android:layout_width="0dp"
-                       android:layout_height="1dp"
-                       android:layout_weight="1"/>
-
-                <TextView
-                        android:id="@+id/reGame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="棋牌娱乐"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <!--     自由钱包     -->
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_wallet_round"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="vertical">
-
-        <LinearLayout
-                android:id="@+id/freeAccountLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:orientation="horizontal">
-
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:textSize="14sp"
-                      android:textColor="@color/whit"
-                      android:text="自由钱包"/>
-
-            <Space android:layout_width="0dp"
-                   android:layout_height="1dp"
-                   android:layout_weight="1"/>
-
-            <TextView
-                    android:id="@+id/freeAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/whit"
-                    android:text="0.0000"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/freeDetailLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:paddingBottom="15dp"
-                android:orientation="vertical">
-
-            <View android:id="@+id/dashLine2"
-                  android:layout_width="match_parent"
-                  android:layout_height="1.5dp"
-                  android:background="@drawable/shape_dash_line"/>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <TextView android:id="@+id/freeVoting"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:background="@drawable/shape_round_transparent"
-                          android:paddingLeft="10dp"
-                          android:paddingRight="10dp"
-                          android:paddingTop="5dp"
-                          android:paddingBottom="5dp"
-                          android:textSize="12sp"
-                          android:textColor="@color/whit"
-                          android:text="一键复投"/>
-
-                <Space android:layout_width="0dp"
-                       android:layout_height="1dp"
-                       android:layout_weight="1"/>
-
-                <TextView
-                        android:id="@+id/withdraw"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="提现"/>
-
-                <Space android:layout_width="0dp"
-                       android:layout_height="1dp"
-                       android:layout_weight="1"/>
-
-                <TextView
-                        android:id="@+id/c2c"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="C2C"/>
-
-                <Space android:layout_width="0dp"
-                       android:layout_height="1dp"
-                       android:layout_weight="1"/>
-
-                <TextView
-                        android:id="@+id/freeGame"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="棋牌娱乐"/>
-
-                <Space android:layout_width="0dp"
-                       android:layout_height="1dp"
-                       android:layout_weight="1"/>
-
-                <TextView
-                        android:id="@+id/transfer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/shape_round_transparent"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:textSize="12sp"
-                        android:textColor="@color/whit"
-                        android:text="互转"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

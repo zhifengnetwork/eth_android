@@ -4,14 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zf.eth.R
 import com.zf.eth.mvp.bean.InvestList
 import kotlinx.android.synthetic.main.item_invest.view.*
 
-class InvestAdapter(val context: Context, val data: List<InvestList>) :
-    RecyclerView.Adapter<InvestAdapter.ViewHolder>() {
+class InvestAdapter(val context: Context?, val data: List<InvestList>) :
+        RecyclerView.Adapter<InvestAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_invest, parent, false)
