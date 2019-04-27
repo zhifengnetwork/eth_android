@@ -47,7 +47,7 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
     override fun setWithDraw(msg: String) {
         showToast(msg)
         activity?.finish()
-        WalletActivity.actionStart(context, 1)
+        WalletActivity.actionStart(context, 2)
     }
 
     override fun showLoading() {

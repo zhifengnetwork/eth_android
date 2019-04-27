@@ -47,8 +47,6 @@ class InvestFragment : NotLazyBaseFragment(), InvestContract.View {
             C2C -> "没有C2C记录"
             else -> "没有记录"
         }
-
-
     }
 
     override fun setLoadMore(bean: List<InvestList>) {
@@ -109,11 +107,13 @@ class InvestFragment : NotLazyBaseFragment(), InvestContract.View {
         presenter.attachView(this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter =
-            if (mType == C2C) c2cAdapter
-            else if (mType == ZHUANBI) transferAdapter
-            else if (mType == TIBI) withDrawAdapter
-            else if (mType == TOTAL) totalAdapter
-            else investAdapter
+            when (mType) {
+                C2C -> c2cAdapter
+                ZHUANBI -> transferAdapter
+                TIBI -> withDrawAdapter
+                TOTAL -> totalAdapter
+                else -> investAdapter
+            }
     }
 
     override fun lazyLoad() {

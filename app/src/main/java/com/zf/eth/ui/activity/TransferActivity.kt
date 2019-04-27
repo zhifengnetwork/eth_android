@@ -43,7 +43,7 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
     override fun setTransfer(msg: String) {
         showToast(msg)
         finish()
-        WalletActivity.actionStart(this,2)
+        WalletActivity.actionStart(this,3)
     }
 
     override fun showLoading() {

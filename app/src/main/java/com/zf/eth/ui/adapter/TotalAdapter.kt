@@ -88,7 +88,7 @@ class TotalAdapter(val context: Context?, val data: List<InvestList>) :
             is ZhuanBiHolder -> {
                 holder.itemView.apply {
                     time4.text = data[position].createtime
-                    name4.text = data[position].nickname
+                    name4.text = data[position].openid2
                     price4.text = "${data[position].money}个"
                     serviceMoney4.text = "${data[position].money2}个"
                     title4.text = data[position].title

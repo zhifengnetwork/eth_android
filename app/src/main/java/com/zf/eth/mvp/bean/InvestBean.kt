@@ -5,7 +5,7 @@ data class InvestBean(
 //    val result: InvestResult
     val total: Int,
     val pagesize: Int,
-    val list: List<InvestList>
+    val list: List<InvestList>?
 )
 
 //data class InvestResult(
@@ -18,6 +18,7 @@ data class InvestList(
     val createtime: String,
     val money: String,
     val realmoney: String,
+    val openid2: String? = "",
     val type: String,
     val RMB: String,
     val charge: String,
