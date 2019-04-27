@@ -14,7 +14,8 @@ class InvestModel {
 
     fun getInvest(type: String, page: Int): Observable<BaseBean<InvestBean>> {
         return RetrofitManager.service.getInvest(
-            "member.androidapi.investment_record",
+            if (type == "6") "member.androidapi.money_log"
+            else "member.androidapi.investment_record",
             userId,
             type,
             page

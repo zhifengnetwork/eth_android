@@ -17,8 +17,13 @@ data class InvestList(
     val title: String,
     val createtime: String,
     val money: String,
-    val RMB:String,
-    val status:String,
-    val nickname:String,
-    val money2:String
+    val realmoney: String,
+    val type: String,
+    val RMB: String,
+    val charge: String,
+    val status: String,
+    val payment: String, //1自由账户 2复投账户
+    val after_money: String,
+    val nickname: String,
+    val money2: String
 )

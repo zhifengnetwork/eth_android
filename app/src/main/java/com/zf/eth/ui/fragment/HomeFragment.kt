@@ -140,7 +140,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
-            WalletActivity.actionStart(context)
+            WalletActivity.actionStart(context,0)
         }
 
     }

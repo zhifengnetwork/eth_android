@@ -27,7 +27,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/time4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="****-**-**"
@@ -54,7 +54,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/name4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="***"
@@ -81,7 +81,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/price4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.000个"
@@ -109,7 +109,7 @@
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/serviceMoney"
+            android:id="@+id/serviceMoney4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.00个"
