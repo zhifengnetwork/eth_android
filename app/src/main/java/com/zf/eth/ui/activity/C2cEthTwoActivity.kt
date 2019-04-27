@@ -57,12 +57,6 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     override fun initToolBar() {
 
-        if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
-
-        if (data?.list?.status == "3") {
-            if (data?.list?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
-        }
-
         titleName.textSize = 22f
         titleName.paint.isFakeBoldText = true
         titleBackground.setBackgroundResource(R.drawable.bg1)
@@ -113,11 +107,11 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
         if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
 
         if (data?.list?.status == "3") {
-            if (data?.list?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
+            if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
         }
 
 
-        if (data?.list?.type == "1") openid_name.text = "挂 卖 人" else openid_name.text = "挂 买 人"
+        if (data?.list?.type == "1") openid_name.text = "挂 卖 人:" else openid_name.text = "挂 买 人:"
         //订单号
         order_id.text = data?.list?.id
         //挂卖人
@@ -165,7 +159,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
         /**交易失败此页面隐藏两个按钮,修改布局的文字*/
         if (data?.list?.status == "3") {
             if (data?.list?.type == "0") {
-                openid_name.text = "挂 买 人："
+                openid_name.text = "挂 买 人:"
                 money_name.text = "待 收 款："
                 payee_name.text = "收 款 人："
                 //挂卖人
@@ -174,7 +168,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
                 payee.text = data?.list?.mobile
 
             } else {
-                openid_name.text = "挂 卖 人："
+                openid_name.text = "挂 卖 人:"
                 money_name.text = "待 收 款："
                 payee_name.text = "付 款 人："
                 //挂卖人
