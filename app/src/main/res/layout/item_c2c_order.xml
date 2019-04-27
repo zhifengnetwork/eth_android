@@ -71,55 +71,59 @@
     <LinearLayout
             android:id="@+id/three"
             android:layout_below="@+id/two"
-            android:gravity="left"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <TextView
-                android:id="@+id/trx_sum"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textColor="@color/whit"
-                android:text="2.00"/>
-        <TextView
-                android:id="@+id/sum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:textSize="13sp"
-                android:textColor="#a4aff1"
-                android:text="/个"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/sum"
-                android:textSize="13sp"
-                android:textColor="#a4aff1"
-                android:text="＄"/>
-        <TextView
-                android:id="@+id/price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textColor="@color/whit"
-                android:text="4.00"/>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:textColor="#a4aff1"
-                android:text="总金额(CNY):"/>
-        <TextView
-                android:id="@+id/money"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="13sp"
-                android:textColor="@color/whit"
-                android:text="32.00"/>
+
+            <TextView
+                    android:id="@+id/trx_sum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+                    android:gravity="right"
+                    android:textColor="@color/whit"
+                    android:text="226000"/>
+            <TextView
+                    android:id="@+id/sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:textSize="13sp"
+                    android:textColor="#a4aff1"
+                    android:text="/个"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#a4aff1"
+                    android:text="＄"/>
+            <TextView
+                    android:id="@+id/price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="13sp"
+                    android:textColor="@color/whit"
+                    android:text="4.00"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#a4aff1"
+                    android:text="总金额(CNY):"/>
+            <TextView
+                    android:id="@+id/money"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:layout_weight="1"
+                    android:textColor="@color/whit"
+                    android:text="21464565465554542"/>
+
+
     </LinearLayout>
 
     <TextView

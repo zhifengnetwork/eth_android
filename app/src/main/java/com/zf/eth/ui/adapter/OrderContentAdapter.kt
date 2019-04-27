@@ -88,7 +88,6 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                             override fun onFinish() {
                                 apple_time.text = "订单已超时"
                                 apple_time.setTextColor(Color.parseColor("#ce2f50"))
-                                c2c_item_ly.isClickable = false
                             }
 
                             override fun onTick(millisUntilFinished: Long) {
@@ -100,7 +99,7 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                         countDownCounters?.put(apple_time.hashCode(), countDownTimer)
                     } else {
                         //过时，订单作废
-                        c2c_item_ly.isClickable = false
+                        c2c_item_ly.isEnabled = false
                     }
                 }
                 "2" -> {
