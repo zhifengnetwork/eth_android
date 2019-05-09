@@ -52,6 +52,8 @@ class PourFragment : BaseFragment(), BetContract.View {
     /** 第二部，确认下注  */
     override fun setConfirmBeat(msg: String) {
         showToast(msg)
+        adapter.pourData.clear()
+        adapter.notifyDataSetChanged()
     }
 
     /** 第一步，确认信息 */
@@ -67,10 +69,10 @@ class PourFragment : BaseFragment(), BetContract.View {
             //求总共多少注
             num += list[it].multiple
             jsonList.add(
-                    PourNumBean(
-                            list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
-                            list[it].multiple.toString()
-                    )
+                PourNumBean(
+                    list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
+                    list[it].multiple.toString()
+                )
             )
 //            data[it] = arrayOf(
 //                list[it].hundred.toString() + list[it].decade.toString() + list[it].single.toString(),
@@ -113,10 +115,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(
-                RecyclerViewDivider(
-                        context, LinearLayout.VERTICAL,
-                        1, ContextCompat.getColor(context!!, R.color.color_game_item)
-                )
+            RecyclerViewDivider(
+                context, LinearLayout.VERTICAL,
+                1, ContextCompat.getColor(context!!, R.color.color_game_item)
+            )
         )
     }
 
@@ -144,10 +146,10 @@ class PourFragment : BaseFragment(), BetContract.View {
         //开奖号
         drawLayout.setOnClickListener {
             val popupWindow = object : DrawWinPopupWindow(
-                    activity as Activity,
-                    R.layout.pop_draw_win, DensityUtil.dp2px(120f),
-                    DensityUtil.dp2px(150f),
-                    lotteryData
+                activity as Activity,
+                R.layout.pop_draw_win, DensityUtil.dp2px(120f),
+                DensityUtil.dp2px(150f),
+                lotteryData
             ) {}
             val layoutGravity = LayoutGravity(LayoutGravity.ALIGN_RIGHT)
             popupWindow.showBashOfAnchor(drawLayout, layoutGravity, 0, 0)

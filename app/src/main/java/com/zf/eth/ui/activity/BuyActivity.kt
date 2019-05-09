@@ -46,7 +46,7 @@ class BuyActivity : BaseActivity(), BuyContract.View {
         currentPrice.text = bean.list.credit1
         typeTxt.text = if (bean.list.type == "0") "激活投资" else "追加投资"
         upLimit.text = bean.list.bibi
-        address.text = bean.list.add
+        address.setText(bean.list.add)
         mostPrice.text = (BigDecimal(bean.list.bibi).subtract(BigDecimal(bean.list.credit1))).toString()
 
 
@@ -86,6 +86,8 @@ class BuyActivity : BaseActivity(), BuyContract.View {
 
     override fun initEvent() {
 
+        address.keyListener = null
+
         //确定购买
         confirmPay.setOnClickListener {
             if (mUrl.isEmpty()) {
@@ -98,15 +100,15 @@ class BuyActivity : BaseActivity(), BuyContract.View {
         //上传支付凭证
         payImg.setOnClickListener {
             Album.image(this)
-                    .multipleChoice()
-                    .camera(true)
-                    .columnCount(3)
-                    .selectCount(1)
-                    .onResult {
-                        val base64 = Base64Utils.bitmapToString(it[0].path)
-                        presenter.requestPayImg(base64)
-                    }
-                    .start()
+                .multipleChoice()
+                .camera(true)
+                .columnCount(3)
+                .selectCount(1)
+                .onResult {
+                    val base64 = Base64Utils.bitmapToString(it[0].path)
+                    presenter.requestPayImg(base64)
+                }
+                .start()
         }
 
         buy.setOnClickListener {

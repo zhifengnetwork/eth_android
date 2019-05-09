@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import com.zf.eth.GlideApp
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
@@ -15,7 +16,7 @@ import com.zf.eth.mvp.presenter.LogOutPresenter
 import com.zf.eth.mvp.presenter.UserInfoPresenter
 import com.zf.eth.showToast
 import com.zf.eth.ui.activity.*
-import com.zf.eth.utils.GlideUtils
+import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.Preference
 import com.zf.eth.view.dialog.ContactDialog
 import com.zf.eth.view.dialog.LogOutDialog
@@ -76,7 +77,13 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
 
         UserInfoLiveData.observe(this, Observer { userInfo ->
             userInfo?.apply {
-                GlideUtils.loadUrlImage(context, member.avatar, me_img)
+                LogUtils.e(">>>:" + member.avatar)
+                if (member.avatar.isNotEmpty()) {
+                    GlideApp.with(context!!).asBitmap()
+                        .load(member.avatar)
+                        .error(R.drawable.headportrait) //加载失败占位图
+                        .into(me_img)
+                }
                 nickName.text = member.nickname
                 vipId.text = "会员ID: ${member.id}"
                 vipLevel.text = "会员等级: ${huiyuanlevel.levelname1 ?: "暂无"}"
