@@ -77,7 +77,6 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
 
         UserInfoLiveData.observe(this, Observer { userInfo ->
             userInfo?.apply {
-                LogUtils.e(">>>:" + member.avatar)
                 if (member.avatar.isNotEmpty()) {
                     GlideApp.with(context!!).asBitmap()
                         .load(member.avatar)

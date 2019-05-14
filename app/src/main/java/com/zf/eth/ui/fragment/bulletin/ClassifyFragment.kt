@@ -1,6 +1,5 @@
 package com.zf.eth.ui.fragment.bulletin
 
-import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
@@ -12,8 +11,8 @@ import com.zf.eth.ui.adapter.SystemBulletinIfyAdapter
 import kotlinx.android.synthetic.main.layout_bullentin_content.*
 
 class ClassifyFragment:BaseFragment(),BulletinContract.View{
-    override fun showError(msg: String, errorCode: Int) {
 
+    override fun showError(msg: String, errorCode: Int) {
     }
 
     override fun getBulletin(bean: BulletinBean) {
@@ -52,9 +51,7 @@ class ClassifyFragment:BaseFragment(),BulletinContract.View{
     }
 
     override fun lazyLoad() {
-
-
-
+        presenter.requseBulletin("1",mType)
     }
 
     override fun initEvent() {
@@ -65,8 +62,5 @@ class ClassifyFragment:BaseFragment(),BulletinContract.View{
         super.onDestroy()
         presenter.detachView()
     }
-    override fun onStart() {
-        super.onStart()
-        presenter.requseBulletin("1",mType)
-    }
+
 }
