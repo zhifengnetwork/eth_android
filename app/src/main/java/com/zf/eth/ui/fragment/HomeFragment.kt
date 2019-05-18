@@ -68,19 +68,15 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         bannerPresenter.attachView(this)
     }
 
-    override fun onResume() {
-        super.onResume()
-        bannerTextView.startViewAnimator()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        bannerTextView.stopViewAnimator()
-    }
 
     override fun onDestroy() {
-        super.onDestroy()
         bannerPresenter.detachView()
+        super.onDestroy()
+    }
+
+    override fun onDestroyView() {
+        bannerTextView.stopViewAnimator()
+        super.onDestroyView()
     }
 
     override fun lazyLoad() {
@@ -140,7 +136,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
-            WalletActivity.actionStart(context,0)
+            WalletActivity.actionStart(context, 0)
         }
 
     }

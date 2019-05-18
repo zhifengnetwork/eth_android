@@ -2,6 +2,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#36394A"
+    android:fillViewport="true"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="@drawable/tupian">
 
             <View
@@ -24,7 +26,7 @@
                 android:id="@+id/me_img"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:layout_marginBottom="25dp"
                 android:src="@drawable/headportrait" />
@@ -32,7 +34,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="25dp"
                 android:layout_toRightOf="@id/me_img"
@@ -42,7 +44,7 @@
                     android:id="@+id/nickName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="****"
                     android:textColor="#ffffff"
                     android:textSize="11sp" />
 
@@ -103,19 +105,33 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_marginTop="10dp" />-->
 
+        <!--<Space android:layout_width="1dp" android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <TextView
             android:id="@+id/logOut"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="35dp"
-            android:layout_marginTop="31dp"
-            android:layout_marginRight="35dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/shape_me_logout"
             android:gravity="center"
             android:text="退出登录"
             android:textColor="#ffffff"
             android:textSize="15sp" />
+
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

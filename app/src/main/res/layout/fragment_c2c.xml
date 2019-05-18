@@ -1,32 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:background="@drawable/bg1"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#36394A"
+    android:orientation="vertical">
 
-    <include layout="@layout/layout_c2c_title"/>
+    <include layout="@layout/layout_c2c_title" />
+
     <LinearLayout
-            android:id="@+id/tablayoutbg"
-            android:orientation="vertical"
-            android:background="@drawable/bg2"
+        android:id="@+id/tablayoutbg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--<com.google.android.material.tabs.TabLayout-->
+        <!--android:id="@+id/tabLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="44dp"-->
+        <!--app:tabIndicatorColor="#FF2E2C"-->
+        <!--app:tabIndicatorHeight="3dp"-->
+        <!--app:tabSelectedTextColor="#FF2E2C"-->
+        <!--app:tabTextColor="@color/whit" />-->
+
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-    >
-
-
-        <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                 android:layout_height="44dp"
-                 app:tabIndicatorHeight="0dp"
-        />
+            android:layout_height="44dp"
+            app:tl_indicator_color="#FF2E2C"
+            app:tl_indicator_width="15dp"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="#FF2E2C"
+            app:tl_textUnselectColor="@color/whit"
+            app:tl_textsize="15sp" />
 
         <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
+
 </LinearLayout>

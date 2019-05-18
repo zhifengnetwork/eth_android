@@ -1,96 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:background="@color/color_black"
-              android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#36394A"
+    android:orientation="vertical">
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center_horizontal"
-              android:textSize="20sp"
-              android:layout_marginTop="10dp"
-              android:textColor="@color/whit"
-              android:text="游戏大全"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="游戏大全"
+        android:textColor="@color/whit"
+        android:textSize="20sp" />
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:layout_marginTop="40dp"
-            android:paddingRight="25dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-        <ImageView
-                android:id="@+id/pour"
-                android:layout_width="0dp"
-                android:layout_weight="2"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/welfare"/>
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
-        <Space android:layout_width="30dp"
-               android:layout_height="1dp"/>
+                <ImageView
+                    android:id="@+id/pour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/welfare" />
 
-        <ImageView android:layout_width="0dp"
-                   android:layout_weight="1.2"
-                   android:layout_height="match_parent"
-                   android:adjustViewBounds="true"
-                   android:src="@drawable/icon_3d"/>
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="1dp" />
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_3d" />
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:paddingRight="25dp"
-            android:orientation="horizontal">
-
-        <ImageView android:layout_width="0dp"
-                   android:layout_weight="2"
-                   android:layout_height="wrap_content"
-                   android:adjustViewBounds="true"
-                   android:src="@drawable/leisure"/>
-
-        <Space android:layout_width="30dp"
-               android:layout_height="1dp"/>
-
-        <ImageView android:layout_width="0dp"
-                   android:layout_weight="1.2"
-                   android:layout_height="wrap_content"
-                   android:adjustViewBounds="true"
-                   android:src="@drawable/leisure1"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            </LinearLayout>
 
 
-        <ImageView android:layout_width="0dp"
-                   android:layout_height="wrap_content"
-                   android:layout_weight="2"
-                   android:adjustViewBounds="true"
-                   android:src="@drawable/bullfighting"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
-        <Space android:layout_width="30dp"
-               android:layout_height="1dp"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/leisure" />
 
-        <ImageView android:layout_width="0dp"
-                   android:layout_weight="1.2"
-                   android:layout_height="wrap_content"
-                   android:adjustViewBounds="true"
-                   android:src="@drawable/bullfighting2"/>
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="1dp" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/leisure1" />
+
+            </LinearLayout>
 
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="90dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp">
 
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/bullfighting" />
+
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="1dp" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/bullfighting2" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

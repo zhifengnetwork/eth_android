@@ -41,13 +41,13 @@ class C2CFragment : BaseFragment() {
 
         //上面导航列表
         viewPager.adapter = adapter
-        tabLayout.setupWithViewPager(viewPager)
+        tabLayout.setViewPager(viewPager)
 
         //添加自定义布局
-        for (i in title.indices) {
-            val tab = tabLayout.getTabAt(i)
-            tab?.customView = adapter.getCustomView(title, R.layout.layout_c2c_tab_item, i)
-        }
+//        for (i in title.indices) {
+//            val tab = tabLayout.getTabAt(i)
+//            tab?.customView = adapter.getCustomView(title, R.layout.layout_c2c_tab_item, i)
+//        }
 
 
     }
@@ -57,25 +57,25 @@ class C2CFragment : BaseFragment() {
 
     override fun initEvent() {
         /**选中的item更换背景*/
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                //                添加选中Tab的逻辑
-                when (tab.position) {
-                    0 -> tablayoutbg.setBackgroundResource(R.drawable.bg2)
-                    1 -> tablayoutbg.setBackgroundResource(R.drawable.bg3)
-                }
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                //                添加未选中Tab的逻辑
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-                //                再次选中tab的逻辑 重复点击
-
-            }
-        })
+//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab) {
+//                //                添加选中Tab的逻辑
+//                when (tab.position) {
+//                    0 -> tablayoutbg.setBackgroundResource(R.drawable.bg2)
+//                    1 -> tablayoutbg.setBackgroundResource(R.drawable.bg3)
+//                }
+//
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab) {
+//                //                添加未选中Tab的逻辑
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab) {
+//                //                再次选中tab的逻辑 重复点击
+//
+//            }
+//        })
         //界面转跳
         navigation_btn.setOnClickListener {
             C2cDetailActivity.actionStart(context,"")

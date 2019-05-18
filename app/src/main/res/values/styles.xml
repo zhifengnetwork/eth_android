@@ -61,7 +61,7 @@
 
     <style name="me_item">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">44dp</item>
+        <item name="android:layout_height">54dp</item>
         <item name="android:background">#142241</item>
         <item name="android:drawableRight">@drawable/tiaozhuan</item>
         <item name="android:drawablePadding">8dp</item>

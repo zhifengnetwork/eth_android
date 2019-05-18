@@ -27,6 +27,11 @@ class WithDrawAdapter(val context: Context?, val data: List<InvestList>) :
             title2.text = data[position].title
             truePrice2.text = data[position].realmoney
             charge2.text = data[position].charge
+            status.text = when (data[position].status) {
+                "0" -> "审核中"
+                "1" -> "成功"
+                else -> ""
+            }
         }
     }
 

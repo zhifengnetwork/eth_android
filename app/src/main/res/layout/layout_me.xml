@@ -41,7 +41,6 @@
     <TextView
         android:id="@+id/invite"
         style="@style/me_item"
-        android:layout_marginTop="5dp"
         android:drawableLeft="@drawable/yaoqing"
         android:text="我的邀请" />
 

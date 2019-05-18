@@ -67,8 +67,6 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     override fun initView() {
         infoPresenter.attachView(this)
         presenter.attachView(this)
-
-
     }
 
     private val presenter by lazy { LogOutPresenter() }
