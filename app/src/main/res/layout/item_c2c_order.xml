@@ -76,9 +76,9 @@
 
             <TextView
                     android:id="@+id/trx_sum"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+
                     android:textSize="13sp"
                     android:gravity="right"
                     android:textColor="@color/whit"
@@ -87,55 +87,63 @@
                     android:id="@+id/sum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+
                     android:textSize="13sp"
                     android:textColor="#a4aff1"
                     android:text="/个"/>
 
 
             <TextView
+                   android:layout_marginLeft="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
                     android:textColor="#a4aff1"
-                    android:text="＄"/>
+                    android:text="CNY:"/>
             <TextView
                     android:id="@+id/price"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="13sp"
                     android:textColor="@color/whit"
                     android:text="4.00"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:textColor="#a4aff1"
-                    android:text="总金额(CNY):"/>
-            <TextView
-                    android:id="@+id/money"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:layout_weight="1"
-                    android:textColor="@color/whit"
-                    android:text="21464565465554542"/>
+
 
 
     </LinearLayout>
-
+     <LinearLayout
+             android:layout_marginTop="10dp"
+             android:layout_below="@+id/three"
+             android:orientation="horizontal"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content">
+         <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textSize="13sp"
+                 android:textColor="#a4aff1"
+                 android:text="总额(CNY):"/>
+         <TextView
+                 android:id="@+id/money"
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:textSize="13sp"
+                 android:layout_weight="1"
+                 android:textColor="@color/whit"
+                 android:text="21464565465554542"/>
+     </LinearLayout>
     <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/three"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:textColor="#9496a3"
             android:textSize="11sp"
-            android:text="2019-04-03  10:32:51"
-    />
+            android:text="2019-04-03  10:32:51"/>
     <LinearLayout
             android:id="@+id/countdown"
             android:layout_below="@+id/three"

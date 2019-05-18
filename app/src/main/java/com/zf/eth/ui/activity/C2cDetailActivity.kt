@@ -26,7 +26,6 @@ class C2cDetailActivity : BaseActivity() {
         titleName.text = "ETH/CNY"
         titleName.textSize = 22f
         titleName.paint.isFakeBoldText = true
-        titleBackground.setBackgroundResource(R.drawable.bg1)
 
         backLayout.setOnClickListener {
             finish()
@@ -48,47 +47,47 @@ class C2cDetailActivity : BaseActivity() {
             arrayListOf(OrderFragment.getInstance(type), AdvertFragment.getInstance(), AppealFragment.getInstance())
         val adapter = BaseFragmentAdapter(supportFragmentManager, mFragment, mTitles)
         detail_vp.adapter = adapter
-        detail_tab.setupWithViewPager(detail_vp)
+        detail_tab.setViewPager(detail_vp)
         //添加自定义布局
-        for (i in mTitles.indices) {
-            val tab = detail_tab.getTabAt(i)
-            tab?.customView = adapter.getCustomView(mTitles, R.layout.layout_c2c_detail_tabtitle, i)
-        }
+//        for (i in mTitles.indices) {
+//            val tab = detail_tab.getTabAt(i)
+//            tab?.customView = adapter.getCustomView(mTitles, R.layout.layout_c2c_detail_tabtitle, i)
+//        }
     }
 
     override fun initEvent() {
         /**选中的item更换背景*/
-        detail_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                //   添加选中Tab的逻辑
-
-                when (tab.position) {
-                    0 -> {
-                        detail_ly.setBackgroundResource(R.drawable.detail_bg1)
-
-                    }
-                    1 -> {
-                        detail_ly.setBackgroundResource(R.drawable.detail_bg2)
-
-                    }
-                    2 -> {
-                        detail_ly.setBackgroundResource(R.drawable.detail_bg3)
-
-                    }
-                }
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                //                添加未选中Tab的逻辑
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-                //                再次选中tab的逻辑 重复点击
-
-            }
-        })
+//        detail_tab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab) {
+//                //   添加选中Tab的逻辑
+//
+//                when (tab.position) {
+//                    0 -> {
+//                        detail_ly.setBackgroundResource(R.drawable.detail_bg1)
+//
+//                    }
+//                    1 -> {
+//                        detail_ly.setBackgroundResource(R.drawable.detail_bg2)
+//
+//                    }
+//                    2 -> {
+//                        detail_ly.setBackgroundResource(R.drawable.detail_bg3)
+//
+//                    }
+//                }
+//
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab) {
+//                //                添加未选中Tab的逻辑
+//
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab) {
+//                //                再次选中tab的逻辑 重复点击
+//
+//            }
+//        })
     }
 
     override fun start() {
