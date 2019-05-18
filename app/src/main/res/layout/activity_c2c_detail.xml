@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              android:background="@drawable/bg1"
+              android:background="#36394A"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
@@ -10,16 +10,28 @@
 
     <LinearLayout
             android:id="@+id/detail_ly"
-            android:background="@drawable/detail_bg1"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        <com.google.android.material.tabs.TabLayout
+        <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/detail_tab"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorHeight="0dp"/>
+                android:layout_height="44dp"
+                app:tl_indicator_color="#FF2E2C"
+                app:tl_indicator_width="30dp"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="#FF2E2C"
+                app:tl_textUnselectColor="@color/whit"
+                app:tl_textBold="BOTH"
+                app:tl_textsize="17sp" />
+        <!--<com.google.android.material.tabs.TabLayout-->
+                <!--android:id="@+id/detail_tab"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:tl_textSelectColor="#FF2E2C"-->
+
+                <!--app:tabIndicatorHeight="0dp"/>-->
 
         <androidx.viewpager.widget.ViewPager
                 android:id="@+id/detail_vp"
