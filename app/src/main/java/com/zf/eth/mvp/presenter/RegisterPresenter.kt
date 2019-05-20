@@ -32,10 +32,10 @@ class RegisterPresenter : BasePresenter<RegisterContract.View>(), RegisterContra
         addSubscription(disposable)
     }
 
-    override fun requestRegister(type: String, mobile: String, code: String, pwd: String) {
+    override fun requestRegister(type: String, mobile: String, code: String, pwd: String,agentId:String) {
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = model.requestRegister(type, mobile, code, pwd)
+        val disposable = model.requestRegister(type, mobile, code, pwd,agentId)
             .subscribe({
                 mRootView?.apply {
                     dismissLoading()

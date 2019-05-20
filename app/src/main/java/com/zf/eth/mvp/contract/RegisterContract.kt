@@ -20,7 +20,7 @@ interface RegisterContract {
 
     interface Presenter : IPresenter<View> {
 
-        fun requestRegister(type: String, mobile: String, code: String, pwd: String)
+        fun requestRegister(type: String, mobile: String, code: String, pwd: String, agentId: String)
 
         fun requestVerifyCode(mobile: String, temp: String)
     }

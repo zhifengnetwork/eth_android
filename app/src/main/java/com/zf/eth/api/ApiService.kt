@@ -18,9 +18,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun login(
-            @Field("r") r: String,
-            @Field("mobile") mobile: String,
-            @Field("pwd") pwd: String
+        @Field("r") r: String,
+        @Field("mobile") mobile: String,
+        @Field("pwd") pwd: String
     ): Observable<BaseBean<LoginBean>>
 
     /**
@@ -30,8 +30,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getUserInfo(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<UserInfoBean>>
 
     /**
@@ -40,7 +40,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getHome(
-            @Field("userid") userid: String
+        @Field("userid") userid: String
     ): Observable<BaseBean<HomeSetBean>>
 
     /**
@@ -49,10 +49,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getInvest(
-            @Field("r") r: String,
-            @Field("userid") id: String,
-            @Field("type") type: String,
-            @Field("page") page: Int
+        @Field("r") r: String,
+        @Field("userid") id: String,
+        @Field("type") type: String,
+        @Field("page") page: Int
     ): Observable<BaseBean<InvestBean>>
 
     /**
@@ -61,9 +61,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getTeam(
-            @Field("r") r: String,
-            @Field("userid") id: String,
-            @Field("page") page: Int
+        @Field("r") r: String,
+        @Field("userid") id: String,
+        @Field("page") page: Int
     ): Observable<BaseBean<TeamBean>>
 
     /**
@@ -72,8 +72,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getGameRules(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<String>>
 
     /**
@@ -83,9 +83,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getEarn(
-            @Field("r") r: String,
-            @Field("userid") id: String,
-            @Field("type") type: String
+        @Field("r") r: String,
+        @Field("userid") id: String,
+        @Field("type") type: String
     ): Observable<BaseBean<EarnBean>>
 
     /**
@@ -94,8 +94,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun getWallet(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<WalletBean>>
 
     /**
@@ -105,12 +105,12 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestBet(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("type") type: Int,
-            @Field("payment") payment: Int?,
-            @Field("money") money: String?,
-            @Field("list") list: String?
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("type") type: Int,
+        @Field("payment") payment: Int?,
+        @Field("money") money: String?,
+        @Field("list") list: String?
     ): Observable<BaseBean<BetBean>>
 
     /**
@@ -120,12 +120,12 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestConfirmBet(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("type") type: Int,
-            @Field("payment") payment: Int?,
-            @Field("money") money: String?,
-            @Field("list") list: String?
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("type") type: Int,
+        @Field("payment") payment: Int?,
+        @Field("money") money: String?,
+        @Field("list") list: String?
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -134,9 +134,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestWithDraw(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("money") money: String?
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("money") money: String?
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -145,10 +145,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestTransfer(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("money") money: String,
-            @Field("id") id: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("money") money: String,
+        @Field("id") id: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -157,8 +157,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestCharge(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<ChargeBean>>
 
     /**
@@ -167,10 +167,10 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getC2c(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("page") page: Int,
-            @Field("type") type: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("page") page: Int,
+        @Field("type") type: String
     ): Observable<BaseBean<C2cBean>>
 
     /**
@@ -179,10 +179,10 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun setSellout(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("id") id: String,
-            @Field("type") type: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String,
+        @Field("type") type: String
 
     ): Observable<BaseBean<Unit>>
 
@@ -193,9 +193,9 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getMyOrder(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("status") status: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("status") status: String
 
     ): Observable<BaseBean<MyOrderBean>>
 
@@ -204,10 +204,11 @@ interface ApiService {
      */
     @POST("app/index.php")
     @FormUrlEncoded
-    fun getOrderDetail(@Field("r") r: String,
-                       @Field("userid") userid: String,
-                       @Field("id")id:String
-    ):Observable<BaseBean<OrderDetailBean>>
+    fun getOrderDetail(
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String
+    ): Observable<BaseBean<OrderDetailBean>>
 
     /**
      *c2c中心点击卖出或者买入按钮
@@ -215,14 +216,14 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun setHangonsale(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("type") type: String,
-            @Field("price") price: String,
-            @Field("money") money: String,
-            @Field("sxf0") sxf0: String,
-            @Field("trx") trx: String,
-            @Field("trx2") trx2: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("type") type: String,
+        @Field("price") price: String,
+        @Field("money") money: String,
+        @Field("sxf0") sxf0: String,
+        @Field("trx") trx: String,
+        @Field("trx2") trx2: String
     ): Observable<BaseBean<Unit>>
 
 
@@ -232,9 +233,9 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun requestCancelOrder(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("id") id: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String
 
     ): Observable<BaseBean<Unit>>
 
@@ -244,9 +245,9 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getAppeal(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("page") page: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("page") page: String
 
     ): Observable<BaseBean<AppealBean>>
 
@@ -256,9 +257,9 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getAppealList(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("id") id: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String
     ): Observable<BaseBean<AppealListBean>>
 
     /**
@@ -267,12 +268,12 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun setComplain(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("id") id: String,
-            @Field("files") files: String,
-            @Field("text") text: String,
-            @Field("textarea") textarea: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String,
+        @Field("files") files: String,
+        @Field("text") text: String,
+        @Field("textarea") textarea: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -281,10 +282,10 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun setConfirmOrder(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("id") id: String,
-            @Field("file") file: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("id") id: String,
+        @Field("file") file: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -294,8 +295,8 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getPayManage(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<PayManageBean>>
 
     /**
@@ -304,15 +305,15 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun setPayMange(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("adress") adress: String,
-            @Field("url") url: String,
-            @Field("zfbfile") zfbfile: String,
-            @Field("wxfile") wxfile: String,
-            @Field("bankid") bankid: String,
-            @Field("bankname") bankname: String,
-            @Field("bank") bank: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("adress") adress: String,
+        @Field("url") url: String,
+        @Field("zfbfile") zfbfile: String,
+        @Field("wxfile") wxfile: String,
+        @Field("bankid") bankid: String,
+        @Field("bankname") bankname: String,
+        @Field("bank") bank: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -321,10 +322,10 @@ interface ApiService {
     @POST("app/index.php")
     @FormUrlEncoded
     fun getBulletin(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("page") page: String,
-            @Field("cateid") cateid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("page") page: String,
+        @Field("cateid") cateid: String
     ): Observable<BaseBean<BulletinBean>>
 
     /**
@@ -339,8 +340,8 @@ interface ApiService {
      */
     @GET("app/index.php")
     fun getInvite(
-            @Query("r") r: String,
-            @Query("userid") userid: String
+        @Query("r") r: String,
+        @Query("userid") userid: String
     ): Observable<BaseBean<InviteBean>>
 
     /**
@@ -350,8 +351,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestGameHome(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<GameHomeBean>>
 
     /**
@@ -360,10 +361,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestRecord(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("pagesize") pagesize: Int,
-            @Field("page") page: Int?
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("pagesize") pagesize: Int,
+        @Field("page") page: Int?
     ): Observable<BaseBean<RecordBean>>
 
     /**
@@ -372,9 +373,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestWin(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("page") page: Int?
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("page") page: Int?
     ): Observable<BaseBean<WinBean>>
 
     /**
@@ -383,10 +384,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestVerifyCode(
-            @Field("r") r: String,
-            @Field("imgcode") imgcode: String,
-            @Field("mobile") mobile: String,
-            @Field("temp") temp: String
+        @Field("r") r: String,
+        @Field("imgcode") imgcode: String,
+        @Field("mobile") mobile: String,
+        @Field("temp") temp: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -395,11 +396,11 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestChangePwd(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("mobile") mobile: String,
-            @Field("code") code: String,
-            @Field("pwd") pwd: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("mobile") mobile: String,
+        @Field("code") code: String,
+        @Field("pwd") pwd: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -408,11 +409,12 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestRegister(
-            @Field("r") r: String,
-            @Field("type") type: String,
-            @Field("mobile") mobile: String,
-            @Field("code") code: String,
-            @Field("pwd") pwd: String
+        @Field("r") r: String,
+        @Field("type") type: String,
+        @Field("mobile") mobile: String,
+        @Field("code") code: String,
+        @Field("pwd") pwd: String,
+        @Field("agentid") agentid: String
     ): Observable<BaseBean<RegisterBean>>
 
     /**
@@ -421,8 +423,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestBuyInfo(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<BuyBean>>
 
     /**
@@ -431,9 +433,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestPayImg(
-            @Field("r") r: String,
-            @Field("file") file: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("file") file: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<ImageViewBean>>
 
     /**
@@ -443,10 +445,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestConfirmPay(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("money") money: String,
-            @Field("url") url: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("money") money: String,
+        @Field("url") url: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -455,10 +457,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestRePay(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("money") money: String,
-            @Field("type") type: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("money") money: String,
+        @Field("type") type: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -467,8 +469,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestRePayInfo(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<RePayInfoBean>>
 
     /**
@@ -477,8 +479,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestRank(
-            @Field("r") r: String,
-            @Field("userid") userid: String
+        @Field("r") r: String,
+        @Field("userid") userid: String
     ): Observable<BaseBean<RankBean>>
 
     /**
@@ -487,9 +489,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestChangeHead(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("file") file: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("file") file: String
     ): Observable<BaseBean<ImageViewBean>>
 
     /**
@@ -498,10 +500,10 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestChangeInfo(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("nickname") nickname: String,
-            @Field("avatar") avatar: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("nickname") nickname: String,
+        @Field("avatar") avatar: String
     ): Observable<BaseBean<Unit>>
 
     /**
@@ -510,9 +512,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST("app/index.php")
     fun requestLogOut(
-            @Field("r") r: String,
-            @Field("userid") userid: String,
-            @Field("money") money: String
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("money") money: String
     ): Observable<BaseBean<Unit>>
 
 }

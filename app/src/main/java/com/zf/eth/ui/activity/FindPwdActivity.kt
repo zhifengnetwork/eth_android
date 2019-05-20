@@ -85,7 +85,7 @@ class FindPwdActivity : BaseActivity(), RegisterContract.View {
                 codeTxt.isEmpty() -> showToast("请输入验证码")
                 pwdTxt.isEmpty() -> showToast("请输入密码")
                 rePwdTxt != pwdTxt -> showToast("两次密码输入不相同")
-                else -> presenter.requestRegister("sms_changepwd", phoneTxt, codeTxt, pwdTxt)
+                else -> presenter.requestRegister("sms_changepwd", phoneTxt, codeTxt, pwdTxt, "")
             }
         }
 

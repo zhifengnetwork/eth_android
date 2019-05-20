@@ -19,13 +19,20 @@ class RegisterModel {
             .compose(SchedulerUtils.ioToMain())
     }
 
-    fun requestRegister(type: String, mobile: String, code: String, pwd: String): Observable<BaseBean<RegisterBean>> {
+    fun requestRegister(
+        type: String,
+        mobile: String,
+        code: String,
+        pwd: String,
+        agentId: String
+    ): Observable<BaseBean<RegisterBean>> {
         return RetrofitManager.service.requestRegister(
             "member.androidapi.reg_updpwd",
             type,
             mobile,
             code,
-            pwd
+            pwd,
+            agentId
         )
             .compose(SchedulerUtils.ioToMain())
     }
