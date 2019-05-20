@@ -27,7 +27,7 @@ class SystemBulletinIfyAdapter(val context: Context?, private val mData: ArrayLi
             item_name.text = mData[position].article_title
             GlideUtils.loadUrlImage(context, UriConstant.BASE_IMG_URL + mData[position].resp_img, item_img)
             setOnClickListener {
-                NoticeContentActivity.actionStart(context,mData[position].resp_desc)
+                NoticeContentActivity.actionStart(context, mData[position].id)
             }
         }
 
