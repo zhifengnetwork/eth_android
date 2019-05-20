@@ -329,6 +329,17 @@ interface ApiService {
     ): Observable<BaseBean<BulletinBean>>
 
     /**
+     * 我的-平台公告-详情
+     */
+    @POST("app/index.php")
+    @FormUrlEncoded
+    fun getBulletinDetail(
+        @Field("r") r: String,
+        @Field("userid") userid: String,
+        @Field("aid") aid: String
+    ): Observable<BaseBean<BulletinDetailBean>>
+
+    /**
      * 我的-app下载
      */
     @POST("app/index.php")

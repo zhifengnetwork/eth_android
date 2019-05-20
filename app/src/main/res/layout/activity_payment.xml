@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="支付宝二维码"
+                android:text="支付宝收款二维码"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
 
@@ -159,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="微信二维码"
+                android:text="微信收款二维码"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
 
