@@ -25,6 +25,7 @@ class ManagerAdapter(val context: Context?,val data: List<EarnList>) : RecyclerV
         holder.itemView.apply {
             time.text = data[position].createtime
             freeMoney.text = data[position].money
+            moneyFrom.text =  data[position].nickname
         }
     }
 
