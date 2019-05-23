@@ -1,91 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
 
     <TextView
-        android:id="@+id/payManager"
-        style="@style/me_item"
-        android:layout_marginTop="5dp"
-        android:drawableLeft="@drawable/zhifu"
-        android:text="支付管理" />
+            android:id="@+id/payManager"
+            style="@style/me_item"
+            android:layout_marginTop="5dp"
+            android:drawableLeft="@drawable/zhifu"
+            android:text="支付管理"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/payAddress"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/qianbao"
-        android:text="钱包地址" />
+            android:id="@+id/payAddress"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/qianbao"
+            android:text="钱包地址"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/changePwd"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/xiugaimima"
-        android:text="修改密码" />
+            android:id="@+id/changePwd"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/xiugaimima"
+            android:text="修改密码"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/invite"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/yaoqing"
-        android:text="我的邀请" />
+            android:id="@+id/invite"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/yaoqing"
+            android:text="我的邀请"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/bulletin"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/gonggao"
-        android:text="平台公告" />
+            android:id="@+id/bulletin"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/gonggao"
+            android:text="平台公告"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/contact"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/keuf"
-        android:text="联系客服" />
+            android:id="@+id/contact"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/keuf"
+            android:text="联系客服"/>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="#353c4d" />
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
 
     <TextView
-        android:id="@+id/singOut"
-        style="@style/me_item"
-        android:drawableLeft="@drawable/touzi"
-        android:text="退出机制" />
+            android:id="@+id/singOut"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/touzi"
+            android:text="退出机制"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#353c4d"/>
+
+    <TextView
+            android:id="@+id/logOut"
+            style="@style/me_item"
+            android:drawableLeft="@drawable/touzi"
+            android:text="退出登录"/>
 
     <!--<View-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1px"-->
-        <!--android:background="#353c4d" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1px"-->
+    <!--android:background="#353c4d" />-->
 
     <!--<TextView-->
-        <!--android:id="@+id/downLoad"-->
-        <!--style="@style/me_item"-->
-        <!--android:drawableLeft="@drawable/appicon3_16"-->
-        <!--android:text="下载APP" />-->
+    <!--android:id="@+id/downLoad"-->
+    <!--style="@style/me_item"-->
+    <!--android:drawableLeft="@drawable/appicon3_16"-->
+    <!--android:text="下载APP" />-->
 
 </LinearLayout>

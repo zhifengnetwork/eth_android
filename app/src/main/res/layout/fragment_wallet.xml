@@ -197,7 +197,7 @@
                         android:paddingTop="5dp"
                         android:paddingRight="15dp"
                         android:paddingBottom="5dp"
-                        android:text="提现"
+                        android:text="提币"
                         android:textColor="@color/whit"
                         android:textSize="12sp"/>
 

@@ -11,6 +11,7 @@ import com.zf.eth.showToast
 import com.zf.eth.ui.activity.*
 import com.zf.eth.utils.GlideImageLoader
 import com.zf.eth.utils.HtmlLabel
+import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.layout_home_function.*
 
@@ -20,6 +21,8 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
     }
+
+    private val noticeData = ArrayList<String>()
 
     //首页信息
     override fun setHome(bean: HomeSetBean) {
@@ -39,13 +42,14 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         banner.start()
 
         /** 公告*/
-        val noticeData = ArrayList<String>()
+        noticeData.clear()
         for (notice in bean.notice) {
             noticeData.add(HtmlLabel.stringHtml(notice.detail))
         }
-        bannerTextView.setDatas(noticeData)
-        bannerTextView.startViewAnimator()
-
+        if (noticeData.isNotEmpty()) {
+            bannerTextView.setContentList(noticeData)
+            bannerTextView.start()
+        }
     }
 
     override fun showLoading() {
@@ -68,14 +72,33 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         bannerPresenter.attachView(this)
     }
 
-
     override fun onDestroy() {
         bannerPresenter.detachView()
         super.onDestroy()
     }
 
+    override fun onResume() {
+
+        LogUtils.e(">>>>>resume")
+        lazyLoad()
+
+        if (noticeData.isNotEmpty()) {
+            bannerTextView.start()
+        }
+        super.onResume()
+    }
+
+    override fun onStop() {
+        if (noticeData.isNotEmpty()) {
+            bannerTextView.pause()
+        }
+        super.onStop()
+    }
+
     override fun onDestroyView() {
-        bannerTextView.stopViewAnimator()
+        if (noticeData.isNotEmpty()) {
+            bannerTextView.pause()
+        }
         super.onDestroyView()
     }
 
@@ -84,6 +107,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun initEvent() {
+
+        share.setOnClickListener {
+            InviteActivity.actionStart(context)
+        }
 
         //总收益
         totalEarnLayout.setOnClickListener {

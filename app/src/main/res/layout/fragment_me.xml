@@ -91,7 +91,10 @@
 
         </RelativeLayout>
 
-        <include layout="@layout/layout_me"/>
+        <include layout="@layout/layout_me"
+                 android:layout_width="match_parent"
+                 android:layout_marginBottom="50dp"
+                 android:layout_height="wrap_content"/>
 
         <!--<androidx.recyclerview.widget.RecyclerView-->
         <!--android:id="@+id/me_oneRelView"-->
@@ -108,30 +111,30 @@
         <!--<Space android:layout_width="1dp" android:layout_height="0dp"-->
         <!--android:layout_weight="1"/>-->
 
-        <Space
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+        <!--<Space-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
 
-        <TextView
-                android:id="@+id/logOut"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="30dp"
-                android:background="@drawable/shape_me_logout"
-                android:gravity="center"
-                android:text="退出登录"
-                android:textColor="#ffffff"
-                android:textSize="15sp"/>
+        <!--<TextView-->
+        <!--android:id="@+id/logOut"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginLeft="25dp"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--android:layout_marginRight="25dp"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:background="@drawable/shape_me_logout"-->
+        <!--android:gravity="center"-->
+        <!--android:text="退出登录"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="12sp"/>-->
 
 
-        <Space
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
+        <!--<Space-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"/>-->
 
     </LinearLayout>
 

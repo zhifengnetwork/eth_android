@@ -2,7 +2,7 @@ package com.zf.eth.ui.fragment.wallet
 
 import android.view.View
 import com.zf.eth.R
-import com.zf.eth.base.BaseFragment
+import com.zf.eth.base.NotLazyBaseFragment
 import com.zf.eth.mvp.bean.ChargeBean
 import com.zf.eth.mvp.bean.WalletBean
 import com.zf.eth.mvp.contract.WalletContract
@@ -12,9 +12,10 @@ import com.zf.eth.ui.activity.MainActivity
 import com.zf.eth.ui.activity.TransferActivity
 import com.zf.eth.ui.activity.VotingActivity
 import com.zf.eth.ui.activity.WithdrawActivity
+import com.zf.eth.utils.LogUtils
 import kotlinx.android.synthetic.main.fragment_wallet.*
 
-class WalletFragment : BaseFragment(), WalletContract.View {
+class WalletFragment : NotLazyBaseFragment(), WalletContract.View {
 
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
@@ -57,6 +58,12 @@ class WalletFragment : BaseFragment(), WalletContract.View {
 
         dashLine1.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         dashLine2.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+    }
+
+    override fun onResume() {
+        LogUtils.e(">>>>resume")
+        lazyLoad()
+        super.onResume()
     }
 
     override fun lazyLoad() {

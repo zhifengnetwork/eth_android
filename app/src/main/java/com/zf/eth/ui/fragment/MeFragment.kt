@@ -16,7 +16,6 @@ import com.zf.eth.mvp.presenter.LogOutPresenter
 import com.zf.eth.mvp.presenter.UserInfoPresenter
 import com.zf.eth.showToast
 import com.zf.eth.ui.activity.*
-import com.zf.eth.utils.LogUtils
 import com.zf.eth.utils.Preference
 import com.zf.eth.view.dialog.ContactDialog
 import com.zf.eth.view.dialog.LogOutDialog

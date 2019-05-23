@@ -17,19 +17,19 @@
                 app:indicator_drawable_selected="@drawable/shape_banner_indicator_se"
                 app:indicator_drawable_unselected="@drawable/shape_banner_indicator_un_se"/>
 
-        <!--<TextView-->
-        <!--android:id="@+id/share"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:background="@drawable/shape_home_share"-->
-        <!--android:paddingLeft="15dp"-->
-        <!--android:paddingTop="5dp"-->
-        <!--android:paddingRight="10dp"-->
-        <!--android:paddingBottom="5dp"-->
-        <!--android:text="分享"-->
-        <!--android:textColor="@color/whit" />-->
+        <TextView
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_home_share"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="分享"
+                android:textColor="@color/whit"/>
 
     </RelativeLayout>
 
@@ -52,18 +52,40 @@
                 android:textColor="#faa526"
                 android:textSize="15sp"/>
 
-        <com.superluo.textbannerlibrary.TextBannerView
+        <com.zf.eth.view.CustomerMarqueeView
                 android:id="@+id/bannerTextView"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                app:setAnimDuration="7000"
-                app:setDirection="right_to_left"
-                app:setGravity="center"
-                app:setInterval="1"
-                app:setSingleLine="true"
-                app:setTextColor="@color/whit"/>
+                android:layout_width="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textColor="@color/whit"
+                app:next_pause_duration="2000"
+                android:textSize="8sp"/>
+
+        <!--<com.superluo.textbannerlibrary.TextBannerView-->
+        <!--android:id="@+id/bannerTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:setAnimDuration="7000"-->
+        <!--app:setInterval="4000"-->
+        <!--app:setSingleLine="true"-->
+        <!--app:setGravity="right"-->
+        <!--app:setTextColor="#fff"/>-->
+
+        <!--<com.superluo.textbannerlibrary.TextBannerView-->
+        <!--android:id="@+id/bannerTextView"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginLeft="5dp"-->
+        <!--android:layout_weight="1"-->
+        <!--app:setAnimDuration="7000"-->
+        <!--app:setDirection="right_to_left"-->
+        <!--app:setGravity="center"-->
+        <!--app:setInterval="1"-->
+        <!--app:setSingleLine="true"-->
+        <!--app:setTextColor="@color/whit"/>-->
 
     </LinearLayout>
 

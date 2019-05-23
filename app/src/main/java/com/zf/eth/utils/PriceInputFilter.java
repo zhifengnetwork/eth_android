@@ -17,7 +17,7 @@ public class PriceInputFilter implements InputFilter {
     //输入的最大金额
     private static final int MAX_VALUE = Integer.MAX_VALUE;
     //小数点后的位数
-    private static final int POINTER_LENGTH = 5;
+    private static final int POINTER_LENGTH = 6;
 
     private static final String POINTER = ".";
 
