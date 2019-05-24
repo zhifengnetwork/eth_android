@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.classic.common.MultipleStatusView
+import com.zf.eth.view.loadingDialog.LoadingDialog
 
 /**
  * 不设置懒加载。只要切换到当前fragment,就执行lazyLoad()。
@@ -60,6 +61,19 @@ abstract class NotLazyBaseFragment : Fragment() {
         lazyLoad()
     }
 
+    private var loadingDialog: LoadingDialog? = null
+
+    fun showLoadingDialog() {
+        loadingDialog?.close()
+        loadingDialog = null
+        loadingDialog = LoadingDialog(context, "")
+        loadingDialog?.show()
+    }
+
+    fun dismissLoadingDialog() {
+        loadingDialog?.close()
+        loadingDialog = null
+    }
 
     /**
      * 加载布局

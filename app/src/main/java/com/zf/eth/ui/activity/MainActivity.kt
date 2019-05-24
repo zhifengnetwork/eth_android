@@ -48,7 +48,6 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun setUserInfo(bean: UserInfoBean) {
         UserInfoLiveData.value = bean
 
-        initTab()
     }
 
 
@@ -142,11 +141,16 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                     mHotFragment = it
                     transaction.add(R.id.fl_container, it, "hot")
                 }
-            3 -> mMineFragment?.let { transaction.show(it) }
-                ?: MeFragment.getInstance().let {
-                    mMineFragment = it
-                    transaction.add(R.id.fl_container, it, "mine")
+            3 -> {
+                mMineFragment?.let {
+                    transaction.show(it)
                 }
+                    ?: MeFragment.getInstance().let {
+                        mMineFragment = it
+                        transaction.add(R.id.fl_container, it, "mine")
+                    }
+                start()
+            }
             else -> {
             }
         }
@@ -171,7 +175,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     private fun initTab() {
-        mIndex = 0
+
         val mTabEntities = ArrayList<CustomTabEntity>()
         val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
             listOf(
