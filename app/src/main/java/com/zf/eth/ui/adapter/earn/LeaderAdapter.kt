@@ -24,7 +24,7 @@ class LeaderAdapter(val context: Context?, val data: List<EarnList>) : RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
             time.text = data[position].createtime
-            freeMoney.text = data[position].money
+            freeMoney.text = data[position].summoney
             moneyFrom.text = data[position].nickname
         }
     }

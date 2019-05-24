@@ -25,7 +25,7 @@ class DirectAdapter(val context: Context?, val data: List<EarnList>) : RecyclerV
         holder.itemView.apply {
             time.text = data[position].createtime
             moneyFrom.text = data[position].nickname
-            freeMoney.text = data[position].money
+            freeMoney.text = data[position].summoney
 //            reMoney.text = data[position].money2
 
         }

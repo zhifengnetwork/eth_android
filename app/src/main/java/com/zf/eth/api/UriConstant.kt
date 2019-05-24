@@ -16,4 +16,6 @@ object UriConstant {
 
     const val SMSLIFE = 60 //短信验证码有效期默认60秒
 
+    const val FRESH_USER_INFO = "freshUser"
+
 }

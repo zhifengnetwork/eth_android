@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.text.TextUtils
 import com.zf.eth.R
+import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.mvp.bean.RePayInfoBean
 import com.zf.eth.mvp.contract.RePayContract
 import com.zf.eth.mvp.presenter.RePayPresenter
 import com.zf.eth.showToast
 import com.zf.eth.utils.PriceInputFilter
+import com.zf.eth.utils.bus.RxBus
 import kotlinx.android.synthetic.main.activity_voting.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
@@ -31,6 +33,8 @@ class VotingActivity : BaseActivity(), RePayContract.View {
 
     override fun setRePay() {
         showToast("购买成功")
+        RxBus.getDefault().post(UriConstant.FRESH_USER_INFO, UriConstant.FRESH_USER_INFO)
+        finish()
     }
 
     override fun showLoading() {

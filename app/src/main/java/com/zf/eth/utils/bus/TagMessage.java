@@ -1,13 +1,5 @@
-package com.zf.eth.utils.rxbus;
+package com.zf.eth.utils.bus;
 
-/**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2017/12/14
- *     desc  :
- * </pre>
- */
 final class TagMessage {
 
     Object mEvent;

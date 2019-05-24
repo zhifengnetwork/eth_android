@@ -12,6 +12,7 @@ import com.fm.openinstall.OpenInstall
 import com.fm.openinstall.listener.AppWakeUpAdapter
 import com.fm.openinstall.model.AppData
 import com.zf.eth.R
+import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.mvp.bean.TabEntity
@@ -23,6 +24,7 @@ import com.zf.eth.ui.fragment.C2CFragment
 import com.zf.eth.ui.fragment.ChessFragment
 import com.zf.eth.ui.fragment.HomeFragment
 import com.zf.eth.ui.fragment.MeFragment
+import com.zf.eth.utils.bus.RxBus
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -241,6 +243,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     override fun initEvent() {
+        RxBus.getDefault().subscribe<String>(this, UriConstant.FRESH_USER_INFO) {
+            infoPresenter.requestUserInfo()
+        }
     }
 
 
