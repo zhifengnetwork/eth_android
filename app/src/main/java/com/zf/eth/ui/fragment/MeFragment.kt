@@ -17,6 +17,7 @@ import com.zf.eth.mvp.presenter.UserInfoPresenter
 import com.zf.eth.showToast
 import com.zf.eth.ui.activity.*
 import com.zf.eth.utils.Preference
+import com.zf.eth.utils.bus.RxBus
 import com.zf.eth.view.dialog.ContactDialog
 import com.zf.eth.view.dialog.LogOutDialog
 import kotlinx.android.synthetic.main.fragment_me.*
@@ -71,7 +72,6 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     private val presenter by lazy { LogOutPresenter() }
 
     override fun lazyLoad() {
-
         UserInfoLiveData.observe(this, Observer { userInfo ->
             userInfo?.apply {
                 if (member.avatar.isNotEmpty()) {
@@ -105,6 +105,9 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     private val userId by Preference(UriConstant.USER_ID, "")
 
     override fun initEvent() {
+        RxBus.getDefault().subscribe<String>(this, UriConstant.USER_LEVEL) {
+            infoPresenter.requestUserLevel()
+        }
 
         logOut.setOnClickListener {
             val builder = AlertDialog.Builder(context!!)

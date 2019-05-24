@@ -142,11 +142,16 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                     mHotFragment = it
                     transaction.add(R.id.fl_container, it, "hot")
                 }
-            3 -> mMineFragment?.let { transaction.show(it) }
-                ?: MeFragment.getInstance().let {
-                    mMineFragment = it
-                    transaction.add(R.id.fl_container, it, "mine")
-                }
+            3 -> {
+                mMineFragment?.let { transaction.show(it) }
+                    ?: MeFragment.getInstance().let {
+                        mMineFragment = it
+                        transaction.add(R.id.fl_container, it, "mine")
+                    }
+                //每次到我的界面请求用户等级提升接口
+                RxBus.getDefault().post(UriConstant.USER_LEVEL, UriConstant.USER_LEVEL)
+            }
+
             else -> {
             }
         }

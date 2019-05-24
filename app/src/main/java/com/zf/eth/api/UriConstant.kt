@@ -18,4 +18,5 @@ object UriConstant {
 
     const val FRESH_USER_INFO = "freshUser"
 
+    const val USER_LEVEL="userLevel"
 }

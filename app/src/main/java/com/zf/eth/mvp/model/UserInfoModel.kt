@@ -13,7 +13,7 @@ class UserInfoModel {
 
     private val userId by Preference(UriConstant.USER_ID, "")
 
-    fun getUserInfo(): Observable<BaseBean<UserInfoBean> >{
+    fun getUserInfo(): Observable<BaseBean<UserInfoBean>> {
 
         return HomeRetrofitManager.service.getUserInfo(
             "member.androidapi.my_info",
@@ -21,4 +21,8 @@ class UserInfoModel {
         ).compose(SchedulerUtils.ioToMain())
     }
 
+    fun setUserLevel(): Observable<BaseBean<Unit>> {
+        return RetrofitManager.service.setUserLevel("member.androidapi.lingdaolevel", userId)
+            .compose(SchedulerUtils.ioToMain())
+    }
 }
