@@ -19,6 +19,7 @@ interface UserInfoContract {
 
         fun requestUserInfo()
 
+        fun requestUserLevel()
     }
 
 }

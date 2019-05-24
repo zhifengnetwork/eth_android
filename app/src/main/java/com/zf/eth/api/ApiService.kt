@@ -528,5 +528,16 @@ interface ApiService {
         @Field("money") money: String
     ): Observable<BaseBean<Unit>>
 
+    /**
+     * 用户等级提升
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun setUserLevel(
+        @Field("r") r: String,
+        @Field("userid") userid: String
+    ): Observable<BaseBean<Unit>>
+
+
 }
 
