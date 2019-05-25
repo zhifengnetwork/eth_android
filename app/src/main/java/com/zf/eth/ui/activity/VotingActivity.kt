@@ -33,7 +33,7 @@ class VotingActivity : BaseActivity(), RePayContract.View {
 
     override fun setRePay() {
         showToast("购买成功")
-        RxBus.getDefault().post(UriConstant.FRESH_USER_INFO, UriConstant.FRESH_USER_INFO)
+
         finish()
     }
 

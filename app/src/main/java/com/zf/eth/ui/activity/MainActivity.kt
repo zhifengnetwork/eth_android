@@ -48,7 +48,6 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun setUserInfo(bean: UserInfoBean) {
         UserInfoLiveData.value = bean
 
-        initTab()
     }
 
 
@@ -148,10 +147,10 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                         mMineFragment = it
                         transaction.add(R.id.fl_container, it, "mine")
                     }
+                start()
                 //每次到我的界面请求用户等级提升接口
                 RxBus.getDefault().post(UriConstant.USER_LEVEL, UriConstant.USER_LEVEL)
             }
-
             else -> {
             }
         }
@@ -176,7 +175,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     private fun initTab() {
-        mIndex = 0
+
         val mTabEntities = ArrayList<CustomTabEntity>()
         val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
             listOf(
