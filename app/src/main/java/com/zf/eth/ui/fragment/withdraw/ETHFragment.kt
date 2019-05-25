@@ -31,6 +31,10 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
 
     //手续费
     override fun setChart(bean: ChargeBean) {
+        isCharge = bean.withdraw
+        //最低提现金额
+        minimum_money.text = bean.withdrawmoney
+        //手续费
         charge.text = bean.withdrawsxf
     }
 
@@ -68,6 +72,8 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
 
     private val presenter by lazy { WithDrawPresenter() }
     private val walletPresenter by lazy { WalletPresenter() }
+    //判断是否能提现
+    private var isCharge = 1
 
     override fun initView() {
         walletPresenter.attachView(this)
@@ -97,8 +103,16 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
             when {
                 input.text.isEmpty() -> showToast("请输入提币金额")
                 input.text.toString().toFloat() <= 0 -> showToast("输入金额不能小于或等于零")
+
                 input.text.toString().toDouble() > price.text.toString().toDouble() -> showToast("输入金额超出可提币金额")
-                else -> presenter.requestWithDraw(input.text.toString())
+                else -> {
+                    //0 否 1 能提现
+                    if (isCharge == 0) {
+                        showToast("系统未开启提现")
+                    } else {
+                        presenter.requestWithDraw(input.text.toString())
+                    }
+                }
             }
         }
 
@@ -114,8 +128,7 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
                 //扣除手续费
                 deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
                 //实际到账  subtract：减号   multiply：乘号 divide：除号
-                trueReceive.text =
-                    "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                trueReceive.text = "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
             }
 
             if (input.text.isEmpty()) {
