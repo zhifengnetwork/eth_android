@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_earn_leader.view.*
 /**
  * 领导奖
  */
-class LeaderAdapter(val context: Context?, val data: List<EarnList>) : RecyclerView.Adapter<LeaderAdapter.ViewHolder>() {
+class LeaderAdapter(val context: Context?, val data: List<EarnList>) :
+    RecyclerView.Adapter<LeaderAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_earn_leader, parent, false)
@@ -24,7 +25,7 @@ class LeaderAdapter(val context: Context?, val data: List<EarnList>) : RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
             time.text = data[position].createtime
-            freeMoney.text = data[position].summoney
+            freeMoney.text = data[position].money3
             moneyFrom.text = data[position].nickname
         }
     }

@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_earn_manager.view.*
 /**
  * 管理奖
  */
-class ManagerAdapter(val context: Context?,val data: List<EarnList>) : RecyclerView.Adapter<ManagerAdapter.ViewHolder>() {
+class ManagerAdapter(val context: Context?, val data: List<EarnList>) :
+    RecyclerView.Adapter<ManagerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_earn_manager, parent, false)
@@ -24,8 +25,8 @@ class ManagerAdapter(val context: Context?,val data: List<EarnList>) : RecyclerV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
             time.text = data[position].createtime
-            freeMoney.text = data[position].summoney
-            moneyFrom.text =  data[position].nickname
+            freeMoney.text = data[position].money3
+            moneyFrom.text = data[position].nickname
         }
     }
 

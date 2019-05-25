@@ -11,5 +11,6 @@ data class EarnList(
     val money: String,
     val createtime: String,
     val money2: String,
+    val money3: String,
     val summoney: String
 )
