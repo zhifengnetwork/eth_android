@@ -29,16 +29,43 @@
                 android:hint="请输入买入的价格"
                 android:inputType="phone"
                  />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
+        <LinearLayout
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="9dp"
-                android:textSize="9sp"
-                android:textColor="#737792"
-                android:text="参考价格：￥3.6-￥4.4"
-        />
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:textSize="9sp"
+                    android:textColor="#737792"
+                    android:text="参考价格:￥"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="#737792"
+                    android:text= "3.6"/>
+            <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="#737792"
+                    android:layout_marginLeft="2dp"
+                    android:text= "-￥"/>
+            <TextView
+                    android:id="@+id/max"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="#737792"
+                    android:text= "3.6"/>
+        </LinearLayout>
+
         <View
                 android:background="#4f5367"
                 android:layout_width="match_parent"
@@ -85,6 +112,7 @@
                 android:hint="0"
                 android:ems="10"/>
         <TextView
+                android:id="@+id/trxsxf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

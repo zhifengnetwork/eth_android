@@ -538,6 +538,15 @@ interface ApiService {
         @Field("userid") userid: String
     ): Observable<BaseBean<Unit>>
 
+    /**
+     * 获得参考价 手续费
+     */
+    @FormUrlEncoded
+    @POST("app/index.php")
+    fun getEther(
+        @Field("r") r: String,
+        @Field("userid") userid: String
+    ): Observable<BaseBean<EtherBean>>
 
 }
 

@@ -4,14 +4,20 @@ import android.annotation.SuppressLint
 import androidx.core.widget.addTextChangedListener
 import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
+import com.zf.eth.mvp.bean.Ether
 import com.zf.eth.mvp.contract.HangonsaleContract
 import com.zf.eth.mvp.presenter.HangonsalePresenter
 import com.zf.eth.showToast
 import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.fragment_c2c_advert_content.*
 import java.math.BigDecimal
+import java.text.NumberFormat
+
+
+
 
 class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
+
     override fun showError(msg: String, errorCode: Int) {
         showToast(msg)
     }
@@ -19,6 +25,11 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
     override fun setHangonsaleSuccess(msg: String) {
         showToast(msg)
         activity?.finish()
+    }
+
+    //获得手续费
+    override fun getEther(bean: Ether) {
+        setEther(bean)
     }
 
     override fun showLoading() {
@@ -46,7 +57,15 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
     //输入的数量
     private lateinit var mSum: BigDecimal
     //扣除的手续费用
-    private val hundred = BigDecimal("0.01")
+    private lateinit var hundred: BigDecimal
+    //    private val hundred = BigDecimal("0.01")
+    //参考价格浮动 百分之10
+    private val swim = BigDecimal("0.1")
+    //最低价格
+    private lateinit var minMoney: BigDecimal
+    //最高价格
+    private lateinit var maxMoney: BigDecimal
+
     private val presenter by lazy { HangonsalePresenter() }
 
 
@@ -76,7 +95,7 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
     }
 
     override fun lazyLoad() {
-
+        presenter.requestEther()
     }
 
     @SuppressLint("SetTextI18n")
@@ -109,18 +128,24 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
             }
             /**确认买入卖出网络请求*/
             determine_btn.setOnClickListener {
-                if (mMoney.toDouble() in 3.6..4.4) {
-                    //金额 预获币数 手续费 数量 预付金额
-                    presenter.requesHangonsale(
-                        mType,
-                        mMoney.toString(),
-                        mSum.subtract(mSum.multiply(hundred)).toString(),
-                        mMoney.multiply(mSum).multiply(hundred).toString(),
-                        mSum.toString(),
-                        mMoney.multiply(mSum).toString()
-                    )
-                } else {
-                    showToast("请按参考价格来输入价格")
+                when {
+                    edit_money.text.toString() == "" -> showToast("请输入价格")
+                    edit_sum.text.toString() == "" -> showToast("请输入数量")
+                    else -> {
+                        if (mMoney.toDouble() in minMoney.toDouble()..maxMoney.toDouble()) {
+                            //金额 预获币数 手续费 数量 预付金额
+                            presenter.requesHangonsale(
+                                mType,
+                                mMoney.toString(),
+                                mSum.subtract(mSum.multiply(hundred)).toString(),
+                                mMoney.multiply(mSum).multiply(hundred).toString(),
+                                mSum.toString(),
+                                mMoney.multiply(mSum).toString()
+                            )
+                        } else {
+                            showToast("请按参考价格来输入价格")
+                        }
+                    }
                 }
             }
         } else {
@@ -151,19 +176,26 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
             }
             /**确认买入卖出网络请求*/
             determine_btn.setOnClickListener {
-                if (mMoney.toDouble() in 3.6..4.4) {
-                    //金额 预获金钱 手续费 数量 代付金币
-                    presenter.requesHangonsale(
-                        mType,
-                        mMoney.toString(),
-                        mMoney.subtract(mSum).toString(),
-                        mSum.subtract(hundred).toString(),
-                        mSum.toString(),
-                        mSum.add(mSum.multiply(hundred)).toString()
-                    )
-                } else {
-                    showToast("请按参考价格来输入价格")
+                when {
+                    edit_money.text.toString() == "" -> showToast("请输入价格")
+                    edit_sum.text.toString() == "" -> showToast("请输入数量")
+                    else -> {
+                        if (mMoney.toDouble() in minMoney.toDouble()..maxMoney.toDouble()) {
+                            //金额 预获金钱 手续费 数量 代付金币
+                            presenter.requesHangonsale(
+                                mType,
+                                mMoney.toString(),
+                                mMoney.subtract(mSum).toString(),
+                                mSum.subtract(hundred).toString(),
+                                mSum.toString(),
+                                mSum.add(mSum.multiply(hundred)).toString()
+                            )
+                        } else {
+                            showToast("请按参考价格来输入价格")
+                        }
+                    }
                 }
+
             }
         }
 
@@ -174,4 +206,27 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
         super.onDestroy()
         presenter.detachView()
     }
+
+    @SuppressLint("SetTextI18n")
+    private fun setEther(bean: Ether) {
+        //参考价格  最低价 最高价
+        val money = BigDecimal(bean.trxprice)
+        val mDivisor = BigDecimal("100")
+        //最低价
+        minMoney = money.subtract(money.multiply(swim))
+        //最高价格
+        maxMoney = money.add(money.multiply(swim))
+        //手续费
+        hundred = BigDecimal(bean.trxsxf).divide(mDivisor)
+
+        //界面赋值
+        min.text = minMoney.toString()
+        max.text = maxMoney.toString()
+        trxsxf.text = "手续费:${bean.trxsxf}%"
+    }
+//    private fun removeTailZero(b: BigDecimal): String {
+//        val s = b.toString()
+//        return s.replace("(\\d+\\.\\d*[1-9])0+$".toRegex(), "$1")
+//    }
+
 }
