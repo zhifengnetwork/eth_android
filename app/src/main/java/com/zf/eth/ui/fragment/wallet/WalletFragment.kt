@@ -96,7 +96,7 @@ class WalletFragment : NotLazyBaseFragment(), WalletContract.View {
             TransferActivity.actionStart(context)
         }
 
-        //提现
+        //提币
         withdraw.setOnClickListener {
             WithdrawActivity.actionStart(context)
         }

@@ -23,22 +23,22 @@
                 android:layout_weight="1"
                 android:background="@drawable/selector_withdraw"
                 android:gravity="center"
-                android:text="ETH提现"/>
+                android:text="ETH提币"/>
 
-        <View android:layout_width="2px"
-              android:layout_height="match_parent"
-              android:background="@color/whit"/>
+        <!--<View android:layout_width="2px"-->
+              <!--android:layout_height="match_parent"-->
+              <!--android:background="@color/whit"/>-->
 
-        <RadioButton
-                android:id="@+id/reRb"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:button="@null"
-                android:textColor="@color/selector_withdraw_tab"
-                android:layout_weight="1"
-                android:background="@drawable/selector_withdraw"
-                android:gravity="center"
-                android:text="复投账户"/>
+        <!--<RadioButton-->
+                <!--android:id="@+id/reRb"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:button="@null"-->
+                <!--android:textColor="@color/selector_withdraw_tab"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/selector_withdraw"-->
+                <!--android:gravity="center"-->
+                <!--android:text="复投账户"/>-->
 
     </RadioGroup>
 
