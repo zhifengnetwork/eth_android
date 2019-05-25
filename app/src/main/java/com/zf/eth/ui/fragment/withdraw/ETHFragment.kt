@@ -101,9 +101,10 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
 
         confirm.setOnClickListener {
             when {
-                input.text.isEmpty() -> showToast("请输入提现金额")
+                input.text.isEmpty() -> showToast("请输入提币金额")
                 input.text.toString().toFloat() <= 0 -> showToast("输入金额不能小于或等于零")
-                input.text.toString().toDouble() > price.text.toString().toDouble() -> showToast("输入金额超出可提现金额")
+
+                input.text.toString().toDouble() > price.text.toString().toDouble() -> showToast("输入金额超出可提币金额")
                 else -> {
                     //0 否 1 能提现
                     if (isCharge == 0) {

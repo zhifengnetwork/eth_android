@@ -22,7 +22,7 @@ class WithdrawActivity : BaseActivity() {
     }
 
     override fun initToolBar() {
-        titleName.text = "提现"
+        titleName.text = "提币"
         backLayout.setOnClickListener { finish() }
     }
 
@@ -36,7 +36,7 @@ class WithdrawActivity : BaseActivity() {
     }
 
     private var ethFragment: ETHFragment? = null
-    private var reFragment: ReFragment? = null
+//    private var reFragment: ReFragment? = null
 
     private fun switchFragment(index: Int) {
         val transaction = supportFragmentManager.beginTransaction()
@@ -47,11 +47,11 @@ class WithdrawActivity : BaseActivity() {
                     ethFragment = it
                     transaction.add(R.id.fl_container, it, "")
                 }
-            1 -> reFragment?.let { transaction.show(it) }
-                ?: ReFragment.getInstance().let {
-                    reFragment = it
-                    transaction.add(R.id.fl_container, it, "")
-                }
+//            1 -> reFragment?.let { transaction.show(it) }
+//                ?: ReFragment.getInstance().let {
+//                    reFragment = it
+//                    transaction.add(R.id.fl_container, it, "")
+//                }
             else -> {
             }
         }
@@ -62,9 +62,9 @@ class WithdrawActivity : BaseActivity() {
         ethFragment?.let {
             transaction.hide(it)
         }
-        reFragment?.let {
-            transaction.hide(it)
-        }
+//        reFragment?.let {
+//            transaction.hide(it)
+//        }
     }
 
     override fun initEvent() {
@@ -73,9 +73,9 @@ class WithdrawActivity : BaseActivity() {
                 ethRb.id -> {
                     switchFragment(0)
                 }
-                reRb.id -> {
-                    switchFragment(1)
-                }
+//                reRb.id -> {
+//                    switchFragment(1)
+//                }
             }
         }
     }
