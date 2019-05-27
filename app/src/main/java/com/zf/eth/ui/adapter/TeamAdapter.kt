@@ -24,6 +24,8 @@ class TeamAdapter(val context: Context, val data: List<TeamList>) : RecyclerView
             nickName.text = data[position].nickname
             phone.text = "电话: " + data[position].mobile
             time.text = data[position].createtime
+            pushTxt.text = if (data[position].type == 1) "直推" else "团队"
+
             setOnClickListener {
                 holder.itemView.isSelected = !holder.itemView.isSelected
                 if (holder.itemView.isSelected) {
