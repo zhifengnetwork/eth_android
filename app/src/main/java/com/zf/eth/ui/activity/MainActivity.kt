@@ -48,14 +48,13 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun setUserInfo(bean: UserInfoBean) {
         UserInfoLiveData.value = bean
 
+        initTab()
     }
-
 
     override fun initToolBar() {
     }
 
     private val infoPresenter by lazy { UserInfoPresenter() }
-
 
     companion object {
 
@@ -89,6 +88,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
         initTab()
 
+        tabLayout.currentTab = mIndex
+        switchFragment(mIndex)
+
         initOpenInstall()
 
     }
@@ -120,13 +122,16 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                     transaction.add(R.id.fl_container, it, "home")
                 }
             1 -> {
-                if (UserInfoLiveData.value?.member?.type == "2") {
+                if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                     //锁户
                     mMineFragment?.let { transaction.show(it) }
                         ?: MeFragment.getInstance().let {
                             mMineFragment = it
                             transaction.add(R.id.fl_container, it, "me")
                         }
+                    start()
+                    //每次到我的界面请求用户等级提升接口
+                    RxBus.getDefault().post(UriConstant.USER_LEVEL, UriConstant.USER_LEVEL)
                 } else {
                     //未锁户
                     mDiscoveryFragment?.let { transaction.show(it) }
@@ -177,7 +182,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     private fun initTab() {
 
         val mTabEntities = ArrayList<CustomTabEntity>()
-        val mTitles = if (UserInfoLiveData.value?.member?.type == "2")
+        val mTitles = if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1")
             listOf(
                 "首页",
                 "我的"
@@ -188,27 +193,29 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
             "我的"
         )
 
-        val mIconUnSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
-            listOf(
+        val mIconUnSelectIds =
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1")
+                listOf(
+                    R.drawable.home_page1,
+                    R.drawable.my
+                ) else listOf(
                 R.drawable.home_page1,
+                R.drawable.chess,
+                R.drawable.two,
                 R.drawable.my
-            ) else listOf(
-            R.drawable.home_page1,
-            R.drawable.chess,
-            R.drawable.two,
-            R.drawable.my
-        )
+            )
 
-        val mIconSelectIds = if (UserInfoLiveData.value?.member?.type == "2")
-            listOf(
+        val mIconSelectIds =
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1")
+                listOf(
+                    R.drawable.homepage,
+                    R.drawable.my1
+                ) else listOf(
                 R.drawable.homepage,
+                R.drawable.chess1,
+                R.drawable.two1,
                 R.drawable.my1
-            ) else listOf(
-            R.drawable.homepage,
-            R.drawable.chess1,
-            R.drawable.two1,
-            R.drawable.my1
-        )
+            )
         (0 until mTitles.size).mapTo(mTabEntities) {
             TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it])
         }
@@ -219,9 +226,12 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
                 switchFragment(position)
             }
         })
+        if (mIndex > mTitles.size) {
+            mIndex = mTitles.size - 1
+        }
+//        tabLayout.currentTab = mIndex
+//        switchFragment(mIndex)
 
-        tabLayout.currentTab = mIndex
-        switchFragment(mIndex)
     }
 
     private var mExitTime: Long = 0
@@ -248,6 +258,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun initEvent() {
         RxBus.getDefault().subscribe<String>(this, UriConstant.FRESH_USER_INFO) {
+            infoPresenter.requestUserInfo()
+        }
+        RxBus.getDefault().subscribe<String>(this, UriConstant.USER_SWITCH) {
             infoPresenter.requestUserInfo()
         }
     }

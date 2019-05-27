@@ -33,7 +33,8 @@ class VotingActivity : BaseActivity(), RePayContract.View {
 
     override fun setRePay() {
         showToast("购买成功")
-
+        //购买成功请求用户信息 判断是否解锁
+        RxBus.getDefault().post(UriConstant.USER_SWITCH, UriConstant.USER_SWITCH)
         finish()
     }
 

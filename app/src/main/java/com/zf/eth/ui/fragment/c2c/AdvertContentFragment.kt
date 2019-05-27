@@ -14,8 +14,6 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 
 
-
-
 class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
 
     override fun showError(msg: String, errorCode: Int) {
@@ -222,11 +220,12 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
         //界面赋值
         min.text = minMoney.toString()
         max.text = maxMoney.toString()
-        trxsxf.text = "手续费:${bean.trxsxf}%"
+
+        //去掉多余的 0
+        val nf = NumberFormat.getInstance()
+        trxsxf.text = "手续费:${nf.format(bean.trxsxf)}%"
+
+
     }
-//    private fun removeTailZero(b: BigDecimal): String {
-//        val s = b.toString()
-//        return s.replace("(\\d+\\.\\d*[1-9])0+$".toRegex(), "$1")
-//    }
 
 }

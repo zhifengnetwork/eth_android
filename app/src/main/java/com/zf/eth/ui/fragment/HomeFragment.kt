@@ -79,7 +79,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     override fun onResume() {
 
-        LogUtils.e(">>>>>resume")
         lazyLoad()
 
         if (noticeData.isNotEmpty()) {
@@ -107,14 +106,18 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun initEvent() {
-
+        //分享
         share.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             InviteActivity.actionStart(context)
         }
 
         //总收益
         totalEarnLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -123,7 +126,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //今日收益
         todayEarnLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -132,7 +135,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //团队
         teamLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -141,7 +144,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //激活账号（投资购买）
         buyLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -150,7 +153,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //投资记录
         investLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -159,10 +162,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         //钱包余额
         walletLayout.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2") {
-                showToast("该账号已锁户！")
-                return@setOnClickListener
-            }
+            //            if (UserInfoLiveData.value?.member?.type == "2") {
+//                showToast("该账号已锁户！")
+//                return@setOnClickListener
+//            }
             WalletActivity.actionStart(context, 0)
         }
 

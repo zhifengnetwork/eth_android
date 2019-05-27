@@ -6,5 +6,5 @@ data class EtherBean(
 
 data class Ether(
     val trxprice: String,
-    val trxsxf: String
+    val trxsxf: Double
 )

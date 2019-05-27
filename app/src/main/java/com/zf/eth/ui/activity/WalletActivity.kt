@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.zf.eth.R
 import com.zf.eth.base.BaseActivity
 import com.zf.eth.base.BaseFragmentAdapter
+import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.ui.fragment.wallet.InvestFragment
 import com.zf.eth.ui.fragment.wallet.WalletFragment
 import kotlinx.android.synthetic.main.activity_wallet.*
@@ -41,24 +42,47 @@ class WalletActivity : BaseActivity() {
 
     override fun layoutId(): Int = R.layout.activity_wallet
 
+    private var fmgs = ArrayList<Fragment>()
+
+    private var titles = ArrayList<String>()
+
     override fun initData() {
 
     }
 
     override fun initView() {
 
-        val fmgs: List<Fragment> = listOf(
-            WalletFragment.newInstance(),
-            InvestFragment.newInstance(InvestFragment.TOTAL),
-            InvestFragment.newInstance(InvestFragment.TIBI),
-            InvestFragment.newInstance(InvestFragment.ZHUANBI),
-            InvestFragment.newInstance(InvestFragment.C2C)
-        )
-        val titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
+//       val fmgs = arrayListOf(
+//            WalletFragment.newInstance(),
+//            InvestFragment.newInstance(InvestFragment.TOTAL),
+//            InvestFragment.newInstance(InvestFragment.TIBI),
+//            InvestFragment.newInstance(InvestFragment.ZHUANBI),
+//            InvestFragment.newInstance(InvestFragment.C2C)
+//        )
+//        val titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
+        if (UserInfoLiveData.value?.member?.type == "2") {
+            if (UserInfoLiveData.value?.member?.suoding == "0") {
+                titles = arrayListOf("钱包", "提币记录")
+                fmgs = arrayListOf(WalletFragment.newInstance(), InvestFragment.newInstance(InvestFragment.TIBI))
+            } else {
+                titles = arrayListOf("钱包", "总记录")
+                fmgs = arrayListOf(WalletFragment.newInstance(), InvestFragment.newInstance(InvestFragment.TOTAL))
+            }
+
+        } else {
+            titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
+            fmgs = arrayListOf(
+                WalletFragment.newInstance(),
+                InvestFragment.newInstance(InvestFragment.TOTAL),
+                InvestFragment.newInstance(InvestFragment.TIBI),
+                InvestFragment.newInstance(InvestFragment.ZHUANBI),
+                InvestFragment.newInstance(InvestFragment.C2C)
+            )
+        }
 
         val adapter = BaseFragmentAdapter(supportFragmentManager, fmgs, titles)
         viewPager.adapter = adapter
-        viewPager.offscreenPageLimit = 4
+        viewPager.offscreenPageLimit = titles.size
         tabLayout.setViewPager(viewPager)
 
     }

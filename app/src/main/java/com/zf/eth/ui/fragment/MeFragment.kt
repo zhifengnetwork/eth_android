@@ -1,6 +1,7 @@
 package com.zf.eth.ui.fragment
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -40,6 +41,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     private val infoPresenter by lazy { UserInfoPresenter() }
 
     override fun setLogOut() {
+        Log.e("检测","》》》》》setLogOut")
         infoPresenter.requestUserInfo()
     }
 
@@ -108,7 +110,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         RxBus.getDefault().subscribe<String>(this, UriConstant.USER_LEVEL) {
             infoPresenter.requestUserLevel()
         }
-
+        //退出登录
         logOut.setOnClickListener {
             val builder = AlertDialog.Builder(context!!)
             builder.setTitle("提示")
@@ -131,23 +133,47 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
                 LoginActivity.actionStart(context)
             }
         }
-
+        //支付管理
         payManager.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             PaymentActivity.actionStart(context)
         }
-
+        //钱包地址
         payAddress.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             WalletAddressActivity.actionStart(context)
         }
-
+        //我的邀请
         invite.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             InviteActivity.actionStart(context)
         }
-
+        //修改密码
         changePwd.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
             ChangePasswordActivity.actionStart(context)
         }
-
+        //平台公告
+        bulletin.setOnClickListener {
+            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+                showToast("该账号已锁户！")
+                return@setOnClickListener
+            }
+            SystemBulletinActivity.actionStart(context)
+        }
+        //联系客服
         contact.setOnClickListener {
             ContactDialog.showDialog(
                 childFragmentManager,
@@ -155,11 +181,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
                 UserInfoLiveData.value?.kefu?.wxkffile
             )
         }
-
-        bulletin.setOnClickListener {
-            SystemBulletinActivity.actionStart(context)
-        }
-
+        //退出机制
         singOut.setOnClickListener {
             UserInfoLiveData.value?.apply {
                 LogOutDialog.showDialog(childFragmentManager, arr2.money ?: "0.00")

@@ -22,7 +22,8 @@ data class Member(
     val avatar: String,
     val nickname: String,
     val id: String,
-    val type: String
+    val type: String,
+    val suoding:String
 )
 
 data class Level(

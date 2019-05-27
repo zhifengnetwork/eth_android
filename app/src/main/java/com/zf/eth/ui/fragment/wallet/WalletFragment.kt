@@ -3,6 +3,7 @@ package com.zf.eth.ui.fragment.wallet
 import android.view.View
 import com.zf.eth.R
 import com.zf.eth.base.NotLazyBaseFragment
+import com.zf.eth.livedata.UserInfoLiveData
 import com.zf.eth.mvp.bean.ChargeBean
 import com.zf.eth.mvp.bean.WalletBean
 import com.zf.eth.mvp.contract.WalletContract
@@ -58,10 +59,34 @@ class WalletFragment : NotLazyBaseFragment(), WalletContract.View {
 
         dashLine1.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         dashLine2.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        //如果账户因退出机制锁定 隐藏复投 显示自由钱包(且自由钱包下只有提币)
+        if (UserInfoLiveData.value?.member?.type == "2") {
+            //复投布局
+            reAccountLayout.visibility = View.GONE
+            //自由钱包 -> 一件复投
+            freeVoting.visibility = View.GONE
+            freeVoting_sp.visibility = View.GONE
+            //C2C按钮
+            c2c.visibility = View.GONE
+            //棋牌娱乐
+            freeGame.visibility = View.GONE
+            //互转
+            transfer.visibility = View.GONE
+        }
+        //用户赚取收益达到3倍而锁定 复投只显示 一键复投 自由钱包显示 一键投币 提币
+        if (UserInfoLiveData.value?.member?.suoding == "1") {
+            //复投账户 -> 棋牌娱乐
+            reGame.visibility = View.GONE
+            //自由钱包 -> C2C按钮
+            c2c.visibility = View.GONE
+            //棋牌娱乐
+            freeGame.visibility = View.GONE
+            //互转
+            transfer.visibility = View.GONE
+        }
     }
 
     override fun onResume() {
-        LogUtils.e(">>>>resume")
         lazyLoad()
         super.onResume()
     }
