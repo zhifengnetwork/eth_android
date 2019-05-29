@@ -60,24 +60,26 @@ class WalletActivity : BaseActivity() {
 //            InvestFragment.newInstance(InvestFragment.C2C)
 //        )
 //        val titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
-        if (UserInfoLiveData.value?.member?.type == "2") {
-            if (UserInfoLiveData.value?.member?.suoding == "0") {
+
+        when {
+            UserInfoLiveData.value?.member?.type == "2" -> {
                 titles = arrayListOf("钱包", "提币记录")
                 fmgs = arrayListOf(WalletFragment.newInstance(), InvestFragment.newInstance(InvestFragment.TIBI))
-            } else {
+            }
+            UserInfoLiveData.value?.member?.suoding == "1" -> {
                 titles = arrayListOf("钱包", "总记录")
                 fmgs = arrayListOf(WalletFragment.newInstance(), InvestFragment.newInstance(InvestFragment.TOTAL))
             }
-
-        } else {
-            titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
-            fmgs = arrayListOf(
-                WalletFragment.newInstance(),
-                InvestFragment.newInstance(InvestFragment.TOTAL),
-                InvestFragment.newInstance(InvestFragment.TIBI),
-                InvestFragment.newInstance(InvestFragment.ZHUANBI),
-                InvestFragment.newInstance(InvestFragment.C2C)
-            )
+            else -> {
+                titles = arrayListOf("钱包", "总记录", "提币记录", "转币记录", "C2C记录")
+                fmgs = arrayListOf(
+                    WalletFragment.newInstance(),
+                    InvestFragment.newInstance(InvestFragment.TOTAL),
+                    InvestFragment.newInstance(InvestFragment.TIBI),
+                    InvestFragment.newInstance(InvestFragment.ZHUANBI),
+                    InvestFragment.newInstance(InvestFragment.C2C)
+                )
+            }
         }
 
         val adapter = BaseFragmentAdapter(supportFragmentManager, fmgs, titles)

@@ -81,8 +81,8 @@ class VotingActivity : BaseActivity(), RePayContract.View {
 
     override fun initEvent() {
         confirm.setOnClickListener {
-            if (TextUtils.isEmpty(price.text)) {
-                showToast("请输入金额")
+            if (TextUtils.isEmpty(price.text) || price.text.toString().toDouble() == 0.000000) {
+                showToast("请输入正确金额")
             } else {
                 presenter.requestRePay(price.text.toString(), if (mType == FREE_WALLET) "2" else "4")
             }

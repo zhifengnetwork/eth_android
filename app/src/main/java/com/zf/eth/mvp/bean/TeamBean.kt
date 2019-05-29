@@ -11,5 +11,6 @@ data class TeamList(
     val mobile: String,
     val createtime: String,
     val agenttime: String,
-    val type:Int
+    val type:Int,
+    val childtime:Long
 )

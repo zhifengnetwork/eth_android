@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="#f2041a"
-                    android:text="*最低提现金额："
+                    android:text="*最低提币金额："
             />
             <TextView
                     android:id="@+id/minimum_money"
@@ -142,7 +142,7 @@
                       android:layout_height="wrap_content"
                       android:textColor="@color/colorPrimaryText"
                       android:textSize="15sp"
-                      android:text="本次提现将扣除手续费:"/>
+                      android:text="本次提币将扣除手续费:"/>
 
             <TextView
                     android:id="@+id/deductCharge"
@@ -167,7 +167,7 @@
                       android:layout_height="wrap_content"
                       android:textColor="@color/colorPrimaryText"
                       android:textSize="15sp"
-                      android:text="本次提现实际到账金额:"/>
+                      android:text="本次提币实际到账金额:"/>
 
             <TextView
                     android:id="@+id/trueReceive"
