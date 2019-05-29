@@ -121,7 +121,6 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
 
             if (input.text.isNotEmpty() && charge.text.isNotEmpty() && price.text.isNotEmpty()) {
                 //计算
-                val userPrice = BigDecimal(price.text.toString())
                 val inputPrice = BigDecimal(input.text.toString())
                 val chargePrice = BigDecimal(charge.text.toString())
                 val hundred = BigDecimal("100")

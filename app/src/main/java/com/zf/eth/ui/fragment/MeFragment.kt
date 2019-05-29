@@ -41,7 +41,6 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     private val infoPresenter by lazy { UserInfoPresenter() }
 
     override fun setLogOut() {
-        Log.e("检测","》》》》》setLogOut")
         infoPresenter.requestUserInfo()
     }
 
@@ -71,6 +70,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         presenter.attachView(this)
     }
 
+    //退出机制
     private val presenter by lazy { LogOutPresenter() }
 
     override fun lazyLoad() {

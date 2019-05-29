@@ -101,11 +101,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
         wakeUpAdapter = object : AppWakeUpAdapter() {
             override fun onWakeUp(appData: AppData) {
-                //获取渠道数据
-                val channelCode = appData.getChannel()
-                //获取绑定数据
-                val bindData = appData.getData()
-                Log.d("OpenInstall", "getWakeUp : wakeupData = $appData")
+
             }
         }
 
