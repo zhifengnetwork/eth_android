@@ -18,6 +18,7 @@ import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.activity_transfer.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.math.BigDecimal
+import java.text.DecimalFormat
 
 /**
  * 转账
@@ -43,7 +44,7 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
     override fun setTransfer(msg: String) {
         showToast(msg)
         finish()
-        WalletActivity.actionStart(this,3)
+        WalletActivity.actionStart(this, 3)
     }
 
     override fun showLoading() {
@@ -105,13 +106,11 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
                 //用户可交易金额
                 val userPrice = BigDecimal(price.text.toString())
                 val hundred = BigDecimal("100")
-
                 //扣除手续费
-                deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
+                deductCharge.text = DecimalFormat("0.000000000").format(inputPrice.multiply(chargePrice).divide(hundred))
                 //实际到账
                 //subtract减号 divide 除法
-                trueReceive.text =
-                    "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                trueReceive.text =DecimalFormat("0.000000").format(inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred)))
             }
 
             if (input.text.isNotEmpty()) {

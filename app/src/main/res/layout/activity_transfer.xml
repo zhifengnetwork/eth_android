@@ -25,7 +25,7 @@
                       android:layout_height="wrap_content"
                       android:textSize="15sp"
                       android:textColor="@color/colorPrimaryText"
-                      android:text="当前可交易金额: ¥"/>
+                      android:text="当前可交易金额:"/>
 
             <TextView
                     android:id="@+id/price"
@@ -50,7 +50,8 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:textColor="#f2041a"
-                      android:text="￥"/>
+                      android:textSize="12sp"
+                      android:text="ETH"/>
 
             <EditText
                     android:id="@+id/input"
@@ -138,7 +139,7 @@
                       android:layout_height="wrap_content"
                       android:textColor="@color/colorPrimaryText"
                       android:textSize="15sp"
-                      android:text="本次提现将扣除手续费:"/>
+                      android:text="本次转账将扣除手续费:"/>
 
             <TextView
                     android:id="@+id/deductCharge"
@@ -163,7 +164,7 @@
                       android:layout_height="wrap_content"
                       android:textColor="@color/colorPrimaryText"
                       android:textSize="15sp"
-                      android:text="本次提现实际到账金额:"/>
+                      android:text="本次转账实际到账金额:"/>
 
             <TextView
                     android:id="@+id/trueReceive"

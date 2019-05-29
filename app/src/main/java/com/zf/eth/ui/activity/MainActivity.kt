@@ -49,6 +49,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         UserInfoLiveData.value = bean
 
         initTab()
+
     }
 
     override fun initToolBar() {
@@ -82,13 +83,9 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     private var mHotFragment: C2CFragment? = null
     private var mMineFragment: MeFragment? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initTab()
-
-        tabLayout.currentTab = mIndex
         switchFragment(mIndex)
 
         initOpenInstall()
@@ -229,7 +226,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         if (mIndex > mTitles.size) {
             mIndex = mTitles.size - 1
         }
-//        tabLayout.currentTab = mIndex
+        tabLayout.currentTab = mIndex
 //        switchFragment(mIndex)
 
     }
@@ -249,6 +246,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     }
 
     override fun initData() {
+
     }
 
     override fun initView() {
@@ -259,12 +257,13 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
     override fun initEvent() {
         RxBus.getDefault().subscribe<String>(this, UriConstant.FRESH_USER_INFO) {
             infoPresenter.requestUserInfo()
+
         }
         RxBus.getDefault().subscribe<String>(this, UriConstant.USER_SWITCH) {
             infoPresenter.requestUserInfo()
+
         }
     }
-
 
     override fun start() {
         infoPresenter.requestUserInfo()
@@ -272,6 +271,8 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun onDestroy() {
         super.onDestroy()
+        mIndex = 0
+        tabLayout.currentTab = mIndex
         infoPresenter.detachView()
         wakeUpAdapter = null
     }

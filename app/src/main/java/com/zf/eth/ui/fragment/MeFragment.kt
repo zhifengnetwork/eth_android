@@ -30,9 +30,17 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
     override fun setUserInfo(bean: UserInfoBean) {
         showToast("退出成功")
         UserInfoLiveData.value = bean
-        val intent = Intent(context, MainActivity::class.java)
-            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
+//        val intent = Intent(context, MainActivity::class.java)
+//            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//        startActivity(intent)
+
+        if (bean.member.type == "2" || bean.member.suoding == "1") {
+            MainActivity.actionStart(context, 1)
+        } else {
+            MainActivity.actionStart(context, 3)
+        }
+
+
     }
 
     override fun setNotLogin() {
@@ -40,8 +48,8 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
 
     private val infoPresenter by lazy { UserInfoPresenter() }
 
+    //退出机制
     override fun setLogOut() {
-        Log.e("检测","》》》》》setLogOut")
         infoPresenter.requestUserInfo()
     }
 
@@ -135,7 +143,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
         //支付管理
         payManager.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -143,7 +151,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
         //钱包地址
         payAddress.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -151,7 +159,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
         //我的邀请
         invite.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -159,7 +167,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
         //修改密码
         changePwd.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }
@@ -167,7 +175,7 @@ class MeFragment : BaseFragment(), LogOutContract.View, UserInfoContract.View {
         }
         //平台公告
         bulletin.setOnClickListener {
-            if (UserInfoLiveData.value?.member?.type == "2"|| UserInfoLiveData.value?.member?.suoding == "1") {
+            if (UserInfoLiveData.value?.member?.type == "2" || UserInfoLiveData.value?.member?.suoding == "1") {
                 showToast("该账号已锁户！")
                 return@setOnClickListener
             }

@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 class TeamActivity : BaseActivity(), TeamContract.View {
 
     override fun setLoadMore(bean: List<TeamList>) {
-        data.addAll(bean)
+        initTeam(bean)
         adapter.notifyDataSetChanged()
     }
 
@@ -50,7 +50,7 @@ class TeamActivity : BaseActivity(), TeamContract.View {
         refreshLayout.setEnableLoadMore(true)
         mLayoutStatusView?.showContent()
         data.clear()
-        data.addAll(bean)
+        initTeam(bean)
         adapter.notifyDataSetChanged()
     }
 
@@ -98,7 +98,6 @@ class TeamActivity : BaseActivity(), TeamContract.View {
 
     override fun initEvent() {
 
-
         refreshLayout.setOnLoadMoreListener {
             presenter.requestTeam(null)
         }
@@ -110,5 +109,31 @@ class TeamActivity : BaseActivity(), TeamContract.View {
             mLayoutStatusView?.showLoading()
         }
         presenter.requestTeam(1)
+    }
+
+    private fun initTeam(a: List<TeamList>) {
+
+        val mTon = ArrayList<TeamList>()
+        val mUp = ArrayList<TeamList>()
+
+        for (i in 0 until a.size) {
+            //type=1 为直推
+            if (a[i].type == 1) {
+                mTon.add(a[i])
+            } else {
+                mUp.add(a[i])
+            }
+        }
+        mTon.sortBy {
+            it.createtime
+        }
+        mUp.sortBy {
+            it.createtime
+        }
+        mTon.reverse()
+        mUp.reverse()
+        data.addAll(mTon)
+        data.addAll(mUp)
+
     }
 }
