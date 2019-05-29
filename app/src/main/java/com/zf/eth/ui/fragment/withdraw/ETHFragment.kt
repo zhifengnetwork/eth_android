@@ -17,6 +17,7 @@ import com.zf.eth.ui.activity.WalletAddressActivity
 import com.zf.eth.utils.PriceInputFilter
 import kotlinx.android.synthetic.main.fragment_eth.*
 import java.math.BigDecimal
+import java.text.DecimalFormat
 
 /**
  * ETH账户提现
@@ -125,9 +126,18 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
                 val chargePrice = BigDecimal(charge.text.toString())
                 val hundred = BigDecimal("100")
                 //扣除手续费
-                deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
+                deductCharge.text = "¥" +
+                        DecimalFormat("0.000000").format(
+                            inputPrice.multiply(chargePrice).divide(BigDecimal("100"))
+                        )
+
                 //实际到账  subtract：减号   multiply：乘号 divide：除号
-                trueReceive.text = "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                trueReceive.text = "¥" +
+                        DecimalFormat("0.000000").format(
+                            inputPrice.subtract(
+                                inputPrice.multiply(chargePrice).divide(hundred)
+                            )
+                        )
             }
 
             if (input.text.isEmpty()) {

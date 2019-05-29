@@ -107,10 +107,12 @@ class TransferActivity : BaseActivity(), TransferContract.View, WalletContract.V
                 val userPrice = BigDecimal(price.text.toString())
                 val hundred = BigDecimal("100")
                 //扣除手续费
-                deductCharge.text = DecimalFormat("0.000000000").format(inputPrice.multiply(chargePrice).divide(hundred))
+                deductCharge.text =
+                    DecimalFormat("0.000000000").format(inputPrice.multiply(chargePrice).divide(hundred))
                 //实际到账
                 //subtract减号 divide 除法
-                trueReceive.text =DecimalFormat("0.000000").format(inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred)))
+                trueReceive.text =
+                    DecimalFormat("0.000000").format(inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred)))
             }
 
             if (input.text.isNotEmpty()) {
