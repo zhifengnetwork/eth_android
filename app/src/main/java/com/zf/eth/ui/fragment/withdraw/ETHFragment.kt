@@ -126,9 +126,9 @@ class ETHFragment : BaseFragment(), WithDrawContract.View, WalletContract.View {
                 val chargePrice = BigDecimal(charge.text.toString())
                 val hundred = BigDecimal("100")
                 //扣除手续费
-                deductCharge.text = "¥" + inputPrice.multiply(chargePrice).divide(hundred)
+                deductCharge.text = inputPrice.multiply(chargePrice).divide(hundred).toString()
                 //实际到账  subtract：减号   multiply：乘号 divide：除号
-                trueReceive.text = "¥" + inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred))
+                trueReceive.text = inputPrice.subtract(inputPrice.multiply(chargePrice).divide(hundred)).toString()
             }
 
             if (input.text.isEmpty()) {

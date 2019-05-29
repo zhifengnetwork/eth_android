@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun showError(msg: String, errorCode: Int) {
-        showToast(msg)
+//        showToast(msg)
     }
 
     override fun setNotLogin() {
@@ -77,7 +77,7 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
 
     override fun layoutId(): Int = R.layout.activity_main
 
-
+    private var mLabel = 4
     private var mHomeFragment: HomeFragment? = null
     private var mDiscoveryFragment: ChessFragment? = null
     private var mHotFragment: C2CFragment? = null
@@ -225,6 +225,14 @@ class MainActivity : BaseActivity(), UserInfoContract.View {
         })
         if (mIndex > mTitles.size) {
             mIndex = mTitles.size - 1
+        }
+
+        if (mTitles.size == 2) {
+            mLabel = mTitles.size
+        }
+
+        if (mLabel != mTitles.size) {
+            mIndex = 3
         }
         tabLayout.currentTab = mIndex
 //        switchFragment(mIndex)
