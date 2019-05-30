@@ -35,7 +35,7 @@
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:background="#202D67"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -57,12 +57,11 @@
                 android:layout_width="match_parent"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
-                android:layout_height="20dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:textColor="@color/whit"
-                app:next_pause_duration="2000"
-                android:textSize="8sp"/>
+                app:next_pause_duration="2000"/>
 
         <!--<com.superluo.textbannerlibrary.TextBannerView-->
         <!--android:id="@+id/bannerTextView"-->

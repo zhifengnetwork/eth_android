@@ -17,6 +17,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import androidx.appcompat.widget.AppCompatTextView;
 import com.zf.eth.R;
+import com.zf.eth.utils.Rom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +32,11 @@ public class CustomerMarqueeView extends AppCompatTextView {
     // 切换下一条之前的停顿时间
     private static final int DEFAULT_PAUSE_TIME = 100;
     // 默认切换一条的时间
-    private static final int DEFAULT_SCROLL_TIME = 2000;
+    private static final int DEFAULT_SCROLL_TIME = 3000;
     // 超长文本滚动完当前的时间
-    private static final int DEFAULT_SCROLL_NOW_TIME = 5000;
+    private static final int DEFAULT_SCROLL_NOW_TIME = 6000;
     // 默认文本大小
-    private static final int DEFAULT_CONTENT_SIZE = 15;
+    private static final int DEFAULT_CONTENT_SIZE = 5;
     // 默认文本颜色
     private static final int DEFAULT_CONTENT_COLOR = Color.WHITE;
 
@@ -51,7 +52,9 @@ public class CustomerMarqueeView extends AppCompatTextView {
     // 文字属性
     private Paint contentPaint;
     private int contentColor = Color.BLACK;
-    private int contentTextSize = 40;
+
+    //文字大小
+    private int contentTextSize = 35;
     private int maxContentHeight;
     private int maxContentWidth;
     private int mCurrentIndex = 0;
@@ -80,6 +83,7 @@ public class CustomerMarqueeView extends AppCompatTextView {
 
     public CustomerMarqueeView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
         TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.CustomerMarqueeView);
         mNextPauseDuration = array.getInt(R.styleable.CustomerMarqueeView_next_pause_duration, DEFAULT_PAUSE_TIME);
         mSwitchDuration = array.getInt(R.styleable.CustomerMarqueeView_switch_item_duration, DEFAULT_SCROLL_TIME);
@@ -101,7 +105,14 @@ public class CustomerMarqueeView extends AppCompatTextView {
         contentPaint.setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
         contentPaint.setAntiAlias(true);
         contentPaint.setDither(true);
-        contentPaint.setTextSize(contentTextSize);
+        contentPaint.setTextAlign(Paint.Align.CENTER);
+
+        if (Rom.isOppo()) {
+            contentPaint.setTextSize(25);
+        } else {
+            contentPaint.setTextSize(32);
+        }
+
         contentPaint.setColor(contentColor);
     }
 
@@ -184,8 +195,9 @@ public class CustomerMarqueeView extends AppCompatTextView {
                 }
             }
 
-            canvas.drawText(mCurrentString, mCurrentX, mCurrentY, contentPaint);
-            canvas.drawText(mNextString, mCurrentX + screenIndex * viewWidth, mCurrentY, contentPaint);
+            //加15是为了向下移动textView
+            canvas.drawText(mCurrentString, mCurrentX, 15 + mCurrentY, contentPaint);
+            canvas.drawText(mNextString, mCurrentX + screenIndex * viewWidth, 15 + mCurrentY, contentPaint);
         }
     }
 
