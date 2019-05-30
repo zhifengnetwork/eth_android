@@ -75,6 +75,8 @@ dependencies {
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'
 
     implementation files('libs/OpenInstall_v2.2.2.jar')
+    //自由缩放图片控件
+    implementation 'com.bm.photoview:library:1.4.1'
 
 
 }

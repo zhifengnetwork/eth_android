@@ -6,6 +6,33 @@ import com.zf.eth.mvp.model.C2cModel
 import com.zf.eth.net.exception.ExceptionHandle
 
 class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
+
+    private val model: C2cModel by lazy { C2cModel() }
+
+    private var mPage = 1
+    override fun requestPay() {
+        checkViewAttached()
+        mRootView?.showLoading()
+        val disposable = model.getPay()
+            .subscribe({
+                mRootView?.apply {
+                    dismissLoading()
+                    when (it.status) {
+                        1 -> getPay(it.data)
+                        -1 -> {
+                        }
+                        else -> showError(it.msg, it.status)
+                    }
+                }
+            }, {
+                mRootView?.apply {
+                    dismissLoading()
+                    showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
+                }
+            })
+        addSubscription(disposable)
+    }
+
     override fun requesC2cSellout(id: String, type: String) {
         checkViewAttached()
         mRootView?.showLoading()
@@ -29,9 +56,6 @@ class C2cPresenter : BasePresenter<C2cContract.View>(), C2cContract.Presenter {
         addSubscription(disposable)
     }
 
-    private val model: C2cModel by lazy { C2cModel() }
-
-    private var mPage = 1
     override fun requesC2c(page: Int?, type: String) {
         checkViewAttached()
 

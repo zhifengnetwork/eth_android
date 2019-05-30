@@ -155,7 +155,7 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
                     mMoney = BigDecimal(edit_money.text.toString())
                     mSum = BigDecimal(edit_sum.text.toString())
                     //预获金额
-                    sum.setText(mMoney.toString())
+                    sum.setText(mMoney.multiply(mSum).toString())
                     //代付币数
                     money.setText(mSum.add(mSum.multiply(hundred)).toString())
                 }
@@ -167,7 +167,7 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
                     mMoney = BigDecimal(edit_money.text.toString())
                     mSum = BigDecimal(edit_sum.text.toString())
                     //预获金额
-                    sum.setText(mMoney.toString())
+                    sum.setText(mMoney.multiply(mSum).toString())
                     //代付币数
                     money.setText(mSum.add(mSum.multiply(hundred)).toString())
                 }

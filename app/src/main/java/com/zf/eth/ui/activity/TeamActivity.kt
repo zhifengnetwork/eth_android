@@ -112,16 +112,16 @@ class TeamActivity : BaseActivity(), TeamContract.View {
     }
 
     private fun initTeam(a: List<TeamList>) {
-
+        data.addAll(a)
         val mTon = ArrayList<TeamList>()
         val mUp = ArrayList<TeamList>()
 
-        for (i in 0 until a.size) {
+        for (i in 0 until data.size) {
             //type=1 为直推
-            if (a[i].type == 1) {
-                mTon.add(a[i])
+            if (data[i].type == 1) {
+                mTon.add(data[i])
             } else {
-                mUp.add(a[i])
+                mUp.add(data[i])
             }
         }
         mTon.sortBy {
@@ -132,6 +132,7 @@ class TeamActivity : BaseActivity(), TeamContract.View {
         }
         mTon.reverse()
         mUp.reverse()
+        data.clear()
         data.addAll(mTon)
         data.addAll(mUp)
 

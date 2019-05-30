@@ -6,15 +6,32 @@ import com.zf.eth.R
 import com.zf.eth.base.BaseFragment
 import com.zf.eth.mvp.bean.C2cBean
 import com.zf.eth.mvp.bean.C2cList
+import com.zf.eth.mvp.bean.PayManageBean
 import com.zf.eth.mvp.contract.C2cContract
+import com.zf.eth.mvp.contract.PayManageContract
 import com.zf.eth.mvp.presenter.C2cPresenter
 import com.zf.eth.net.exception.ErrorStatus
 import com.zf.eth.showToast
 import com.zf.eth.ui.activity.C2cDetailActivity
+import com.zf.eth.ui.activity.PaymentActivity
 import com.zf.eth.ui.adapter.C2cContentAdapter
 import kotlinx.android.synthetic.main.layout_c2c_content.*
+import kotlinx.android.synthetic.main.pop_notice.*
 
 class ContentFragment : BaseFragment(), C2cContract.View {
+    override fun getPay(bean: PayManageBean) {
+        if (bean.bankid != "" || bean.zfbfile != "" || bean.wxfile != "") {
+            if (mC2cList.type == "1") {
+                c2cPresenter.requesC2cSellout(mC2cList.id, "0")
+            } else {
+                c2cPresenter.requesC2cSellout(mC2cList.id, "1")
+            }
+        }else{
+            showToast("请上传支付信息")
+            PaymentActivity.actionStart(context)
+        }
+    }
+
     //买入卖出错误时
     override fun setBuyError(msg: String) {
         showToast(msg)
@@ -45,9 +62,9 @@ class ContentFragment : BaseFragment(), C2cContract.View {
 
     override fun showError(msg: String, errorCode: Int) {
         refreshLayout.setEnableLoadMore(false)
-        if (errorCode==ErrorStatus.NETWORK_ERROR){
+        if (errorCode == ErrorStatus.NETWORK_ERROR) {
             mLayoutStatusView?.showNoNetwork()
-        }else{
+        } else {
             mLayoutStatusView?.showError()
             showToast(msg)
         }
@@ -65,8 +82,8 @@ class ContentFragment : BaseFragment(), C2cContract.View {
     override fun setSelloutSuccess(msg: String) {
         showToast(msg)
         //成功时跳转页面
-        C2cDetailActivity.actionStart(context,"BUY")
-       lazyLoad()
+        C2cDetailActivity.actionStart(context, "BUY")
+        lazyLoad()
     }
 
     override fun showLoading() {
@@ -98,6 +115,7 @@ class ContentFragment : BaseFragment(), C2cContract.View {
 
     private val adapter by lazy { C2cContentAdapter(context, c2cList) }
 
+    private lateinit var mC2cList: C2cList
 
     override fun getLayoutId(): Int = R.layout.layout_c2c_content
 
@@ -112,17 +130,14 @@ class ContentFragment : BaseFragment(), C2cContract.View {
     }
 
 
-
     override fun initEvent() {
         /**
          * 点击卖出买入按钮 网络请求 (买入和卖出相反)
          * */
         adapter.mClickListener = {
-            if (it.type == "1") {
-                c2cPresenter.requesC2cSellout(it.id, "0")
-            } else {
-                c2cPresenter.requesC2cSellout(it.id, "1")
-            }
+            c2cPresenter.requestPay()
+            mC2cList = it
+
         }
 
         /**上拉加载*/
@@ -142,16 +157,13 @@ class ContentFragment : BaseFragment(), C2cContract.View {
 
     override fun lazyLoad() {
         refreshLayout.setEnableLoadMore(false)
-        c2cPresenter.requesC2c(1, if (mType== BUY) "1" else "0")
+        c2cPresenter.requesC2c(1, if (mType == BUY) "1" else "0")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         c2cPresenter.detachView()
     }
-
-
-
 
 
 }

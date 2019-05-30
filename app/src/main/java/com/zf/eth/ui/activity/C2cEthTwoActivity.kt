@@ -90,6 +90,9 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
         confirm_btn.setOnClickListener {
             presenter.requestConfirmOrder(data?.list?.id ?: "", "1")
         }
+        payImg.setOnClickListener {
+            SeeImgActivity.actionStart(this, data?.list?.file)
+        }
     }
 
     override fun onDestroy() {
@@ -101,7 +104,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
         presenter.requestOrderDetail(id)
     }
 
-    fun dataView() {
+    private fun dataView() {
 
 
         if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
@@ -133,7 +136,7 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
             payImg.visibility = View.VISIBLE
         }
         /**交易中此页面显示确认收款按钮，修改布局文字*/
-        if (data?.list?.status == "1"){
+        if (data?.list?.status == "1") {
             confirm_btn.visibility = View.VISIBLE
             appeal_btn.visibility = View.VISIBLE
         }

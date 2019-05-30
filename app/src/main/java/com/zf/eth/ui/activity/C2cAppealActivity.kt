@@ -69,7 +69,9 @@ class C2cAppealActivity : BaseActivity(), AppealListContract.View {
     }
 
     override fun initEvent() {
-
+        apyImg.setOnClickListener {
+            SeeImgActivity.actionStart(this, mData?.files)
+        }
     }
 
     override fun onDestroy() {

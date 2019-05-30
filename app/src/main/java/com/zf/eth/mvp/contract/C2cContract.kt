@@ -4,6 +4,7 @@ import com.zf.eth.base.BaseBean
 import com.zf.eth.base.IBaseView
 import com.zf.eth.base.IPresenter
 import com.zf.eth.mvp.bean.C2cBean
+import com.zf.eth.mvp.bean.PayManageBean
 import com.zf.eth.mvp.bean.TeamList
 
 interface C2cContract{
@@ -13,6 +14,8 @@ interface C2cContract{
         fun setC2c(bean: C2cBean)
         //C2c主页买入卖出按钮
         fun setSelloutSuccess(msg:String)
+        //支付管理信息
+        fun getPay(bean: PayManageBean)
 
         fun freshEmpty()
 
@@ -28,5 +31,7 @@ interface C2cContract{
 
         fun requesC2c(page:Int?,type:String)
         fun requesC2cSellout(id:String,type:String)
+        //支付管理信息
+        fun requestPay()
     }
 }
