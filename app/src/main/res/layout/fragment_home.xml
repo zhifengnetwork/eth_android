@@ -52,16 +52,27 @@
                 android:textColor="#faa526"
                 android:textSize="15sp"/>
 
-        <com.zf.eth.view.CustomerMarqueeView
-                android:id="@+id/bannerTextView"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"
-                android:textColor="@color/whit"
-                app:next_pause_duration="2000"/>
+        <!--attrs里有属性值-->
+ <com.zf.eth.view.MarqueeView
+         android:id="@+id/bannerTextView"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         app:marqueeview_text_color="@color/whit"
+         app:marqueeview_text_size="14"
+         app:marqueeview_text_speed="1.2"
+         app:marqueeview_text_distance="100"
+         app:marqueeview_is_resetLocation="false"
+         app:marqueeview_repet_type="repet_continuous"/>
+        <!--<com.zf.eth.view.CustomerMarqueeView-->
+                <!--android:id="@+id/bannerTextView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_marginLeft="12dp"-->
+                <!--android:layout_marginRight="12dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="@color/whit"-->
+                <!--app:next_pause_duration="2000"/>-->
 
         <!--<com.superluo.textbannerlibrary.TextBannerView-->
         <!--android:id="@+id/bannerTextView"-->

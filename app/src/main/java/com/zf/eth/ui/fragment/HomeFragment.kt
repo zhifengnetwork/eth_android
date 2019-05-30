@@ -1,5 +1,6 @@
 package com.zf.eth.ui.fragment
 
+import android.util.Log
 import com.zf.eth.R
 import com.zf.eth.api.UriConstant
 import com.zf.eth.base.BaseFragment
@@ -23,6 +24,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     private val noticeData = ArrayList<String>()
+    private var mNotice = ""
 
     //首页信息
     override fun setHome(bean: HomeSetBean) {
@@ -43,12 +45,16 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
         /** 公告*/
         noticeData.clear()
+
         for (notice in bean.notice) {
+            mNotice = HtmlLabel.stringHtml(notice.detail)
             noticeData.add(HtmlLabel.stringHtml(notice.detail))
         }
         if (noticeData.isNotEmpty()) {
-            bannerTextView.setContentList(noticeData)
-            bannerTextView.start()
+            bannerTextView.setContent(noticeData)
+//            bannerTextView.setTextDistance(bannerTextView.measuredWidth)
+//            bannerTextView.setContentList(noticeData)
+//            bannerTextView.start()
         }
     }
 
@@ -82,21 +88,21 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         lazyLoad()
 
         if (noticeData.isNotEmpty()) {
-            bannerTextView.start()
+//            bannerTextView.start()
         }
         super.onResume()
     }
 
     override fun onStop() {
         if (noticeData.isNotEmpty()) {
-            bannerTextView.pause()
+//            bannerTextView.pause()
         }
         super.onStop()
     }
 
     override fun onDestroyView() {
         if (noticeData.isNotEmpty()) {
-            bannerTextView.pause()
+//            bannerTextView.pause()
         }
         super.onDestroyView()
     }
