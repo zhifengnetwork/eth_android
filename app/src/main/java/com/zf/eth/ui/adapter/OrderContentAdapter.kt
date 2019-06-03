@@ -35,10 +35,13 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.apply {
             number.text = "订单编号：" + mData[position].id
+            trx_sum.text = mData[position].trx
+            price.text = mData[position].price
+            money.text = mData[position].money
+            time.text = mData[position].datatime
             if (mData[position].type == "1") {
                 type_name.text = "买入"
                 type_name.setTextColor(Color.parseColor("#70c376"))
-
             } else {
                 type_name.text = "卖出"
                 type_name.setTextColor(Color.parseColor("#ce2f50"))
@@ -129,10 +132,7 @@ class OrderContentAdapter(val context: Context?, val data: List<MyOrderList>) :
                 }
 
             }
-            trx_sum.text = mData[position].trx
-            price.text = mData[position].price
-            money.text = mData[position].money
-            time.text = mData[position].datatime
+
 
 
         }

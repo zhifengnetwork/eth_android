@@ -36,14 +36,15 @@ class C2cContentAdapter(val context: Context?, val list: List<C2cList>) :
             price.text = "￥：" + c2cList[position].price
             //挂单数量
             sum.text = c2cList[position].trx
+            order_time.text = c2cList[position].createtime
             //支付方式判断可不可见
-            alipay.visibility = if (c2cList[position].zfbfile !="1") View.GONE else View.VISIBLE
+            alipay.visibility = if (c2cList[position].zfbfile != "1") View.GONE else View.VISIBLE
 
             wechat.visibility = if (c2cList[position].wxfile != "1") View.GONE else View.VISIBLE
 
-            bankcard.visibility=if (c2cList[position].bank != "1") View.GONE else View.VISIBLE
+            bankcard.visibility = if (c2cList[position].bank != "1") View.GONE else View.VISIBLE
             //判断按钮的文字
-            item_tv.text=if (c2cList[position].type =="1") "买入" else "卖出"
+            item_tv.text = if (c2cList[position].type == "1") "买入" else "卖出"
             //按钮的点击监听
             item_tv.setOnClickListener {
                 mClickListener?.invoke(c2cList[position])

@@ -106,15 +106,18 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
 
     private fun dataView() {
 
-
         if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
 
         if (data?.list?.status == "3") {
             if (data?.list?.type == "1") titleName.text = "买入ETH" else titleName.text = "卖出ETH"
         }
 
+        if (data?.type_own == "2") {
+            if (data?.list?.type == "0") openid_name.text = "挂 买 人:" else openid_name.text = "挂 卖 人:"
+        } else {
+            if (data?.list?.type == "0") openid_name.text = "挂 卖 人:" else openid_name.text = "挂 买 人:"
+        }
 
-        if (data?.list?.type == "1") openid_name.text = "挂 卖 人:" else openid_name.text = "挂 买 人:"
         //订单号
         order_id.text = data?.list?.id
         //挂卖人
@@ -139,22 +142,60 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
         if (data?.list?.status == "1") {
             confirm_btn.visibility = View.VISIBLE
             appeal_btn.visibility = View.VISIBLE
+            money_name.text = "待 收 款："
+            if (data?.type_own == "1") {
+                if (data?.list?.type == "0") {
+                    payee_name.text = "付 款 人："
+                } else {
+                    payee_name.text = "收 款 人："
+                }
+            } else {
+                if (data?.list?.type == "1") {
+                    payee_name.text = "付 款 人："
+                } else {
+                    payee_name.text = "收 款 人："
+                }
+            }
         }
         /**交易完成此页面隐藏确认收款按钮，修改布局文字*/
         if (data?.list?.status == "2") {
-            if (data?.list?.type == "1") {
-                order_openid.text = data?.list?.mobile
-                payee.text = data?.list?.mobile2
+//            自己看自己订单
+            if (data?.type_own == "1") {
+                if (data?.list?.type == "0") {
+                    order_openid.text = data?.list?.mobile
+                    payee.text = data?.list?.mobile2
 //                order_openid.text = data?.list?.nickname
 //                payee.text = data?.list?.nickname2
-                payee_name.text = "付 款 人："
-            } else {
-                order_openid.text = data?.list?.mobile2
-                payee.text = data?.list?.mobile
+                    money_name.text = "已 收 款："
+                    payee_name.text = "付 款 人："
+                } else {
+                    order_openid.text = data?.list?.mobile
+                    payee.text = data?.list?.mobile2
 //                order_openid.text = data?.list?.nickname2
 //                payee.text = data?.list?.nickname
-                payee_name.text = "收 款 人："
+                    money_name.text = "已 付 款："
+                    payee_name.text = "收 款 人："
+                }
+            } else {
+                if (data?.list?.type == "0") {
+                    order_openid.text = data?.list?.mobile
+                    payee.text = data?.list?.mobile2
+//                order_openid.text = data?.list?.nickname
+//                payee.text = data?.list?.nickname2
+                    openid_name.text = "挂 买 人:"
+                    money_name.text = "已 收 款："
+                    payee_name.text = "收 款 人："
+                } else {
+                    order_openid.text = data?.list?.mobile
+                    payee.text = data?.list?.mobile2
+//                order_openid.text = data?.list?.nickname2
+//                payee.text = data?.list?.nickname
+                    openid_name.text = "挂 卖 人:"
+                    money_name.text = "已 付 款："
+                    payee_name.text = "付 款 人："
+                }
             }
+
             confirm_btn.visibility = View.GONE
             //显示申诉按钮
             appeal_btn.visibility = View.VISIBLE
@@ -169,7 +210,6 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
                 order_openid.text = data?.list?.mobile2
                 //收款人
                 payee.text = data?.list?.mobile
-
             } else {
                 openid_name.text = "挂 卖 人:"
                 money_name.text = "待 收 款："
@@ -178,9 +218,12 @@ class C2cEthTwoActivity : BaseActivity(), ConfirmOrderContrect.View {
                 order_openid.text = data?.list?.mobile
                 //收款人
                 payee.text = data?.list?.mobile2
-
+                //待收款
+                order_money.text = data?.list?.trx2
             }
-            btn_ly.visibility = View.GONE
+            confirm_btn.visibility = View.GONE
+            //显示申诉按钮
+            appeal_btn.visibility = View.VISIBLE
         }
     }
 }

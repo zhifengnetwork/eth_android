@@ -130,18 +130,19 @@ class PaymentActivity : BaseActivity(), PayManageContract.View {
                 zfb_img.isEnabled = true
                 wx_img.isEnabled = true
             } else {
-                if (card_number.text.isEmpty() || user_name.text.isEmpty() || bank_name.text.isEmpty()
-                        || aliPayImg.isEmpty() || weChatImg.isEmpty()
+                if (card_number.text.isNotEmpty() && user_name.text.isNotEmpty() && bank_name.text.isNotEmpty()
+                        || aliPayImg.isNotEmpty() || weChatImg.isNotEmpty()
                 ) {
-                    showToast("请先完善信息")
-                } else {
                     presenter.requestEditPayManege("",
-                            "",
-                            aliPayImg,
-                            weChatImg,
-                            card_number.text.toString(),
-                            user_name.text.toString(),
-                            bank_name.text.toString())
+                        "",
+                        aliPayImg,
+                        weChatImg,
+                        card_number.text.toString(),
+                        user_name.text.toString(),
+                        bank_name.text.toString())
+
+                } else {
+                    showToast("请先完善信息")
                 }
             }
         }

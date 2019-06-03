@@ -3,6 +3,7 @@ package com.zf.eth.ui.activity
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -107,22 +108,78 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
 
                 when (mAdapter.getItem(position)) {
                     "银行" -> {
-                        //银行名字
-                        yh_name.text = data?.list?.bank
-                        //银行户主
-                        hz_name.text = data?.list?.bankname
-                        //银行卡号
-                        kh_name.text = data?.list?.bankid
+                        if (data?.type_own=="2"){
+                            if(data?.list?.type=="0"){
+                                //银行名字
+                                yh_name.text = data?.list?.bank2
+                                //银行户主
+                                hz_name.text = data?.list?.bankname2
+                                //银行卡号
+                                kh_name.text = data?.list?.bankid2
+                            }else{
+                                //银行名字
+                                yh_name.text = data?.list?.bank
+                                //银行户主
+                                hz_name.text = data?.list?.bankname
+                                //银行卡号
+                                kh_name.text = data?.list?.bankid
+                            }
+                        }else{
+                            if(data?.list?.type=="1"){
+                                //银行名字
+                                yh_name.text = data?.list?.bank2
+                                //银行户主
+                                hz_name.text = data?.list?.bankname2
+                                //银行卡号
+                                kh_name.text = data?.list?.bankid2
+                            }else{
+                                //银行名字
+                                yh_name.text = data?.list?.bank
+                                //银行户主
+                                hz_name.text = data?.list?.bankname
+                                //银行卡号
+                                kh_name.text = data?.list?.bankid
+                            }
+                        }
+
+
                         pay_ly.visibility = View.GONE
                         bank_ly.visibility = View.VISIBLE
                     }
-                    "微信"->{
-                        GlideUtils.loadUrlImage(context, data?.list?.wxfile2, pay_img)
+                    "微信" -> {
+                        if (data?.type_own=="2"){
+                            if(data?.list?.type=="0"){
+                                GlideUtils.loadUrlImage(context, data?.list?.wxfile2, pay_img)
+                            }else{
+                                GlideUtils.loadUrlImage(context, data?.list?.wxfile, pay_img)
+                            }
+                        }else{
+                            if(data?.list?.type=="1"){
+                                GlideUtils.loadUrlImage(context, data?.list?.wxfile2, pay_img)
+                            }else{
+                                GlideUtils.loadUrlImage(context, data?.list?.wxfile, pay_img)
+                            }
+                        }
+
                         pay_ly.visibility = View.VISIBLE
                         bank_ly.visibility = View.GONE
                     }
-                    "支付宝"->{
-                        GlideUtils.loadUrlImage(context, data?.list?.zfbfile2, pay_img)
+                    "支付宝" -> {
+                        if (data?.type_own=="2"){
+                            if (data?.list?.type=="0"){
+                                GlideUtils.loadUrlImage(context, data?.list?.zfbfile2, pay_img)
+                            }else{
+                                GlideUtils.loadUrlImage(context, data?.list?.zfbfile, pay_img)
+                            }
+                        }else{
+                            if (data?.list?.type=="1"){
+                                GlideUtils.loadUrlImage(context, data?.list?.zfbfile2, pay_img)
+                            }else{
+                                GlideUtils.loadUrlImage(context, data?.list?.zfbfile, pay_img)
+                            }
+                        }
+
+
                         pay_ly.visibility = View.VISIBLE
                         bank_ly.visibility = View.GONE
                     }
@@ -204,7 +261,7 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
         presenter.requestOrderDetail(id)
     }
 
-    fun dataView() {
+    private fun dataView() {
         //订单号
         order_id.text = data?.list?.id
         //挂卖人
@@ -216,7 +273,32 @@ class C2cEthThreeActivity : BaseActivity(), ConfirmOrderContrect.View {
         //待付款
         order_money.text = data?.list?.money
         //付款人
+        if (data?.type_own=="2"){
+            if (data?.list?.type=="0"){
+                openid_name.text="挂 买 人:"
+                payee_name.text="收 款 人："
+            }else{
+                openid_name.text="挂 卖 人:"
+                payee_name.text="付 款 人："
+            }
+        }else{
+            if (data?.list?.type=="1"){
+                openid_name.text="挂 买 人:"
+                payee_name.text="收 款 人："
+            }else{
+                openid_name.text="挂 卖 人:"
+                payee_name.text="付 款 人："
+            }
+        }
+
         payee.text = data?.list?.mobile2
+
+        if (data?.list?.file != "") {
+            GlideUtils.loadUrlImage(context, data?.list?.file, payImg)
+            img_btn.visibility = View.GONE
+            payImg.visibility = View.VISIBLE
+
+        }
 
         mAdapter.setDropDownViewResource(R.layout.item_spinner)
         spinner.adapter = mAdapter

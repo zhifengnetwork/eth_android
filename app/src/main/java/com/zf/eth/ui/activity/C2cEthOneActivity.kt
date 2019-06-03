@@ -46,7 +46,7 @@ class C2cEthOneActivity : BaseActivity(), CancelOrderContract.View {
     }
 
     override fun initToolBar() {
-        if (mData?.list?.type == "1") titleName.text = "卖出ETH" else titleName.text = "买入ETH"
+
         titleName.textSize = 22f
         titleName.paint.isFakeBoldText = true
         titleBackground.setBackgroundResource(R.drawable.bg1)
@@ -93,6 +93,14 @@ class C2cEthOneActivity : BaseActivity(), CancelOrderContract.View {
         order_price.text = mData?.list?.price
         order_sum.text = mData?.list?.trx
         order_money.text = mData?.list?.money
+        if (mData?.list?.type == "0"){
+            titleName.text = "卖出ETH"
+            order_Label.text = "待收款："
+        } else{
+            titleName.text = "买入ETH"
+            order_Label.text = "待付款："
+        }
+
         // order_id.text = data?.id
 //        order_openid.text = data?.nickname
 //        order_price.text = data?.price

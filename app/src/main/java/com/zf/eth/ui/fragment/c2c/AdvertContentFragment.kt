@@ -131,14 +131,22 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
                     edit_sum.text.toString() == "" -> showToast("请输入数量")
                     else -> {
                         if (mMoney.toDouble() in minMoney.toDouble()..maxMoney.toDouble()) {
+//                            @Field("r") r: String,
+//                            @Field("userid") userid: String,
+//                            @Field("type") type: String,      1卖出 0买入
+//                            @Field("price") price: String,   	买入或者卖出价格
+//                            @Field("money") money: String,    预获金额或者预获币数
+//                            @Field("sxf0") sxf0: String,      	手续费
+//                            @Field("trx") trx: String,         	买入或者卖出数量
+//                            @Field("trx2") trx2: String	    待付 或者 预付
                             //金额 预获币数 手续费 数量 预付金额
                             presenter.requesHangonsale(
                                 mType,
                                 mMoney.toString(),
-                                mSum.subtract(mSum.multiply(hundred)).toString(),
-                                mMoney.multiply(mSum).multiply(hundred).toString(),
+                                mMoney.multiply(mSum).toString(),
+                                mSum.multiply(hundred).toString(),
                                 mSum.toString(),
-                                mMoney.multiply(mSum).toString()
+                                mSum.subtract(mSum.multiply(hundred)).toString()
                             )
                         } else {
                             showToast("请按参考价格来输入价格")
@@ -183,8 +191,8 @@ class AdvertContentFragment : BaseFragment(), HangonsaleContract.View {
                             presenter.requesHangonsale(
                                 mType,
                                 mMoney.toString(),
-                                mMoney.subtract(mSum).toString(),
-                                mSum.subtract(hundred).toString(),
+                                mMoney.multiply(mSum).toString(),
+                                mSum.multiply(hundred).toString(),
                                 mSum.toString(),
                                 mSum.add(mSum.multiply(hundred)).toString()
                             )
